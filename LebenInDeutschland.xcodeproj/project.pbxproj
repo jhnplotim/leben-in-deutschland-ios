@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		7E1F381D29AB785800F60435 /* states.json in Resources */ = {isa = PBXBuildFile; fileRef = 7E1F381C29AB785800F60435 /* states.json */; };
 		7E3B0EFF29AB70F8004219B7 /* LebenInDeutschlandApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E3B0EFE29AB70F8004219B7 /* LebenInDeutschlandApp.swift */; };
 		7E3B0F0129AB70F8004219B7 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E3B0F0029AB70F8004219B7 /* ContentView.swift */; };
 		7E3B0F0329AB70F9004219B7 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 7E3B0F0229AB70F9004219B7 /* Assets.xcassets */; };
@@ -14,6 +15,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		7E1F381C29AB785800F60435 /* states.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = states.json; sourceTree = "<group>"; };
 		7E3B0EFB29AB70F8004219B7 /* LebenInDeutschland.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = LebenInDeutschland.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		7E3B0EFE29AB70F8004219B7 /* LebenInDeutschlandApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LebenInDeutschlandApp.swift; sourceTree = "<group>"; };
 		7E3B0F0029AB70F8004219B7 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -54,6 +56,7 @@
 		7E1F381729AB734E00F60435 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				7E1F381C29AB785800F60435 /* states.json */,
 			);
 			path = Resources;
 			sourceTree = "<group>";
@@ -183,6 +186,7 @@
 			files = (
 				7E3B0F0629AB70F9004219B7 /* Preview Assets.xcassets in Resources */,
 				7E3B0F0329AB70F9004219B7 /* Assets.xcassets in Resources */,
+				7E1F381D29AB785800F60435 /* states.json in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
