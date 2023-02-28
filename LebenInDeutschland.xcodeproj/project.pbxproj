@@ -22,6 +22,9 @@
 		7EDB84DB29AB9CD20043A793 /* AnswerModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7EDB84DA29AB9CD20043A793 /* AnswerModel.swift */; };
 		7EDB84DD29ABA1F50043A793 /* questions.json in Resources */ = {isa = PBXBuildFile; fileRef = 7EDB84DC29ABA1F50043A793 /* questions.json */; };
 		7EDB84DF29ABD10D0043A793 /* QuestionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7EDB84DE29ABD10D0043A793 /* QuestionView.swift */; };
+		DA66E60529AE698D00B2B6B0 /* ColorInvert.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA66E60429AE698D00B2B6B0 /* ColorInvert.swift */; };
+		DA66E60729AE6A7200B2B6B0 /* RadioButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA66E60629AE6A7200B2B6B0 /* RadioButton.swift */; };
+		DA66E60929AE6CBA00B2B6B0 /* RadioButtonGroup.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA66E60829AE6CBA00B2B6B0 /* RadioButtonGroup.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -41,6 +44,9 @@
 		7EDB84DA29AB9CD20043A793 /* AnswerModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnswerModel.swift; sourceTree = "<group>"; };
 		7EDB84DC29ABA1F50043A793 /* questions.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = questions.json; sourceTree = "<group>"; };
 		7EDB84DE29ABD10D0043A793 /* QuestionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuestionView.swift; sourceTree = "<group>"; };
+		DA66E60429AE698D00B2B6B0 /* ColorInvert.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorInvert.swift; sourceTree = "<group>"; };
+		DA66E60629AE6A7200B2B6B0 /* RadioButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RadioButton.swift; sourceTree = "<group>"; };
+		DA66E60829AE6CBA00B2B6B0 /* RadioButtonGroup.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RadioButtonGroup.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -91,6 +97,7 @@
 		7E1F381829AB73A900F60435 /* Helpers */ = {
 			isa = PBXGroup;
 			children = (
+				DA66E60329AE680100B2B6B0 /* RadioButtons */,
 				7E1F382129AB817200F60435 /* CircleImage.swift */,
 			);
 			path = Helpers;
@@ -172,6 +179,16 @@
 			path = "Preview Content";
 			sourceTree = "<group>";
 		};
+		DA66E60329AE680100B2B6B0 /* RadioButtons */ = {
+			isa = PBXGroup;
+			children = (
+				DA66E60429AE698D00B2B6B0 /* ColorInvert.swift */,
+				DA66E60629AE6A7200B2B6B0 /* RadioButton.swift */,
+				DA66E60829AE6CBA00B2B6B0 /* RadioButtonGroup.swift */,
+			);
+			path = RadioButtons;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -247,9 +264,12 @@
 				7E1F382C29AB93F700F60435 /* StateDetail.swift in Sources */,
 				7E3B0F0129AB70F8004219B7 /* ContentView.swift in Sources */,
 				7E1F382229AB817200F60435 /* CircleImage.swift in Sources */,
+				DA66E60929AE6CBA00B2B6B0 /* RadioButtonGroup.swift in Sources */,
+				DA66E60529AE698D00B2B6B0 /* ColorInvert.swift in Sources */,
 				7E3B0EFF29AB70F8004219B7 /* LebenInDeutschlandApp.swift in Sources */,
 				7E1F382829AB85BF00F60435 /* StateRow.swift in Sources */,
 				7EDB84DB29AB9CD20043A793 /* AnswerModel.swift in Sources */,
+				DA66E60729AE6A7200B2B6B0 /* RadioButton.swift in Sources */,
 				7E1F382429AB833200F60435 /* StateModel.swift in Sources */,
 				7EDB84DF29ABD10D0043A793 /* QuestionView.swift in Sources */,
 				7EDB84D929AB9C350043A793 /* QuestionModel.swift in Sources */,
