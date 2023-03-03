@@ -26,6 +26,7 @@
 		DA1426FB29B234B900846A29 /* correct_animation.json in Resources */ = {isa = PBXBuildFile; fileRef = DA1426FA29B234B900846A29 /* correct_animation.json */; };
 		DA1426FD29B234F600846A29 /* LottieView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA1426FC29B234F600846A29 /* LottieView.swift */; };
 		DA1426FF29B2392700846A29 /* wrong_animation.json in Resources */ = {isa = PBXBuildFile; fileRef = DA1426FE29B2392700846A29 /* wrong_animation.json */; };
+		DA14270129B2404C00846A29 /* ExamView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA14270029B2404C00846A29 /* ExamView.swift */; };
 		DA66E60529AE698D00B2B6B0 /* ColorInvert.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA66E60429AE698D00B2B6B0 /* ColorInvert.swift */; };
 		DA66E60729AE6A7200B2B6B0 /* RadioButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA66E60629AE6A7200B2B6B0 /* RadioButton.swift */; };
 		DA66E60929AE6CBA00B2B6B0 /* RadioButtonGroup.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA66E60829AE6CBA00B2B6B0 /* RadioButtonGroup.swift */; };
@@ -51,6 +52,7 @@
 		DA1426FA29B234B900846A29 /* correct_animation.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = correct_animation.json; sourceTree = "<group>"; };
 		DA1426FC29B234F600846A29 /* LottieView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LottieView.swift; sourceTree = "<group>"; };
 		DA1426FE29B2392700846A29 /* wrong_animation.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = wrong_animation.json; sourceTree = "<group>"; };
+		DA14270029B2404C00846A29 /* ExamView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = ExamView.swift; path = LebenInDeutschland/Views/Helpers/ExamView.swift; sourceTree = SOURCE_ROOT; };
 		DA66E60429AE698D00B2B6B0 /* ColorInvert.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorInvert.swift; sourceTree = "<group>"; };
 		DA66E60629AE6A7200B2B6B0 /* RadioButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RadioButton.swift; sourceTree = "<group>"; };
 		DA66E60829AE6CBA00B2B6B0 /* RadioButtonGroup.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RadioButtonGroup.swift; sourceTree = "<group>"; };
@@ -130,6 +132,7 @@
 		7E1F381B29AB743000F60435 /* Exams */ = {
 			isa = PBXGroup;
 			children = (
+				DA14270029B2404C00846A29 /* ExamView.swift */,
 			);
 			path = Exams;
 			sourceTree = "<group>";
@@ -303,6 +306,7 @@
 				7EDB84D929AB9C350043A793 /* QuestionModel.swift in Sources */,
 				7E1F382029AB812500F60435 /* StateList.swift in Sources */,
 				7E1F382629AB84DD00F60435 /* ModelData.swift in Sources */,
+				DA14270129B2404C00846A29 /* ExamView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

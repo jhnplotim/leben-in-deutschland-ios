@@ -9,10 +9,20 @@ import SwiftUI
 
 struct QuestionView: View {
     
+    typealias SelectedAnswerCallback = (QuestionModel, AnswerModel) -> Void
+    
     var position: Int
     var question: QuestionModel
+    var callback: SelectedAnswerCallback
     
-    @State private var correctAnswerSelected: Bool? = nil
+    init(position: Int, question: QuestionModel, selectedAnswer: AnswerModel? = nil, callback: @escaping SelectedAnswerCallback) {
+        self.position = position
+        self.question = question
+        self.callback = callback
+        self.selectedAnswer = selectedAnswer
+    }
+    
+    @State private var selectedAnswer: AnswerModel? = nil
     
     enum C {
         static let CORRECT_ANIMATION = "correct_animation"
@@ -36,22 +46,22 @@ struct QuestionView: View {
             }
             
             // TODO: Use ID instead of text value to compare
-            RadioButtonGroup(items: question.answers.map({$0.text}), selectedId: "") { selected in
+            RadioButtonGroup(items: question.answers.map({$0.text}), selectedId: selectedAnswer?.text ?? "") { selected in
                 print("Selected is: \(selected)")
                 if let correctAns = question.correctAnswer, correctAns.text == selected {
                     print("Correct answer selected")
-                    correctAnswerSelected = true
+                    selectedAnswer = question.correctAnswer
                 } else {
                     print("Wrong answer selected")
-                    correctAnswerSelected = false
+                    selectedAnswer = question.answers.first(where: { $0.text == selected})
                 }
-                
+                callback(question, selectedAnswer!)
             }
             
-            if let correctAnswerSelected {
+            if let selectedAnswer {
                 HStack {
                     Spacer()
-                    if correctAnswerSelected {
+                    if selectedAnswer == question.correctAnswer {
                         LottieView(name:  C.CORRECT_ANIMATION , loopMode: .playOnce)
                             .frame(width: 250, height: 250)
                     } else {
@@ -78,15 +88,15 @@ struct QuestionView_Previews: PreviewProvider {
     
     static var previews: some View {
         Group {
-            QuestionView(position: index2 + 1, question: ModelData().allQuestions[index2])
+            QuestionView(position: index2 + 1, question: ModelData().allQuestions[index2]) {_,_ in }
             
-            QuestionView(position: index6 + 1, question: ModelData().allStateQuestions[index6])
+            QuestionView(position: index6 + 1, question: ModelData().allStateQuestions[index6]) {_,_ in }
             
-            QuestionView(position: index3 + 1, question: ModelData().generalQuestions[index3])
+            QuestionView(position: index3 + 1, question: ModelData().generalQuestions[index3]) {_,_ in }
             
-            QuestionView(position: index0 + 1, question: ModelData().selectedStateQuestions[index0])
+            QuestionView(position: index0 + 1, question: ModelData().selectedStateQuestions[index0]) {_,_ in }
             
-            QuestionView(position: index7 + 1, question: ModelData().selectedStateQuestions[index7])
+            QuestionView(position: index7 + 1, question: ModelData().selectedStateQuestions[index7]) {_,_ in }
             
         }
     }
