@@ -12,6 +12,7 @@ struct RadioButtonGroup: View {
     
     // TODO: Pick inspiration from List api
     // TODO: Improve state handling
+    // TODO: Handle dark mode
     @State var selectedId: String = ""
     
     let callback: (String) -> ()

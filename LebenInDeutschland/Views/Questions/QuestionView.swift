@@ -11,10 +11,16 @@ struct QuestionView: View {
     
     var position: Int
     var question: QuestionModel
-    @State private var selectedAnswer: AnswerModel?
+    
+    @State private var correctAnswerSelected: Bool? = nil
+    
+    enum C {
+        static let CORRECT_ANIMATION = "correct_animation"
+        static let WRONG_ANIMATION = "wrong_animation"
+    }
     
     var body: some View {
-        VStack(alignment: .leading) {
+        VStack(alignment: .leading, spacing: 30) {
             Text("\(position). \(question.title)")
                 .font(.headline)
             
@@ -29,18 +35,35 @@ struct QuestionView: View {
                 }
             }
             
-            Form {
-                Picker(selection: $selectedAnswer) {
-                    ForEach(question.answers) { answer in
-                        Text(answer.text)
-                            .font(.subheadline)
-                            .foregroundColor(.secondary)
-                            .tag(answer)
-                    }
-                } label: {
-
-                }.pickerStyle(.inline)
+            // TODO: Use ID instead of text value to compare
+            RadioButtonGroup(items: question.answers.map({$0.text}), selectedId: "") { selected in
+                print("Selected is: \(selected)")
+                if let correctAns = question.correctAnswer, correctAns.text == selected {
+                    print("Correct answer selected")
+                    correctAnswerSelected = true
+                } else {
+                    print("Wrong answer selected")
+                    correctAnswerSelected = false
+                }
+                
             }
+            
+            if let correctAnswerSelected {
+                HStack {
+                    Spacer()
+                    if correctAnswerSelected {
+                        LottieView(name:  C.CORRECT_ANIMATION , loopMode: .playOnce)
+                            .frame(width: 250, height: 250)
+                    } else {
+                        LottieView(name: C.WRONG_ANIMATION , loopMode: .playOnce)
+                            .frame(width: 250, height: 250)
+                    }
+                    Spacer()
+                }
+            }
+            
+            
+            Spacer()
         }
         .padding()
     }
