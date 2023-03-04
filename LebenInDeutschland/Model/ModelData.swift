@@ -11,6 +11,21 @@ import Combine
 final class ModelData: ObservableObject {
     var states: [StateModel] = load("states.json")
     
+    var allQuestions: [QuestionModel] = load("questions.json")
+    
+    var allStateQuestions: [QuestionModel] {
+        allQuestions.filter({ $0.stateId != nil })
+    }
+    
+    var selectedStateQuestions: [QuestionModel] {
+        allStateQuestions
+        // TODO: Filter out based on selected state
+    }
+    
+    var generalQuestions: [QuestionModel] {
+        allQuestions.filter({ $0.stateId == nil })
+    }
+    
 }
 
 func load<T: Decodable>(_ filename: String) -> T {

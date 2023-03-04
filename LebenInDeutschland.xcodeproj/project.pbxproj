@@ -14,10 +14,26 @@
 		7E1F382629AB84DD00F60435 /* ModelData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E1F382529AB84DD00F60435 /* ModelData.swift */; };
 		7E1F382829AB85BF00F60435 /* StateRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E1F382729AB85BF00F60435 /* StateRow.swift */; };
 		7E1F382C29AB93F700F60435 /* StateDetail.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E1F382B29AB93F700F60435 /* StateDetail.swift */; };
+		7E38B48F29B337AC0059B9F2 /* ExamManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E38B48E29B337AC0059B9F2 /* ExamManager.swift */; };
+		7E38B49129B3489D0059B9F2 /* ExamQuestion.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E38B49029B3489D0059B9F2 /* ExamQuestion.swift */; };
+		7E38B49429B349390059B9F2 /* QuestionModel+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E38B49329B349390059B9F2 /* QuestionModel+.swift */; };
+		7E38B49629B349610059B9F2 /* ExamQuestion+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E38B49529B349610059B9F2 /* ExamQuestion+.swift */; };
 		7E3B0EFF29AB70F8004219B7 /* LebenInDeutschlandApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E3B0EFE29AB70F8004219B7 /* LebenInDeutschlandApp.swift */; };
 		7E3B0F0129AB70F8004219B7 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E3B0F0029AB70F8004219B7 /* ContentView.swift */; };
 		7E3B0F0329AB70F9004219B7 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 7E3B0F0229AB70F9004219B7 /* Assets.xcassets */; };
 		7E3B0F0629AB70F9004219B7 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 7E3B0F0529AB70F9004219B7 /* Preview Assets.xcassets */; };
+		7EDB84D929AB9C350043A793 /* QuestionModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7EDB84D829AB9C350043A793 /* QuestionModel.swift */; };
+		7EDB84DB29AB9CD20043A793 /* AnswerModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7EDB84DA29AB9CD20043A793 /* AnswerModel.swift */; };
+		7EDB84DD29ABA1F50043A793 /* questions.json in Resources */ = {isa = PBXBuildFile; fileRef = 7EDB84DC29ABA1F50043A793 /* questions.json */; };
+		7EDB84DF29ABD10D0043A793 /* QuestionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7EDB84DE29ABD10D0043A793 /* QuestionView.swift */; };
+		DA1426F829B2346100846A29 /* Lottie in Frameworks */ = {isa = PBXBuildFile; productRef = DA1426F729B2346100846A29 /* Lottie */; };
+		DA1426FB29B234B900846A29 /* correct_animation.json in Resources */ = {isa = PBXBuildFile; fileRef = DA1426FA29B234B900846A29 /* correct_animation.json */; };
+		DA1426FD29B234F600846A29 /* LottieView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA1426FC29B234F600846A29 /* LottieView.swift */; };
+		DA1426FF29B2392700846A29 /* wrong_animation.json in Resources */ = {isa = PBXBuildFile; fileRef = DA1426FE29B2392700846A29 /* wrong_animation.json */; };
+		DA14270129B2404C00846A29 /* ExamView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA14270029B2404C00846A29 /* ExamView.swift */; };
+		DA66E60529AE698D00B2B6B0 /* ColorInvert.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA66E60429AE698D00B2B6B0 /* ColorInvert.swift */; };
+		DA66E60729AE6A7200B2B6B0 /* RadioButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA66E60629AE6A7200B2B6B0 /* RadioButton.swift */; };
+		DA66E60929AE6CBA00B2B6B0 /* RadioButtonGroup.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA66E60829AE6CBA00B2B6B0 /* RadioButtonGroup.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -28,11 +44,26 @@
 		7E1F382529AB84DD00F60435 /* ModelData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModelData.swift; sourceTree = "<group>"; };
 		7E1F382729AB85BF00F60435 /* StateRow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StateRow.swift; sourceTree = "<group>"; };
 		7E1F382B29AB93F700F60435 /* StateDetail.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StateDetail.swift; sourceTree = "<group>"; };
+		7E38B48E29B337AC0059B9F2 /* ExamManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExamManager.swift; sourceTree = "<group>"; };
+		7E38B49029B3489D0059B9F2 /* ExamQuestion.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExamQuestion.swift; sourceTree = "<group>"; };
+		7E38B49329B349390059B9F2 /* QuestionModel+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "QuestionModel+.swift"; sourceTree = "<group>"; };
+		7E38B49529B349610059B9F2 /* ExamQuestion+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ExamQuestion+.swift"; sourceTree = "<group>"; };
 		7E3B0EFB29AB70F8004219B7 /* LebenInDeutschland.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = LebenInDeutschland.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		7E3B0EFE29AB70F8004219B7 /* LebenInDeutschlandApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LebenInDeutschlandApp.swift; sourceTree = "<group>"; };
 		7E3B0F0029AB70F8004219B7 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		7E3B0F0229AB70F9004219B7 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		7E3B0F0529AB70F9004219B7 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
+		7EDB84D829AB9C350043A793 /* QuestionModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuestionModel.swift; sourceTree = "<group>"; };
+		7EDB84DA29AB9CD20043A793 /* AnswerModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnswerModel.swift; sourceTree = "<group>"; };
+		7EDB84DC29ABA1F50043A793 /* questions.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = questions.json; sourceTree = "<group>"; };
+		7EDB84DE29ABD10D0043A793 /* QuestionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuestionView.swift; sourceTree = "<group>"; };
+		DA1426FA29B234B900846A29 /* correct_animation.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = correct_animation.json; sourceTree = "<group>"; };
+		DA1426FC29B234F600846A29 /* LottieView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LottieView.swift; sourceTree = "<group>"; };
+		DA1426FE29B2392700846A29 /* wrong_animation.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = wrong_animation.json; sourceTree = "<group>"; };
+		DA14270029B2404C00846A29 /* ExamView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = ExamView.swift; path = LebenInDeutschland/Views/Helpers/ExamView.swift; sourceTree = SOURCE_ROOT; };
+		DA66E60429AE698D00B2B6B0 /* ColorInvert.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorInvert.swift; sourceTree = "<group>"; };
+		DA66E60629AE6A7200B2B6B0 /* RadioButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RadioButton.swift; sourceTree = "<group>"; };
+		DA66E60829AE6CBA00B2B6B0 /* RadioButtonGroup.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RadioButtonGroup.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -40,6 +71,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				DA1426F829B2346100846A29 /* Lottie in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -63,8 +95,13 @@
 		7E1F381629AB733C00F60435 /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				7E38B49229B3491E0059B9F2 /* Extensions */,
 				7E1F382529AB84DD00F60435 /* ModelData.swift */,
 				7E1F382329AB833200F60435 /* StateModel.swift */,
+				7EDB84D829AB9C350043A793 /* QuestionModel.swift */,
+				7EDB84DA29AB9CD20043A793 /* AnswerModel.swift */,
+				7E38B48E29B337AC0059B9F2 /* ExamManager.swift */,
+				7E38B49029B3489D0059B9F2 /* ExamQuestion.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -72,7 +109,9 @@
 		7E1F381729AB734E00F60435 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				DA1426F929B2348E00846A29 /* Lottie */,
 				7E1F381C29AB785800F60435 /* states.json */,
+				7EDB84DC29ABA1F50043A793 /* questions.json */,
 			);
 			path = Resources;
 			sourceTree = "<group>";
@@ -80,7 +119,9 @@
 		7E1F381829AB73A900F60435 /* Helpers */ = {
 			isa = PBXGroup;
 			children = (
+				DA66E60329AE680100B2B6B0 /* RadioButtons */,
 				7E1F382129AB817200F60435 /* CircleImage.swift */,
+				DA1426FC29B234F600846A29 /* LottieView.swift */,
 			);
 			path = Helpers;
 			sourceTree = "<group>";
@@ -102,6 +143,7 @@
 		7E1F381B29AB743000F60435 /* Exams */ = {
 			isa = PBXGroup;
 			children = (
+				DA14270029B2404C00846A29 /* ExamView.swift */,
 			);
 			path = Exams;
 			sourceTree = "<group>";
@@ -119,8 +161,18 @@
 		7E1F382D29AB95C300F60435 /* Questions */ = {
 			isa = PBXGroup;
 			children = (
+				7EDB84DE29ABD10D0043A793 /* QuestionView.swift */,
 			);
 			path = Questions;
+			sourceTree = "<group>";
+		};
+		7E38B49229B3491E0059B9F2 /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				7E38B49329B349390059B9F2 /* QuestionModel+.swift */,
+				7E38B49529B349610059B9F2 /* ExamQuestion+.swift */,
+			);
+			path = Extensions;
 			sourceTree = "<group>";
 		};
 		7E3B0EF229AB70F8004219B7 = {
@@ -160,6 +212,25 @@
 			path = "Preview Content";
 			sourceTree = "<group>";
 		};
+		DA1426F929B2348E00846A29 /* Lottie */ = {
+			isa = PBXGroup;
+			children = (
+				DA1426FE29B2392700846A29 /* wrong_animation.json */,
+				DA1426FA29B234B900846A29 /* correct_animation.json */,
+			);
+			path = Lottie;
+			sourceTree = "<group>";
+		};
+		DA66E60329AE680100B2B6B0 /* RadioButtons */ = {
+			isa = PBXGroup;
+			children = (
+				DA66E60429AE698D00B2B6B0 /* ColorInvert.swift */,
+				DA66E60629AE6A7200B2B6B0 /* RadioButton.swift */,
+				DA66E60829AE6CBA00B2B6B0 /* RadioButtonGroup.swift */,
+			);
+			path = RadioButtons;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -176,6 +247,9 @@
 			dependencies = (
 			);
 			name = LebenInDeutschland;
+			packageProductDependencies = (
+				DA1426F729B2346100846A29 /* Lottie */,
+			);
 			productName = LebenInDeutschland;
 			productReference = 7E3B0EFB29AB70F8004219B7 /* LebenInDeutschland.app */;
 			productType = "com.apple.product-type.application";
@@ -204,6 +278,9 @@
 				Base,
 			);
 			mainGroup = 7E3B0EF229AB70F8004219B7;
+			packageReferences = (
+				DA1426F629B2346100846A29 /* XCRemoteSwiftPackageReference "lottie-ios" */,
+			);
 			productRefGroup = 7E3B0EFC29AB70F8004219B7 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -219,6 +296,9 @@
 			buildActionMask = 2147483647;
 			files = (
 				7E3B0F0629AB70F9004219B7 /* Preview Assets.xcassets in Resources */,
+				DA1426FB29B234B900846A29 /* correct_animation.json in Resources */,
+				7EDB84DD29ABA1F50043A793 /* questions.json in Resources */,
+				DA1426FF29B2392700846A29 /* wrong_animation.json in Resources */,
 				7E3B0F0329AB70F9004219B7 /* Assets.xcassets in Resources */,
 				7E1F381D29AB785800F60435 /* states.json in Resources */,
 			);
@@ -233,12 +313,24 @@
 			files = (
 				7E1F382C29AB93F700F60435 /* StateDetail.swift in Sources */,
 				7E3B0F0129AB70F8004219B7 /* ContentView.swift in Sources */,
+				DA1426FD29B234F600846A29 /* LottieView.swift in Sources */,
 				7E1F382229AB817200F60435 /* CircleImage.swift in Sources */,
+				7E38B49129B3489D0059B9F2 /* ExamQuestion.swift in Sources */,
+				DA66E60929AE6CBA00B2B6B0 /* RadioButtonGroup.swift in Sources */,
+				DA66E60529AE698D00B2B6B0 /* ColorInvert.swift in Sources */,
+				7E38B49429B349390059B9F2 /* QuestionModel+.swift in Sources */,
 				7E3B0EFF29AB70F8004219B7 /* LebenInDeutschlandApp.swift in Sources */,
 				7E1F382829AB85BF00F60435 /* StateRow.swift in Sources */,
+				7EDB84DB29AB9CD20043A793 /* AnswerModel.swift in Sources */,
+				DA66E60729AE6A7200B2B6B0 /* RadioButton.swift in Sources */,
+				7E38B49629B349610059B9F2 /* ExamQuestion+.swift in Sources */,
 				7E1F382429AB833200F60435 /* StateModel.swift in Sources */,
+				7EDB84DF29ABD10D0043A793 /* QuestionView.swift in Sources */,
+				7EDB84D929AB9C350043A793 /* QuestionModel.swift in Sources */,
 				7E1F382029AB812500F60435 /* StateList.swift in Sources */,
+				7E38B48F29B337AC0059B9F2 /* ExamManager.swift in Sources */,
 				7E1F382629AB84DD00F60435 /* ModelData.swift in Sources */,
+				DA14270129B2404C00846A29 /* ExamView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -439,6 +531,25 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		DA1426F629B2346100846A29 /* XCRemoteSwiftPackageReference "lottie-ios" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/airbnb/lottie-ios";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 4.0.0;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		DA1426F729B2346100846A29 /* Lottie */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = DA1426F629B2346100846A29 /* XCRemoteSwiftPackageReference "lottie-ios" */;
+			productName = Lottie;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = 7E3B0EF329AB70F8004219B7 /* Project object */;
 }

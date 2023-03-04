@@ -9,9 +9,13 @@ import SwiftUI
 
 @main
 struct LebenInDeutschlandApp: App {
+    
+    @StateObject private var examSession = ExamManager()
+    
     var body: some Scene {
         WindowGroup {
             ContentView()
+                .environmentObject(examSession)
         }
     }
 }
