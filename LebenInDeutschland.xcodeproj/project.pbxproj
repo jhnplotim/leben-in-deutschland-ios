@@ -18,6 +18,7 @@
 		7E38B49129B3489D0059B9F2 /* ExamQuestion.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E38B49029B3489D0059B9F2 /* ExamQuestion.swift */; };
 		7E38B49429B349390059B9F2 /* QuestionModel+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E38B49329B349390059B9F2 /* QuestionModel+.swift */; };
 		7E38B49629B349610059B9F2 /* ExamQuestion+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E38B49529B349610059B9F2 /* ExamQuestion+.swift */; };
+		7E38B49929B379090059B9F2 /* LandingPage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E38B49829B379090059B9F2 /* LandingPage.swift */; };
 		7E3B0EFF29AB70F8004219B7 /* LebenInDeutschlandApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E3B0EFE29AB70F8004219B7 /* LebenInDeutschlandApp.swift */; };
 		7E3B0F0129AB70F8004219B7 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E3B0F0029AB70F8004219B7 /* ContentView.swift */; };
 		7E3B0F0329AB70F9004219B7 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 7E3B0F0229AB70F9004219B7 /* Assets.xcassets */; };
@@ -48,6 +49,7 @@
 		7E38B49029B3489D0059B9F2 /* ExamQuestion.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExamQuestion.swift; sourceTree = "<group>"; };
 		7E38B49329B349390059B9F2 /* QuestionModel+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "QuestionModel+.swift"; sourceTree = "<group>"; };
 		7E38B49529B349610059B9F2 /* ExamQuestion+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ExamQuestion+.swift"; sourceTree = "<group>"; };
+		7E38B49829B379090059B9F2 /* LandingPage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LandingPage.swift; sourceTree = "<group>"; };
 		7E3B0EFB29AB70F8004219B7 /* LebenInDeutschland.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = LebenInDeutschland.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		7E3B0EFE29AB70F8004219B7 /* LebenInDeutschlandApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LebenInDeutschlandApp.swift; sourceTree = "<group>"; };
 		7E3B0F0029AB70F8004219B7 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -81,6 +83,7 @@
 		7E1F381529AB733200F60435 /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				7E38B49729B378F70059B9F2 /* LandingPage */,
 				7E1F382D29AB95C300F60435 /* Questions */,
 				7E1F381E29AB80C400F60435 /* States */,
 				7E1F381B29AB743000F60435 /* Exams */,
@@ -173,6 +176,14 @@
 				7E38B49529B349610059B9F2 /* ExamQuestion+.swift */,
 			);
 			path = Extensions;
+			sourceTree = "<group>";
+		};
+		7E38B49729B378F70059B9F2 /* LandingPage */ = {
+			isa = PBXGroup;
+			children = (
+				7E38B49829B379090059B9F2 /* LandingPage.swift */,
+			);
+			path = LandingPage;
 			sourceTree = "<group>";
 		};
 		7E3B0EF229AB70F8004219B7 = {
@@ -325,6 +336,7 @@
 				DA66E60729AE6A7200B2B6B0 /* RadioButton.swift in Sources */,
 				7E38B49629B349610059B9F2 /* ExamQuestion+.swift in Sources */,
 				7E1F382429AB833200F60435 /* StateModel.swift in Sources */,
+				7E38B49929B379090059B9F2 /* LandingPage.swift in Sources */,
 				7EDB84DF29ABD10D0043A793 /* QuestionView.swift in Sources */,
 				7EDB84D929AB9C350043A793 /* QuestionModel.swift in Sources */,
 				7E1F382029AB812500F60435 /* StateList.swift in Sources */,

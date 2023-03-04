@@ -11,10 +11,12 @@ import SwiftUI
 struct LebenInDeutschlandApp: App {
     
     @StateObject private var examSession = ExamManager()
+    @StateObject private var modelData = ModelData()
     
     var body: some Scene {
         WindowGroup {
             ContentView()
+                .environmentObject(modelData)
                 .environmentObject(examSession)
         }
     }

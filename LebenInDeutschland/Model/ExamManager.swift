@@ -21,7 +21,6 @@ final class ExamManager: ObservableObject {
     
     @Published var examQuestions: [ExamQuestion]?
     
-    // TODO: Evaluate if it is necessary
     @Published var currentExamQuestion: ExamQuestion = .none
     
     @Published var summary: ExamSummary = .none
@@ -30,9 +29,6 @@ final class ExamManager: ObservableObject {
     
     init() {
         currentQuestionIndex = 0
-        loadAllQuestions()
-        loadCurrentQuestion()
-        updateSummary()
     }
     
     var examLoaded: Bool {
@@ -47,9 +43,21 @@ final class ExamManager: ObservableObject {
         currentQuestionIndex + 1
     }
     
-    func unloadQuestions() {
+    func initialiseExam() {
+        currentQuestionIndex = 0
+        loadAllQuestions()
+        loadCurrentQuestion()
+        updateSummary()
+        print("Exam initialised")
+    }
+    
+    func deInitialiseExam() {
         saveExamResults()
         examQuestions = nil
+        currentExamQuestion = .none
+        summary = .none
+        currentQuestionIndex = 0
+        print("Questions unloaded")
     }
     
     func saveExamResults() {
@@ -100,6 +108,5 @@ final class ExamManager: ObservableObject {
     
     deinit {
         print("De-initialising Exam manager")
-        unloadQuestions()
     }
 }

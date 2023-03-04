@@ -11,40 +11,51 @@ struct ExamView: View {
     
     @EnvironmentObject var examData: ExamManager
     
+    enum C {
+        static let navigationTitle = "Exam"
+    }
+    
     // TODO: Wrap in navigation view
     var body: some View {
-        VStack {
-            Text("Exam")
-                .font(.title)
-            Text("\(examData.summary.examQuestionCount) Questions")
-                .font(.caption)
-                .foregroundColor(.secondary)
-            Text("Correct: \(examData.summary.questionCountAnsweredCorrectly) Questions")
-                .font(.caption)
-                .foregroundColor(.secondary)
-            Text("Wrong: \(examData.summary.questionCountAnsweredWrongly) Questions")
-                .font(.caption)
-                .foregroundColor(.secondary)
-            Text("Unanswered: \(examData.summary.questionCountUnanswered) Questions")
-                .font(.caption)
-                .foregroundColor(.secondary)
-            
-            question
-            
-            HStack {
-                Button {
-                    examData.loadPreviousQuestion()
-                } label: {
-                    Label("Back", systemImage: "arrowshape.backward")
+        NavigationView {
+            VStack {
+                Text("\(examData.summary.examQuestionCount) Questions")
+                    .font(.caption)
+                    .foregroundColor(.secondary)
+                Text("Correct: \(examData.summary.questionCountAnsweredCorrectly) Questions")
+                    .font(.caption)
+                    .foregroundColor(.secondary)
+                Text("Wrong: \(examData.summary.questionCountAnsweredWrongly) Questions")
+                    .font(.caption)
+                    .foregroundColor(.secondary)
+                Text("Unanswered: \(examData.summary.questionCountUnanswered) Questions")
+                    .font(.caption)
+                    .foregroundColor(.secondary)
+                
+                question
+                
+                HStack {
+                    Button {
+                        examData.loadPreviousQuestion()
+                    } label: {
+                        Label("Back", systemImage: "arrowshape.backward")
+                    }
+                    Spacer()
+                    Button {
+                        examData.loadNextQuestion()
+                    } label: {
+                        Label("Next", systemImage: "arrowshape.forward")
+                    }
                 }
-                Spacer()
-                Button {
-                    examData.loadNextQuestion()
-                } label: {
-                    Label("Next", systemImage: "arrowshape.forward")
-                }
+                .padding()
             }
-            .padding()
+            .navigationTitle(C.navigationTitle)
+        }
+        .onAppear{
+            examData.initialiseExam()
+        }
+        .onDisappear{
+            examData.deInitialiseExam()
         }
     }
     
