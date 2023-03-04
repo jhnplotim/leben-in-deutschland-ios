@@ -26,7 +26,11 @@ struct StateDetail: View {
                     Label("Start exam", systemImage: C.examIconName)
                 }
             }.sheet(isPresented: $showExam) {
-                ExamView()
+                #if DEBUG
+                ExamView(examToLoad: .stateExam(stateId: state.id, generalCount: 10, stateCount: 2))
+                #else
+                ExamView(examToLoad: .stateExam(stateId: state.id))
+                #endif
             }
         }
     }

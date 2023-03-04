@@ -43,9 +43,9 @@ final class ExamManager: ObservableObject {
         currentQuestionIndex + 1
     }
     
-    func initialiseExam() {
+    func initialiseExam(for examToLoad: ExamType) {
         currentQuestionIndex = 0
-        loadAllQuestions()
+        loadQuestions(for: examToLoad)
         loadCurrentQuestion()
         updateSummary()
         print("Exam initialised")
@@ -64,10 +64,31 @@ final class ExamManager: ObservableObject {
         // TODO: Implement saving
     }
     
-    func loadAllQuestions() {
-        // TODO: Load based on state chosen or category
-        let allQuestions: [QuestionModel] = load("questions.json")
-        examQuestions = allQuestions.map{ $0.examQuestionUnanswered }
+    func loadQuestions(for type: ExamType) {
+        // TODO: Load questions from Data Source
+        var allQuestions: [QuestionModel] = load("questions.json")
+        allQuestions = allQuestions.shuffled()
+        
+        let generalQuestions = allQuestions.filter{ $0.stateId == nil }
+        
+        let allStateQuestions = allQuestions.filter{ $0.stateId != nil }
+        
+        // TODO: Clean up code here
+        switch type {
+        case .stateExam(stateId: let stateId, generalCount: let generalCount, stateCount: let stateCount):
+            let generalQns = generalQuestions.count > generalCount ? generalQuestions[0..<generalCount].map{ $0.examQuestionUnanswered } : generalQuestions.map { $0.examQuestionUnanswered }
+            let stateQns = allStateQuestions.filter{ $0.stateId == stateId }
+            let chosenStateQns = stateQns.count > stateCount ? stateQns[0..<stateCount].map{ $0.examQuestionUnanswered } : stateQns.map { $0.examQuestionUnanswered }
+            examQuestions = generalQns + chosenStateQns
+        case .general(count: let count):
+            examQuestions = generalQuestions.count > count ? generalQuestions[0..<count].map{ $0.examQuestionUnanswered } : generalQuestions.map{ $0.examQuestionUnanswered }
+        case .category(categoryId: _):
+            // TODO: Add support for categories
+            examQuestions = generalQuestions.map{ $0.examQuestionUnanswered }
+        case .bookMark(bookMarkId: _):
+            // TODO: Add support for bookmarks, favorites, read later lists
+            examQuestions = generalQuestions.map{ $0.examQuestionUnanswered }
+        }
     }
     
     func loadCurrentQuestion() {

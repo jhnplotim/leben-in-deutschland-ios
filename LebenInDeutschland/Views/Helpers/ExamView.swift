@@ -11,6 +11,8 @@ struct ExamView: View {
     
     @EnvironmentObject var examData: ExamManager
     
+    var examToLoad: ExamType
+    
     enum C {
         static let navigationTitle = "Exam"
     }
@@ -52,7 +54,7 @@ struct ExamView: View {
             .navigationTitle(C.navigationTitle)
         }
         .onAppear{
-            examData.initialiseExam()
+            examData.initialiseExam(for: examToLoad)
         }
         .onDisappear{
             examData.deInitialiseExam()
@@ -69,7 +71,14 @@ struct ExamView: View {
 
 struct ExamView_Previews: PreviewProvider {
     static var previews: some View {
-        ExamView()
-            .environmentObject(ExamManager())
+        Group {
+            ExamView(examToLoad: .general(count: 3))
+            ExamView(examToLoad: .general(count: 6))
+            ExamView(examToLoad: .general())
+            ExamView(examToLoad: .general(count: 10))
+            ExamView(examToLoad: .stateExam(stateId: "be", generalCount: 4, stateCount: 2))
+            ExamView(examToLoad: .stateExam(stateId: "by", generalCount: 4, stateCount: 2))
+        }
+        .environmentObject(ExamManager())
     }
 }
