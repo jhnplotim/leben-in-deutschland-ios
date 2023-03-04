@@ -11,40 +11,53 @@ struct ExamView: View {
     
     @EnvironmentObject var examData: ExamManager
     
+    var examToLoad: ExamType
+    
+    enum C {
+        static let navigationTitle = "Exam"
+    }
+    
     // TODO: Wrap in navigation view
     var body: some View {
-        VStack {
-            Text("Exam")
-                .font(.title)
-            Text("\(examData.summary.examQuestionCount) Questions")
-                .font(.caption)
-                .foregroundColor(.secondary)
-            Text("Correct: \(examData.summary.questionCountAnsweredCorrectly) Questions")
-                .font(.caption)
-                .foregroundColor(.secondary)
-            Text("Wrong: \(examData.summary.questionCountAnsweredWrongly) Questions")
-                .font(.caption)
-                .foregroundColor(.secondary)
-            Text("Unanswered: \(examData.summary.questionCountUnanswered) Questions")
-                .font(.caption)
-                .foregroundColor(.secondary)
-            
-            question
-            
-            HStack {
-                Button {
-                    examData.loadPreviousQuestion()
-                } label: {
-                    Label("Back", systemImage: "arrowshape.backward")
+        NavigationView {
+            VStack {
+                Text("\(examData.summary.examQuestionCount) Questions")
+                    .font(.caption)
+                    .foregroundColor(.secondary)
+                Text("Correct: \(examData.summary.questionCountAnsweredCorrectly) Questions")
+                    .font(.caption)
+                    .foregroundColor(.secondary)
+                Text("Wrong: \(examData.summary.questionCountAnsweredWrongly) Questions")
+                    .font(.caption)
+                    .foregroundColor(.secondary)
+                Text("Unanswered: \(examData.summary.questionCountUnanswered) Questions")
+                    .font(.caption)
+                    .foregroundColor(.secondary)
+                
+                question
+                
+                HStack {
+                    Button {
+                        examData.loadPreviousQuestion()
+                    } label: {
+                        Label("Back", systemImage: "arrowshape.backward")
+                    }
+                    Spacer()
+                    Button {
+                        examData.loadNextQuestion()
+                    } label: {
+                        Label("Next", systemImage: "arrowshape.forward")
+                    }
                 }
-                Spacer()
-                Button {
-                    examData.loadNextQuestion()
-                } label: {
-                    Label("Next", systemImage: "arrowshape.forward")
-                }
+                .padding()
             }
-            .padding()
+            .navigationTitle(C.navigationTitle)
+        }
+        .onAppear{
+            examData.initialiseExam(for: examToLoad)
+        }
+        .onDisappear{
+            examData.deInitialiseExam()
         }
     }
     
@@ -58,7 +71,14 @@ struct ExamView: View {
 
 struct ExamView_Previews: PreviewProvider {
     static var previews: some View {
-        ExamView()
-            .environmentObject(ExamManager())
+        Group {
+            ExamView(examToLoad: .general(count: 3))
+            ExamView(examToLoad: .general(count: 6))
+            ExamView(examToLoad: .general())
+            ExamView(examToLoad: .general(count: 10))
+            ExamView(examToLoad: .stateExam(stateId: "be", generalCount: 4, stateCount: 2))
+            ExamView(examToLoad: .stateExam(stateId: "by", generalCount: 4, stateCount: 2))
+        }
+        .environmentObject(ExamManager())
     }
 }
