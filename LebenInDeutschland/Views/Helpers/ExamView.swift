@@ -8,32 +8,38 @@
 import SwiftUI
 
 struct ExamView: View {
-    var questions: [QuestionModel]
-    var shouldBeTimed: Bool = false
     
-    @State private var currentQuestionIndex = 1
-    @State private var selectedAnswers: [QuestionModel : AnswerModel?] = [:]
+    @EnvironmentObject var examData: ExamManager
+    
     // TODO: Wrap in navigation view
     var body: some View {
         VStack {
             Text("Exam")
                 .font(.title)
-            Text("\(questions.count) Questions")
+            Text("\(examData.summary.examQuestionCount) Questions")
+                .font(.caption)
+                .foregroundColor(.secondary)
+            Text("Correct: \(examData.summary.questionCountAnsweredCorrectly) Questions")
+                .font(.caption)
+                .foregroundColor(.secondary)
+            Text("Wrong: \(examData.summary.questionCountAnsweredWrongly) Questions")
+                .font(.caption)
+                .foregroundColor(.secondary)
+            Text("Unanswered: \(examData.summary.questionCountUnanswered) Questions")
                 .font(.caption)
                 .foregroundColor(.secondary)
             
-            QuestionView(position: currentQuestionIndex + 1, question: questions[currentQuestionIndex]) { question, answer in
-                selectedAnswers[question] = answer
-            }
+            question
+            
             HStack {
                 Button {
-                    currentQuestionIndex = max(currentQuestionIndex - 1, 0)
+                    examData.loadPreviousQuestion()
                 } label: {
                     Label("Back", systemImage: "arrowshape.backward")
                 }
                 Spacer()
                 Button {
-                    currentQuestionIndex = min(currentQuestionIndex + 1, questions.count - 1)
+                    examData.loadNextQuestion()
                 } label: {
                     Label("Next", systemImage: "arrowshape.forward")
                 }
@@ -41,10 +47,18 @@ struct ExamView: View {
             .padding()
         }
     }
+    
+    var question: some View {
+        QuestionView(
+            position: examData.currentQuestionPosition,
+            examQuestion: $examData.currentExamQuestion
+        )
+    }
 }
 
 struct ExamView_Previews: PreviewProvider {
     static var previews: some View {
-        ExamView(questions: ModelData().allQuestions)
+        ExamView()
+            .environmentObject(ExamManager())
     }
 }

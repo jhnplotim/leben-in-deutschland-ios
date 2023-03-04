@@ -12,17 +12,9 @@ struct QuestionView: View {
     typealias SelectedAnswerCallback = (QuestionModel, AnswerModel) -> Void
     
     var position: Int
-    var question: QuestionModel
-    var callback: SelectedAnswerCallback
+    @Binding var examQuestion: ExamQuestion
     
-    init(position: Int, question: QuestionModel, selectedAnswer: AnswerModel? = nil, callback: @escaping SelectedAnswerCallback) {
-        self.position = position
-        self.question = question
-        self.callback = callback
-        self.selectedAnswer = selectedAnswer
-    }
-    
-    @State private var selectedAnswer: AnswerModel? = nil
+    @EnvironmentObject var examData: ExamManager
     
     enum C {
         static let CORRECT_ANIMATION = "correct_animation"
@@ -31,10 +23,10 @@ struct QuestionView: View {
     
     var body: some View {
         VStack(alignment: .leading, spacing: 30) {
-            Text("\(position). \(question.title)")
+            Text("\(position). \(examQuestion.question.title)")
                 .font(.headline)
             
-            if let imageLink = question.imageLink {
+            if let imageLink = examQuestion.question.imageLink {
                 AsyncImage(url: imageLink) { image in
                     image
                         .resizable()
@@ -46,22 +38,26 @@ struct QuestionView: View {
             }
             
             // TODO: Use ID instead of text value to compare
-            RadioButtonGroup(items: question.answers.map({$0.text}), selectedId: selectedAnswer?.text ?? "") { selected in
-                print("Selected is: \(selected)")
-                if let correctAns = question.correctAnswer, correctAns.text == selected {
-                    print("Correct answer selected")
-                    selectedAnswer = question.correctAnswer
-                } else {
-                    print("Wrong answer selected")
-                    selectedAnswer = question.answers.first(where: { $0.text == selected})
+            RadioButtonGroup(
+                items: examQuestion.question.answers.map({$0.text}),
+                selectedId: examQuestion.selectedAnswer.text) { selected in
+                    print("Selected is: \(selected)")
+                    var examQuestionNew = examQuestion
+                    
+                    if let correctAns = examQuestion.question.correctAnswer, correctAns.text == selected {
+                        print("Correct answer selected")
+                        examQuestionNew.selectedAnswer = correctAns
+                    } else {
+                        print("Wrong answer selected")
+                        examQuestionNew.selectedAnswer = examQuestion.question.answers.first(where: { $0.text == selected}) ?? .none
+                    }
+                    examData.updateCurrentQuestion(examQuestion: examQuestionNew)
                 }
-                callback(question, selectedAnswer!)
-            }
             
-            if let selectedAnswer {
+            if examQuestion.isAnswered {
                 HStack {
                     Spacer()
-                    if selectedAnswer == question.correctAnswer {
+                    if examQuestion.isCorrectlyAnswered {
                         LottieView(name:  C.CORRECT_ANIMATION , loopMode: .playOnce)
                             .frame(width: 250, height: 250)
                     } else {
@@ -80,6 +76,8 @@ struct QuestionView: View {
 }
 
 struct QuestionView_Previews: PreviewProvider {
+    static let examSession: ExamManager = ExamManager()
+    
     static let index2 = 2
     static let index0 = 0
     static let index3 = 3
@@ -88,15 +86,26 @@ struct QuestionView_Previews: PreviewProvider {
     
     static var previews: some View {
         Group {
-            QuestionView(position: index2 + 1, question: ModelData().allQuestions[index2]) {_,_ in }
+            QuestionView(
+                position: index2 + 1,
+                examQuestion: .constant(examSession.examQuestions?[index2] ?? .none))
+                .environmentObject(examSession)
             
-            QuestionView(position: index6 + 1, question: ModelData().allStateQuestions[index6]) {_,_ in }
+            QuestionView(
+                position: index6 + 1,
+                examQuestion: .constant(ModelData().allStateQuestions[index6].examQuestionAnsweredWrongly))
             
-            QuestionView(position: index3 + 1, question: ModelData().generalQuestions[index3]) {_,_ in }
+            QuestionView(
+                position: index3 + 1,
+                examQuestion: .constant(ModelData().generalQuestions[index3].examQuestionAnsweredCorrectly))
             
-            QuestionView(position: index0 + 1, question: ModelData().selectedStateQuestions[index0]) {_,_ in }
+            QuestionView(
+                position: index0 + 1,
+                examQuestion: .constant(ModelData().selectedStateQuestions[index0].examQuestionUnanswered))
             
-            QuestionView(position: index7 + 1, question: ModelData().selectedStateQuestions[index7]) {_,_ in }
+            QuestionView(
+                position: index7 + 1,
+                examQuestion: .constant(ModelData().selectedStateQuestions[index7].examQuestionUnanswered))
             
         }
     }

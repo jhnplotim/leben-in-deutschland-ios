@@ -7,7 +7,7 @@
 
 import SwiftUI
 
-struct QuestionModel: Hashable, Codable, Identifiable {
+struct QuestionModel: Hashable, Codable, Identifiable, Equatable {
     var id: String
     var title: String
     var imageLink: URL?
@@ -18,4 +18,6 @@ struct QuestionModel: Hashable, Codable, Identifiable {
     var correctAnswer: AnswerModel? {
         answers.first(where: { $0.isCorrect == true })
     }
+    
+    static let `none` = QuestionModel(id: "", title: "", imageLink: nil, answers: [], stateId: nil)
 }
