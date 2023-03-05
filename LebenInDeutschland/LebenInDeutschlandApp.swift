@@ -12,12 +12,20 @@ struct LebenInDeutschlandApp: App {
     
     @StateObject private var examSession = ExamManager()
     @StateObject private var modelData = ModelData()
+    @StateObject private var launchScreenStateMgr = LaunchScreenStateManager()
     
     var body: some Scene {
         WindowGroup {
-            ContentView()
-                .environmentObject(modelData)
-                .environmentObject(examSession)
+            ZStack {
+                ContentView()
+                
+                if launchScreenStateMgr.state != .finished {
+                    LaunchScreenView()
+                }
+                    
+            }.environmentObject(modelData)
+            .environmentObject(examSession)
+            .environmentObject(launchScreenStateMgr)
         }
     }
 }

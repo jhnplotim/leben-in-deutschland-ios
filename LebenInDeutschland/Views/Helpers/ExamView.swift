@@ -61,7 +61,8 @@ struct ExamView: View {
         }
     }
     
-    var question: some View {
+    @ViewBuilder
+    private var question: some View {
         QuestionView(
             position: examData.currentQuestionPosition,
             examQuestion: $examData.currentExamQuestion
