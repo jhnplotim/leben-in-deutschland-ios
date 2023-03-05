@@ -51,6 +51,7 @@ struct ExamView: View {
                 }
                 .padding()
             }
+            .navigationBarTitleDisplayMode(.inline)
             .navigationTitle(C.navigationTitle)
         }
         .onAppear{

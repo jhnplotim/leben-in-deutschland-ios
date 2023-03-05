@@ -22,10 +22,16 @@ struct LebenInDeutschlandApp: App {
                 if launchScreenStateMgr.state != .finished {
                     LaunchScreenView()
                 }
-                    
-            }.environmentObject(modelData)
+                
+            }
+            .environmentObject(modelData)
             .environmentObject(examSession)
             .environmentObject(launchScreenStateMgr)
+            .sheet(item: $modelData.errorWrapper, onDismiss: {
+                // TODO: Do something on dis
+            }) { wrapper in
+                ErrorView(errorWrapper: wrapper)
+            }
         }
     }
 }

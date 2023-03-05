@@ -26,6 +26,8 @@ final class ModelData: ObservableObject {
         allQuestions.filter({ $0.stateId == nil })
     }
     
+    @State var errorWrapper: ErrorWrapper?
+    
 }
 
 func load<T: Decodable>(_ filename: String) -> T {
