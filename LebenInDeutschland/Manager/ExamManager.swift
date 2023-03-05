@@ -19,11 +19,11 @@ final class ExamManager: ObservableObject {
         static let `none` = ExamSummary(examQuestionCount: 0, questionCountAnsweredCorrectly: 0, questionCountAnsweredWrongly: 0, questionCountUnanswered: 0)
     }
     
-    @Published var examQuestions: [ExamQuestion]?
+    @Published private(set) var examQuestions: [ExamQuestion]?
     
     @Published var currentExamQuestion: ExamQuestion = .none
     
-    @Published var summary: ExamSummary = .none
+    @Published private(set) var summary: ExamSummary = .none
     
     private var currentQuestionIndex: Int
     
