@@ -1,5 +1,5 @@
 //
-//  ExamQuestion+.swift
+//  AssessmentQuestion+.swift
 //  LebenInDeutschland
 //
 //  Created by John Paul Otim on 04.03.23.
@@ -7,7 +7,7 @@
 
 import Foundation
 
-extension ExamQuestion {
+extension AssessmentQuestion {
     var isAnswered: Bool {
         self.selectedAnswer != .none
     }

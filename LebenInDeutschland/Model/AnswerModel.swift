@@ -12,5 +12,7 @@ struct AnswerModel: Hashable, Codable, Identifiable, Equatable {
     var text: String
     var isCorrect: Bool
     
+    // TODO: Add Question ID / Reference later when DB is integrated
+    
     static let `none` = AnswerModel(id: "", text: "", isCorrect: false)
 }

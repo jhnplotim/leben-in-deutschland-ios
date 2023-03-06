@@ -8,15 +8,15 @@
 import Foundation
 
 extension QuestionModel {
-    var examQuestionUnanswered: ExamQuestion {
-        ExamQuestion(question: self, selectedAnswer: .none)
+    var assessmentQuestionUnanswered: AssessmentQuestion {
+        AssessmentQuestion(question: self, selectedAnswer: .none)
     }
     
-    var examQuestionAnsweredCorrectly: ExamQuestion {
-        ExamQuestion(question: self, selectedAnswer: self.correctAnswer ?? .none)
+    var assessmentQuestionAnsweredCorrectly: AssessmentQuestion {
+        AssessmentQuestion(question: self, selectedAnswer: self.correctAnswer ?? .none)
     }
     
-    var examQuestionAnsweredWrongly: ExamQuestion {
-        ExamQuestion(question: self, selectedAnswer: self.answers.first(where: { !$0.isCorrect }) ?? .none)
+    var assessmentQuestionAnsweredWrongly: AssessmentQuestion {
+        AssessmentQuestion(question: self, selectedAnswer: self.answers.first(where: { !$0.isCorrect }) ?? .none)
     }
 }

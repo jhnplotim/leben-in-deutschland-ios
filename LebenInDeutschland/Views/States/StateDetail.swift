@@ -10,10 +10,11 @@ import SwiftUI
 struct StateDetail: View {
     enum C {
         // TODO: Use more appropriate icons
-        static let examIconName = "envelope.open"
+        static let assessmentIconName = "envelope.open"
     }
     var state: StateModel
-    @State private var showExam: Bool = false
+    
+    @State private var assessmentType: AssessmentType? = nil
     
     var body: some View {
         NavigationView {
@@ -21,16 +22,26 @@ struct StateDetail: View {
                 Text(state.name).bold()
                 
                 Button {
-                    showExam.toggle()
+                    #if DEBUG
+                    assessmentType = .exam(stateId: state.id, generalCount: 10, stateCount: 2)
+                    #else
+                    assessmentType = .exam(stateId: state.id)
+                    #endif
                 } label: {
-                    Label("Start exam", systemImage: C.examIconName)
+                    Label("Start exam", systemImage: C.assessmentIconName)
                 }
-            }.sheet(isPresented: $showExam) {
-                #if DEBUG
-                ExamView(examToLoad: .stateExam(stateId: state.id, generalCount: 10, stateCount: 2))
-                #else
-                ExamView(examToLoad: .stateExam(stateId: state.id))
-                #endif
+                
+                Button {
+                    #if DEBUG
+                    assessmentType = .state(stateId: state.id, count: 5)
+                    #else
+                    assessmentType = .state(stateId: state.id)
+                    #endif
+                } label: {
+                    Label("Start State only assessment", systemImage: C.assessmentIconName)
+                }
+            }.sheet(item: $assessmentType) { assessmentType in
+                AssessmentView(assessmentType: assessmentType)
             }
         }
     }
@@ -39,6 +50,6 @@ struct StateDetail: View {
 struct StateDetail_Previews: PreviewProvider {
     static var previews: some View {
         StateDetail(state: ModelData().states[0])
-            .environmentObject(ExamManager())
+            .environmentObject(AssessmentManager())
     }
 }

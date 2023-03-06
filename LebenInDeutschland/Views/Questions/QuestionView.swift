@@ -9,12 +9,10 @@ import SwiftUI
 
 struct QuestionView: View {
     
-    typealias SelectedAnswerCallback = (QuestionModel, AnswerModel) -> Void
-    
     var position: Int
-    @Binding var examQuestion: ExamQuestion
+    @Binding var assessmentQuestion: AssessmentQuestion
     
-    @EnvironmentObject var examData: ExamManager
+    @EnvironmentObject var assessmentData: AssessmentManager
     
     enum C {
         static let CORRECT_ANIMATION = "correct_animation"
@@ -23,10 +21,10 @@ struct QuestionView: View {
     
     var body: some View {
         VStack(alignment: .leading, spacing: 30) {
-            Text("\(position). \(examQuestion.question.title)")
+            Text("\(position). \(assessmentQuestion.question.title)")
                 .font(.headline)
             
-            if let imageLink = examQuestion.question.imageLink {
+            if let imageLink = assessmentQuestion.question.imageLink {
                 AsyncImage(url: imageLink) { image in
                     image
                         .resizable()
@@ -39,25 +37,25 @@ struct QuestionView: View {
             
             // TODO: Use ID instead of text value to compare
             RadioButtonGroup(
-                items: examQuestion.question.answers.map({$0.text}),
-                selectedId: examQuestion.selectedAnswer.text) { selected in
+                items: assessmentQuestion.question.answers.map({$0.text}),
+                selectedId: assessmentQuestion.selectedAnswer.text) { selected in
                     print("Selected is: \(selected)")
-                    var examQuestionNew = examQuestion
+                    var assessmentQuestionNew = assessmentQuestion
                     
-                    if let correctAns = examQuestion.question.correctAnswer, correctAns.text == selected {
+                    if let correctAns = assessmentQuestion.question.correctAnswer, correctAns.text == selected {
                         print("Correct answer selected")
-                        examQuestionNew.selectedAnswer = correctAns
+                        assessmentQuestionNew.selectedAnswer = correctAns
                     } else {
                         print("Wrong answer selected")
-                        examQuestionNew.selectedAnswer = examQuestion.question.answers.first(where: { $0.text == selected}) ?? .none
+                        assessmentQuestionNew.selectedAnswer = assessmentQuestion.question.answers.first(where: { $0.text == selected}) ?? .none
                     }
-                    examData.updateCurrentQuestion(examQuestion: examQuestionNew)
+                    assessmentData.updateCurrentQuestion(assessmentQuestion: assessmentQuestionNew)
                 }
             
-            if examQuestion.isAnswered {
+            if assessmentQuestion.isAnswered {
                 HStack {
                     Spacer()
-                    if examQuestion.isCorrectlyAnswered {
+                    if assessmentQuestion.isCorrectlyAnswered {
                         LottieView(name:  C.CORRECT_ANIMATION , loopMode: .playOnce)
                             .frame(width: 250, height: 250)
                     } else {
@@ -76,7 +74,7 @@ struct QuestionView: View {
 }
 
 struct QuestionView_Previews: PreviewProvider {
-    static let examSession: ExamManager = ExamManager()
+    static let assessmentSession: AssessmentManager = AssessmentManager()
     
     static let index2 = 2
     static let index0 = 0
@@ -88,24 +86,24 @@ struct QuestionView_Previews: PreviewProvider {
         Group {
             QuestionView(
                 position: index2 + 1,
-                examQuestion: .constant(examSession.examQuestions?[index2] ?? .none))
-                .environmentObject(examSession)
+                assessmentQuestion: .constant(assessmentSession.assessmentQuestions?[index2] ?? .none))
+                .environmentObject(assessmentSession)
             
             QuestionView(
                 position: index6 + 1,
-                examQuestion: .constant(ModelData().allStateQuestions[index6].examQuestionAnsweredWrongly))
+                assessmentQuestion: .constant(ModelData().allStateQuestions[index6].assessmentQuestionAnsweredWrongly))
             
             QuestionView(
                 position: index3 + 1,
-                examQuestion: .constant(ModelData().generalQuestions[index3].examQuestionAnsweredCorrectly))
+                assessmentQuestion: .constant(ModelData().generalQuestions[index3].assessmentQuestionAnsweredCorrectly))
             
             QuestionView(
                 position: index0 + 1,
-                examQuestion: .constant(ModelData().selectedStateQuestions[index0].examQuestionUnanswered))
+                assessmentQuestion: .constant(ModelData().selectedStateQuestions[index0].assessmentQuestionUnanswered))
             
             QuestionView(
                 position: index7 + 1,
-                examQuestion: .constant(ModelData().selectedStateQuestions[index7].examQuestionUnanswered))
+                assessmentQuestion: .constant(ModelData().selectedStateQuestions[index7].assessmentQuestionUnanswered))
             
         }
     }

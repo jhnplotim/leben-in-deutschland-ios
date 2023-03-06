@@ -10,7 +10,7 @@ import SwiftUI
 @main
 struct LebenInDeutschlandApp: App {
     
-    @StateObject private var examSession = ExamManager()
+    @StateObject private var assessmentSession = AssessmentManager()
     @StateObject private var modelData = ModelData()
     @StateObject private var launchScreenStateMgr = LaunchScreenStateManager()
     
@@ -25,7 +25,7 @@ struct LebenInDeutschlandApp: App {
                 
             }
             .environmentObject(modelData)
-            .environmentObject(examSession)
+            .environmentObject(assessmentSession)
             .environmentObject(launchScreenStateMgr)
             .sheet(item: $modelData.errorWrapper, onDismiss: {
                 // TODO: Do something on dis
