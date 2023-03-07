@@ -10,7 +10,7 @@ import Combine
 
 final class AssessmentManager: ObservableObject {
     
-    struct AssessmentSummary {
+    struct AssessmentSummary: Hashable, Equatable {
         var questionCount: Int
         var questionCountAnsweredCorrectly: Int
         var questionCountAnsweredWrongly: Int
@@ -28,6 +28,17 @@ final class AssessmentManager: ObservableObject {
     private var currentQuestionIndex: Int
     
     private var currentAssessmentType: AssessmentType?
+    
+    // TODO: Move this into proper location. Also, it should be pre-loaded from memory
+    @Published private(set) var chosenAnswers: [ChosenAnswer] = []
+    
+    // TODO: Move this into proper location. Also, it should be pre-loaded from memory
+    @Published private(set) var examsDone: [CompletedExam] = []
+    
+    
+    private var caCounter = 0
+    
+    private var exCounter = 0
     
     init() {
         currentQuestionIndex = 0
@@ -59,11 +70,25 @@ final class AssessmentManager: ObservableObject {
         currentAssessmentQuestion = .none
         summary = .none
         currentQuestionIndex = 0
+        currentAssessmentType = nil
         print("Questions unloaded")
     }
     
     func saveAssessmentResults() {
-        // TODO: Implement saving
+        // TODO: Implement saving (in a reactive way) to a data store
+        chosenAnswers += assessmentQuestions?.map { asQn in
+            caCounter += 1
+            if asQn.selectedAnswer != .none {
+                return ChosenAnswer(id: caCounter, answerId: asQn.selectedAnswer.id, wasCorrect: asQn.selectedAnswer.isCorrect, questionId: asQn.question.id, dateTimeAdded: Date(), examId: nil)
+            } else {
+                return ChosenAnswer(id: caCounter, answerId: nil, wasCorrect: nil, questionId: asQn.question.id, dateTimeAdded: Date(), examId: nil)
+            }
+        } ?? []
+        
+        if let currentAssessmentType, let assessmentQuestions, !assessmentQuestions.isEmpty, case .state(stateId: let input) = currentAssessmentType, summary != .none {
+            exCounter += 1
+            examsDone += [CompletedExam(id: exCounter, stateId: input.stateId, questionCount: summary.questionCount, questionCountAnsweredCorrectly: summary.questionCountAnsweredCorrectly, questionCountAnsweredWrongly: summary.questionCountAnsweredWrongly, questionCountUnanswered: summary.questionCountUnanswered, dateTimeStarted: Date(), dateTimeEnded: Date())]
+        }
     }
     
     func loadQuestions(for assessmentType: AssessmentType) {

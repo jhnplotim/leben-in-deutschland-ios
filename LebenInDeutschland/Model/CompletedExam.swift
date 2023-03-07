@@ -9,6 +9,7 @@ import Foundation
 
 struct CompletedExam {
     let id: Int
+    let stateId: String
     let questionCount: Int
     let questionCountAnsweredCorrectly: Int
     let questionCountAnsweredWrongly: Int

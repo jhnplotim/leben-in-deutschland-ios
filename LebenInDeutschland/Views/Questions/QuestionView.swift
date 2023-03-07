@@ -21,6 +21,7 @@ struct QuestionView: View {
     
     var body: some View {
         VStack(alignment: .leading, spacing: 30) {
+            QuestionHistoryView(chosenAnswers: assessmentData.chosenAnswers.filter{ $0.questionId == assessmentQuestion.question.id })
             Text("\(position). \(assessmentQuestion.question.title)")
                 .font(.headline)
             
@@ -87,7 +88,6 @@ struct QuestionView_Previews: PreviewProvider {
             QuestionView(
                 position: index2 + 1,
                 assessmentQuestion: .constant(assessmentSession.assessmentQuestions?[index2] ?? .none))
-                .environmentObject(assessmentSession)
             
             QuestionView(
                 position: index6 + 1,
@@ -104,7 +104,7 @@ struct QuestionView_Previews: PreviewProvider {
             QuestionView(
                 position: index7 + 1,
                 assessmentQuestion: .constant(ModelData().selectedStateQuestions[index7].assessmentQuestionUnanswered))
-            
         }
+        .environmentObject(assessmentSession)
     }
 }

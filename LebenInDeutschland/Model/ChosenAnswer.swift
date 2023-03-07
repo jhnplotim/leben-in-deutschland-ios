@@ -7,7 +7,7 @@
 
 import Foundation
 
-struct ChosenAnswer {
+struct ChosenAnswer: Identifiable, Hashable, Equatable {
     let id: Int
     let answerId: String?
     let wasCorrect: Bool?
