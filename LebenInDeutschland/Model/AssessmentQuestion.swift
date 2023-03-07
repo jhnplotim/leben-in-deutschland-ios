@@ -1,5 +1,5 @@
 //
-//  ExamQuestion.swift
+//  AssessmentQuestion.swift
 //  LebenInDeutschland
 //
 //  Created by John Paul Otim on 04.03.23.
@@ -7,7 +7,7 @@
 
 import Foundation
 
-struct ExamQuestion: Hashable, Codable, Identifiable, Equatable {
+struct AssessmentQuestion: Hashable, Codable, Identifiable, Equatable {
     let question: QuestionModel
     var selectedAnswer: AnswerModel = .none
     
@@ -15,5 +15,5 @@ struct ExamQuestion: Hashable, Codable, Identifiable, Equatable {
         question.id
     }
     
-    static let `none` = ExamQuestion(question: .none, selectedAnswer: .none)
+    static let `none` = AssessmentQuestion(question: .none, selectedAnswer: .none)
 }
