@@ -34,7 +34,7 @@ struct LandingPage: View {
                 }
                 .tag(Tab.states)
             
-            Text("Summary")
+            SummaryView()
                 .tabItem {
                     Label("Summary", systemImage: C.summaryIconName)
                 }
