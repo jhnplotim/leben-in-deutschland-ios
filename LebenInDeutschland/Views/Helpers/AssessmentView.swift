@@ -10,6 +10,7 @@ import SwiftUI
 struct AssessmentView: View {
     
     @EnvironmentObject var assessmentData: AssessmentManager
+    @Environment(\.dismiss) var dismiss
     
     var assessmentType: AssessmentType
     
@@ -52,6 +53,17 @@ struct AssessmentView: View {
             }
             .navigationBarTitleDisplayMode(.inline)
             .navigationTitle(C.navigationTitle)
+            .toolbar {
+                ToolbarItem(placement: .navigationBarTrailing) {
+                    Button {
+                        dismiss()
+                    } label: {
+                        Label("Save", systemImage: "square.and.arrow.up")
+                    }
+                    .disabled(assessmentData.summary.questionCountUnanswered > 0)
+                    
+                }
+            }
         }
         .onAppear{
             assessmentData.initialise(for: assessmentType)
