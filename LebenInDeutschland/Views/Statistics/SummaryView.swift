@@ -9,7 +9,7 @@ import SwiftUI
 
 struct SummaryView: View {
     @EnvironmentObject var assessmentData: AssessmentManager
-    
+
     var body: some View {
         NavigationView {
             if let examCount = assessmentData.examsDone.count, let answeredCount = assessmentData.chosenAnswers.count, examCount > 0 || answeredCount > 0 {
@@ -23,13 +23,13 @@ struct SummaryView: View {
                 }
                 .navigationTitle("Summary")
                 .navigationBarTitleDisplayMode(.inline)
-                
+
             } else {
                 Text("No question / exam attempts so far")
                     .navigationTitle("Summary")
                     .navigationBarTitleDisplayMode(.large)
             }
-            
+
         }
     }
 }

@@ -10,12 +10,12 @@ import SwiftUI
 struct QuestionHistoryView: View {
     var chosenAnswers: [ChosenAnswer]
     var count: Int = 5
-    
+
     init(chosenAnswers: [ChosenAnswer], count: Int = 5) {
-        self.chosenAnswers = chosenAnswers.sorted{ $0.dateTimeAdded > $1.dateTimeAdded }
+        self.chosenAnswers = chosenAnswers.sorted { $0.dateTimeAdded > $1.dateTimeAdded }
         self.count = count
     }
-    
+
     var body: some View {
         HStack(alignment: .center) {
             Spacer()
@@ -53,20 +53,20 @@ struct QuestionHistoryView_Previews: PreviewProvider {
                     ChosenAnswer(id: 2, answerId: "1", wasCorrect: false, questionId: "1", dateTimeAdded: Date(), examId: nil),
                     ChosenAnswer(id: 3, answerId: "1", wasCorrect: false, questionId: "1", dateTimeAdded: Date(), examId: nil),
                     ChosenAnswer(id: 4, answerId: "1", wasCorrect: true, questionId: "1", dateTimeAdded: Date(), examId: nil),
-                    ChosenAnswer(id: 5, answerId: "1", wasCorrect: true, questionId: "1", dateTimeAdded: Date(), examId: nil),
+                    ChosenAnswer(id: 5, answerId: "1", wasCorrect: true, questionId: "1", dateTimeAdded: Date(), examId: nil)
                 ]
             )
             QuestionHistoryView(
                 chosenAnswers: [
                     ChosenAnswer(id: 1, answerId: "1", wasCorrect: false, questionId: "1", dateTimeAdded: Date(), examId: nil),
                     ChosenAnswer(id: 2, answerId: "1", wasCorrect: false, questionId: "1", dateTimeAdded: Date(), examId: nil),
-                    ChosenAnswer(id: 3, answerId: "1", wasCorrect: true, questionId: "1", dateTimeAdded: Date(), examId: nil),
+                    ChosenAnswer(id: 3, answerId: "1", wasCorrect: true, questionId: "1", dateTimeAdded: Date(), examId: nil)
                 ])
             QuestionHistoryView(chosenAnswers: [
                 ChosenAnswer(id: 1, answerId: nil, wasCorrect: nil, questionId: "1", dateTimeAdded: Date(), examId: nil),
                 ChosenAnswer(id: 2, answerId: nil, wasCorrect: nil, questionId: "1", dateTimeAdded: Date(), examId: nil),
-                ChosenAnswer(id: 3, answerId: "1", wasCorrect: true, questionId: "1", dateTimeAdded: Date(), examId: nil),
-            
+                ChosenAnswer(id: 3, answerId: "1", wasCorrect: true, questionId: "1", dateTimeAdded: Date(), examId: nil)
+
             ])
         }
     }

@@ -13,14 +13,14 @@ struct StateDetail: View {
         static let assessmentIconName = "envelope.open"
     }
     var state: StateModel
-    
-    @State private var assessmentType: AssessmentType? = nil
-    
+
+    @State private var assessmentType: AssessmentType?
+
     var body: some View {
         NavigationView {
             VStack {
                 Text(state.name).bold()
-                
+
                 Button {
                     #if DEBUG
                     assessmentType = .exam(stateId: state.id, generalCount: 10, stateCount: 2)
@@ -30,7 +30,7 @@ struct StateDetail: View {
                 } label: {
                     Label("Start exam", systemImage: C.assessmentIconName)
                 }
-                
+
                 Button {
                     #if DEBUG
                     assessmentType = .state(stateId: state.id, count: 5)

@@ -8,15 +8,15 @@
 import SwiftUI
 
 struct AssessmentView: View {
-    
+
     @EnvironmentObject var assessmentData: AssessmentManager
     @Environment(\.dismiss) var dismiss
-    
+
     var assessmentType: AssessmentType
-    
+
     enum C {
         static let navigationTitle = "Exam / Assessment"
-        
+
         static var formatter: NumberFormatter {
             let fm = NumberFormatter()
             fm.numberStyle = .percent
@@ -26,7 +26,7 @@ struct AssessmentView: View {
             return fm
         }
     }
-    
+
     var body: some View {
         NavigationView {
             VStack {
@@ -54,12 +54,12 @@ struct AssessmentView: View {
                                 .font(.title)
                                 .foregroundColor(.red)
                         }
-                        
+
                     }
                 }
-                
+
                 question
-                
+
                 HStack {
                     Button {
                         assessmentData.loadPreviousQuestion()
@@ -85,18 +85,18 @@ struct AssessmentView: View {
                         Label("Save", systemImage: "square.and.arrow.up")
                     }
                     .disabled(assessmentData.summary.questionCountUnanswered > 0)
-                    
+
                 }
             }
         }
-        .onAppear{
+        .onAppear {
             assessmentData.initialise(for: assessmentType)
         }
-        .onDisappear{
+        .onDisappear {
             assessmentData.deInitialise()
         }
     }
-    
+
     @ViewBuilder
     private var question: some View {
         QuestionView(

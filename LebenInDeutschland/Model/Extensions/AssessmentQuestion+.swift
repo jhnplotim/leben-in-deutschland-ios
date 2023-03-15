@@ -11,7 +11,7 @@ extension AssessmentQuestion {
     var isAnswered: Bool {
         self.selectedAnswer != .none
     }
-    
+
     var isCorrectlyAnswered: Bool {
         return isAnswered && (self.selectedAnswer == self.question.correctAnswer)
     }

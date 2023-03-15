@@ -9,20 +9,20 @@ import SwiftUI
 
 @main
 struct LebenInDeutschlandApp: App {
-    
+
     @StateObject private var assessmentSession = AssessmentManager()
     @StateObject private var modelData = ModelData()
     @StateObject private var launchScreenStateMgr = LaunchScreenStateManager()
-    
+
     var body: some Scene {
         WindowGroup {
             ZStack {
                 ContentView()
-                
+
                 if launchScreenStateMgr.state != .finished {
                     LaunchScreenView()
                 }
-                
+
             }
             .environmentObject(modelData)
             .environmentObject(assessmentSession)

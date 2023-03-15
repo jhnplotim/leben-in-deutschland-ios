@@ -9,5 +9,5 @@ import Foundation
 
 final class StatisticsManager: ObservableObject {
     @Published private(set) var chosenAnswers: [ChosenAnswer] = []
-    
+
 }

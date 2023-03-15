@@ -8,11 +8,11 @@
 import SwiftUI
 
 struct CircularProgressView: View {
-    
+
     let progress: Double
-    
+
     var lineWidth: CGFloat = 30
-    
+
     var body: some View {
         ZStack {
             Circle()
@@ -20,7 +20,7 @@ struct CircularProgressView: View {
                     Color.green.opacity(0.5),
                     lineWidth: lineWidth
             )
-            
+
             Circle()
                 .trim(from: 0, to: progress)
                 .stroke(
@@ -32,7 +32,7 @@ struct CircularProgressView: View {
                 )
                 .rotationEffect(.degrees(-90))
                 .animation(.easeOut, value: progress)
-            
+
         }
     }
 }
@@ -42,13 +42,13 @@ struct CircularProgressView_Previews: PreviewProvider {
         Group {
             CircularProgressView(progress: 0.25, lineWidth: 5)
                 .frame(width: 50, height: 50)
-            
+
             CircularProgressView(progress: 0.5)
                 .frame(width: 200, height: 200)
-            
+
             CircularProgressView(progress: 0.8)
                 .frame(width: 200, height: 200)
-            
+
             CircularProgressView(progress: 1)
                 .frame(width: 200, height: 200)
         }

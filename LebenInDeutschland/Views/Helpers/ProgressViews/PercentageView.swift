@@ -9,7 +9,7 @@ import SwiftUI
 
 struct PercentageView: View {
     let percentage: Double
-    
+
     init(percentage: Double) {
         let tempPercentage = min(percentage, 100)
         self.percentage = max(tempPercentage, 0)
@@ -21,7 +21,7 @@ struct PercentageView: View {
                 .tint(.green)
             .background(.red.opacity(0.5))
         }
-            
+
     }
 }
 
