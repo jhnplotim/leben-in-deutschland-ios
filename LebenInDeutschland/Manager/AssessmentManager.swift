@@ -10,11 +10,31 @@ import Combine
 
 final class AssessmentManager: ObservableObject {
     
-    struct AssessmentSummary: Hashable, Equatable {
+    struct AssessmentSummary: Hashable, Equatable, CustomStringConvertible {
         var questionCount: Int
         var questionCountAnsweredCorrectly: Int
         var questionCountAnsweredWrongly: Int
         var questionCountUnanswered: Int
+        
+        private enum C {
+            // You need to pass 17 out of 33 in order to pass
+            static let PASSMARK: CGFloat = Double(17) / Double(33)  // TODO: Double check passmark and properly implement its management and storage.
+        }
+        
+        var progress: CGFloat {
+            CGFloat(questionCount - questionCountUnanswered) / CGFloat(questionCount)
+        }
+        
+        var description: String {
+                return "AssessmentSummary { \n QN Count: \(questionCount), \n CORRECT: \(questionCountAnsweredCorrectly), \n WRONG: \(questionCountAnsweredWrongly), \n UNANSWERED: \(questionCountUnanswered) \n }"
+            }
+        
+        var score: CGFloat {
+            Double(questionCountAnsweredCorrectly) / Double(questionCount)
+        }
+        var passed: Bool {
+            score >= C.PASSMARK
+        }
         
         static let `none` = AssessmentSummary(questionCount: 0, questionCountAnsweredCorrectly: 0, questionCountAnsweredWrongly: 0, questionCountUnanswered: 0)
     }
