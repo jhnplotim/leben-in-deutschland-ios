@@ -56,9 +56,13 @@ final class AssessmentManager: ObservableObject {
     @Published private(set) var examsDone: [CompletedExam] = []
     
     
-    private var caCounter = 0
+    // TODO: Manage this differently
+    @AppStorage("LebenInDeutschland.answerCounter")
+    private var caCounter: Int = 0
     
-    private var exCounter = 0
+    // TODO: Manage this differently
+    @AppStorage("LebenInDeutschland.examCounter")
+    private var exCounter: Int = 0
     
     init() {
         currentQuestionIndex = 0
