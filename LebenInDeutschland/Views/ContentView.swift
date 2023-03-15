@@ -21,6 +21,7 @@ struct ContentView: View {
 
     // TODO: Create network manager and remove this function
     fileprivate func getDataFromApi() async throws {
+        // swiftlint:disable force_unwrapping
             let googleURL = URL(string: "https://www.google.com")!
             let (_, response) = try await URLSession.shared.data(from: googleURL)
             print(response as? HTTPURLResponse)

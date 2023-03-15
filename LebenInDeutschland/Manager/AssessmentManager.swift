@@ -16,11 +16,6 @@ final class AssessmentManager: ObservableObject {
         var questionCountAnsweredWrongly: Int
         var questionCountUnanswered: Int
 
-        private enum C {
-            // You need to pass 17 out of 33 in order to pass
-            static let PASSMARK: CGFloat = Double(17) / Double(33)  // TODO: Double check passmark and properly implement its management and storage.
-        }
-
         var progress: CGFloat {
             CGFloat(questionCount - questionCountUnanswered) / CGFloat(questionCount)
         }
@@ -33,7 +28,7 @@ final class AssessmentManager: ObservableObject {
             Double(questionCountAnsweredCorrectly) / Double(questionCount)
         }
         var passed: Bool {
-            score >= C.PASSMARK
+            score >= GlobalC.PASSMARK
         }
 
         static let `none` = AssessmentSummary(questionCount: 0, questionCountAnsweredCorrectly: 0, questionCountAnsweredWrongly: 0, questionCountUnanswered: 0)
@@ -130,7 +125,9 @@ final class AssessmentManager: ObservableObject {
         case .exam(stateId: let stateId, generalCount: let generalCount, stateCount: let stateCount):
             let generalQns = generalQuestions.count > generalCount ? generalQuestions[0..<generalCount].map { $0.assessmentQuestionUnanswered } : generalQuestions.map { $0.assessmentQuestionUnanswered }
             let stateQns = allStateQuestions.filter { $0.stateId == stateId }
-            let chosenStateQns = stateQns.count > stateCount ? stateQns[0..<stateCount].map { $0.assessmentQuestionUnanswered } : stateQns.map { $0.assessmentQuestionUnanswered }
+            let chosenStateQns = stateQns.count > stateCount ?
+            stateQns[0..<stateCount].map { $0.assessmentQuestionUnanswered } :
+            stateQns.map { $0.assessmentQuestionUnanswered }
             assessmentQuestions = generalQns + chosenStateQns
 
         case .state(stateId: let stateId, count: let count):

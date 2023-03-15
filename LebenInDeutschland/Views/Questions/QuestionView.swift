@@ -75,7 +75,7 @@ struct QuestionView: View {
 }
 
 struct QuestionView_Previews: PreviewProvider {
-    static let assessmentSession: AssessmentManager = AssessmentManager()
+    static let assessmentSession = AssessmentManager()
 
     static let index2 = 2
     static let index0 = 0

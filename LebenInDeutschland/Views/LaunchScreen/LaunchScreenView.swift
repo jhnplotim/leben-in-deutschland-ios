@@ -57,7 +57,7 @@ struct LaunchScreenView: View {
             }
 
         case .secondStep:
-            if secondAnimation == false {
+            if !secondAnimation {
                 withAnimation(.linear) {
                     self.secondAnimation = true
                     startFadeoutAnimation = true

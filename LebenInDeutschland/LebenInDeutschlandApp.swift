@@ -28,7 +28,7 @@ struct LebenInDeutschlandApp: App {
             .environmentObject(assessmentSession)
             .environmentObject(launchScreenStateMgr)
             .sheet(item: $modelData.errorWrapper, onDismiss: {
-                // TODO: Do something on dis
+                // TODO: Do something on dismiss
             }) { wrapper in
                 ErrorView(errorWrapper: wrapper)
             }
