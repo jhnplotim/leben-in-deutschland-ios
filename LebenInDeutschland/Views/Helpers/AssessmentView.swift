@@ -77,7 +77,8 @@ struct AssessmentView: View {
     private var question: some View {
         QuestionView(
             position: assessmentData.currentQuestionPosition,
-            assessmentQuestion: $assessmentData.currentAssessmentQuestion
+            assessmentQuestion: $assessmentData.currentAssessmentQuestion,
+            animationSize: 200
         )
     }
 }

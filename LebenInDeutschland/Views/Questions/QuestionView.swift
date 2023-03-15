@@ -13,6 +13,7 @@ struct QuestionView: View {
     @Binding var assessmentQuestion: AssessmentQuestion
     
     @EnvironmentObject var assessmentData: AssessmentManager
+    var animationSize: CGFloat = 250
     
     enum C {
         static let CORRECT_ANIMATION = "correct_animation"
@@ -58,10 +59,10 @@ struct QuestionView: View {
                     Spacer()
                     if assessmentQuestion.isCorrectlyAnswered {
                         LottieView(name:  C.CORRECT_ANIMATION , loopMode: .playOnce)
-                            .frame(width: 250, height: 250)
+                            .frame(width: animationSize, height: animationSize)
                     } else {
                         LottieView(name: C.WRONG_ANIMATION , loopMode: .playOnce)
-                            .frame(width: 250, height: 250)
+                            .frame(width: animationSize, height: animationSize)
                     }
                     Spacer()
                 }
@@ -91,7 +92,8 @@ struct QuestionView_Previews: PreviewProvider {
             
             QuestionView(
                 position: index6 + 1,
-                assessmentQuestion: .constant(ModelData().allStateQuestions[index6].assessmentQuestionAnsweredWrongly))
+                assessmentQuestion: .constant(ModelData().allStateQuestions[index6].assessmentQuestionAnsweredWrongly),
+            animationSize: 200)
             
             QuestionView(
                 position: index3 + 1,
