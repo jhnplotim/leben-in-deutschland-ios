@@ -10,11 +10,31 @@ import Combine
 
 final class AssessmentManager: ObservableObject {
     
-    struct AssessmentSummary: Hashable, Equatable {
+    struct AssessmentSummary: Hashable, Equatable, CustomStringConvertible {
         var questionCount: Int
         var questionCountAnsweredCorrectly: Int
         var questionCountAnsweredWrongly: Int
         var questionCountUnanswered: Int
+        
+        private enum C {
+            // You need to pass 17 out of 33 in order to pass
+            static let PASSMARK: CGFloat = Double(17) / Double(33)  // TODO: Double check passmark and properly implement its management and storage.
+        }
+        
+        var progress: CGFloat {
+            CGFloat(questionCount - questionCountUnanswered) / CGFloat(questionCount)
+        }
+        
+        var description: String {
+                return "AssessmentSummary { \n QN Count: \(questionCount), \n CORRECT: \(questionCountAnsweredCorrectly), \n WRONG: \(questionCountAnsweredWrongly), \n UNANSWERED: \(questionCountUnanswered) \n }"
+            }
+        
+        var score: CGFloat {
+            Double(questionCountAnsweredCorrectly) / Double(questionCount)
+        }
+        var passed: Bool {
+            score >= C.PASSMARK
+        }
         
         static let `none` = AssessmentSummary(questionCount: 0, questionCountAnsweredCorrectly: 0, questionCountAnsweredWrongly: 0, questionCountUnanswered: 0)
     }
@@ -36,9 +56,13 @@ final class AssessmentManager: ObservableObject {
     @Published private(set) var examsDone: [CompletedExam] = []
     
     
-    private var caCounter = 0
+    // TODO: Manage this differently
+    @AppStorage("LebenInDeutschland.answerCounter")
+    private var caCounter: Int = 0
     
-    private var exCounter = 0
+    // TODO: Manage this differently
+    @AppStorage("LebenInDeutschland.examCounter")
+    private var exCounter: Int = 0
     
     init() {
         currentQuestionIndex = 0
@@ -85,9 +109,9 @@ final class AssessmentManager: ObservableObject {
             }
         } ?? []
         
-        if let currentAssessmentType, let assessmentQuestions, !assessmentQuestions.isEmpty, case .state(stateId: let input) = currentAssessmentType, summary != .none {
+        if let currentAssessmentType, let assessmentQuestions, !assessmentQuestions.isEmpty, case .exam(stateId: let stateId, generalCount: _, stateCount: _) = currentAssessmentType, summary != .none {
             exCounter += 1
-            examsDone += [CompletedExam(id: exCounter, stateId: input.stateId, questionCount: summary.questionCount, questionCountAnsweredCorrectly: summary.questionCountAnsweredCorrectly, questionCountAnsweredWrongly: summary.questionCountAnsweredWrongly, questionCountUnanswered: summary.questionCountUnanswered, dateTimeStarted: Date(), dateTimeEnded: Date())]
+            examsDone += [CompletedExam(id: exCounter, stateId: stateId, questionCount: summary.questionCount, questionCountAnsweredCorrectly: summary.questionCountAnsweredCorrectly, questionCountAnsweredWrongly: summary.questionCountAnsweredWrongly, questionCountUnanswered: summary.questionCountUnanswered, dateTimeStarted: Date(), dateTimeEnded: Date())]
         }
     }
     

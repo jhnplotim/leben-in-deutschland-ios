@@ -10,28 +10,53 @@ import SwiftUI
 struct AssessmentView: View {
     
     @EnvironmentObject var assessmentData: AssessmentManager
+    @Environment(\.dismiss) var dismiss
     
     var assessmentType: AssessmentType
     
     enum C {
         static let navigationTitle = "Exam / Assessment"
+        
+        static var formatter: NumberFormatter {
+            let fm = NumberFormatter()
+            fm.numberStyle = .percent
+            fm.minimumIntegerDigits = 1
+            fm.maximumIntegerDigits = 3
+            fm.maximumFractionDigits = 1
+            return fm
+        }
     }
     
     var body: some View {
         NavigationView {
             VStack {
+                CircularProgressView(progress: assessmentData.summary.progress, lineWidth: 10)
+                    .frame(width: 50, height: 50)
                 Text("\(assessmentData.summary.questionCount) Questions")
                     .font(.caption)
                     .foregroundColor(.secondary)
-                Text("Correct: \(assessmentData.summary.questionCountAnsweredCorrectly) Questions")
-                    .font(.caption)
-                    .foregroundColor(.secondary)
-                Text("Wrong: \(assessmentData.summary.questionCountAnsweredWrongly) Questions")
-                    .font(.caption)
-                    .foregroundColor(.secondary)
-                Text("Unanswered: \(assessmentData.summary.questionCountUnanswered) Questions")
-                    .font(.caption)
-                    .foregroundColor(.secondary)
+                if assessmentData.summary.progress == 1 {
+                    HStack {
+                        if assessmentData.summary.passed {
+                            Text("\(C.formatter.string(from: NSNumber(value: assessmentData.summary.score)) ?? "0 %")")
+                                .font(.title)
+                                .bold()
+                                .foregroundColor(.green)
+                            Text("PASS")
+                                .font(.title)
+                                .foregroundColor(.green)
+                        } else {
+                            Text("\(C.formatter.string(from: NSNumber(value: assessmentData.summary.score)) ?? "0 %")")
+                                .font(.title)
+                                .bold()
+                                .foregroundColor(.red)
+                            Text("FAIL")
+                                .font(.title)
+                                .foregroundColor(.red)
+                        }
+                        
+                    }
+                }
                 
                 question
                 
@@ -52,6 +77,17 @@ struct AssessmentView: View {
             }
             .navigationBarTitleDisplayMode(.inline)
             .navigationTitle(C.navigationTitle)
+            .toolbar {
+                ToolbarItem(placement: .navigationBarTrailing) {
+                    Button {
+                        dismiss()
+                    } label: {
+                        Label("Save", systemImage: "square.and.arrow.up")
+                    }
+                    .disabled(assessmentData.summary.questionCountUnanswered > 0)
+                    
+                }
+            }
         }
         .onAppear{
             assessmentData.initialise(for: assessmentType)
@@ -65,7 +101,8 @@ struct AssessmentView: View {
     private var question: some View {
         QuestionView(
             position: assessmentData.currentQuestionPosition,
-            assessmentQuestion: $assessmentData.currentAssessmentQuestion
+            assessmentQuestion: $assessmentData.currentAssessmentQuestion,
+            animationSize: 200
         )
     }
 }
