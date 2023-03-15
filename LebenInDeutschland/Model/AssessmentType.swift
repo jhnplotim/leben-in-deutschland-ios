@@ -7,7 +7,6 @@
 
 import Foundation
 
-// TODO: Rename this to Assessment type
 enum AssessmentType: Equatable, Hashable, Identifiable {
 
     case exam(stateId: String, generalCount: Int = 30, stateCount: Int = 3)

@@ -105,12 +105,22 @@ final class AssessmentManager: ObservableObject {
 
         if let currentAssessmentType, let assessmentQuestions, !assessmentQuestions.isEmpty, case .exam(stateId: let stateId, generalCount: _, stateCount: _) = currentAssessmentType, summary != .none {
             exCounter += 1
-            examsDone += [CompletedExam(id: exCounter, stateId: stateId, questionCount: summary.questionCount, questionCountAnsweredCorrectly: summary.questionCountAnsweredCorrectly, questionCountAnsweredWrongly: summary.questionCountAnsweredWrongly, questionCountUnanswered: summary.questionCountUnanswered, dateTimeStarted: Date(), dateTimeEnded: Date())]
+            examsDone += [
+                CompletedExam(
+                    id: exCounter,
+                    stateId: stateId,
+                    questionCount: summary.questionCount,
+                    questionCountAnsweredCorrectly: summary.questionCountAnsweredCorrectly,
+                    questionCountAnsweredWrongly: summary.questionCountAnsweredWrongly,
+                    questionCountUnanswered: summary.questionCountUnanswered,
+                    dateTimeStarted: Date(),
+                    dateTimeEnded: Date()
+                )
+            ]
         }
     }
 
     func loadQuestions(for assessmentType: AssessmentType) {
-        // TODO: Load questions from Data Source
         currentAssessmentType = assessmentType
 
         var allQuestions: [QuestionModel] = load("questions.json")
