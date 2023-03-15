@@ -8,15 +8,15 @@
 import SwiftUI
 
 struct RadioButtonGroup: View {
-    let items : [String]
-    
+    let items: [String]
+
     // TODO: Pick inspiration from List api
     // TODO: Improve state handling
     // TODO: Handle dark mode
     @State var selectedId: String = ""
-    
-    let callback: (String) -> ()
-    
+
+    let callback: (String) -> Void
+
     var body: some View {
         VStack {
             ForEach(0..<items.count) { index in
@@ -24,14 +24,12 @@ struct RadioButtonGroup: View {
             }
         }
     }
-    
+
     func radioGroupCallback(id: String) {
         selectedId = id
         callback(id)
     }
 }
-
-
 
 struct RadioContentView: View {
     var body: some View {

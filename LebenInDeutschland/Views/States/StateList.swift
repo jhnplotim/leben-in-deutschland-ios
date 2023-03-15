@@ -9,8 +9,7 @@ import SwiftUI
 
 struct StateList: View {
     @EnvironmentObject var modelData: ModelData
-    
-    
+
     var body: some View {
         NavigationView {
             List {

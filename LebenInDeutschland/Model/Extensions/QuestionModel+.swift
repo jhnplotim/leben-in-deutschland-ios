@@ -11,11 +11,11 @@ extension QuestionModel {
     var assessmentQuestionUnanswered: AssessmentQuestion {
         AssessmentQuestion(question: self, selectedAnswer: .none)
     }
-    
+
     var assessmentQuestionAnsweredCorrectly: AssessmentQuestion {
         AssessmentQuestion(question: self, selectedAnswer: self.correctAnswer ?? .none)
     }
-    
+
     var assessmentQuestionAnsweredWrongly: AssessmentQuestion {
         AssessmentQuestion(question: self, selectedAnswer: self.answers.first(where: { !$0.isCorrect }) ?? .none)
     }

@@ -9,16 +9,16 @@ import SwiftUI
 
 struct LaunchScreenView: View {
     @EnvironmentObject private var launchScreenState: LaunchScreenStateManager
-    
+
     @State private var firstAnimation = false
     @State private var secondAnimation = false
     @State private var startFadeoutAnimation = false
-    
+
     enum C {
         // TODO: Use different icon here
         static let launchScreenIconName = "hurricane"
     }
-    
+
     @ViewBuilder
     private var image: some View {
         Image(systemName: C.launchScreenIconName)
@@ -29,41 +29,41 @@ struct LaunchScreenView: View {
             .scaleEffect(secondAnimation ? 0 : 1)
             .offset(y: secondAnimation ? 400 : 0)
     }
-    
+
     @ViewBuilder
     private var backgroundColor: some View {
         Color.blue.ignoresSafeArea()
     }
-    
+
     private let animationTimer = Timer
         .publish(every: 0.5, on: .current, in: .common)
         .autoconnect()
-    
+
     var body: some View {
         ZStack {
             backgroundColor
             image
-        }.onReceive(animationTimer) { timerValue in
+        }.onReceive(animationTimer) { _ in
             updateAnimation()
         }.opacity(startFadeoutAnimation ? 0 : 1)
     }
-    
+
     private func updateAnimation() {
         switch launchScreenState.state {
-            
+
         case .firstStep:
             withAnimation(.easeInOut(duration: 0.9)) {
                 firstAnimation.toggle()
             }
-            
+
         case .secondStep:
-            if secondAnimation == false {
+            if !secondAnimation {
                 withAnimation(.linear) {
                     self.secondAnimation = true
                     startFadeoutAnimation = true
                 }
             }
-            
+
         case .finished:
             // use this case to finish any work needed
             break

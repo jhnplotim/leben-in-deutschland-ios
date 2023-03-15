@@ -13,11 +13,10 @@ struct QuestionModel: Hashable, Codable, Identifiable, Equatable {
     var imageLink: URL?
     var answers: [AnswerModel]
     var stateId: String?
-    
-    
+
     var correctAnswer: AnswerModel? {
-        answers.first(where: { $0.isCorrect == true })
+        answers.first(where: { $0.isCorrect })
     }
-    
+
     static let `none` = QuestionModel(id: "", title: "", imageLink: nil, answers: [], stateId: nil)
 }

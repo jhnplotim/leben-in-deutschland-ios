@@ -8,9 +8,9 @@
 import SwiftUI
 
 struct LandingPage: View {
-    
+
     @State private var selection: Tab = .states
-    
+
     enum Tab {
         case states
         case summary
@@ -24,8 +24,7 @@ struct LandingPage: View {
         static let categoryIconName = "square.stack"
         static let settingsIconName = "seal"
     }
-    
-    
+
     var body: some View {
         TabView(selection: $selection) {
             StateList()
@@ -33,26 +32,25 @@ struct LandingPage: View {
                     Label("States", systemImage: C.statesIconName)
                 }
                 .tag(Tab.states)
-            
+
             SummaryView()
                 .tabItem {
                     Label("Summary", systemImage: C.summaryIconName)
                 }
                 .tag(Tab.summary)
-            
-            
+
             Text("Categories")
                 .tabItem {
                     Label("Categories", systemImage: C.categoryIconName)
                 }
                 .tag(Tab.categories)
-            
+
             Text("Settings")
                 .tabItem {
                     Label("Settings", systemImage: C.settingsIconName)
                 }
                 .tag(Tab.settings)
-            
+
         }
     }
 }

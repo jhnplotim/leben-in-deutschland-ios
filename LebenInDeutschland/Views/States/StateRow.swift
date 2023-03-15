@@ -8,25 +8,25 @@
 import SwiftUI
 
 struct StateRow: View {
-    
+
     var state: StateModel
-    
+
     var body: some View {
         HStack {
             state.image
                 .resizable()
                 .frame(width: 50, height: 50)
                 .cornerRadius(5)
-            
+
             VStack(alignment: .leading) {
                 Text(state.name)
                     .bold()
-                
+
                 Text(state.info)
                     .font(.caption)
                     .lineLimit(0)
                     .foregroundColor(.secondary)
-                
+
             }
         }
     }

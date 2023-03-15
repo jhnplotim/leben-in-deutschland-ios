@@ -12,14 +12,13 @@ struct StateModel: Hashable, Codable, Identifiable {
     var id: String
     var name: String
     var info: String
-    
+
     private var imageName: String {
         id
     }
-    
+
     var image: Image {
         Image(imageName)
     }
-    
-    
+
 }

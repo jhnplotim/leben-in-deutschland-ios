@@ -9,17 +9,17 @@ import SwiftUI
 
 struct RadioButton: View {
     @Environment(\.colorScheme) var colorScheme
-    
+
     let id: String
-    let callback: (String)->()
-    let selectedID : String
+    let callback: (String) -> Void
+    let selectedID: String
     let size: CGFloat
     let color: Color
     let textSize: CGFloat
-    
+
     init(
         _ id: String,
-        callback: @escaping (String)->(),
+        callback: @escaping (String) -> Void,
         selectedID: String,
         size: CGFloat = 20,
         color: Color = Color.primary,
@@ -32,9 +32,9 @@ struct RadioButton: View {
         self.selectedID = selectedID
         self.callback = callback
     }
-    
+
     var body: some View {
-        Button(action:{
+        Button(action: {
             self.callback(self.id)
         }) {
             HStack(alignment: .center, spacing: 10) {
@@ -55,8 +55,8 @@ struct RadioButton: View {
 
 struct RadioButton_Previews: PreviewProvider {
     static var previews: some View {
-        RadioButton("1", callback: { text in
-            
+        RadioButton("1", callback: { _ in
+
         }, selectedID: "2")
     }
 }
