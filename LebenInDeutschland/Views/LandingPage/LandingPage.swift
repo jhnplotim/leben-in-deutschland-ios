@@ -39,7 +39,7 @@ struct LandingPage: View {
                 }
                 .tag(Tab.summary)
 
-            Text("Categories")
+            CategoryList()
                 .tabItem {
                     Label("Categories", systemImage: C.categoryIconName)
                 }

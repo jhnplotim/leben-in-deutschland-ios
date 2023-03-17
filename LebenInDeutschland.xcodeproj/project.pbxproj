@@ -126,6 +126,7 @@
 		7E1F381529AB733200F60435 /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				7E3C583629C4A43B0013C452 /* Categories */,
 				7E38B4B429B79F690059B9F2 /* Statistics */,
 				7E38B4A729B483CF0059B9F2 /* Errors */,
 				7E38B4A229B4624F0059B9F2 /* LaunchScreen */,
@@ -528,6 +529,7 @@
 				7E38B49E29B45F960059B9F2 /* LaunchScreenStep.swift in Sources */,
 				7E3C583E29C8B76E0013C452 /* GaugeViews.swift in Sources */,
 				7E38B4AF29B601300059B9F2 /* ChosenAnswer.swift in Sources */,
+				7E3C583829C4A4700013C452 /* CategoryList.swift in Sources */,
 				7E1F382429AB833200F60435 /* StateModel.swift in Sources */,
 				7E38B4B929BC5CDD0059B9F2 /* CircularProgressView.swift in Sources */,
 				7E38B49929B379090059B9F2 /* LandingPage.swift in Sources */,
