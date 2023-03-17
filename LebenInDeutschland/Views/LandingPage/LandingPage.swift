@@ -37,7 +37,7 @@ struct LandingPage: View {
         static let statesIconName = "list.bullet"
         static let summaryIconName = "note"
         static let categoryIconName = "square.stack"
-        static let settingsIconName = "seal"
+        static let settingsIconName = "gear"
     }
 
     var body: some View {
