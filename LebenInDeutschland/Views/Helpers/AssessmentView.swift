@@ -11,11 +11,18 @@ struct AssessmentView: View {
 
     @EnvironmentObject var assessmentData: AssessmentManager
     @Environment(\.dismiss) var dismiss
+    
+    // TODO: Please move this to proper location
+    @State private var isFavorite = false
 
     var assessmentType: AssessmentType
 
     enum C {
         static let navigationTitle = "Exam / Assessment"
+        
+        static let notFavoriteIconName = "heart"
+        
+        static let favoriteIconName = "heart.fill"
 
         static var formatter: NumberFormatter {
             let fm = NumberFormatter()
@@ -85,7 +92,18 @@ struct AssessmentView: View {
                         Label("Save", systemImage: "square.and.arrow.up")
                     }
                     .disabled(assessmentData.summary.questionCountUnanswered > 0)
-
+                }
+                
+                ToolbarItem(placement: .navigationBarTrailing) {
+                    Button {
+                        isFavorite.toggle()
+                    } label: {
+                        if isFavorite {
+                            Label("Favorite", systemImage: C.favoriteIconName)
+                        } else {
+                            Label("Favorite", systemImage: C.notFavoriteIconName)
+                        }
+                    }
                 }
             }
         }
