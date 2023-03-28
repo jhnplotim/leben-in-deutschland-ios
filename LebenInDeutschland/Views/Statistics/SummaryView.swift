@@ -15,44 +15,18 @@ struct SummaryView: View {
         static let practiceText = "Practiced atleast once"
         static let lastWrongAnsText = "Last answered incorrectly"
     }
-
+    
     var body: some View {
         NavigationView {
             if let examCount = assessmentData.examsDone.count, let answeredCount = assessmentData.chosenAnswers.count, examCount > 0 || answeredCount > 0 {
-                ScrollView {
-                    VStack {
-                        Text("\(examCount) exam(s) attempt so far")
-                            .font(.body)
-                        Text("\(answeredCount) non-unique question(s) attempted  so far")
-                            .font(.body)
-                        GaugeView(
-                            progress: 0.27,
-                            color: .green,
-                            textToDisplay: C.fitText
-                        )
-                            .frame(
-                                width: 100,
-                            height: 200)
-                        
-                        GaugeView(
-                            progress: 0.35,
-                            color: .orange,
-                            textToDisplay: C.practiceText
-                        )
-                            .frame(
-                                width: 100,
-                            height: 200)
-                        
-                        GaugeView(
-                            progress: 0.56,
-                            color: .red,
-                            textToDisplay: C.lastWrongAnsText
-                        )
-                            .frame(
-                                width: 100,
-                            height: 200)
-                    }
-                }
+                GaugeViews(
+                    examAttemptCount: examCount,
+                    answeredQuestionCount: answeredCount,
+                    items: [
+                        .fitForTest(progress: 0.673),
+                        .practicedAtleastOnce(progress: 0.553),
+                        .lastAnsweredIncorrectly(progress: 0.1)
+                    ])
                 .navigationTitle("Summary")
                 .navigationBarTitleDisplayMode(.inline)
 
