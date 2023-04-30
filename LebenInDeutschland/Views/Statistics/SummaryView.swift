@@ -9,18 +9,25 @@ import SwiftUI
 
 struct SummaryView: View {
     @EnvironmentObject var assessmentData: AssessmentManager
-
+    
+    private enum C {
+        static let fitText = "Fit for the test"
+        static let practiceText = "Practiced atleast once"
+        static let lastWrongAnsText = "Last answered incorrectly"
+    }
+    
     var body: some View {
         NavigationView {
-            if let examCount = assessmentData.examsDone.count, let answeredCount = assessmentData.chosenAnswers.count, examCount > 0 || answeredCount > 0 {
-                ScrollView {
-                    VStack(spacing: 20) {
-                        Text("\(examCount) exam(s) attempt so far")
-                            .font(.body)
-                        Text("\(answeredCount) non-unique question(s) attempted  so far")
-                            .font(.body)
-                    }
-                }
+            if assessmentData.examsDone.count > 0 || assessmentData.chosenAnswers.count > 0 {
+                GaugeViews(
+                    examAttemptCount: assessmentData.examsDone.count,
+                    answeredQuestionCount: assessmentData.chosenAnswers.count,
+                    items: [
+                        // TODO: Use actual data
+                        .fitForTest(progress: 0.673),
+                        .practicedAtleastOnce(progress: 0.553),
+                        .lastAnsweredIncorrectly(progress: 0.1)
+                    ])
                 .navigationTitle("Summary")
                 .navigationBarTitleDisplayMode(.inline)
 
