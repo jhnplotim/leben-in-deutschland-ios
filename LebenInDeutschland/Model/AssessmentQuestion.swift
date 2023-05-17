@@ -7,6 +7,7 @@
 
 import Foundation
 
+// TODO: Consider making class
 struct AssessmentQuestion: Hashable, Codable, Identifiable, Equatable {
     let question: QuestionModel
     var selectedAnswer: AnswerModel = .none

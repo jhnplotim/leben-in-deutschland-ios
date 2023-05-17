@@ -7,6 +7,7 @@
 
 import SwiftUI
 
+// TODO: Re-implement using classes instead of structs & also create ViewModels, Services & Repositories / Managers
 struct AssessmentView: View {
 
     @EnvironmentObject var assessmentData: AssessmentManager

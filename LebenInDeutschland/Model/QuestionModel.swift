@@ -7,6 +7,7 @@
 
 import SwiftUI
 
+// TODO: Consider making class
 struct QuestionModel: Hashable, Codable, Identifiable, Equatable {
     var id: String
     var title: String
