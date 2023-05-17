@@ -13,6 +13,7 @@ struct QuestionModel: Hashable, Codable, Identifiable, Equatable {
     var imageLink: URL?
     var answers: [AnswerModel]
     var stateId: String?
+    var categoryId: Int?
 
     var correctAnswer: AnswerModel? {
         answers.first(where: { $0.isCorrect })

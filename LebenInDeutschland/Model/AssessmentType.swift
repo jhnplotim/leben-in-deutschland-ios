@@ -12,7 +12,7 @@ enum AssessmentType: Equatable, Hashable, Identifiable {
     case exam(stateId: String, generalCount: Int = 30, stateCount: Int = 3)
     case state(stateId: String, count: Int = 10)
     case general(count: Int = 100)
-    case category(categoryId: String)
+    case category(categoryId: Int)
     case bookMark(bookMarkId: String)
 
     var id: Self {

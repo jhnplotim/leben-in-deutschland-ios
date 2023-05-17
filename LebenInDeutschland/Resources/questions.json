@@ -23,7 +23,8 @@
                 "text" : "hier Meinungsfreiheit gilt.",
                 "isCorrect" : true
             }
-        ]
+        ],
+        "categoryId": 1
     },
     {
         "id" : "2",
@@ -49,7 +50,8 @@
                 "text" : "Sprachunterricht teilnimmt.",
                 "isCorrect" : false
             }
-        ]
+        ],
+        "categoryId": 1
         
     },
     {
@@ -76,7 +78,8 @@
                 "text" : "Die Gerichte machen die Gesetze.",
                 "isCorrect" : false
             }
-        ]
+        ],
+        "categoryId": 1
         
     },
     {
@@ -103,7 +106,8 @@
                 "text" : "Selbstjustiz",
                 "isCorrect" : false
             }
-        ]
+        ],
+        "categoryId": 3
         
     },
     {
@@ -130,7 +134,8 @@
                 "text" : "Alle wahlberechtigten Personen müssen wählen.",
                 "isCorrect" : false
             }
-        ]
+        ],
+        "categoryId": 4
         
     },
     {
@@ -157,7 +162,8 @@
                 "text" : "Grundgesetz",
                 "isCorrect" : true
             }
-        ]
+        ],
+        "categoryId": 6
         
     },
     {
