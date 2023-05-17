@@ -6,7 +6,7 @@
 //
 
 import Foundation
-
+// Cyclic dependencies: https://developer.apple.com/forums/thread/702349
 final class CategoryDetailViewModel: ObservableObject {
     let category: CategoryModel
     @Published var questions: [QuestionModel]
