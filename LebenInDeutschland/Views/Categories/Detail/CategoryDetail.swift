@@ -12,12 +12,20 @@ struct CategoryDetail: View {
     @StateObject
     var viewModel: CategoryDetailViewModel
     
+    @State private var assessmentType: AssessmentType?
+    
     var body: some View {
         List(viewModel.questions) { qn in
             Text(qn.title).multilineTextAlignment(TextAlignment.leading)
+                .onTapGesture {
+                    assessmentType = .category(categoryId: viewModel.category.id)
+                }
         }
         .navigationTitle(viewModel.category.name)
         .navigationBarTitleDisplayMode(.inline)
+        .fullScreenCover(item: $assessmentType) { value in
+            AssessmentView(assessmentType: value)
+        }
     }
 }
 

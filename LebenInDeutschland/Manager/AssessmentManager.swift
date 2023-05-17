@@ -148,9 +148,8 @@ final class AssessmentManager: ObservableObject {
         case .general(count: let count):
             assessmentQuestions = generalQuestions.count > count ? generalQuestions[0..<count].map { $0.assessmentQuestionUnanswered } : generalQuestions.map { $0.assessmentQuestionUnanswered }
 
-        case .category:
-            // TODO: Add support for categories
-            assessmentQuestions = generalQuestions.map { $0.assessmentQuestionUnanswered }
+        case .category(let id):
+            assessmentQuestions = allQuestions.filter { $0.categoryId == id }.map { $0.assessmentQuestionUnanswered }
 
         case .bookMark:
             // TODO: Add support for bookmarks, favorites, read later lists
