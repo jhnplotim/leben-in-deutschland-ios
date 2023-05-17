@@ -197,6 +197,20 @@ final class AssessmentManager: ObservableObject {
         summary.questionCountAnsweredCorrectly = correctlyAnsweredCount
         summary.questionCountAnsweredWrongly = answeredCount - correctlyAnsweredCount
     }
+    
+    // TODO: Maintain result over various sessions / db
+    @discardableResult
+    func toggleCurrentAsFavorite() -> Bool {
+        
+        guard let currentQuestion = assessmentQuestions?[currentQuestionIndex] else {
+            return false
+        }
+        
+        var updatedCurrentQuestion = currentQuestion.makeCopyToggledFavorite()
+        assessmentQuestions?[currentQuestionIndex] = updatedCurrentQuestion
+        loadCurrentQuestion()
+        return true
+    }
 
     deinit {
         print("De-initialising Assessment manager")
