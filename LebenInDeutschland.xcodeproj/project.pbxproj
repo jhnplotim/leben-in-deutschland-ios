@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		7E0F106A2A14D8B800891D34 /* SettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E0F10692A14D8B800891D34 /* SettingsView.swift */; };
 		7E19A01B2A1272EE00D46BB1 /* categories.json in Resources */ = {isa = PBXBuildFile; fileRef = 7E19A01A2A1272EE00D46BB1 /* categories.json */; };
 		7E19A01F2A12752A00D46BB1 /* CategoryModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E19A01E2A12752A00D46BB1 /* CategoryModel.swift */; };
 		7E19A0232A1276B700D46BB1 /* CategoryService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E19A0222A1276B700D46BB1 /* CategoryService.swift */; };
@@ -88,6 +89,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		7E0F10692A14D8B800891D34 /* SettingsView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingsView.swift; sourceTree = "<group>"; };
 		7E19A01A2A1272EE00D46BB1 /* categories.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = categories.json; sourceTree = "<group>"; };
 		7E19A01E2A12752A00D46BB1 /* CategoryModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryModel.swift; sourceTree = "<group>"; };
 		7E19A0222A1276B700D46BB1 /* CategoryService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryService.swift; sourceTree = "<group>"; };
@@ -182,6 +184,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		7E0F10682A14D8B800891D34 /* Settings */ = {
+			isa = PBXGroup;
+			children = (
+				7E0F10692A14D8B800891D34 /* SettingsView.swift */,
+			);
+			path = Settings;
+			sourceTree = "<group>";
+		};
 		7E19A0202A12768D00D46BB1 /* Service */ = {
 			isa = PBXGroup;
 			children = (
@@ -728,6 +738,7 @@
 				7E92E70A2A15F31300221B21 /* ObjectScope+.swift in Sources */,
 				7EC27EC52A1A132E0012B641 /* AppStorage+.swift in Sources */,
 				DA66E60529AE698D00B2B6B0 /* ColorInvert.swift in Sources */,
+				7E0F106A2A14D8B800891D34 /* SettingsView.swift in Sources */,
 				7E38B4B129B601E60059B9F2 /* CompletedExam.swift in Sources */,
 				7E92E7152A179F9600221B21 /* AssessmentSummary.swift in Sources */,
 				7E19A01F2A12752A00D46BB1 /* CategoryModel.swift in Sources */,
