@@ -16,4 +16,12 @@ struct AssessmentQuestion: Hashable, Codable, Identifiable, Equatable {
     }
 
     static let `none` = AssessmentQuestion(question: .none, selectedAnswer: .none)
+    
+    func makeCopy() -> AssessmentQuestion {
+        AssessmentQuestion(question: question, selectedAnswer: selectedAnswer)
+    }
+    
+    func makeCopyToggledFavorite() -> AssessmentQuestion {
+        AssessmentQuestion(question: question.makeCopyToggledFavorite(), selectedAnswer: selectedAnswer)
+    }
 }

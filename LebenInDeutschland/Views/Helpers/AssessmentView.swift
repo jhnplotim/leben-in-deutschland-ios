@@ -96,9 +96,9 @@ struct AssessmentView: View {
                 
                 ToolbarItem(placement: .navigationBarTrailing) {
                     Button {
-                        isFavorite.toggle()
+                        assessmentData.toggleCurrentAsFavorite()
                     } label: {
-                        if isFavorite {
+                        if  assessmentData.currentAssessmentQuestion.question.isFavorite == true {
                             Label("Favorite", systemImage: C.favoriteIconName)
                         } else {
                             Label("Favorite", systemImage: C.notFavoriteIconName)
