@@ -54,6 +54,12 @@
 		7E8B8EFA2A14CD3300EC350A /* CategoryListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E8B8EF62A14CD3300EC350A /* CategoryListViewModel.swift */; };
 		7E8B8EFB2A14CD3300EC350A /* CategoryList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E8B8EF72A14CD3300EC350A /* CategoryList.swift */; };
 		7E8B8EFC2A14CF7000EC350A /* QuestionService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E19A02D2A127B9900D46BB1 /* QuestionService.swift */; };
+		7E92E6FE2A15EF6300221B21 /* Swinject in Frameworks */ = {isa = PBXBuildFile; productRef = 7E92E6FD2A15EF6300221B21 /* Swinject */; };
+		7E92E7012A15EFA800221B21 /* Assembly+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E92E7002A15EFA800221B21 /* Assembly+.swift */; };
+		7E92E7032A15F1E800221B21 /* Assembler+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E92E7022A15F1E800221B21 /* Assembler+.swift */; };
+		7E92E7052A15F24300221B21 /* DIResolver.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E92E7042A15F24300221B21 /* DIResolver.swift */; };
+		7E92E7072A15F2B500221B21 /* Inject.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E92E7062A15F2B500221B21 /* Inject.swift */; };
+		7E92E70A2A15F31300221B21 /* ObjectScope+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E92E7092A15F31300221B21 /* ObjectScope+.swift */; };
 		7EDB84D929AB9C350043A793 /* QuestionModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7EDB84D829AB9C350043A793 /* QuestionModel.swift */; };
 		7EDB84DB29AB9CD20043A793 /* AnswerModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7EDB84DA29AB9CD20043A793 /* AnswerModel.swift */; };
 		7EDB84DD29ABA1F50043A793 /* questions.json in Resources */ = {isa = PBXBuildFile; fileRef = 7EDB84DC29ABA1F50043A793 /* questions.json */; };
@@ -119,6 +125,11 @@
 		7E8B8EF42A14CD3300EC350A /* CategoryDetail.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CategoryDetail.swift; sourceTree = "<group>"; };
 		7E8B8EF62A14CD3300EC350A /* CategoryListViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CategoryListViewModel.swift; sourceTree = "<group>"; };
 		7E8B8EF72A14CD3300EC350A /* CategoryList.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CategoryList.swift; sourceTree = "<group>"; };
+		7E92E7002A15EFA800221B21 /* Assembly+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Assembly+.swift"; sourceTree = "<group>"; };
+		7E92E7022A15F1E800221B21 /* Assembler+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Assembler+.swift"; sourceTree = "<group>"; };
+		7E92E7042A15F24300221B21 /* DIResolver.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DIResolver.swift; sourceTree = "<group>"; };
+		7E92E7062A15F2B500221B21 /* Inject.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Inject.swift; sourceTree = "<group>"; };
+		7E92E7092A15F31300221B21 /* ObjectScope+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ObjectScope+.swift"; sourceTree = "<group>"; };
 		7EDB84D829AB9C350043A793 /* QuestionModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuestionModel.swift; sourceTree = "<group>"; };
 		7EDB84DA29AB9CD20043A793 /* AnswerModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnswerModel.swift; sourceTree = "<group>"; };
 		7EDB84DC29ABA1F50043A793 /* questions.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = questions.json; sourceTree = "<group>"; };
@@ -138,6 +149,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				DA1426F829B2346100846A29 /* Lottie in Frameworks */,
+				7E92E6FE2A15EF6300221B21 /* Swinject in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -375,6 +387,7 @@
 		7E3B0EFD29AB70F8004219B7 /* LebenInDeutschland */ = {
 			isa = PBXGroup;
 			children = (
+				7E92E6FB2A15EE2C00221B21 /* DI */,
 				7E19A0202A12768D00D46BB1 /* Service */,
 				7E56D93C29C258C500AFB6B0 /* Application */,
 				7E38B49F29B45FE20059B9F2 /* Manager */,
@@ -439,6 +452,34 @@
 			path = List;
 			sourceTree = "<group>";
 		};
+		7E92E6FB2A15EE2C00221B21 /* DI */ = {
+			isa = PBXGroup;
+			children = (
+				7E92E7082A15F2CC00221B21 /* Helper */,
+				7E92E7022A15F1E800221B21 /* Assembler+.swift */,
+				7E92E6FF2A15EF7C00221B21 /* Assembly */,
+				7E92E7042A15F24300221B21 /* DIResolver.swift */,
+				7E92E7092A15F31300221B21 /* ObjectScope+.swift */,
+			);
+			path = DI;
+			sourceTree = "<group>";
+		};
+		7E92E6FF2A15EF7C00221B21 /* Assembly */ = {
+			isa = PBXGroup;
+			children = (
+				7E92E7002A15EFA800221B21 /* Assembly+.swift */,
+			);
+			path = Assembly;
+			sourceTree = "<group>";
+		};
+		7E92E7082A15F2CC00221B21 /* Helper */ = {
+			isa = PBXGroup;
+			children = (
+				7E92E7062A15F2B500221B21 /* Inject.swift */,
+			);
+			path = Helper;
+			sourceTree = "<group>";
+		};
 		DA1426F929B2348E00846A29 /* Lottie */ = {
 			isa = PBXGroup;
 			children = (
@@ -478,6 +519,7 @@
 			name = LebenInDeutschland;
 			packageProductDependencies = (
 				DA1426F729B2346100846A29 /* Lottie */,
+				7E92E6FD2A15EF6300221B21 /* Swinject */,
 			);
 			productName = LebenInDeutschland;
 			productReference = 7E3B0EFB29AB70F8004219B7 /* LebenInDeutschland.app */;
@@ -510,6 +552,7 @@
 			mainGroup = 7E3B0EF229AB70F8004219B7;
 			packageReferences = (
 				DA1426F629B2346100846A29 /* XCRemoteSwiftPackageReference "lottie-ios" */,
+				7E92E6FC2A15EF6300221B21 /* XCRemoteSwiftPackageReference "Swinject" */,
 			);
 			productRefGroup = 7E3B0EFC29AB70F8004219B7 /* Products */;
 			projectDirPath = "";
@@ -588,6 +631,7 @@
 				7E38B4A629B483840059B9F2 /* ErrorWrapper.swift in Sources */,
 				7E19A0232A1276B700D46BB1 /* CategoryService.swift in Sources */,
 				7E1F382C29AB93F700F60435 /* StateDetail.swift in Sources */,
+				7E92E7072A15F2B500221B21 /* Inject.swift in Sources */,
 				7E3B0F0129AB70F8004219B7 /* ContentView.swift in Sources */,
 				DA1426FD29B234F600846A29 /* LottieView.swift in Sources */,
 				7E1F382229AB817200F60435 /* CircleImage.swift in Sources */,
@@ -597,6 +641,7 @@
 				7E56D93A29C2549600AFB6B0 /* Assets.swift in Sources */,
 				7E38B4AB29B516F50059B9F2 /* PercentageView.swift in Sources */,
 				DA66E60929AE6CBA00B2B6B0 /* RadioButtonGroup.swift in Sources */,
+				7E92E70A2A15F31300221B21 /* ObjectScope+.swift in Sources */,
 				DA66E60529AE698D00B2B6B0 /* ColorInvert.swift in Sources */,
 				7E38B4B129B601E60059B9F2 /* CompletedExam.swift in Sources */,
 				7E19A01F2A12752A00D46BB1 /* CategoryModel.swift in Sources */,
@@ -612,7 +657,10 @@
 				7E8B8EFB2A14CD3300EC350A /* CategoryList.swift in Sources */,
 				DA66E60729AE6A7200B2B6B0 /* RadioButton.swift in Sources */,
 				7E38B49629B349610059B9F2 /* AssessmentQuestion+.swift in Sources */,
+				7E92E7012A15EFA800221B21 /* Assembly+.swift in Sources */,
+				7E92E7052A15F24300221B21 /* DIResolver.swift in Sources */,
 				7E19A0302A127C4300D46BB1 /* QuestionServiceImpl.swift in Sources */,
+				7E92E7032A15F1E800221B21 /* Assembler+.swift in Sources */,
 				7E38B49E29B45F960059B9F2 /* LaunchScreenStep.swift in Sources */,
 				7E3C583E29C8B76E0013C452 /* GaugeViews.swift in Sources */,
 				7E38B4AF29B601300059B9F2 /* ChosenAnswer.swift in Sources */,
@@ -854,6 +902,14 @@
 /* End XCConfigurationList section */
 
 /* Begin XCRemoteSwiftPackageReference section */
+		7E92E6FC2A15EF6300221B21 /* XCRemoteSwiftPackageReference "Swinject" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "git@github.com:Swinject/Swinject.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 2.0.0;
+			};
+		};
 		DA1426F629B2346100846A29 /* XCRemoteSwiftPackageReference "lottie-ios" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/airbnb/lottie-ios";
@@ -865,6 +921,11 @@
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
+		7E92E6FD2A15EF6300221B21 /* Swinject */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 7E92E6FC2A15EF6300221B21 /* XCRemoteSwiftPackageReference "Swinject" */;
+			productName = Swinject;
+		};
 		DA1426F729B2346100846A29 /* Lottie */ = {
 			isa = XCSwiftPackageProductDependency;
 			package = DA1426F629B2346100846A29 /* XCRemoteSwiftPackageReference "lottie-ios" */;

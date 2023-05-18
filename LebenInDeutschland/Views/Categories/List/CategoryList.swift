@@ -12,11 +12,17 @@ struct CategoryList: View {
     @StateObject
     var viewModel: CategoryListViewModel
     
+    // Added to make this View more testable in the preview
+    var getDetailVMFactory: (CategoryModel) -> CategoryDetailViewModel = { cat in
+        // swiftlint:disable force_unwrapping
+        DIResolver.shared.resolve(CategoryDetailViewModel.self, argument: cat)!
+    }
+    
     var body: some View {
         NavigationView {
             List {
                 ForEach(viewModel.categories) { cat in
-                    NavigationLink(destination: CategoryDetail(viewModel: .init(category: cat))) {
+                    NavigationLink(destination: CategoryDetail(viewModel: getDetailVMFactory(cat))) {
                         Text(cat.name)
                     }
                 }
@@ -28,6 +34,9 @@ struct CategoryList: View {
 
 struct CategoryView_Previews: PreviewProvider {
     static var previews: some View {
-        CategoryList(viewModel: .init())
+        CategoryList(viewModel: .init(CategoryServiceImpl())) { cat in
+            // TODO: Build CategoryDetailViewModel with test dependencies
+            CategoryDetailViewModel(category: cat, QuestionServiceImpl())
+        }
     }
 }

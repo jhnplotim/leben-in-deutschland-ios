@@ -11,7 +11,7 @@ final class CategoryDetailViewModel: ObservableObject {
     let category: CategoryModel
     @Published var questions: [QuestionModel]
     
-    init(category: CategoryModel, _ service: QuestionService = QuestionServiceImpl()) {
+    init(category: CategoryModel, _ service: QuestionService) {
         self.category = category
         self.questions = service.getQuestions(for: category.id)
     }

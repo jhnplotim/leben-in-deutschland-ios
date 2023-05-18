@@ -16,7 +16,9 @@ struct CategoryDetail: View {
     
     var body: some View {
         List(viewModel.questions) { qn in
-            Text(qn.title).multilineTextAlignment(TextAlignment.leading)
+            Text(qn.title)
+                .multilineTextAlignment(TextAlignment.leading)
+                .font(.caption)
                 .onTapGesture {
                     assessmentType = .category(categoryId: viewModel.category.id)
                 }
@@ -32,6 +34,6 @@ struct CategoryDetail: View {
 struct CategoryDetail_Previews: PreviewProvider {
     static let category = CategoryModel(id: 1, name: "Test Category")
     static var previews: some View {
-        CategoryDetail(viewModel: .init(category: category))
+        CategoryDetail(viewModel: .init(category: category, QuestionServiceImpl()))
     }
 }
