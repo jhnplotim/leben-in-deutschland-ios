@@ -6,6 +6,7 @@
 //
 
 import SwiftUI
+import Swinject
 
 @main
 struct LebenInDeutschlandApp: App {
@@ -13,6 +14,11 @@ struct LebenInDeutschlandApp: App {
     @StateObject private var assessmentSession = AssessmentManager()
     @StateObject private var modelData = ModelData()
     @StateObject private var launchScreenStateMgr = LaunchScreenStateManager()
+    
+    init() {
+        // Initialise DI framework i.e. load all dependencies into assembler
+        _ = Assembler.sharedAssembler
+    }
 
     var body: some Scene {
         WindowGroup {
