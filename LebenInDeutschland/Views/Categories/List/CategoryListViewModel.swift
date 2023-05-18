@@ -11,7 +11,7 @@ final class CategoryListViewModel: ObservableObject {
     
     @Published var categories: [CategoryModel]
     
-    init(_ service: some CategoryService = CategoryServiceImpl()) {
+    init(_ service: some CategoryService) {
         // TODO: Load categories from data storage
         self.categories = service.getCategories()
     }

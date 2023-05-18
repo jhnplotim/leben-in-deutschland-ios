@@ -10,6 +10,11 @@ import SwiftUI
 struct LandingPage: View {
 
     @State private var selection: Tab = .states
+    
+    var categoryListVMFactory: () -> CategoryListViewModel = {
+        // swiftlint:disable force_unwrapping
+        DIResolver.shared.resolve(CategoryListViewModel.self)!
+    }
 
     enum Tab {
         case states
@@ -39,7 +44,7 @@ struct LandingPage: View {
                 }
                 .tag(Tab.summary)
 
-            CategoryList(viewModel: .init())
+            CategoryList(viewModel: categoryListVMFactory())
                 .tabItem {
                     Label("Categories", systemImage: C.categoryIconName)
                 }
@@ -57,7 +62,11 @@ struct LandingPage: View {
 
 struct LandingPage_Previews: PreviewProvider {
     static var previews: some View {
-        LandingPage()
+        LandingPage() {
+            // TODO: Pass in test implementation of ViewModel if needed
+            CategoryListViewModel(CategoryServiceImpl())
+        }
             .environmentObject(ModelData())
+            .environmentObject(AssessmentManager())
     }
 }
