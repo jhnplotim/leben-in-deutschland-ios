@@ -25,7 +25,10 @@ struct FavoritesView: View {
     var body: some View {
         NavigationView {
             if viewModel.favorites.isEmpty {
-                Text("No favorites at this time!")
+                Text("No favorites")
+                    .font(.largeTitle)
+                    .navigationTitle(C.navigationTitle)
+                    .navigationBarTitleDisplayMode(.automatic)
             } else {
                 List(viewModel.favorites) { qn in
                     Text(qn.title)
