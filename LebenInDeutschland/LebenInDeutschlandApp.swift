@@ -11,8 +11,6 @@ import Swinject
 @main
 struct LebenInDeutschlandApp: App {
 
-    @StateObject private var assessmentSession = AssessmentManager()
-    @StateObject private var modelData = ModelData()
     @StateObject private var launchScreenStateMgr = LaunchScreenStateManager()
     
     init() {
@@ -30,14 +28,12 @@ struct LebenInDeutschlandApp: App {
                 }
 
             }
-            .environmentObject(modelData)
-            .environmentObject(assessmentSession)
             .environmentObject(launchScreenStateMgr)
-            .sheet(item: $modelData.errorWrapper, onDismiss: {
+            /*.sheet(item: $modelData.errorWrapper, onDismiss: { // TODO: Re-enable later when handling errors
                 // TODO: Do something on dismiss
             }) { wrapper in
                 ErrorView(errorWrapper: wrapper)
-            }
+            }*/
         }
     }
 }

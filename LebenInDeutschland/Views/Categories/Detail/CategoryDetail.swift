@@ -14,6 +14,10 @@ struct CategoryDetail: View {
     
     @State private var assessmentType: AssessmentType?
     
+    var assessVMFactory: (AssessmentType) -> AssessmentViewModel = { assType in
+        DIResolver.shared.resolve(AssessmentViewModel.self, argument: assType)!
+    }
+    
     var body: some View {
         List(viewModel.questions) { qn in
             Text(qn.title)
@@ -25,8 +29,8 @@ struct CategoryDetail: View {
         }
         .navigationTitle(viewModel.category.name)
         .navigationBarTitleDisplayMode(.inline)
-        .fullScreenCover(item: $assessmentType) { value in
-            AssessmentView(assessmentType: value)
+        .sheet(item: $assessmentType) { value in
+            AssessmentView(viewModel: assessVMFactory(value))
         }
     }
 }
@@ -34,6 +38,8 @@ struct CategoryDetail: View {
 struct CategoryDetail_Previews: PreviewProvider {
     static let category = CategoryModel(id: 1, name: "Test Category")
     static var previews: some View {
-        CategoryDetail(viewModel: .init(category: category, QuestionServiceImpl()))
+        CategoryDetail(viewModel: .init(category: category, QuestionServiceImpl())) { assType in
+            AssessmentViewModel(attemptManager: TestAttemptManagerImpl(), assessmentType: assType, questionService: QuestionServiceImpl())
+        }
     }
 }

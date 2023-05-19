@@ -16,7 +16,10 @@ import Swinject
 // MARK: - all managers should be registered here
 class ManagerAssembly: Assembly {
     func assemble(container: Swinject.Container) {
-        
+        container.register(AttemptManager.self) { _ in
+            return AttemptManagerImpl()
+        }
+        .inObjectScope(.container) // Singleton
     }
 }
 
@@ -26,9 +29,14 @@ class ServiceAssembly: Assembly {
         container.register(QuestionService.self) { _ in
             return QuestionServiceImpl()
         }
+        .inObjectScope(.container) // Make singleton so that they are loaded once. TODO: Later consider doing it differently
         
         container.register(CategoryService.self) { _ in
             return CategoryServiceImpl()
+        }
+        
+        container.register(StateListService.self) { _ in
+            return StateListServiceImpl()
         }
     }
 }
@@ -58,6 +66,22 @@ class ViewModelAssembly: Assembly {
         
         container.register(CategoryDetailViewModel.self) { r, c in
             return CategoryDetailViewModel(category: c, r.resolve(QuestionService.self)!)
+        }
+        
+        container.register(SummaryViewModel.self) { r in
+            return SummaryViewModel(attemptMgr: r.resolve(AttemptManager.self)!)
+        }
+        
+        container.register(AssessmentViewModel.self) { r, assType in
+            return AssessmentViewModel(attemptManager: r.resolve(AttemptManager.self)!, assessmentType: assType, questionService: r.resolve(QuestionService.self)!)
+        }
+        
+        container.register(StateListViewModel.self) { r in
+            StateListViewModel(r.resolve(StateListService.self)!)
+        }
+        
+        container.register(StateDetailViewModel.self) { _, state in
+            StateDetailViewModel(stateToView: state)
         }
     }
 }

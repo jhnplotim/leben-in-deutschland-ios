@@ -34,6 +34,6 @@ struct StateRow: View {
 
 struct StateRow_Previews: PreviewProvider {
     static var previews: some View {
-        StateRow(state: ModelData().states[0])
+        StateRow(state: StateModel(id: "be", name: "Berlin", info: "Hauptstadt"))
     }
 }

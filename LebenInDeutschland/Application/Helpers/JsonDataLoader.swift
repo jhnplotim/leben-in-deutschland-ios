@@ -1,34 +1,11 @@
 //
-//  ModelData.swift
+//  JsonDataLoader.swift
 //  LebenInDeutschland
 //
 //  Created by John Paul Otim on 26.02.23.
 //
 
-import SwiftUI
-import Combine
-
-final class ModelData: ObservableObject {
-    var states: [StateModel] = load("states.json")
-
-    var allQuestions: [QuestionModel] = load("questions.json")
-
-    var allStateQuestions: [QuestionModel] {
-        allQuestions.filter({ $0.stateId != nil })
-    }
-
-    var selectedStateQuestions: [QuestionModel] {
-        allStateQuestions
-        // TODO: Filter out based on selected state
-    }
-
-    var generalQuestions: [QuestionModel] {
-        allQuestions.filter({ $0.stateId == nil })
-    }
-
-    @State var errorWrapper: ErrorWrapper?
-
-}
+import Foundation
 
 func load<T: Decodable>(_ filename: String) -> T {
     let data: Data

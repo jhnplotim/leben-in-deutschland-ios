@@ -8,14 +8,19 @@
 import SwiftUI
 
 struct StateList: View {
-    @EnvironmentObject var modelData: ModelData
+    @StateObject var viewModel: StateListViewModel
+    
+    // For easier testing of SwiftUI view in preview
+    var stateDetailVMFactory: (StateModel) -> StateDetailViewModel = { state in
+        DIResolver.shared.resolve(StateDetailViewModel.self, argument: state)!
+    }
 
     var body: some View {
         NavigationView {
             List {
-                ForEach(modelData.states) { state in
+                ForEach(viewModel.states) { state in
                     NavigationLink {
-                        StateDetail(state: state)
+                        StateDetail(viewModel: stateDetailVMFactory(state))
                     } label: {
                         StateRow(state: state)
                     }
@@ -28,7 +33,8 @@ struct StateList: View {
 
 struct StateList_Previews: PreviewProvider {
     static var previews: some View {
-        StateList()
-            .environmentObject(ModelData())
+        StateList(viewModel: .init(StateListServiceImpl())) { state in
+            StateDetailViewModel(stateToView: state)
+        }
     }
 }

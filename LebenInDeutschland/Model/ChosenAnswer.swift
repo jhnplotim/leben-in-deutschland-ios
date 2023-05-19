@@ -8,10 +8,10 @@
 import Foundation
 
 struct ChosenAnswer: Identifiable, Hashable, Equatable {
-    let id: Int
+    let id: Int // TODO: Consider using UUID here
     let answerId: String?
     let wasCorrect: Bool?
-    let questionId: String
+    let questionId: Int
     let dateTimeAdded: Date
     let examId: Int?
 }

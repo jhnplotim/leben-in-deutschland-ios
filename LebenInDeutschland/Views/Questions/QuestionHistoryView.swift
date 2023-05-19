@@ -49,23 +49,23 @@ struct QuestionHistoryView_Previews: PreviewProvider {
             QuestionHistoryView(chosenAnswers: [])
             QuestionHistoryView(
                 chosenAnswers: [
-                    ChosenAnswer(id: 1, answerId: "1", wasCorrect: true, questionId: "1", dateTimeAdded: Date(), examId: nil),
-                    ChosenAnswer(id: 2, answerId: "1", wasCorrect: false, questionId: "1", dateTimeAdded: Date(), examId: nil),
-                    ChosenAnswer(id: 3, answerId: "1", wasCorrect: false, questionId: "1", dateTimeAdded: Date(), examId: nil),
-                    ChosenAnswer(id: 4, answerId: "1", wasCorrect: true, questionId: "1", dateTimeAdded: Date(), examId: nil),
-                    ChosenAnswer(id: 5, answerId: "1", wasCorrect: true, questionId: "1", dateTimeAdded: Date(), examId: nil)
+                    ChosenAnswer(id: 1, answerId: "1", wasCorrect: true, questionId: 1, dateTimeAdded: Date(), examId: nil),
+                    ChosenAnswer(id: 2, answerId: "1", wasCorrect: false, questionId: 1, dateTimeAdded: Date(), examId: nil),
+                    ChosenAnswer(id: 3, answerId: "1", wasCorrect: false, questionId: 1, dateTimeAdded: Date(), examId: nil),
+                    ChosenAnswer(id: 4, answerId: "1", wasCorrect: true, questionId: 1, dateTimeAdded: Date(), examId: nil),
+                    ChosenAnswer(id: 5, answerId: "1", wasCorrect: true, questionId: 1, dateTimeAdded: Date(), examId: nil)
                 ]
             )
             QuestionHistoryView(
                 chosenAnswers: [
-                    ChosenAnswer(id: 1, answerId: "1", wasCorrect: false, questionId: "1", dateTimeAdded: Date(), examId: nil),
-                    ChosenAnswer(id: 2, answerId: "1", wasCorrect: false, questionId: "1", dateTimeAdded: Date(), examId: nil),
-                    ChosenAnswer(id: 3, answerId: "1", wasCorrect: true, questionId: "1", dateTimeAdded: Date(), examId: nil)
+                    ChosenAnswer(id: 1, answerId: "1", wasCorrect: false, questionId: 1, dateTimeAdded: Date(), examId: nil),
+                    ChosenAnswer(id: 2, answerId: "1", wasCorrect: false, questionId: 1, dateTimeAdded: Date(), examId: nil),
+                    ChosenAnswer(id: 3, answerId: "1", wasCorrect: true, questionId: 1, dateTimeAdded: Date(), examId: nil)
                 ])
             QuestionHistoryView(chosenAnswers: [
-                ChosenAnswer(id: 1, answerId: nil, wasCorrect: nil, questionId: "1", dateTimeAdded: Date(), examId: nil),
-                ChosenAnswer(id: 2, answerId: nil, wasCorrect: nil, questionId: "1", dateTimeAdded: Date(), examId: nil),
-                ChosenAnswer(id: 3, answerId: "1", wasCorrect: true, questionId: "1", dateTimeAdded: Date(), examId: nil)
+                ChosenAnswer(id: 1, answerId: nil, wasCorrect: nil, questionId: 1, dateTimeAdded: Date(), examId: nil),
+                ChosenAnswer(id: 2, answerId: nil, wasCorrect: nil, questionId: 1, dateTimeAdded: Date(), examId: nil),
+                ChosenAnswer(id: 3, answerId: "1", wasCorrect: true, questionId: 1, dateTimeAdded: Date(), examId: nil)
 
             ])
         }

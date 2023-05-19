@@ -10,13 +10,8 @@ import SwiftUI
 // TODO: Re-implement using classes instead of structs & also create ViewModels, Services & Repositories / Managers
 struct AssessmentView: View {
 
-    @EnvironmentObject var assessmentData: AssessmentManager
+    @StateObject var viewModel: AssessmentViewModel
     @Environment(\.dismiss) var dismiss
-    
-    // TODO: Please move this to proper location
-    @State private var isFavorite = false
-
-    var assessmentType: AssessmentType
 
     enum C {
         static let navigationTitle = "Exam / Assessment"
@@ -38,15 +33,15 @@ struct AssessmentView: View {
     var body: some View {
         NavigationView {
             VStack {
-                CircularProgressView(progress: assessmentData.summary.progress, lineWidth: 10)
+                CircularProgressView(progress: viewModel.summary.progress, lineWidth: 10)
                     .frame(width: 50, height: 50)
-                Text("\(assessmentData.summary.questionCount) Questions")
+                Text("\(viewModel.summary.questionCount) Questions")
                     .font(.caption)
                     .foregroundColor(.secondary)
-                if assessmentData.summary.progress == 1 {
+                if viewModel.summary.progress == 1 {
                     HStack {
-                        if assessmentData.summary.passed {
-                            Text("\(C.formatter.string(from: NSNumber(value: assessmentData.summary.score)) ?? "0 %")")
+                        if viewModel.summary.passed {
+                            Text("\(C.formatter.string(from: NSNumber(value: viewModel.summary.score)) ?? "0 %")")
                                 .font(.title)
                                 .bold()
                                 .foregroundColor(.green)
@@ -54,7 +49,7 @@ struct AssessmentView: View {
                                 .font(.title)
                                 .foregroundColor(.green)
                         } else {
-                            Text("\(C.formatter.string(from: NSNumber(value: assessmentData.summary.score)) ?? "0 %")")
+                            Text("\(C.formatter.string(from: NSNumber(value: viewModel.summary.score)) ?? "0 %")")
                                 .font(.title)
                                 .bold()
                                 .foregroundColor(.red)
@@ -66,17 +61,17 @@ struct AssessmentView: View {
                     }
                 }
 
-                question
+                getQuestionView(position: viewModel.currentQuestionPosition, question: viewModel.currentAssessmentQuestion)
 
                 HStack {
                     Button {
-                        assessmentData.loadPreviousQuestion()
+                        viewModel.loadPreviousQuestion()
                     } label: {
                         Label("Back", systemImage: "arrowshape.backward")
                     }
                     Spacer()
                     Button {
-                        assessmentData.loadNextQuestion()
+                        viewModel.loadNextQuestion()
                     } label: {
                         Label("Next", systemImage: "arrowshape.forward")
                     }
@@ -92,14 +87,14 @@ struct AssessmentView: View {
                     } label: {
                         Label("Save", systemImage: "square.and.arrow.up")
                     }
-                    .disabled(assessmentData.summary.questionCountUnanswered > 0)
+                    .disabled(viewModel.summary.questionCountUnanswered > 0)
                 }
                 
                 ToolbarItem(placement: .navigationBarTrailing) {
                     Button {
-                        assessmentData.toggleCurrentAsFavorite()
+                        viewModel.toggleCurrentAsFavorite()
                     } label: {
-                        if  assessmentData.currentAssessmentQuestion.question.isFavorite == true {
+                        if  viewModel.currentAssessmentQuestion.question.isFavorite == true {
                             Label("Favorite", systemImage: C.favoriteIconName)
                         } else {
                             Label("Favorite", systemImage: C.notFavoriteIconName)
@@ -109,36 +104,37 @@ struct AssessmentView: View {
             }
         }
         .onAppear {
-            assessmentData.initialise(for: assessmentType)
+            viewModel.initialise()
         }
         .onDisappear {
-            assessmentData.deInitialise()
+            viewModel.deInitialise()
         }
     }
 
     @ViewBuilder
-    private var question: some View {
+    private func getQuestionView(position: Int, question: AssessmentQuestion) -> some View {
         QuestionView(
-            position: assessmentData.currentQuestionPosition,
-            assessmentQuestion: $assessmentData.currentAssessmentQuestion,
+            viewModel: .init(curPos: position, qn: question),
             animationSize: 200
-        )
+        ) { answered in
+            viewModel.updateCurrentQuestion(assessmentQuestion: answered)
+        }
     }
 }
 
 struct AssessmentView_Previews: PreviewProvider {
     static var previews: some View {
         Group {
-            AssessmentView(assessmentType: .state(stateId: "by"))
-            AssessmentView(assessmentType: .state(stateId: "by", count: 4))
-            AssessmentView(assessmentType: .state(stateId: "be"))
-            AssessmentView(assessmentType: .state(stateId: "be", count: 4))
-            AssessmentView(assessmentType: .general(count: 3))
-            AssessmentView(assessmentType: .general(count: 6))
-            AssessmentView(assessmentType: .general())
-            AssessmentView(assessmentType: .exam(stateId: "be", generalCount: 4, stateCount: 2))
-            AssessmentView(assessmentType: .exam(stateId: "by", generalCount: 4, stateCount: 2))
+            AssessmentView(viewModel: .init(attemptManager: TestAttemptManagerImpl(), assessmentType: .state(stateId: "by"), questionService: QuestionServiceImpl()))
+            
+            AssessmentView(viewModel: .init(attemptManager: TestAttemptManagerImpl(), assessmentType: .state(stateId: "by", count: 4), questionService: QuestionServiceImpl()))
+            AssessmentView(viewModel: .init(attemptManager: TestAttemptManagerImpl(), assessmentType: .state(stateId: "be"), questionService: QuestionServiceImpl()))
+            AssessmentView(viewModel: .init(attemptManager: TestAttemptManagerImpl(), assessmentType: .state(stateId: "be", count: 4), questionService: QuestionServiceImpl()))
+            AssessmentView(viewModel: .init(attemptManager: TestAttemptManagerImpl(), assessmentType: .general(count: 3), questionService: QuestionServiceImpl()))
+            AssessmentView(viewModel: .init(attemptManager: TestAttemptManagerImpl(), assessmentType: .general(count: 6), questionService: QuestionServiceImpl()))
+            AssessmentView(viewModel: .init(attemptManager: TestAttemptManagerImpl(), assessmentType: .general(), questionService: QuestionServiceImpl()))
+            AssessmentView(viewModel: .init(attemptManager: TestAttemptManagerImpl(), assessmentType: .exam(stateId: "be", generalCount: 4, stateCount: 2), questionService: QuestionServiceImpl()))
+            AssessmentView(viewModel: .init(attemptManager: TestAttemptManagerImpl(), assessmentType: .exam(stateId: "by", generalCount: 4, stateCount: 2), questionService: QuestionServiceImpl()))
         }
-        .environmentObject(AssessmentManager())
     }
 }
