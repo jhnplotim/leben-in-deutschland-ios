@@ -9,19 +9,19 @@ import SwiftUI
 
 // TODO: Consider making class
 struct QuestionModel: Hashable, Codable, Identifiable, Equatable {
-    var id: String
+    var id: Int
     var title: String
     var imageLink: URL?
     var answers: [AnswerModel]
     var stateId: String?
     var categoryId: Int?
-    var isFavorite: Bool? = false
+    var isFavorite: Bool? = false // TODO: Make it Not nilable later
 
     var correctAnswer: AnswerModel? {
         answers.first(where: { $0.isCorrect })
     }
 
-    static let `none` = QuestionModel(id: "", title: "", imageLink: nil, answers: [], stateId: nil, categoryId: nil, isFavorite: false)
+    static let `none` = QuestionModel(id: 0, title: "", imageLink: nil, answers: [], stateId: nil, categoryId: nil, isFavorite: false)
     
     func makeCopy() -> QuestionModel {
         QuestionModel(id: id, title: title, imageLink: imageLink, answers: answers, stateId: stateId, categoryId: categoryId, isFavorite: isFavorite)

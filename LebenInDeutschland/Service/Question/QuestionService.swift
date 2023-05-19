@@ -10,4 +10,6 @@ import Foundation
 protocol QuestionService {
     func getAllQuestions() -> [QuestionModel]
     func getQuestions(for category: Int) -> [QuestionModel]
+    func getAssessmentQuestions(for assessmentType: AssessmentType) -> [AssessmentQuestion]
+    func toggleQuestionAsFavorite(_ questionId: Int) -> QuestionModel?
 }

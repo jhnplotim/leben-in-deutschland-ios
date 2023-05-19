@@ -9,11 +9,12 @@ import SwiftUI
 
 struct QuestionView: View {
 
-    var position: Int
-    @Binding var assessmentQuestion: AssessmentQuestion
-
-    @EnvironmentObject var assessmentData: AssessmentManager
+    // ViewModel
+    var viewModel: QuestionViewModel
+    
     var animationSize: CGFloat = 250
+    
+    var onAnswer: (AssessmentQuestion) -> Void
 
     enum C {
         static let CORRECT_ANIMATION = "correct_animation"
@@ -22,11 +23,11 @@ struct QuestionView: View {
 
     var body: some View {
         VStack(alignment: .leading, spacing: 30) {
-            QuestionHistoryView(chosenAnswers: assessmentData.chosenAnswers.filter { $0.questionId == assessmentQuestion.question.id })
-            Text("\(position). \(assessmentQuestion.question.title)")
+            QuestionHistoryView(chosenAnswers: viewModel.getChosenAnswers())
+            Text("\(viewModel.position). \(viewModel.assessmentQuestion.question.title)")
                 .font(.headline)
 
-            if let imageLink = assessmentQuestion.question.imageLink {
+            if let imageLink = viewModel.assessmentQuestion.question.imageLink {
                 AsyncImage(url: imageLink) { image in
                     image
                         .resizable()
@@ -39,25 +40,26 @@ struct QuestionView: View {
 
             // TODO: Use ID instead of text value to compare
             RadioButtonGroup(
-                items: assessmentQuestion.question.answers.map({$0.text}),
-                selectedId: assessmentQuestion.selectedAnswer.text) { selected in
+                items: viewModel.assessmentQuestion.question.answers.map({$0.text}),
+                selectedId: viewModel.assessmentQuestion.selectedAnswer.text) { selected in
+                    // TODO: Move this logic out of view and move it into ViewModel in charge of parent view
                     print("Selected is: \(selected)")
-                    var assessmentQuestionNew = assessmentQuestion
+                    var assessmentQuestionNew = viewModel.assessmentQuestion
 
-                    if let correctAns = assessmentQuestion.question.correctAnswer, correctAns.text == selected {
+                    if let correctAns = viewModel.assessmentQuestion.question.correctAnswer, correctAns.text == selected {
                         print("Correct answer selected")
                         assessmentQuestionNew.selectedAnswer = correctAns
                     } else {
                         print("Wrong answer selected")
-                        assessmentQuestionNew.selectedAnswer = assessmentQuestion.question.answers.first(where: { $0.text == selected}) ?? .none
+                        assessmentQuestionNew.selectedAnswer = viewModel.assessmentQuestion.question.answers.first(where: { $0.text == selected}) ?? .none
                     }
-                    assessmentData.updateCurrentQuestion(assessmentQuestion: assessmentQuestionNew)
+                    onAnswer(assessmentQuestionNew)
                 }
 
-            if assessmentQuestion.isAnswered {
+            if viewModel.assessmentQuestion.isAnswered {
                 HStack {
                     Spacer()
-                    if assessmentQuestion.isCorrectlyAnswered {
+                    if viewModel.assessmentQuestion.isCorrectlyAnswered {
                         LottieView(name: C.CORRECT_ANIMATION, loopMode: .playOnce)
                             .frame(width: animationSize, height: animationSize)
                     } else {
@@ -75,7 +77,12 @@ struct QuestionView: View {
 }
 
 struct QuestionView_Previews: PreviewProvider {
-    static let assessmentSession = AssessmentManager()
+    
+    static let qns: [QuestionModel] = load("questions.json")
+    
+    static var qnsUnanswered: [AssessmentQuestion] = qns.map { $0.assessmentQuestionUnanswered }
+    static var qnsAnsweredCorrectly: [AssessmentQuestion] = qns.map { $0.assessmentQuestionAnsweredCorrectly}
+    static var qnsAnsweredWrongly: [AssessmentQuestion] = qns.map { $0.assessmentQuestionAnsweredWrongly }
 
     static let index2 = 2
     static let index0 = 0
@@ -85,27 +92,21 @@ struct QuestionView_Previews: PreviewProvider {
 
     static var previews: some View {
         Group {
-            QuestionView(
-                position: index2 + 1,
-                assessmentQuestion: .constant(assessmentSession.assessmentQuestions?[index2] ?? .none))
-
-            QuestionView(
-                position: index6 + 1,
-                assessmentQuestion: .constant(ModelData().allStateQuestions[index6].assessmentQuestionAnsweredWrongly),
-            animationSize: 200)
-
-            QuestionView(
-                position: index3 + 1,
-                assessmentQuestion: .constant(ModelData().generalQuestions[index3].assessmentQuestionAnsweredCorrectly))
-
-            QuestionView(
-                position: index0 + 1,
-                assessmentQuestion: .constant(ModelData().selectedStateQuestions[index0].assessmentQuestionUnanswered))
-
-            QuestionView(
-                position: index7 + 1,
-                assessmentQuestion: .constant(ModelData().selectedStateQuestions[index7].assessmentQuestionUnanswered))
+            QuestionView(viewModel: .init(curPos: index2 + 1, qn: qnsUnanswered[index2], attMgrFactory: TestAttemptManagerImpl())) { _ in
+                
+            }
+            QuestionView(viewModel: .init(curPos: index0 + 1, qn: qnsAnsweredWrongly[index0], attMgrFactory: TestAttemptManagerImpl())) { _ in
+                
+            }
+            QuestionView(viewModel: .init(curPos: index3 + 1, qn: qnsAnsweredCorrectly[index3], attMgrFactory: TestAttemptManagerImpl())) { _ in
+                
+            }
+            QuestionView(viewModel: .init(curPos: index6 + 1, qn: qnsUnanswered[index6], attMgrFactory: TestAttemptManagerImpl())) { _ in
+                
+            }
+            QuestionView(viewModel: .init(curPos: index7 + 1, qn: qnsUnanswered[index7], attMgrFactory: TestAttemptManagerImpl())) { _ in
+                
+            }
         }
-        .environmentObject(assessmentSession)
     }
 }

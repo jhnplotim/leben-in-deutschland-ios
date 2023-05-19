@@ -12,7 +12,7 @@ struct AssessmentQuestion: Hashable, Codable, Identifiable, Equatable {
     let question: QuestionModel
     var selectedAnswer: AnswerModel = .none
 
-    var id: String {
+    var id: Int {
         question.id
     }
 
@@ -24,5 +24,9 @@ struct AssessmentQuestion: Hashable, Codable, Identifiable, Equatable {
     
     func makeCopyToggledFavorite() -> AssessmentQuestion {
         AssessmentQuestion(question: question.makeCopyToggledFavorite(), selectedAnswer: selectedAnswer)
+    }
+    
+    func makeCopy(with updatedQuestion: QuestionModel) -> AssessmentQuestion {
+        AssessmentQuestion(question: updatedQuestion, selectedAnswer: selectedAnswer)
     }
 }

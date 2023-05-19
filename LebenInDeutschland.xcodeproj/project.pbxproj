@@ -16,10 +16,10 @@
 		7E1F382029AB812500F60435 /* StateList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E1F381F29AB812500F60435 /* StateList.swift */; };
 		7E1F382229AB817200F60435 /* CircleImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E1F382129AB817200F60435 /* CircleImage.swift */; };
 		7E1F382429AB833200F60435 /* StateModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E1F382329AB833200F60435 /* StateModel.swift */; };
-		7E1F382629AB84DD00F60435 /* ModelData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E1F382529AB84DD00F60435 /* ModelData.swift */; };
+		7E1F382629AB84DD00F60435 /* JsonDataLoader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E1F382529AB84DD00F60435 /* JsonDataLoader.swift */; };
 		7E1F382829AB85BF00F60435 /* StateRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E1F382729AB85BF00F60435 /* StateRow.swift */; };
 		7E1F382C29AB93F700F60435 /* StateDetail.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E1F382B29AB93F700F60435 /* StateDetail.swift */; };
-		7E38B48F29B337AC0059B9F2 /* AssessmentManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E38B48E29B337AC0059B9F2 /* AssessmentManager.swift */; };
+		7E38B48F29B337AC0059B9F2 /* AssessmentViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E38B48E29B337AC0059B9F2 /* AssessmentViewModel.swift */; };
 		7E38B49129B3489D0059B9F2 /* AssessmentQuestion.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E38B49029B3489D0059B9F2 /* AssessmentQuestion.swift */; };
 		7E38B49429B349390059B9F2 /* QuestionModel+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E38B49329B349390059B9F2 /* QuestionModel+.swift */; };
 		7E38B49629B349610059B9F2 /* AssessmentQuestion+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E38B49529B349610059B9F2 /* AssessmentQuestion+.swift */; };
@@ -60,6 +60,15 @@
 		7E92E7052A15F24300221B21 /* DIResolver.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E92E7042A15F24300221B21 /* DIResolver.swift */; };
 		7E92E7072A15F2B500221B21 /* Inject.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E92E7062A15F2B500221B21 /* Inject.swift */; };
 		7E92E70A2A15F31300221B21 /* ObjectScope+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E92E7092A15F31300221B21 /* ObjectScope+.swift */; };
+		7E92E70D2A160C9900221B21 /* AttemptManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E92E70C2A160C9900221B21 /* AttemptManager.swift */; };
+		7E92E70F2A160CF600221B21 /* AttemptManagerImpl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E92E70E2A160CF600221B21 /* AttemptManagerImpl.swift */; };
+		7E92E7112A161AD500221B21 /* SummaryViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E92E7102A161AD500221B21 /* SummaryViewModel.swift */; };
+		7E92E7132A1626DD00221B21 /* QuestionViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E92E7122A1626DD00221B21 /* QuestionViewModel.swift */; };
+		7E92E7152A179F9600221B21 /* AssessmentSummary.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E92E7142A179F9600221B21 /* AssessmentSummary.swift */; };
+		7E92E7182A17AEFB00221B21 /* StateListService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E92E7172A17AEFB00221B21 /* StateListService.swift */; };
+		7E92E71A2A17AF3900221B21 /* StateListServiceImpl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E92E7192A17AF3900221B21 /* StateListServiceImpl.swift */; };
+		7E92E71C2A17B08100221B21 /* StateListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E92E71B2A17B08100221B21 /* StateListViewModel.swift */; };
+		7E92E71E2A17B28A00221B21 /* StateDetailViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E92E71D2A17B28A00221B21 /* StateDetailViewModel.swift */; };
 		7EDB84D929AB9C350043A793 /* QuestionModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7EDB84D829AB9C350043A793 /* QuestionModel.swift */; };
 		7EDB84DB29AB9CD20043A793 /* AnswerModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7EDB84DA29AB9CD20043A793 /* AnswerModel.swift */; };
 		7EDB84DD29ABA1F50043A793 /* questions.json in Resources */ = {isa = PBXBuildFile; fileRef = 7EDB84DC29ABA1F50043A793 /* questions.json */; };
@@ -85,10 +94,10 @@
 		7E1F381F29AB812500F60435 /* StateList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StateList.swift; sourceTree = "<group>"; };
 		7E1F382129AB817200F60435 /* CircleImage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CircleImage.swift; sourceTree = "<group>"; };
 		7E1F382329AB833200F60435 /* StateModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StateModel.swift; sourceTree = "<group>"; };
-		7E1F382529AB84DD00F60435 /* ModelData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModelData.swift; sourceTree = "<group>"; };
+		7E1F382529AB84DD00F60435 /* JsonDataLoader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JsonDataLoader.swift; sourceTree = "<group>"; };
 		7E1F382729AB85BF00F60435 /* StateRow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StateRow.swift; sourceTree = "<group>"; };
 		7E1F382B29AB93F700F60435 /* StateDetail.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StateDetail.swift; sourceTree = "<group>"; };
-		7E38B48E29B337AC0059B9F2 /* AssessmentManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AssessmentManager.swift; sourceTree = "<group>"; };
+		7E38B48E29B337AC0059B9F2 /* AssessmentViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AssessmentViewModel.swift; sourceTree = "<group>"; };
 		7E38B49029B3489D0059B9F2 /* AssessmentQuestion.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AssessmentQuestion.swift; sourceTree = "<group>"; };
 		7E38B49329B349390059B9F2 /* QuestionModel+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "QuestionModel+.swift"; sourceTree = "<group>"; };
 		7E38B49529B349610059B9F2 /* AssessmentQuestion+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "AssessmentQuestion+.swift"; sourceTree = "<group>"; };
@@ -130,6 +139,15 @@
 		7E92E7042A15F24300221B21 /* DIResolver.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DIResolver.swift; sourceTree = "<group>"; };
 		7E92E7062A15F2B500221B21 /* Inject.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Inject.swift; sourceTree = "<group>"; };
 		7E92E7092A15F31300221B21 /* ObjectScope+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ObjectScope+.swift"; sourceTree = "<group>"; };
+		7E92E70C2A160C9900221B21 /* AttemptManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AttemptManager.swift; sourceTree = "<group>"; };
+		7E92E70E2A160CF600221B21 /* AttemptManagerImpl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AttemptManagerImpl.swift; sourceTree = "<group>"; };
+		7E92E7102A161AD500221B21 /* SummaryViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SummaryViewModel.swift; sourceTree = "<group>"; };
+		7E92E7122A1626DD00221B21 /* QuestionViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuestionViewModel.swift; sourceTree = "<group>"; };
+		7E92E7142A179F9600221B21 /* AssessmentSummary.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AssessmentSummary.swift; sourceTree = "<group>"; };
+		7E92E7172A17AEFB00221B21 /* StateListService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StateListService.swift; sourceTree = "<group>"; };
+		7E92E7192A17AF3900221B21 /* StateListServiceImpl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StateListServiceImpl.swift; sourceTree = "<group>"; };
+		7E92E71B2A17B08100221B21 /* StateListViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StateListViewModel.swift; sourceTree = "<group>"; };
+		7E92E71D2A17B28A00221B21 /* StateDetailViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StateDetailViewModel.swift; sourceTree = "<group>"; };
 		7EDB84D829AB9C350043A793 /* QuestionModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuestionModel.swift; sourceTree = "<group>"; };
 		7EDB84DA29AB9CD20043A793 /* AnswerModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnswerModel.swift; sourceTree = "<group>"; };
 		7EDB84DC29ABA1F50043A793 /* questions.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = questions.json; sourceTree = "<group>"; };
@@ -159,6 +177,7 @@
 		7E19A0202A12768D00D46BB1 /* Service */ = {
 			isa = PBXGroup;
 			children = (
+				7E92E7162A17AEAB00221B21 /* State */,
 				7E19A02C2A127B8C00D46BB1 /* Question */,
 				7E19A0212A12769700D46BB1 /* Category */,
 			);
@@ -209,7 +228,6 @@
 				7E38B49A29B3BE0A0059B9F2 /* AssessmentType.swift */,
 				7E38B49C29B45F590059B9F2 /* LaunchScreen */,
 				7E38B49229B3491E0059B9F2 /* Extensions */,
-				7E1F382529AB84DD00F60435 /* ModelData.swift */,
 				7E1F382329AB833200F60435 /* StateModel.swift */,
 				7EDB84D829AB9C350043A793 /* QuestionModel.swift */,
 				7EDB84DA29AB9CD20043A793 /* AnswerModel.swift */,
@@ -218,6 +236,7 @@
 				7E38B4AE29B601300059B9F2 /* ChosenAnswer.swift */,
 				7E38B4B029B601E60059B9F2 /* CompletedExam.swift */,
 				7E19A01E2A12752A00D46BB1 /* CategoryModel.swift */,
+				7E92E7142A179F9600221B21 /* AssessmentSummary.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -266,6 +285,7 @@
 		7E1F381B29AB743000F60435 /* Assessment */ = {
 			isa = PBXGroup;
 			children = (
+				7E38B48E29B337AC0059B9F2 /* AssessmentViewModel.swift */,
 				DA14270029B2404C00846A29 /* AssessmentView.swift */,
 			);
 			path = Assessment;
@@ -275,8 +295,10 @@
 			isa = PBXGroup;
 			children = (
 				7E1F381F29AB812500F60435 /* StateList.swift */,
+				7E92E71B2A17B08100221B21 /* StateListViewModel.swift */,
 				7E1F382729AB85BF00F60435 /* StateRow.swift */,
 				7E1F382B29AB93F700F60435 /* StateDetail.swift */,
+				7E92E71D2A17B28A00221B21 /* StateDetailViewModel.swift */,
 			);
 			path = States;
 			sourceTree = "<group>";
@@ -286,6 +308,7 @@
 			children = (
 				7EDB84DE29ABD10D0043A793 /* QuestionView.swift */,
 				7E38B4B229B76AFB0059B9F2 /* QuestionHistoryView.swift */,
+				7E92E7122A1626DD00221B21 /* QuestionViewModel.swift */,
 			);
 			path = Questions;
 			sourceTree = "<group>";
@@ -318,8 +341,8 @@
 		7E38B49F29B45FE20059B9F2 /* Manager */ = {
 			isa = PBXGroup;
 			children = (
+				7E92E70B2A160C4D00221B21 /* Attempt */,
 				7E38B4A029B460030059B9F2 /* LaunchScreenStateManager.swift */,
-				7E38B48E29B337AC0059B9F2 /* AssessmentManager.swift */,
 				7E38B4AC29B600730059B9F2 /* StatisticsManager.swift */,
 			);
 			path = Manager;
@@ -345,6 +368,7 @@
 			isa = PBXGroup;
 			children = (
 				7E38B4B529B79F970059B9F2 /* SummaryView.swift */,
+				7E92E7102A161AD500221B21 /* SummaryViewModel.swift */,
 			);
 			path = Statistics;
 			sourceTree = "<group>";
@@ -419,6 +443,7 @@
 		7E56D93C29C258C500AFB6B0 /* Application */ = {
 			isa = PBXGroup;
 			children = (
+				7E92E71F2A17C39800221B21 /* Helpers */,
 				7E8746182A14D32E00B61D16 /* Info.plist */,
 				7E56D93D29C258E000AFB6B0 /* Constants.swift */,
 			);
@@ -478,6 +503,32 @@
 				7E92E7062A15F2B500221B21 /* Inject.swift */,
 			);
 			path = Helper;
+			sourceTree = "<group>";
+		};
+		7E92E70B2A160C4D00221B21 /* Attempt */ = {
+			isa = PBXGroup;
+			children = (
+				7E92E70C2A160C9900221B21 /* AttemptManager.swift */,
+				7E92E70E2A160CF600221B21 /* AttemptManagerImpl.swift */,
+			);
+			path = Attempt;
+			sourceTree = "<group>";
+		};
+		7E92E7162A17AEAB00221B21 /* State */ = {
+			isa = PBXGroup;
+			children = (
+				7E92E7172A17AEFB00221B21 /* StateListService.swift */,
+				7E92E7192A17AF3900221B21 /* StateListServiceImpl.swift */,
+			);
+			path = State;
+			sourceTree = "<group>";
+		};
+		7E92E71F2A17C39800221B21 /* Helpers */ = {
+			isa = PBXGroup;
+			children = (
+				7E1F382529AB84DD00F60435 /* JsonDataLoader.swift */,
+			);
+			path = Helpers;
 			sourceTree = "<group>";
 		};
 		DA1426F929B2348E00846A29 /* Lottie */ = {
@@ -628,6 +679,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				7E8B8EF92A14CD3300EC350A /* CategoryDetail.swift in Sources */,
+				7E92E71A2A17AF3900221B21 /* StateListServiceImpl.swift in Sources */,
 				7E38B4A629B483840059B9F2 /* ErrorWrapper.swift in Sources */,
 				7E19A0232A1276B700D46BB1 /* CategoryService.swift in Sources */,
 				7E1F382C29AB93F700F60435 /* StateDetail.swift in Sources */,
@@ -637,17 +689,22 @@
 				7E1F382229AB817200F60435 /* CircleImage.swift in Sources */,
 				7E38B49129B3489D0059B9F2 /* AssessmentQuestion.swift in Sources */,
 				7E38B4A429B462700059B9F2 /* LaunchScreenView.swift in Sources */,
+				7E92E7132A1626DD00221B21 /* QuestionViewModel.swift in Sources */,
 				7E38B4A929B483DF0059B9F2 /* ErrorView.swift in Sources */,
+				7E92E7112A161AD500221B21 /* SummaryViewModel.swift in Sources */,
 				7E56D93A29C2549600AFB6B0 /* Assets.swift in Sources */,
 				7E38B4AB29B516F50059B9F2 /* PercentageView.swift in Sources */,
+				7E92E70D2A160C9900221B21 /* AttemptManager.swift in Sources */,
 				DA66E60929AE6CBA00B2B6B0 /* RadioButtonGroup.swift in Sources */,
 				7E92E70A2A15F31300221B21 /* ObjectScope+.swift in Sources */,
 				DA66E60529AE698D00B2B6B0 /* ColorInvert.swift in Sources */,
 				7E38B4B129B601E60059B9F2 /* CompletedExam.swift in Sources */,
+				7E92E7152A179F9600221B21 /* AssessmentSummary.swift in Sources */,
 				7E19A01F2A12752A00D46BB1 /* CategoryModel.swift in Sources */,
 				7E38B49429B349390059B9F2 /* QuestionModel+.swift in Sources */,
 				7E38B4AD29B600730059B9F2 /* StatisticsManager.swift in Sources */,
 				7E38B4A129B460030059B9F2 /* LaunchScreenStateManager.swift in Sources */,
+				7E92E70F2A160CF600221B21 /* AttemptManagerImpl.swift in Sources */,
 				7E38B49B29B3BE0A0059B9F2 /* AssessmentType.swift in Sources */,
 				7E3B0EFF29AB70F8004219B7 /* LebenInDeutschlandApp.swift in Sources */,
 				7E1F382829AB85BF00F60435 /* StateRow.swift in Sources */,
@@ -665,17 +722,20 @@
 				7E3C583E29C8B76E0013C452 /* GaugeViews.swift in Sources */,
 				7E38B4AF29B601300059B9F2 /* ChosenAnswer.swift in Sources */,
 				7E1F382429AB833200F60435 /* StateModel.swift in Sources */,
+				7E92E7182A17AEFB00221B21 /* StateListService.swift in Sources */,
 				7E38B4B929BC5CDD0059B9F2 /* CircularProgressView.swift in Sources */,
 				7E38B49929B379090059B9F2 /* LandingPage.swift in Sources */,
 				7E38B4B329B76AFB0059B9F2 /* QuestionHistoryView.swift in Sources */,
 				7EDB84DF29ABD10D0043A793 /* QuestionView.swift in Sources */,
 				7EDB84D929AB9C350043A793 /* QuestionModel.swift in Sources */,
+				7E92E71C2A17B08100221B21 /* StateListViewModel.swift in Sources */,
 				7E1F382029AB812500F60435 /* StateList.swift in Sources */,
-				7E38B48F29B337AC0059B9F2 /* AssessmentManager.swift in Sources */,
-				7E1F382629AB84DD00F60435 /* ModelData.swift in Sources */,
+				7E38B48F29B337AC0059B9F2 /* AssessmentViewModel.swift in Sources */,
+				7E1F382629AB84DD00F60435 /* JsonDataLoader.swift in Sources */,
 				DA14270129B2404C00846A29 /* AssessmentView.swift in Sources */,
 				7E8B8EFC2A14CF7000EC350A /* QuestionService.swift in Sources */,
 				7E56D93B29C2549600AFB6B0 /* Localizable.swift in Sources */,
+				7E92E71E2A17B28A00221B21 /* StateDetailViewModel.swift in Sources */,
 				7E472B1029D36D2E007F5D70 /* GaugeType.swift in Sources */,
 				7E56D93E29C258E000AFB6B0 /* Constants.swift in Sources */,
 				7E8B8EF82A14CD3300EC350A /* CategoryDetailViewModel.swift in Sources */,

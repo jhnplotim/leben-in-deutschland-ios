@@ -15,6 +15,16 @@ struct LandingPage: View {
         // swiftlint:disable force_unwrapping
         DIResolver.shared.resolve(CategoryListViewModel.self)!
     }
+    
+    var summaryVMFactory: () -> SummaryViewModel = {
+        // swiftlint:disable force_unwrapping
+        DIResolver.shared.resolve(SummaryViewModel.self)!
+    }
+    
+    var stateListVMFactory: () -> StateListViewModel = {
+        // swiftlint:disable force_unwrapping
+        DIResolver.shared.resolve(StateListViewModel.self)!
+    }
 
     enum Tab {
         case states
@@ -32,13 +42,13 @@ struct LandingPage: View {
 
     var body: some View {
         TabView(selection: $selection) {
-            StateList()
+            StateList(viewModel: stateListVMFactory())
                 .tabItem {
                     Label("States", systemImage: C.statesIconName)
                 }
                 .tag(Tab.states)
 
-            SummaryView()
+            SummaryView(viewModel: summaryVMFactory())
                 .tabItem {
                     Label("Summary", systemImage: C.summaryIconName)
                 }
@@ -63,10 +73,12 @@ struct LandingPage: View {
 struct LandingPage_Previews: PreviewProvider {
     static var previews: some View {
         LandingPage() {
-            // TODO: Pass in test implementation of ViewModel if needed
+            // Pass in test implementation of ViewModel if needed
             CategoryListViewModel(CategoryServiceImpl())
+        } summaryVMFactory: {
+            SummaryViewModel(attemptMgr: TestAttemptManagerImpl())
+        } stateListVMFactory: {
+            StateListViewModel(StateListServiceImpl())
         }
-            .environmentObject(ModelData())
-            .environmentObject(AssessmentManager())
     }
 }
