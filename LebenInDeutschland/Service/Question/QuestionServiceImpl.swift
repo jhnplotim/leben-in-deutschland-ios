@@ -6,17 +6,22 @@
 //
 
 import Foundation
+import Combine
 
 final class QuestionServiceImpl: QuestionService {
-    
     enum C {
         static let jsonFile = "questions.json"
     }
     
     private var allQuestions: [QuestionModel]
     
+    private var favoritesPassthroughSubject = PassthroughSubject<[QuestionModel], Never>()
+    
+    lazy var favoritesPublisher: AnyPublisher<[QuestionModel], Never> = favoritesPassthroughSubject.share().eraseToAnyPublisher()
+    
     init() {
         allQuestions = load(C.jsonFile)
+        updateFavorites()
     }
     
     func getAllQuestions() -> [QuestionModel] {
@@ -33,6 +38,7 @@ final class QuestionServiceImpl: QuestionService {
             return nil
         }
         allQuestions[curIndex] = allQuestions[curIndex].makeCopyToggledFavorite()
+        updateFavorites()
         return allQuestions[curIndex]
         
     }
@@ -69,6 +75,16 @@ final class QuestionServiceImpl: QuestionService {
         case .bookMark:
             // TODO: Add support for bookmarks, favorites, read later lists
             return generalQuestions.map { $0.assessmentQuestionUnanswered }
+
+        case .favorite:
+            return shuffledQuestions.filter { $0.isFavorite ?? false }.map { $0.assessmentQuestionUnanswered }
         }
+    }
+}
+
+// MARK: - Private functions
+extension QuestionServiceImpl {
+    private func updateFavorites() {
+        favoritesPassthroughSubject.send(allQuestions.filter { $0.isFavorite ?? false })
     }
 }

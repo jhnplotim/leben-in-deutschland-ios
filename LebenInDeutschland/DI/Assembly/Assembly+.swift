@@ -83,5 +83,9 @@ class ViewModelAssembly: Assembly {
         container.register(StateDetailViewModel.self) { _, state in
             StateDetailViewModel(stateToView: state)
         }
+        
+        container.register(FavoritesViewModel.self) { r in
+                FavoritesViewModel(questionService: r.resolve(QuestionService.self)!)
+        }
     }
 }

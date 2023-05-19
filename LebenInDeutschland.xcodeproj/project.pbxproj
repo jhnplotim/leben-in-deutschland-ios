@@ -69,6 +69,8 @@
 		7E92E71A2A17AF3900221B21 /* StateListServiceImpl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E92E7192A17AF3900221B21 /* StateListServiceImpl.swift */; };
 		7E92E71C2A17B08100221B21 /* StateListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E92E71B2A17B08100221B21 /* StateListViewModel.swift */; };
 		7E92E71E2A17B28A00221B21 /* StateDetailViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E92E71D2A17B28A00221B21 /* StateDetailViewModel.swift */; };
+		7EC27EB82A17D1360012B641 /* FavoritesViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7EC27EB72A17D1360012B641 /* FavoritesViewModel.swift */; };
+		7EC27EBA2A17D4880012B641 /* FavoritesView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7EC27EB92A17D4880012B641 /* FavoritesView.swift */; };
 		7EDB84D929AB9C350043A793 /* QuestionModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7EDB84D829AB9C350043A793 /* QuestionModel.swift */; };
 		7EDB84DB29AB9CD20043A793 /* AnswerModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7EDB84DA29AB9CD20043A793 /* AnswerModel.swift */; };
 		7EDB84DD29ABA1F50043A793 /* questions.json in Resources */ = {isa = PBXBuildFile; fileRef = 7EDB84DC29ABA1F50043A793 /* questions.json */; };
@@ -148,6 +150,8 @@
 		7E92E7192A17AF3900221B21 /* StateListServiceImpl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StateListServiceImpl.swift; sourceTree = "<group>"; };
 		7E92E71B2A17B08100221B21 /* StateListViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StateListViewModel.swift; sourceTree = "<group>"; };
 		7E92E71D2A17B28A00221B21 /* StateDetailViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StateDetailViewModel.swift; sourceTree = "<group>"; };
+		7EC27EB72A17D1360012B641 /* FavoritesViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoritesViewModel.swift; sourceTree = "<group>"; };
+		7EC27EB92A17D4880012B641 /* FavoritesView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoritesView.swift; sourceTree = "<group>"; };
 		7EDB84D829AB9C350043A793 /* QuestionModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuestionModel.swift; sourceTree = "<group>"; };
 		7EDB84DA29AB9CD20043A793 /* AnswerModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnswerModel.swift; sourceTree = "<group>"; };
 		7EDB84DC29ABA1F50043A793 /* questions.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = questions.json; sourceTree = "<group>"; };
@@ -205,6 +209,7 @@
 		7E1F381529AB733200F60435 /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				7EC27EB62A17D11C0012B641 /* Favorites */,
 				7E8B8EF12A14CD3300EC350A /* Categories */,
 				7E38B4B429B79F690059B9F2 /* Statistics */,
 				7E38B4A729B483CF0059B9F2 /* Errors */,
@@ -531,6 +536,15 @@
 			path = Helpers;
 			sourceTree = "<group>";
 		};
+		7EC27EB62A17D11C0012B641 /* Favorites */ = {
+			isa = PBXGroup;
+			children = (
+				7EC27EB72A17D1360012B641 /* FavoritesViewModel.swift */,
+				7EC27EB92A17D4880012B641 /* FavoritesView.swift */,
+			);
+			path = Favorites;
+			sourceTree = "<group>";
+		};
 		DA1426F929B2348E00846A29 /* Lottie */ = {
 			isa = PBXGroup;
 			children = (
@@ -735,8 +749,10 @@
 				DA14270129B2404C00846A29 /* AssessmentView.swift in Sources */,
 				7E8B8EFC2A14CF7000EC350A /* QuestionService.swift in Sources */,
 				7E56D93B29C2549600AFB6B0 /* Localizable.swift in Sources */,
+				7EC27EB82A17D1360012B641 /* FavoritesViewModel.swift in Sources */,
 				7E92E71E2A17B28A00221B21 /* StateDetailViewModel.swift in Sources */,
 				7E472B1029D36D2E007F5D70 /* GaugeType.swift in Sources */,
+				7EC27EBA2A17D4880012B641 /* FavoritesView.swift in Sources */,
 				7E56D93E29C258E000AFB6B0 /* Constants.swift in Sources */,
 				7E8B8EF82A14CD3300EC350A /* CategoryDetailViewModel.swift in Sources */,
 				7E38B4B629B79F970059B9F2 /* SummaryView.swift in Sources */,

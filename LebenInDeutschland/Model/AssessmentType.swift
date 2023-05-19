@@ -14,6 +14,7 @@ enum AssessmentType: Equatable, Hashable, Identifiable {
     case general(count: Int = 100)
     case category(categoryId: Int)
     case bookMark(bookMarkId: String)
+    case favorite
 
     var id: Self {
         self

@@ -6,8 +6,11 @@
 //
 
 import Foundation
+import Combine
 
 protocol QuestionService {
+    var favoritesPublisher: AnyPublisher<[QuestionModel], Never> { get }
+    
     func getAllQuestions() -> [QuestionModel]
     func getQuestions(for category: Int) -> [QuestionModel]
     func getAssessmentQuestions(for assessmentType: AssessmentType) -> [AssessmentQuestion]
