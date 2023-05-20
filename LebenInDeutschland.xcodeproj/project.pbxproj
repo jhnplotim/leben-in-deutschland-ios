@@ -747,6 +747,7 @@
 				7E39F6622A1CF7B2004144CB /* AssessmentRow.swift in Sources */,
 				7E38B4A129B460030059B9F2 /* LaunchScreenStateManager.swift in Sources */,
 				7E92E70F2A160CF600221B21 /* AttemptManagerImpl.swift in Sources */,
+				7EC27EC02A18BA430012B641 /* FavoritesView.swift in Sources */,
 				7E38B49B29B3BE0A0059B9F2 /* AssessmentType.swift in Sources */,
 				7E3B0EFF29AB70F8004219B7 /* LebenInDeutschlandApp.swift in Sources */,
 				7E1F382829AB85BF00F60435 /* StateRow.swift in Sources */,
