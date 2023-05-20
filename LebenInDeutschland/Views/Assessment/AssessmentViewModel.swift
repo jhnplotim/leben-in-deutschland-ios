@@ -51,8 +51,8 @@ final class AssessmentViewModel: ObservableObject {
         currentQuestionIndex + 1
     }
     
-    var showTimer: Bool {
-        currentAssessmentType.showTimer
+    var isTimed: Bool {
+        currentAssessmentType.isTimed
     }
 
     func initialise() {

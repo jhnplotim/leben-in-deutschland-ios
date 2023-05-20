@@ -32,7 +32,7 @@ struct AssessmentView: View {
     var body: some View {
         NavigationView {
             VStack {
-                if viewModel.showTimer {
+                if viewModel.isTimed {
                     withAnimation {
                         Text(viewModel.timeRemaining)
                             .bold()

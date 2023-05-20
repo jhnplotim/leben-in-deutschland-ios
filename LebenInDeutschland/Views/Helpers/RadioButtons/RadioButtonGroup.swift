@@ -10,8 +10,6 @@ import SwiftUI
 struct RadioButtonGroup: View {
     let items: [String]
 
-    // TODO: Pick inspiration from List api
-    // TODO: Improve state handling
     // TODO: Handle dark mode
     var selectedId: String = ""
 
