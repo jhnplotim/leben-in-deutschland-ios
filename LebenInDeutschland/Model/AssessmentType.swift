@@ -44,7 +44,7 @@ extension AssessmentType {
         }
     }
     
-    var showTimer: Bool {
+    var isTimed: Bool {
         switch self {
         case .exam:
             return true
