@@ -25,12 +25,18 @@ struct LandingPage: View {
         // swiftlint:disable force_unwrapping
         DIResolver.shared.resolve(StateListViewModel.self)!
     }
+    
+    var favoritesVMFactory: () -> FavoritesViewModel = {
+        // swiftlint:disable force_unwrapping
+        DIResolver.shared.resolve(FavoritesViewModel.self)!
+    }
 
     enum Tab {
         case states
         case summary
         case categories
         case settings
+        case favorites
     }
     enum C {
         // TODO: Replace icons with more representative ones
@@ -38,6 +44,7 @@ struct LandingPage: View {
         static let summaryIconName = "note"
         static let categoryIconName = "square.stack"
         static let settingsIconName = "seal"
+        static let favoritesIconName = "heart.fill"
     }
 
     var body: some View {
@@ -65,6 +72,10 @@ struct LandingPage: View {
                     Label("Settings", systemImage: C.settingsIconName)
                 }
                 .tag(Tab.settings)
+            FavoritesView(viewModel: favoritesVMFactory())
+                .tabItem {
+                    Label("Favorites", systemImage: C.favoritesIconName)
+                }
 
         }
     }
@@ -79,6 +90,8 @@ struct LandingPage_Previews: PreviewProvider {
             SummaryViewModel(attemptMgr: TestAttemptManagerImpl())
         } stateListVMFactory: {
             StateListViewModel(StateListServiceImpl())
+        } favoritesVMFactory: {
+            FavoritesViewModel(questionService: QuestionServiceImpl())
         }
     }
 }

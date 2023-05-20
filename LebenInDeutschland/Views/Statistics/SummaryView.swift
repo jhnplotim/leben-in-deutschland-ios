@@ -35,7 +35,8 @@ struct SummaryView: View {
                 .navigationBarTitleDisplayMode(.inline)
 
             } else {
-                Text("No question / exam attempts so far")
+                Text("No attempts so far")
+                    .font(.largeTitle)
                     .navigationTitle("Summary")
                     .navigationBarTitleDisplayMode(.large)
             }
