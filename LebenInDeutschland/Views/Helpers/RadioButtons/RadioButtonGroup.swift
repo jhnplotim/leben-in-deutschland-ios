@@ -13,7 +13,7 @@ struct RadioButtonGroup: View {
     // TODO: Pick inspiration from List api
     // TODO: Improve state handling
     // TODO: Handle dark mode
-    @State var selectedId: String = ""
+    var selectedId: String = ""
 
     let callback: (String) -> Void
 
@@ -26,19 +26,20 @@ struct RadioButtonGroup: View {
     }
 
     func radioGroupCallback(id: String) {
-        selectedId = id
         callback(id)
     }
 }
 
 struct RadioContentView: View {
+    @State var selectedItem = "London"
     var body: some View {
         HStack {
             Text("Example")
                 .font(Font.headline)
                 .padding()
-            RadioButtonGroup(items: ["Rome", "London", "Paris", "Berlin", "New York"], selectedId: "London") { selected in
+            RadioButtonGroup(items: ["Rome", "London", "Paris", "Berlin", "New York"], selectedId: selectedItem) { selected in
                 print("Selected is: \(selected)")
+                selectedItem = selected
             }
         }.padding()
     }
