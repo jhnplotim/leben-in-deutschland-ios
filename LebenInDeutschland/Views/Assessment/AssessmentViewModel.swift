@@ -100,6 +100,11 @@ final class AssessmentViewModel: ObservableObject {
     }
 
     func updateCurrentQuestion(assessmentQuestion: AssessmentQuestion) {
+        guard !assessmentQuestions[currentQuestionIndex].isAnswered else {
+            print("Selection ignored because question was already answered")
+            return
+        }
+        
         assessmentQuestions[currentQuestionIndex] = assessmentQuestion
         updateSummary()
         loadCurrentQuestion()
