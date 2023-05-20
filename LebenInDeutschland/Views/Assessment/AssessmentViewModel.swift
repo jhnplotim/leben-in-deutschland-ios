@@ -17,6 +17,12 @@ final class AssessmentViewModel: ObservableObject {
     @Published var currentAssessmentQuestion: AssessmentQuestion = .none
 
     @Published private(set) var summary: AssessmentSummary = .none
+    
+    @Published var assessmentTitle: String = ""
+    
+    @Published var timeRemaining: String = ""
+    private var timeLeftInSeconds: TimeInterval
+    var timer: Publishers.Autoconnect<Timer.TimerPublisher> = Timer.publish(every: 1, on: .main, in: .common).autoconnect()
 
     private var currentQuestionIndex: Int
 
@@ -29,6 +35,8 @@ final class AssessmentViewModel: ObservableObject {
         attemptMgr = attemptManager
         currentAssessmentType = assessmentType
         _questionService = questionService
+        assessmentTitle = currentAssessmentType.title
+        timeLeftInSeconds = currentAssessmentType.duration ?? -1
     }
 
     var assessmentLoaded: Bool {
@@ -41,6 +49,10 @@ final class AssessmentViewModel: ObservableObject {
 
     var currentQuestionPosition: Int {
         currentQuestionIndex + 1
+    }
+    
+    var showTimer: Bool {
+        currentAssessmentType.showTimer
     }
 
     func initialise() {
@@ -127,6 +139,18 @@ final class AssessmentViewModel: ObservableObject {
         loadCurrentQuestion()
         print("Toggle of question with ID \(currentQuestion.id) successful")
         return true
+    }
+    
+    func updateTime() {
+        // TODO: Finish assessment when timer gets to zero
+        timeLeftInSeconds = max(0, timeLeftInSeconds - 1)
+
+        let formatter = DateComponentsFormatter()
+        formatter.allowedUnits = [.hour, .minute, .second]
+        formatter.unitsStyle = .positional
+
+        let formattedString = formatter.string(from: TimeInterval(timeLeftInSeconds))!
+        timeRemaining = formattedString
     }
 
     deinit {

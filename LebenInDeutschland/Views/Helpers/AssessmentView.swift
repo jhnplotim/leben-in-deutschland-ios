@@ -7,7 +7,6 @@
 
 import SwiftUI
 
-// TODO: Re-implement using classes instead of structs & also create ViewModels, Services & Repositories / Managers
 struct AssessmentView: View {
 
     @StateObject var viewModel: AssessmentViewModel
@@ -33,6 +32,17 @@ struct AssessmentView: View {
     var body: some View {
         NavigationView {
             VStack {
+                if viewModel.showTimer {
+                    withAnimation {
+                        Text(viewModel.timeRemaining)
+                            .bold()
+                            .font(.caption)
+                            .onReceive(viewModel.timer) { _ in
+                                viewModel.updateTime()
+                            }
+                    }
+                }
+                
                 CircularProgressView(progress: viewModel.summary.progress, lineWidth: 10)
                     .frame(width: 50, height: 50)
                 Text("\(viewModel.summary.questionCount) Questions")
@@ -79,7 +89,7 @@ struct AssessmentView: View {
                 .padding()
             }
             .navigationBarTitleDisplayMode(.inline)
-            .navigationTitle(C.navigationTitle)
+            .navigationTitle(viewModel.assessmentTitle)
             .toolbar {
                 ToolbarItem(placement: .navigationBarTrailing) {
                     Button {
