@@ -48,7 +48,7 @@ struct AssessmentView: View {
                 Text("\(viewModel.summary.questionCount) Questions")
                     .font(.caption)
                     .foregroundColor(.secondary)
-                if viewModel.summary.progress == 1 {
+                if viewModel.assessmentCompleted {
                     HStack {
                         if viewModel.summary.passed {
                             Text("\(C.formatter.string(from: NSNumber(value: viewModel.summary.score)) ?? "0 %")")

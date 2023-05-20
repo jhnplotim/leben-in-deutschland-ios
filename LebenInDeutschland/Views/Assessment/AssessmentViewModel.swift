@@ -23,6 +23,7 @@ final class AssessmentViewModel: ObservableObject {
     @Published var timeRemaining: String = ""
     private var timeLeftInSeconds: TimeInterval
     var timer: Publishers.Autoconnect<Timer.TimerPublisher> = Timer.publish(every: 1, on: .main, in: .common).autoconnect()
+    @Published var assessmentCompleted = false
 
     private var currentQuestionIndex: Int
 
@@ -100,6 +101,11 @@ final class AssessmentViewModel: ObservableObject {
     }
 
     func updateCurrentQuestion(assessmentQuestion: AssessmentQuestion) {
+        if assessmentCompleted {
+            print("Assessment was already completed, answer ignored")
+            return
+        }
+        
         guard !assessmentQuestions[currentQuestionIndex].isAnswered else {
             print("Selection ignored because question was already answered")
             return
@@ -126,6 +132,10 @@ final class AssessmentViewModel: ObservableObject {
         summary.questionCountUnanswered = questionCount - answeredCount
         summary.questionCountAnsweredCorrectly = correctlyAnsweredCount
         summary.questionCountAnsweredWrongly = answeredCount - correctlyAnsweredCount
+        
+        if summary.progress == 1 {
+            assessmentCompleted = true
+        }
     }
     
     // TODO: Maintain result over various sessions / db
@@ -147,8 +157,11 @@ final class AssessmentViewModel: ObservableObject {
     }
     
     func updateTime() {
-        // TODO: Finish assessment when timer gets to zero
         timeLeftInSeconds = max(0, timeLeftInSeconds - 1)
+        
+        if timeLeftInSeconds == 0 && !assessmentCompleted {
+            assessmentCompleted = true
+        }
 
         let formatter = DateComponentsFormatter()
         formatter.allowedUnits = [.hour, .minute, .second]
