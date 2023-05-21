@@ -19,7 +19,7 @@ class ManagerAssembly: Assembly {
         container.register(AttemptManager.self) { _ in
             return AttemptManagerImpl()
         }
-        .inObjectScope(.container) // Singleton
+        .inObjectScope(.container) // Singleton TODO: remove the singleton once we figure out how to listen to changes in AppStorage / Use a different alternative e.g. UserDefaults backed by publishers
     }
 }
 
