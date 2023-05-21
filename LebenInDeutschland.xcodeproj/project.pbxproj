@@ -34,7 +34,7 @@
 		7E38B4AD29B600730059B9F2 /* StatisticsManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E38B4AC29B600730059B9F2 /* StatisticsManager.swift */; };
 		7E38B4AF29B601300059B9F2 /* ChosenAnswer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E38B4AE29B601300059B9F2 /* ChosenAnswer.swift */; };
 		7E38B4B129B601E60059B9F2 /* CompletedExam.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E38B4B029B601E60059B9F2 /* CompletedExam.swift */; };
-		7E38B4B329B76AFB0059B9F2 /* QuestionHistoryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E38B4B229B76AFB0059B9F2 /* QuestionHistoryView.swift */; };
+		7E38B4B329B76AFB0059B9F2 /* HistoryDotView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E38B4B229B76AFB0059B9F2 /* HistoryDotView.swift */; };
 		7E38B4B629B79F970059B9F2 /* SummaryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E38B4B529B79F970059B9F2 /* SummaryView.swift */; };
 		7E38B4B929BC5CDD0059B9F2 /* CircularProgressView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E38B4B829BC5CDD0059B9F2 /* CircularProgressView.swift */; };
 		7E38B4BD29C24AF00059B9F2 /* swiftgen.yml in Resources */ = {isa = PBXBuildFile; fileRef = 7E38B4BC29C24AEF0059B9F2 /* swiftgen.yml */; };
@@ -115,7 +115,7 @@
 		7E38B4AC29B600730059B9F2 /* StatisticsManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatisticsManager.swift; sourceTree = "<group>"; };
 		7E38B4AE29B601300059B9F2 /* ChosenAnswer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChosenAnswer.swift; sourceTree = "<group>"; };
 		7E38B4B029B601E60059B9F2 /* CompletedExam.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CompletedExam.swift; sourceTree = "<group>"; };
-		7E38B4B229B76AFB0059B9F2 /* QuestionHistoryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuestionHistoryView.swift; sourceTree = "<group>"; };
+		7E38B4B229B76AFB0059B9F2 /* HistoryDotView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HistoryDotView.swift; sourceTree = "<group>"; };
 		7E38B4B529B79F970059B9F2 /* SummaryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SummaryView.swift; sourceTree = "<group>"; };
 		7E38B4B829BC5CDD0059B9F2 /* CircularProgressView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CircularProgressView.swift; sourceTree = "<group>"; };
 		7E38B4BC29C24AEF0059B9F2 /* swiftgen.yml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.yaml; path = swiftgen.yml; sourceTree = SOURCE_ROOT; };
@@ -314,7 +314,7 @@
 			isa = PBXGroup;
 			children = (
 				7EDB84DE29ABD10D0043A793 /* QuestionView.swift */,
-				7E38B4B229B76AFB0059B9F2 /* QuestionHistoryView.swift */,
+				7E38B4B229B76AFB0059B9F2 /* HistoryDotView.swift */,
 				7E92E7122A1626DD00221B21 /* QuestionViewModel.swift */,
 			);
 			path = Questions;
@@ -751,7 +751,7 @@
 				7E92E7182A17AEFB00221B21 /* StateListService.swift in Sources */,
 				7E38B4B929BC5CDD0059B9F2 /* CircularProgressView.swift in Sources */,
 				7E38B49929B379090059B9F2 /* LandingPage.swift in Sources */,
-				7E38B4B329B76AFB0059B9F2 /* QuestionHistoryView.swift in Sources */,
+				7E38B4B329B76AFB0059B9F2 /* HistoryDotView.swift in Sources */,
 				7EDB84DF29ABD10D0043A793 /* QuestionView.swift in Sources */,
 				7EDB84D929AB9C350043A793 /* QuestionModel.swift in Sources */,
 				7E92E71C2A17B08100221B21 /* StateListViewModel.swift in Sources */,

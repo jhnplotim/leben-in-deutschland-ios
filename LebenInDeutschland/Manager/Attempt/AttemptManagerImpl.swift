@@ -87,7 +87,8 @@ extension AttemptManagerImpl {
                     questionCountAnsweredWrongly: answeredCount - correctlyAnsweredCount,
                     questionCountUnanswered: qnCount - answeredCount,
                     dateTimeStarted: saveTime, // TODO: Pass in the correct start time
-                    dateTimeEnded: saveTime
+                    dateTimeEnded: saveTime,
+                    passmarkUsed: GlobalC.PASSMARK
                 )
             ]
             

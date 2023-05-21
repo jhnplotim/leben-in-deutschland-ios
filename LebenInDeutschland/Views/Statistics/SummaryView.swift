@@ -23,7 +23,7 @@ struct SummaryView: View {
         NavigationView {
             if viewModel.examCount > 0 || viewModel.questionAttemptCount > 0 {
                 GaugeViews(
-                    examAttemptCount: viewModel.examCount,
+                    examHistory: viewModel.examState.orderedPassOrFails,
                     answeredQuestionCount: viewModel.questionAttemptCount,
                     items: [
                         // TODO: Use actual data
@@ -58,7 +58,7 @@ final class TestAttemptManagerImpl: AttemptManager {
         []
     }
     
-    var examState: AnyPublisher<ExamAttemptState, Never> = Just(ExamAttemptState.attempted(exams: [CompletedExam(id: 0, stateId: "", questionCount: 1, questionCountAnsweredCorrectly: 1, questionCountAnsweredWrongly: 1, questionCountUnanswered: 2, dateTimeStarted: Date(), dateTimeEnded: Date())])).eraseToAnyPublisher()
+    var examState: AnyPublisher<ExamAttemptState, Never> = Just(ExamAttemptState.attempted(exams: [CompletedExam(id: 0, stateId: "", questionCount: 1, questionCountAnsweredCorrectly: 1, questionCountAnsweredWrongly: 1, questionCountUnanswered: 2, dateTimeStarted: Date(), dateTimeEnded: Date(), passmarkUsed: GlobalC.PASSMARK)])).eraseToAnyPublisher()
     
     var questionAttemptState: AnyPublisher<QuestionAttemptState, Never> = Just(QuestionAttemptState.attempted(answers: [ChosenAnswer(id: 1, answerId: nil, wasCorrect: nil, questionId: 1, dateTimeAdded: Date(), examId: nil)])).eraseToAnyPublisher()
     

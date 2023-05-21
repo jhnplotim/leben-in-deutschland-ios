@@ -8,7 +8,8 @@
 import SwiftUI
 
 struct GaugeViews: View {
-    var examAttemptCount: Int
+    var examsToShow = 10
+    var examHistory: [Bool]
     var answeredQuestionCount: Int
     var items: [GaugeType]
 
@@ -28,10 +29,22 @@ struct GaugeViews: View {
                 .shadow(radius: 10)
             
             ScrollView {
-                Text("\(examAttemptCount) exam(s) attempt so far")
-                    .font(.body)
-                Text("\(answeredQuestionCount) non-unique question(s) attempted  so far")
-                    .font(.body)
+                Text("Exam attempt history")
+                    .font(.title)
+                    .padding(.bottom, 5)
+                if examHistory.isEmpty {
+                    Text("No exam done so far")
+                        .font(.caption)
+                } else {
+                    HistoryDotView(items: examHistory, count: examsToShow)
+                    Text("\(examHistory.count) exam(s) attempted so far")
+                        .font(.caption)
+                        .padding(.bottom)
+                }
+                
+                Text("Coverage & Readiness")
+                    .font(.title)
+                    .padding(.bottom, 5)
                 ForEach(items) { item in
                     VStack {
                         ZStack {
@@ -61,7 +74,7 @@ struct GaugeViews: View {
 
 struct GaugeViews_Previews: PreviewProvider {
     static var previews: some View {
-        GaugeViews(examAttemptCount: 3,
+        GaugeViews(examHistory: [false, true, false] ,
                    answeredQuestionCount: 10,
                    items: [.fitForTest(progress: 0.246), .lastAnsweredIncorrectly(progress: 0.557), .practicedAtleastOnce(progress: 0.45)])
     }

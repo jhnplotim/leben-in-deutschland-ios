@@ -13,13 +13,23 @@ enum ExamAttemptState {
     case attempted(exams: [CompletedExam])
     
     var count: Int {
+        exams.count
+    }
+    
+    var exams: [CompletedExam] {
         switch self {
         case .attempted(exams: let exams):
-            return exams.count
+            return exams
 
         default:
-            return 0
+            return []
         }
+    }
+    
+    var orderedPassOrFails: [Bool] {
+        // TODO: Consider only those exams for the selected state
+        let temp = exams.sorted()
+        return temp.map { $0.passed }
     }
 }
 
@@ -28,13 +38,7 @@ enum QuestionAttemptState {
     case attempted(answers: [ChosenAnswer])
     
     var count: Int {
-        switch self {
-        case .attempted(answers: let qns):
-            return qns.count
-
-        default:
-            return 0
-        }
+        answers.count
     }
     
     var answers: [ChosenAnswer] {

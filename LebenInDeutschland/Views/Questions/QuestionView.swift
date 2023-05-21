@@ -27,7 +27,7 @@ struct QuestionView: View {
         ScrollViewReader { proxy in
             ScrollView {
                 VStack(alignment: .leading, spacing: 30) {
-                    QuestionHistoryView(chosenAnswers: viewModel.getChosenAnswers())
+                    HistoryDotView(items: viewModel.getChosenAnswers())
                     Text("\(viewModel.position). \(viewModel.assessmentQuestion.question.title)")
                         .font(.headline)
 
