@@ -27,9 +27,9 @@ struct SummaryView: View {
                     answeredQuestionCount: viewModel.questionAttemptCount,
                     items: [
                         // TODO: Use actual data
-                        .fitForTest(progress: 0.673),
-                        .practicedAtleastOnce(progress: 0.553),
-                        .lastAnsweredIncorrectly(progress: 0.1)
+                        .practicedAtleastOnce(progress: viewModel.seenQuestionsPercentage.seenOnce),
+                        .practicedAtleastTwice(progress: viewModel.seenQuestionsPercentage.seenTwice),
+                        .practicedAtleastThrice(progress: viewModel.seenQuestionsPercentage.seenThrice)
                     ])
                 .navigationTitle("Summary")
                 .navigationBarTitleDisplayMode(.inline)
@@ -48,7 +48,7 @@ struct SummaryView: View {
 struct SummaryView_Previews: PreviewProvider {
     static var previews: some View {
         // TODO: Use TestAttemptManagerImpl
-        SummaryView(viewModel: .init(attemptMgr: TestAttemptManagerImpl()))
+        SummaryView(viewModel: .init(attemptMgr: TestAttemptManagerImpl(), questionService: QuestionServiceImpl()))
     }
 }
 

@@ -20,6 +20,8 @@ var percentageFormatter: NumberFormatter {
 enum GaugeType: Identifiable, Hashable {
     case fitForTest(progress: CGFloat)
     case practicedAtleastOnce(progress: CGFloat)
+    case practicedAtleastTwice(progress: CGFloat)
+    case practicedAtleastThrice(progress: CGFloat)
     case lastAnsweredIncorrectly(progress: CGFloat)
     
     var id: Self {
@@ -36,6 +38,12 @@ extension GaugeType {
         case .practicedAtleastOnce:
             return "Practiced atleast once"
             
+        case .practicedAtleastTwice:
+            return "Practiced atleast twice"
+            
+        case .practicedAtleastThrice:
+            return "Practiced atleast thrice"
+            
         case .lastAnsweredIncorrectly:
             return "Last answered incorrectly"
             
@@ -46,10 +54,16 @@ extension GaugeType {
         switch self {
             
         case .fitForTest:
-            return .green
+            return .indigo
             
         case .practicedAtleastOnce:
+            return .gray
+            
+        case .practicedAtleastTwice:
             return .orange
+            
+        case .practicedAtleastThrice:
+            return .green
             
         case .lastAnsweredIncorrectly:
             return .red
@@ -63,6 +77,12 @@ extension GaugeType {
             return progress.withinPercentageRange
             
         case .practicedAtleastOnce(progress: let progress):
+            return progress.withinPercentageRange
+            
+        case .practicedAtleastTwice(progress: let progress):
+            return progress.withinPercentageRange
+            
+        case .practicedAtleastThrice(progress: let progress):
             return progress.withinPercentageRange
             
         case .lastAnsweredIncorrectly(progress: let progress):

@@ -69,7 +69,7 @@ class ViewModelAssembly: Assembly {
         }
         
         container.register(SummaryViewModel.self) { r in
-            return SummaryViewModel(attemptMgr: r.resolve(AttemptManager.self)!)
+            return SummaryViewModel(attemptMgr: r.resolve(AttemptManager.self)!, questionService: r.resolve(QuestionService.self)!)
         }
         
         container.register(AssessmentViewModel.self) { r, assType in

@@ -36,6 +36,33 @@ enum QuestionAttemptState {
             return 0
         }
     }
+    
+    var answers: [ChosenAnswer] {
+        switch self {
+        case .attempted(answers: let answers):
+            return answers
+
+        default:
+            return []
+        }
+    }
+    
+    func getPercentage(totalQuestionCount: Double) -> QuestionSeenPercentage {
+        let answers = answers // TODO: Use only attempts for the selected state + general questions
+        guard !answers.isEmpty else {
+            return .init(seenOnce: 0, seenTwice: 0, seenThrice: 0)
+        }
+        
+        let attemptedAtleastOnce = Dictionary(grouping: answers, by: { $0.questionId })
+        let attemptedAtleastTwice = attemptedAtleastOnce.filter { $0.value.count >= 2 }
+        let attemptedAtleastThrice = attemptedAtleastTwice.filter { $0.value.count >= 3}
+              
+        return QuestionSeenPercentage(
+            seenOnce: Double(attemptedAtleastOnce.count) / totalQuestionCount,
+            seenTwice: Double(attemptedAtleastTwice.count) / totalQuestionCount,
+            seenThrice: Double(attemptedAtleastThrice.count) / totalQuestionCount)
+        
+    }
 }
 
 protocol AttemptManager {
@@ -47,4 +74,10 @@ protocol AttemptManager {
     
     func getChosenAnswers(for questionId: Int) -> [ChosenAnswer]
 
+}
+
+struct QuestionSeenPercentage {
+    let seenOnce: Double
+    let seenTwice: Double
+    let seenThrice: Double
 }

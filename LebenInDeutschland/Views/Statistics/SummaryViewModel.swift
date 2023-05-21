@@ -10,15 +10,20 @@ import Combine
 
 final class SummaryViewModel: ObservableObject {
     
+    @Published var seenQuestionsPercentage: QuestionSeenPercentage = .init(seenOnce: 0, seenTwice: 0, seenThrice: 0)
+    
     @Published var examState: ExamAttemptState = .noneAttempted
     
     @Published var questionAttemptState: QuestionAttemptState = .noneAttempted
+    
+    private var questionService: QuestionService
     
     private var attemptMgr: AttemptManager
     
     private var cancellables = Set<AnyCancellable>()
     
-    init(attemptMgr: AttemptManager) {
+    init(attemptMgr: AttemptManager, questionService: QuestionService) {
+        self.questionService = questionService
         self.attemptMgr = attemptMgr
         self.attemptMgr.examState.sink(receiveValue: { [weak self] state in
             self?.examState = state
@@ -26,6 +31,7 @@ final class SummaryViewModel: ObservableObject {
         
         self.attemptMgr.questionAttemptState.sink(receiveValue: { [weak self] state in
             self?.questionAttemptState = state
+            self?.seenQuestionsPercentage = state.getPercentage(totalQuestionCount: Double(questionService.getAllQuestions().count))  // TODO: Use total of only questions for the selected state + general questions
         }).store(in: &cancellables)
     }
 }
