@@ -24,13 +24,14 @@ struct SummaryView: View {
             if viewModel.examCount > 0 || viewModel.questionAttemptCount > 0 {
                 GaugeViews(
                     examHistory: viewModel.examState.orderedPassOrFails,
-                    answeredQuestionCount: viewModel.questionAttemptCount,
                     items: [
-                        // TODO: Use actual data
                         .practicedAtleastOnce(progress: viewModel.seenQuestionsPercentage.seenOnce),
                         .practicedAtleastTwice(progress: viewModel.seenQuestionsPercentage.seenTwice),
                         .practicedAtleastThrice(progress: viewModel.seenQuestionsPercentage.seenThrice)
-                    ])
+                    ],
+                    failedOnce: viewModel.seenQuestionsPercentage.questionsRecentlyFailedOnce,
+                    failedTwice: viewModel.seenQuestionsPercentage.questionsRecentlyFailedTwice,
+                    failedThrice: viewModel.seenQuestionsPercentage.questionsRecentlyFailedThrice)
                 .navigationTitle("Summary")
                 .navigationBarTitleDisplayMode(.inline)
 
@@ -47,7 +48,6 @@ struct SummaryView: View {
 
 struct SummaryView_Previews: PreviewProvider {
     static var previews: some View {
-        // TODO: Use TestAttemptManagerImpl
         SummaryView(viewModel: .init(attemptMgr: TestAttemptManagerImpl(), questionService: QuestionServiceImpl()))
     }
 }

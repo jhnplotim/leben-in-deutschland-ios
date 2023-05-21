@@ -10,8 +10,10 @@ import SwiftUI
 struct GaugeViews: View {
     var examsToShow = 10
     var examHistory: [Bool]
-    var answeredQuestionCount: Int
     var items: [GaugeType]
+    var failedOnce: [Int]
+    var failedTwice: [Int]
+    var failedThrice: [Int]
 
     static var formatter: NumberFormatter {
         let fm = NumberFormatter()
@@ -65,6 +67,16 @@ struct GaugeViews: View {
                         }
                     }
                 }
+                
+                Text("Failure overview")
+                    .font(.title)
+                    .padding(.bottom, 5)
+                
+                VStack {
+                    Text("Recently failed once (\(failedOnce.count))") // TODO: Use actual data
+                    Text("Recently failed twice (\(failedTwice.count))") // TODO: Use actual data
+                    Text("Recently failed thrice (\(failedThrice.count))") // TODO: Use actual data
+                }.font(.body)
             }
             .padding()
         }
@@ -74,8 +86,10 @@ struct GaugeViews: View {
 
 struct GaugeViews_Previews: PreviewProvider {
     static var previews: some View {
-        GaugeViews(examHistory: [false, true, false] ,
-                   answeredQuestionCount: 10,
-                   items: [.fitForTest(progress: 0.246), .lastAnsweredIncorrectly(progress: 0.557), .practicedAtleastOnce(progress: 0.45)])
+        GaugeViews(examHistory: [false, true, false],
+                   items: [.fitForTest(progress: 0.246), .lastAnsweredIncorrectly(progress: 0.557), .practicedAtleastOnce(progress: 0.45)],
+        failedOnce: [],
+        failedTwice: [],
+        failedThrice: [])
     }
 }

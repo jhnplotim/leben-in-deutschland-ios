@@ -10,7 +10,13 @@ import Combine
 
 final class SummaryViewModel: ObservableObject {
     
-    @Published var seenQuestionsPercentage: QuestionSeenPercentage = .init(seenOnce: 0, seenTwice: 0, seenThrice: 0)
+    @Published var seenQuestionsPercentage: QuestionSeenPercentage = .init(
+        seenOnce: 0,
+        seenTwice: 0,
+        seenThrice: 0,
+        questionsRecentlyFailedOnce: [],
+        questionsRecentlyFailedTwice: [],
+        questionsRecentlyFailedThrice: [])
     
     @Published var examState: ExamAttemptState = .noneAttempted
     
