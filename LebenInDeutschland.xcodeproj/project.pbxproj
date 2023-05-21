@@ -34,7 +34,7 @@
 		7E38B4AD29B600730059B9F2 /* StatisticsManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E38B4AC29B600730059B9F2 /* StatisticsManager.swift */; };
 		7E38B4AF29B601300059B9F2 /* ChosenAnswer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E38B4AE29B601300059B9F2 /* ChosenAnswer.swift */; };
 		7E38B4B129B601E60059B9F2 /* CompletedExam.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E38B4B029B601E60059B9F2 /* CompletedExam.swift */; };
-		7E38B4B329B76AFB0059B9F2 /* QuestionHistoryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E38B4B229B76AFB0059B9F2 /* QuestionHistoryView.swift */; };
+		7E38B4B329B76AFB0059B9F2 /* HistoryDotView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E38B4B229B76AFB0059B9F2 /* HistoryDotView.swift */; };
 		7E38B4B629B79F970059B9F2 /* SummaryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E38B4B529B79F970059B9F2 /* SummaryView.swift */; };
 		7E38B4B929BC5CDD0059B9F2 /* CircularProgressView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E38B4B829BC5CDD0059B9F2 /* CircularProgressView.swift */; };
 		7E38B4BD29C24AF00059B9F2 /* swiftgen.yml in Resources */ = {isa = PBXBuildFile; fileRef = 7E38B4BC29C24AEF0059B9F2 /* swiftgen.yml */; };
@@ -71,6 +71,7 @@
 		7E92E71E2A17B28A00221B21 /* StateDetailViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E92E71D2A17B28A00221B21 /* StateDetailViewModel.swift */; };
 		7EC27EB82A17D1360012B641 /* FavoritesViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7EC27EB72A17D1360012B641 /* FavoritesViewModel.swift */; };
 		7EC27EBA2A17D4880012B641 /* FavoritesView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7EC27EB92A17D4880012B641 /* FavoritesView.swift */; };
+		7EC27EC52A1A132E0012B641 /* AppStorage+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7EC27EC42A1A132E0012B641 /* AppStorage+.swift */; };
 		7EDB84D929AB9C350043A793 /* QuestionModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7EDB84D829AB9C350043A793 /* QuestionModel.swift */; };
 		7EDB84DB29AB9CD20043A793 /* AnswerModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7EDB84DA29AB9CD20043A793 /* AnswerModel.swift */; };
 		7EDB84DD29ABA1F50043A793 /* questions.json in Resources */ = {isa = PBXBuildFile; fileRef = 7EDB84DC29ABA1F50043A793 /* questions.json */; };
@@ -114,7 +115,7 @@
 		7E38B4AC29B600730059B9F2 /* StatisticsManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatisticsManager.swift; sourceTree = "<group>"; };
 		7E38B4AE29B601300059B9F2 /* ChosenAnswer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChosenAnswer.swift; sourceTree = "<group>"; };
 		7E38B4B029B601E60059B9F2 /* CompletedExam.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CompletedExam.swift; sourceTree = "<group>"; };
-		7E38B4B229B76AFB0059B9F2 /* QuestionHistoryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuestionHistoryView.swift; sourceTree = "<group>"; };
+		7E38B4B229B76AFB0059B9F2 /* HistoryDotView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HistoryDotView.swift; sourceTree = "<group>"; };
 		7E38B4B529B79F970059B9F2 /* SummaryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SummaryView.swift; sourceTree = "<group>"; };
 		7E38B4B829BC5CDD0059B9F2 /* CircularProgressView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CircularProgressView.swift; sourceTree = "<group>"; };
 		7E38B4BC29C24AEF0059B9F2 /* swiftgen.yml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.yaml; path = swiftgen.yml; sourceTree = SOURCE_ROOT; };
@@ -152,6 +153,7 @@
 		7E92E71D2A17B28A00221B21 /* StateDetailViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StateDetailViewModel.swift; sourceTree = "<group>"; };
 		7EC27EB72A17D1360012B641 /* FavoritesViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoritesViewModel.swift; sourceTree = "<group>"; };
 		7EC27EB92A17D4880012B641 /* FavoritesView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoritesView.swift; sourceTree = "<group>"; };
+		7EC27EC42A1A132E0012B641 /* AppStorage+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "AppStorage+.swift"; sourceTree = "<group>"; };
 		7EDB84D829AB9C350043A793 /* QuestionModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuestionModel.swift; sourceTree = "<group>"; };
 		7EDB84DA29AB9CD20043A793 /* AnswerModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnswerModel.swift; sourceTree = "<group>"; };
 		7EDB84DC29ABA1F50043A793 /* questions.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = questions.json; sourceTree = "<group>"; };
@@ -312,7 +314,7 @@
 			isa = PBXGroup;
 			children = (
 				7EDB84DE29ABD10D0043A793 /* QuestionView.swift */,
-				7E38B4B229B76AFB0059B9F2 /* QuestionHistoryView.swift */,
+				7E38B4B229B76AFB0059B9F2 /* HistoryDotView.swift */,
 				7E92E7122A1626DD00221B21 /* QuestionViewModel.swift */,
 			);
 			path = Questions;
@@ -448,6 +450,7 @@
 		7E56D93C29C258C500AFB6B0 /* Application */ = {
 			isa = PBXGroup;
 			children = (
+				7EC27EC32A1A13160012B641 /* Extensions */,
 				7E92E71F2A17C39800221B21 /* Helpers */,
 				7E8746182A14D32E00B61D16 /* Info.plist */,
 				7E56D93D29C258E000AFB6B0 /* Constants.swift */,
@@ -543,6 +546,14 @@
 				7EC27EB92A17D4880012B641 /* FavoritesView.swift */,
 			);
 			path = Favorites;
+			sourceTree = "<group>";
+		};
+		7EC27EC32A1A13160012B641 /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				7EC27EC42A1A132E0012B641 /* AppStorage+.swift */,
+			);
+			path = Extensions;
 			sourceTree = "<group>";
 		};
 		DA1426F929B2348E00846A29 /* Lottie */ = {
@@ -711,6 +722,7 @@
 				7E92E70D2A160C9900221B21 /* AttemptManager.swift in Sources */,
 				DA66E60929AE6CBA00B2B6B0 /* RadioButtonGroup.swift in Sources */,
 				7E92E70A2A15F31300221B21 /* ObjectScope+.swift in Sources */,
+				7EC27EC52A1A132E0012B641 /* AppStorage+.swift in Sources */,
 				DA66E60529AE698D00B2B6B0 /* ColorInvert.swift in Sources */,
 				7E38B4B129B601E60059B9F2 /* CompletedExam.swift in Sources */,
 				7E92E7152A179F9600221B21 /* AssessmentSummary.swift in Sources */,
@@ -739,7 +751,7 @@
 				7E92E7182A17AEFB00221B21 /* StateListService.swift in Sources */,
 				7E38B4B929BC5CDD0059B9F2 /* CircularProgressView.swift in Sources */,
 				7E38B49929B379090059B9F2 /* LandingPage.swift in Sources */,
-				7E38B4B329B76AFB0059B9F2 /* QuestionHistoryView.swift in Sources */,
+				7E38B4B329B76AFB0059B9F2 /* HistoryDotView.swift in Sources */,
 				7EDB84DF29ABD10D0043A793 /* QuestionView.swift in Sources */,
 				7EDB84D929AB9C350043A793 /* QuestionModel.swift in Sources */,
 				7E92E71C2A17B08100221B21 /* StateListViewModel.swift in Sources */,

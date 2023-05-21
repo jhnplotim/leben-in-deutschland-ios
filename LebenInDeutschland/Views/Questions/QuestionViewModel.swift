@@ -31,8 +31,7 @@ final class QuestionViewModel {
     }
     #endif
     
-    func getChosenAnswers() -> [ChosenAnswer] {
-        // TODO: Test this
-        attemptMgrFactory().getChosenAnswers(for: assessmentQuestion.question.id)
+    func getChosenAnswers() -> [Bool] {
+        attemptMgrFactory().getChosenAnswers(for: assessmentQuestion.question.id).sorted().map { $0.wasCorrect ?? false }
     }
 }

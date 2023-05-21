@@ -7,7 +7,11 @@
 
 import Foundation
 
-struct CompletedExam {
+struct CompletedExam: Identifiable, Hashable, Equatable, Codable, Comparable {
+    static func < (lhs: CompletedExam, rhs: CompletedExam) -> Bool {
+        lhs.dateTimeEnded > rhs.dateTimeEnded
+    }
+    
     let id: Int
     let stateId: String
     let questionCount: Int
@@ -16,4 +20,14 @@ struct CompletedExam {
     let questionCountUnanswered: Int
     let dateTimeStarted: Date
     let dateTimeEnded: Date
+    let passmarkUsed: Double
+}
+
+extension CompletedExam {
+    var score: CGFloat {
+        Double(questionCountAnsweredCorrectly) / Double(questionCount)
+    }
+    var passed: Bool {
+        score >= passmarkUsed
+    }
 }

@@ -8,9 +8,12 @@
 import SwiftUI
 
 struct GaugeViews: View {
-    var examAttemptCount: Int
-    var answeredQuestionCount: Int
+    var examsToShow = 10
+    var examHistory: [Bool]
     var items: [GaugeType]
+    var failedOnce: [Int]
+    var failedTwice: [Int]
+    var failedThrice: [Int]
 
     static var formatter: NumberFormatter {
         let fm = NumberFormatter()
@@ -28,10 +31,22 @@ struct GaugeViews: View {
                 .shadow(radius: 10)
             
             ScrollView {
-                Text("\(examAttemptCount) exam(s) attempt so far")
-                    .font(.body)
-                Text("\(answeredQuestionCount) non-unique question(s) attempted  so far")
-                    .font(.body)
+                Text("Exam attempt history")
+                    .font(.title)
+                    .padding(.bottom, 5)
+                if examHistory.isEmpty {
+                    Text("No exam done so far")
+                        .font(.caption)
+                } else {
+                    HistoryDotView(items: examHistory, count: examsToShow)
+                    Text("\(examHistory.count) exam(s) attempted so far")
+                        .font(.caption)
+                        .padding(.bottom)
+                }
+                
+                Text("Coverage & Readiness")
+                    .font(.title)
+                    .padding(.bottom, 5)
                 ForEach(items) { item in
                     VStack {
                         ZStack {
@@ -52,6 +67,16 @@ struct GaugeViews: View {
                         }
                     }
                 }
+                
+                Text("Failure overview")
+                    .font(.title)
+                    .padding(.bottom, 5)
+                
+                VStack {
+                    Text("Recently failed once (\(failedOnce.count))") // TODO: Use actual data
+                    Text("Recently failed twice (\(failedTwice.count))") // TODO: Use actual data
+                    Text("Recently failed thrice (\(failedThrice.count))") // TODO: Use actual data
+                }.font(.body)
             }
             .padding()
         }
@@ -61,8 +86,10 @@ struct GaugeViews: View {
 
 struct GaugeViews_Previews: PreviewProvider {
     static var previews: some View {
-        GaugeViews(examAttemptCount: 3,
-                   answeredQuestionCount: 10,
-                   items: [.fitForTest(progress: 0.246), .lastAnsweredIncorrectly(progress: 0.557), .practicedAtleastOnce(progress: 0.45)])
+        GaugeViews(examHistory: [false, true, false],
+                   items: [.fitForTest(progress: 0.246), .lastAnsweredIncorrectly(progress: 0.557), .practicedAtleastOnce(progress: 0.45)],
+        failedOnce: [],
+        failedTwice: [],
+        failedThrice: [])
     }
 }

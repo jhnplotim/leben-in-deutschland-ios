@@ -87,7 +87,7 @@ struct LandingPage_Previews: PreviewProvider {
             // Pass in test implementation of ViewModel if needed
             CategoryListViewModel(CategoryServiceImpl())
         } summaryVMFactory: {
-            SummaryViewModel(attemptMgr: TestAttemptManagerImpl())
+            SummaryViewModel(attemptMgr: TestAttemptManagerImpl(), questionService: QuestionServiceImpl())
         } stateListVMFactory: {
             StateListViewModel(StateListServiceImpl())
         } favoritesVMFactory: {

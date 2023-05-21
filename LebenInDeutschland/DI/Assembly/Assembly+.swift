@@ -19,7 +19,7 @@ class ManagerAssembly: Assembly {
         container.register(AttemptManager.self) { _ in
             return AttemptManagerImpl()
         }
-        .inObjectScope(.container) // Singleton
+        .inObjectScope(.container) // Singleton TODO: remove the singleton once we figure out how to listen to changes in AppStorage / Use a different alternative e.g. UserDefaults backed by publishers
     }
 }
 
@@ -69,7 +69,7 @@ class ViewModelAssembly: Assembly {
         }
         
         container.register(SummaryViewModel.self) { r in
-            return SummaryViewModel(attemptMgr: r.resolve(AttemptManager.self)!)
+            return SummaryViewModel(attemptMgr: r.resolve(AttemptManager.self)!, questionService: r.resolve(QuestionService.self)!)
         }
         
         container.register(AssessmentViewModel.self) { r, assType in
