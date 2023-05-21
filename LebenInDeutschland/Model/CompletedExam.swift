@@ -7,7 +7,7 @@
 
 import Foundation
 
-struct CompletedExam {
+struct CompletedExam: Identifiable, Hashable, Equatable, Codable {
     let id: Int
     let stateId: String
     let questionCount: Int

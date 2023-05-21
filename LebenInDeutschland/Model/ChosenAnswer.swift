@@ -7,7 +7,7 @@
 
 import Foundation
 
-struct ChosenAnswer: Identifiable, Hashable, Equatable {
+struct ChosenAnswer: Identifiable, Hashable, Equatable, Codable {
     let id: Int // TODO: Consider using UUID here
     let answerId: String?
     let wasCorrect: Bool?

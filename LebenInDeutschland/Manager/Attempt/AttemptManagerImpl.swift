@@ -11,8 +11,10 @@ import SwiftUI
 
 final class AttemptManagerImpl: AttemptManager {
     
+    @AppStorage("LebenInDeutschland.chosenAnswers")
     private var chosenAnswers: [ChosenAnswer] = []
     
+    @AppStorage("LebenInDeutschland.completedExams")
     private var examsDone: [CompletedExam] = []
     
     // TODO: Manage this differently e.g. UUID
@@ -23,12 +25,21 @@ final class AttemptManagerImpl: AttemptManager {
     @AppStorage("LebenInDeutschland.examCounter")
     private var exCounter: Int = 0
     
-    private var completedExamsSubject = PassthroughSubject<ExamAttemptState, Never>()
-    private var chosenAnswersSubject = PassthroughSubject<QuestionAttemptState, Never>()
+    private var completedExamsSubject = CurrentValueSubject<ExamAttemptState, Never>(.noneAttempted)
+    private var chosenAnswersSubject = CurrentValueSubject<QuestionAttemptState, Never>(.noneAttempted)
     
     lazy var examState: AnyPublisher<ExamAttemptState, Never> = completedExamsSubject.share().eraseToAnyPublisher()
     
     lazy var questionAttemptState: AnyPublisher<QuestionAttemptState, Never> = chosenAnswersSubject.share().eraseToAnyPublisher()
+    
+    init() {
+        if !examsDone.isEmpty {
+            completedExamsSubject.value = .attempted(exams: examsDone)
+        }
+        if !chosenAnswers.isEmpty {
+            chosenAnswersSubject.value = .attempted(answers: chosenAnswers)
+        }
+    }
     
     func saveAttempt(questions: [AssessmentQuestion], for assessment: AssessmentType) -> Bool {
         saveQuestionAttempts(questions: questions)
