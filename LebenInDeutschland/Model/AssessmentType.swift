@@ -15,6 +15,7 @@ enum AssessmentType: Equatable, Hashable, Identifiable {
     case category(categoryId: Int)
     case bookMark(bookMarkId: String)
     case favorite
+    case questions(qnIds: [Int], title: String)
 
     var id: Self {
         self
@@ -41,6 +42,10 @@ extension AssessmentType {
             
         case .favorite:
             return "Favorites Assessment"
+            
+        case .questions(_, title: let title):
+            return title + "Assessment"
+            
         }
     }
     

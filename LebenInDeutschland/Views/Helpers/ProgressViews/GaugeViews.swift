@@ -8,12 +8,12 @@
 import SwiftUI
 
 struct GaugeViews: View {
-    var examsToShow = 10
     var examHistory: [Bool]
     var items: [GaugeType]
     var failedOnce: [Int]
     var failedTwice: [Int]
     var failedThrice: [Int]
+    var examsToShow = 10
 
     static var formatter: NumberFormatter {
         let fm = NumberFormatter()

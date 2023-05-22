@@ -123,8 +123,8 @@ struct AssessmentView: View {
 
     @ViewBuilder
     private func getQuestionView(position: Int, question: AssessmentQuestion) -> some View {
-        QuestionView(
-            viewModel: .init(curPos: position, qn: question),
+        QuestionDetail(
+            model: .init(curPos: position, qn: question),
             animationSize: 200
         ) { answered in
             viewModel.updateCurrentQuestion(assessmentQuestion: answered)

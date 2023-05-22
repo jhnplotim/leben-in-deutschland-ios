@@ -78,7 +78,14 @@ final class QuestionServiceImpl: QuestionService {
 
         case .favorite:
             return shuffledQuestions.filter { $0.isFavorite ?? false }.map { $0.assessmentQuestionUnanswered }
+            
+        case .questions(qnIds: let ids, _):
+            return allQuestions.filter { ids.contains($0.id) }.map { $0.assessmentQuestionUnanswered }
         }
+    }
+    
+    func getQuestions(by ids: [Int]) -> [QuestionModel] {
+        allQuestions.filter { qn in ids.contains(qn.id)}
     }
 }
 

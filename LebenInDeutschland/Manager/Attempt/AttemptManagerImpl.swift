@@ -49,7 +49,7 @@ final class AttemptManagerImpl: AttemptManager {
     
     func getChosenAnswers(for questionId: Int) -> [ChosenAnswer] {
         // TODO: Make decision on ID, int or string (UUID)
-        chosenAnswers.filter { $0.questionId == questionId }
+        chosenAnswers.filter { $0.questionId == questionId } // TODO: Consider sorting at this point and then removing sorting from all other places where this method is used
     }
     
 }

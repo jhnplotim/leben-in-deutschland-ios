@@ -12,8 +12,7 @@ struct HistoryDotView: View {
     var count: Int = 5
 
     var body: some View {
-        HStack(alignment: .center) {
-            Spacer()
+        HStack {
             ForEach(0..<count) { i in
                 if i < items.count {
                     if items[i] {
@@ -28,7 +27,6 @@ struct HistoryDotView: View {
                         .foregroundColor(.gray)
                 }
             }
-            Spacer()
         }
     }
 }

@@ -1,5 +1,5 @@
 //
-//  QuestionViewModel.swift
+//  QuestionDetailModel.swift
 //  LebenInDeutschland
 //
 //  Created by John Paul Otim on 18.05.23.
@@ -7,7 +7,7 @@
 
 import SwiftUI
 
-final class QuestionViewModel {
+final class QuestionDetailModel {
     
     var position: Int
     
