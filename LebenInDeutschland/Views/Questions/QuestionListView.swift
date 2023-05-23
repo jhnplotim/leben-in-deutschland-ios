@@ -34,18 +34,24 @@ struct QuestionListView: View {
                 }
             }
             .navigationTitle(viewModel.pageTitle)
+            .navigationBarTitleDisplayMode(.inline)
             .onAppear(perform: viewModel.fetchQuestions)
             .sheet(item: $assessmentType) { value in
-                AssessmentView(viewModel: assessVMFactory(value))
+                AssessmentView(viewModel: assessVMFactory(value)) {
+                    viewModel.fetchQuestions()
+                }
             }
         }
     }
 }
 
 struct QuestionListView_Previews: PreviewProvider {
+    static var attemptMgr = AttemptManagerImpl()
+    static var questionSrvc = QuestionServiceImpl()
+    
     static var previews: some View {
-        QuestionListView(viewModel: .init(questionService: QuestionServiceImpl(), attemptManager: AttemptManagerImpl(), [1, 2])) { assType in
-            AssessmentViewModel(attemptManager: AttemptManagerImpl(), assessmentType: assType, questionService: QuestionServiceImpl())
+        QuestionListView(viewModel: .init(questionService: questionSrvc, attemptManager: attemptMgr, [1, 2])) { assType in
+            AssessmentViewModel(attemptManager: attemptMgr, assessmentType: assType, questionService: questionSrvc)
             
         }
     }

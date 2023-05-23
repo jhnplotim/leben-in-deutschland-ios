@@ -39,6 +39,9 @@
 		7E38B4B929BC5CDD0059B9F2 /* CircularProgressView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E38B4B829BC5CDD0059B9F2 /* CircularProgressView.swift */; };
 		7E38B4BD29C24AF00059B9F2 /* swiftgen.yml in Resources */ = {isa = PBXBuildFile; fileRef = 7E38B4BC29C24AEF0059B9F2 /* swiftgen.yml */; };
 		7E38B4BF29C24BA40059B9F2 /* .swiftlint.yml in Resources */ = {isa = PBXBuildFile; fileRef = 7E38B4BE29C24BA40059B9F2 /* .swiftlint.yml */; };
+		7E39F65E2A1CD56F004144CB /* HomePageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E39F65D2A1CD56F004144CB /* HomePageView.swift */; };
+		7E39F6602A1CD57D004144CB /* HomePageViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E39F65F2A1CD57D004144CB /* HomePageViewModel.swift */; };
+		7E39F6622A1CF7B2004144CB /* AssessmentRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E39F6612A1CF7B2004144CB /* AssessmentRow.swift */; };
 		7E3B0EFF29AB70F8004219B7 /* LebenInDeutschlandApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E3B0EFE29AB70F8004219B7 /* LebenInDeutschlandApp.swift */; };
 		7E3B0F0129AB70F8004219B7 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E3B0F0029AB70F8004219B7 /* ContentView.swift */; };
 		7E3B0F0329AB70F9004219B7 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 7E3B0F0229AB70F9004219B7 /* Assets.xcassets */; };
@@ -124,6 +127,9 @@
 		7E38B4B829BC5CDD0059B9F2 /* CircularProgressView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CircularProgressView.swift; sourceTree = "<group>"; };
 		7E38B4BC29C24AEF0059B9F2 /* swiftgen.yml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.yaml; path = swiftgen.yml; sourceTree = SOURCE_ROOT; };
 		7E38B4BE29C24BA40059B9F2 /* .swiftlint.yml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.yaml; path = .swiftlint.yml; sourceTree = SOURCE_ROOT; };
+		7E39F65D2A1CD56F004144CB /* HomePageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomePageView.swift; sourceTree = "<group>"; };
+		7E39F65F2A1CD57D004144CB /* HomePageViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomePageViewModel.swift; sourceTree = "<group>"; };
+		7E39F6612A1CF7B2004144CB /* AssessmentRow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AssessmentRow.swift; sourceTree = "<group>"; };
 		7E3B0EFB29AB70F8004219B7 /* LebenInDeutschland.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = LebenInDeutschland.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		7E3B0EFE29AB70F8004219B7 /* LebenInDeutschlandApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LebenInDeutschlandApp.swift; sourceTree = "<group>"; };
 		7E3B0F0029AB70F8004219B7 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -219,6 +225,7 @@
 		7E1F381529AB733200F60435 /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				7E39F65C2A1CD55A004144CB /* Home */,
 				7E7B86312A1BBE7000B7A053 /* Questions */,
 				7EC27EB62A17D11C0012B641 /* Favorites */,
 				7E8B8EF12A14CD3300EC350A /* Categories */,
@@ -406,6 +413,16 @@
 				7E56D93929C2549600AFB6B0 /* Localizable.swift */,
 			);
 			path = Generated;
+			sourceTree = "<group>";
+		};
+		7E39F65C2A1CD55A004144CB /* Home */ = {
+			isa = PBXGroup;
+			children = (
+				7E39F65D2A1CD56F004144CB /* HomePageView.swift */,
+				7E39F65F2A1CD57D004144CB /* HomePageViewModel.swift */,
+				7E39F6612A1CF7B2004144CB /* AssessmentRow.swift */,
+			);
+			path = Home;
 			sourceTree = "<group>";
 		};
 		7E3B0EF229AB70F8004219B7 = {
@@ -751,11 +768,13 @@
 				7E19A01F2A12752A00D46BB1 /* CategoryModel.swift in Sources */,
 				7E38B49429B349390059B9F2 /* QuestionModel+.swift in Sources */,
 				7E38B4AD29B600730059B9F2 /* StatisticsManager.swift in Sources */,
+				7E39F6622A1CF7B2004144CB /* AssessmentRow.swift in Sources */,
 				7E38B4A129B460030059B9F2 /* LaunchScreenStateManager.swift in Sources */,
 				7E92E70F2A160CF600221B21 /* AttemptManagerImpl.swift in Sources */,
 				7E38B49B29B3BE0A0059B9F2 /* AssessmentType.swift in Sources */,
 				7E3B0EFF29AB70F8004219B7 /* LebenInDeutschlandApp.swift in Sources */,
 				7E1F382829AB85BF00F60435 /* StateRow.swift in Sources */,
+				7E39F6602A1CD57D004144CB /* HomePageViewModel.swift in Sources */,
 				7E7B86392A1BC93500B7A053 /* QuestionRowModel+.swift in Sources */,
 				7E19A0252A1276FB00D46BB1 /* CategoryServiceImpl.swift in Sources */,
 				7E8B8EFA2A14CD3300EC350A /* CategoryListViewModel.swift in Sources */,
@@ -777,6 +796,7 @@
 				7E38B4B329B76AFB0059B9F2 /* HistoryDotView.swift in Sources */,
 				7EDB84DF29ABD10D0043A793 /* QuestionDetail.swift in Sources */,
 				7EDB84D929AB9C350043A793 /* QuestionModel.swift in Sources */,
+				7E39F65E2A1CD56F004144CB /* HomePageView.swift in Sources */,
 				7E92E71C2A17B08100221B21 /* StateListViewModel.swift in Sources */,
 				7E1F382029AB812500F60435 /* StateList.swift in Sources */,
 				7E38B48F29B337AC0059B9F2 /* AssessmentViewModel.swift in Sources */,

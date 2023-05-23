@@ -94,5 +94,10 @@ class ViewModelAssembly: Assembly {
                                   qnIds,
                                   displayTitle: displayTitle)
         }
+        
+        container.register(HomePageViewModel.self) { r in
+            HomePageViewModel(r.resolve(CategoryService.self)!, r.resolve(QuestionService.self)!)
+            
+        }
     }
 }

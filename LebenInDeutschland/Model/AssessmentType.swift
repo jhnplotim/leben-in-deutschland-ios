@@ -44,7 +44,7 @@ extension AssessmentType {
             return "Favorites Assessment"
             
         case .questions(_, title: let title):
-            return title + "Assessment"
+            return title + " Assessment"
             
         }
     }

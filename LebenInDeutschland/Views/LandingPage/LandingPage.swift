@@ -9,7 +9,7 @@ import SwiftUI
 
 struct LandingPage: View {
 
-    @State private var selection: Tab = .states
+    @State private var selection: Tab = .home
     
     var categoryListVMFactory: () -> CategoryListViewModel = {
         // swiftlint:disable force_unwrapping
@@ -30,8 +30,13 @@ struct LandingPage: View {
         // swiftlint:disable force_unwrapping
         DIResolver.shared.resolve(FavoritesViewModel.self)!
     }
+    
+    var homePageVMFactory: () -> HomePageViewModel = {
+        DIResolver.shared.resolve(HomePageViewModel.self)!
+    }
 
     enum Tab {
+        case home
         case states
         case summary
         case categories
@@ -40,6 +45,7 @@ struct LandingPage: View {
     }
     enum C {
         // TODO: Replace icons with more representative ones
+        static let homeIconName = "house"
         static let statesIconName = "list.bullet"
         static let summaryIconName = "note"
         static let categoryIconName = "square.stack"
@@ -49,6 +55,12 @@ struct LandingPage: View {
 
     var body: some View {
         TabView(selection: $selection) {
+            HomePageView(viewModel: homePageVMFactory())
+                .tabItem {
+                    Label("Home", systemImage: C.homeIconName)
+                }
+                .tag(Tab.home)
+            
             StateList(viewModel: stateListVMFactory())
                 .tabItem {
                     Label("States", systemImage: C.statesIconName)

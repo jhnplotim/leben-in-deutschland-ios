@@ -32,6 +32,6 @@ final class QuestionDetailModel {
     #endif
     
     func getChosenAnswers() -> [Bool] {
-        attemptMgrFactory().getChosenAnswers(for: assessmentQuestion.question.id).sorted().map { $0.wasCorrect ?? false }
+        attemptMgrFactory().getChosenAnswers(for: assessmentQuestion.question.id).map { $0.wasCorrect ?? false }
     }
 }

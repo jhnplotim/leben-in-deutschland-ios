@@ -11,6 +11,7 @@ struct AssessmentView: View {
 
     @StateObject var viewModel: AssessmentViewModel
     @Environment(\.dismiss) var dismiss
+    var onClose: (() -> Void)?
 
     enum C {
         static let navigationTitle = "Exam / Assessment"
@@ -118,6 +119,7 @@ struct AssessmentView: View {
         }
         .onDisappear {
             viewModel.deInitialise()
+            onClose?()
         }
     }
 
