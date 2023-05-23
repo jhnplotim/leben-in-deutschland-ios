@@ -12,8 +12,6 @@ struct QuestionListView: View {
     @StateObject
     var viewModel: QuestionListViewModel
     
-    @State private var assessmentType: AssessmentType?
-    
     var assessVMFactory: (AssessmentType) -> AssessmentViewModel = { assType in
         DIResolver.shared.resolve(AssessmentViewModel.self, argument: assType)!
     }
@@ -22,21 +20,22 @@ struct QuestionListView: View {
         
         NavigationView {
             List {
-                Button {
-                    assessmentType = .questions(qnIds: viewModel.questionIds, title: "Practice")
-                } label: {
-                    Text("Practice")
+                if !viewModel.questions.isEmpty {
+                    AssessmentRow(title: "Practice") {
+                        viewModel.showPractice("Practice")
+                    }
                 }
+                
                 ForEach(viewModel.questions) { qnRowModel in
                     QuestionRow(model: qnRowModel).onTapGesture {
-                        assessmentType = .questions(qnIds: [qnRowModel.id], title: "Single")
+                        viewModel.showPractice("Self", qnId: qnRowModel.id)
                     }
                 }
             }
             .navigationTitle(viewModel.pageTitle)
             .navigationBarTitleDisplayMode(.inline)
             .onAppear(perform: viewModel.fetchQuestions)
-            .sheet(item: $assessmentType) { value in
+            .sheet(item: $viewModel.assessmentToShow) { value in
                 AssessmentView(viewModel: assessVMFactory(value)) {
                     viewModel.fetchQuestions()
                 }

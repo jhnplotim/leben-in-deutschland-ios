@@ -20,6 +20,8 @@ final class QuestionListViewModel: ObservableObject {
     
     @Published var pageTitle: String
     
+    @Published var assessmentToShow: AssessmentType?
+    
     init(questionService: QuestionService, attemptManager: AttemptManager, _ qnIds: [Int], displayTitle: String = C.pageTitle) {
         pageTitle = displayTitle
         questionIds = qnIds
@@ -29,6 +31,14 @@ final class QuestionListViewModel: ObservableObject {
     
     func fetchQuestions() {
         questions = _questionService.getQuestions(by: questionIds).getRowModels(attemptMgr: _attemptManager)
+    }
+    
+    func showPractice(_ displayTitle: String, qnId: Int? = nil) {
+        if let qnId {
+            assessmentToShow = .questions(qnIds: [qnId], title: displayTitle)
+        } else {
+            assessmentToShow = .questions(qnIds: questionIds, title: displayTitle)
+        }
     }
     
 }
