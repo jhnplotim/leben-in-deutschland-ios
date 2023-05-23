@@ -14,6 +14,10 @@ struct GaugeViews: View {
     var failedTwice: [Int]
     var failedThrice: [Int]
     var examsToShow = 10
+    
+    var qnListVMFactory: ([Int], String) -> QuestionListViewModel = { qnIds, displayTitle in
+        DIResolver.shared.resolve(QuestionListViewModel.self, arguments: qnIds, displayTitle)!
+    }
 
     static var formatter: NumberFormatter {
         let fm = NumberFormatter()
@@ -68,14 +72,47 @@ struct GaugeViews: View {
                     }
                 }
                 
-                Text("Failure overview")
-                    .font(.title)
-                    .padding(.bottom, 5)
+                if !failedOnce.isEmpty || !failedTwice.isEmpty || !failedThrice.isEmpty {
+                    Text("Failure overview")
+                        .font(.title)
+                        .padding(.bottom, 5)
+                }
                 
                 VStack {
-                    Text("Recently failed once (\(failedOnce.count))") // TODO: Use actual data
-                    Text("Recently failed twice (\(failedTwice.count))") // TODO: Use actual data
-                    Text("Recently failed thrice (\(failedThrice.count))") // TODO: Use actual data
+                    if failedOnce.count > 0 {
+                        NavigationLink(destination: QuestionListView(viewModel: qnListVMFactory(
+                            failedOnce,
+                            "Failed Once"
+                        ))) {
+                            
+                            Text("Recently failed once (\(failedOnce.count))")
+                                .minimumScaleFactor(0.8)
+                        }
+                        
+                    }
+                    
+                    if failedTwice.count > 0 {
+                        NavigationLink(destination: QuestionListView(viewModel: qnListVMFactory(
+                            failedTwice,
+                            "Failed Twice"
+                        ))) {
+                            
+                            Text("Recently failed twice (\(failedTwice.count))")
+                                .minimumScaleFactor(0.8)
+                        }
+                        
+                    }
+                    
+                    if failedThrice.count > 0 {
+                        NavigationLink(destination: QuestionListView(viewModel: qnListVMFactory(
+                            failedThrice,
+                            "Failed Thrice"
+                        ))) {
+                            
+                            Text("Recently failed thrice (\(failedThrice.count))")
+                                .minimumScaleFactor(0.8)
+                        }
+                    }
                 }.font(.body)
             }
             .padding()
