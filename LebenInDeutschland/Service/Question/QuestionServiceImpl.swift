@@ -5,7 +5,7 @@
 //  Created by John Paul Otim on 15.05.23.
 //
 
-import Foundation
+import SwiftUI
 import Combine
 
 final class QuestionServiceImpl: QuestionService {
@@ -13,14 +13,14 @@ final class QuestionServiceImpl: QuestionService {
         static let jsonFile = "questions.json"
     }
     
-    private var allQuestions: [QuestionModel]
+    @AppStorage("LebenInDeutschland.allQuestions")
+    private var allQuestions: [QuestionModel] = load(C.jsonFile)
     
-    private var favoritesPassthroughSubject = PassthroughSubject<[QuestionModel], Never>()
+    private var favoritesPassthroughSubject = CurrentValueSubject<[QuestionModel], Never>([])
     
     lazy var favoritesPublisher: AnyPublisher<[QuestionModel], Never> = favoritesPassthroughSubject.share().eraseToAnyPublisher()
     
     init() {
-        allQuestions = load(C.jsonFile)
         updateFavorites()
     }
     
@@ -37,7 +37,9 @@ final class QuestionServiceImpl: QuestionService {
             // Could not find question with that ID
             return nil
         }
-        allQuestions[curIndex] = allQuestions[curIndex].makeCopyToggledFavorite()
+        var temp = allQuestions
+        temp[curIndex] = temp[curIndex].makeCopyToggledFavorite()
+        allQuestions = temp // save new list of questions
         updateFavorites()
         return allQuestions[curIndex]
         
