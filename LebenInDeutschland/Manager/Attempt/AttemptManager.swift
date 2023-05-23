@@ -72,7 +72,7 @@ enum QuestionAttemptState {
         // TODO: Consider only questions for the selected state
         let recentlyFailedAtleastOnce = attemptedAtleastOnce.filter { !($0.value.sorted()[0].wasCorrect ?? false) }
         let recentlyFailedAtleastTwice = recentlyFailedAtleastOnce.filter { $0.value.count >= 2 && !($0.value.sorted()[1].wasCorrect ?? false) }
-        let recentlyFailedAtleastThrice = recentlyFailedAtleastTwice.filter { $0.value.count >= 2 && !($0.value.sorted()[2].wasCorrect ?? false) }
+        let recentlyFailedAtleastThrice = recentlyFailedAtleastTwice.filter { $0.value.count >= 3 && !($0.value.sorted()[2].wasCorrect ?? false) }
         
         return QuestionSeenPercentage(
             seenOnce: Double(attemptedAtleastOnce.count) / totalQuestionCount,
