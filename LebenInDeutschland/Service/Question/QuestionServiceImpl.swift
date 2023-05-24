@@ -28,7 +28,7 @@ final class QuestionServiceImpl: QuestionService {
         allQuestions
     }
     
-    func getQuestions(for category: Int) -> [QuestionModel] {
+    func getCategoryQuestions(for category: Int) -> [QuestionModel] {
         allQuestions.filter { qn in qn.categoryId == category}
     }
     
@@ -88,6 +88,14 @@ final class QuestionServiceImpl: QuestionService {
     
     func getQuestions(by ids: [Int]) -> [QuestionModel] {
         allQuestions.filter { qn in ids.contains(qn.id)}
+    }
+    
+    func getAllGeneralQuestions() -> [QuestionModel] {
+        getAllQuestions().filter { $0.stateId == nil }
+    }
+    
+    func getStateQuestions(for stateId: String) -> [QuestionModel] {
+        getAllQuestions().filter { $0.stateId == stateId }
     }
 }
 

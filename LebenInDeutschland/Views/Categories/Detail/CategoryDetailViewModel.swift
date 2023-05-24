@@ -13,7 +13,7 @@ final class CategoryDetailViewModel: ObservableObject {
     
     init(category: CategoryModel, _ service: QuestionService) {
         self.category = category
-        self.questions = service.getQuestions(for: category.id)
+        self.questions = service.getCategoryQuestions(for: category.id)
     }
     
 }

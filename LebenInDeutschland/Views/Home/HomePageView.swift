@@ -35,13 +35,42 @@ struct HomePageView: View {
                 }
                 
                 Section("Questions") {
-                    HStack {
-                        Text("Favorites (1)")
-                        Spacer()
-                        Image(systemName: C.favoritesIconName)
+                    if !viewModel.stateQuestions.isEmpty {
+                        NavigationLink(destination: QuestionListView(viewModel: qnListVMFactory(
+                            viewModel.stateQuestions,
+                            viewModel.currentState.name
+                        ))) {
+                            Text("\(viewModel.currentState.name) (\(viewModel.stateQuestions.count))")
+                                .lineLimit(0)
+                            .minimumScaleFactor(0.8)
+                        }
                     }
-                    Text("All questions")
-                    StateRow(state: .init(id: "be", name: "Bayern", info: ""))
+                    
+                    if !viewModel.generalQuestions.isEmpty {
+                        NavigationLink(destination: QuestionListView(viewModel: qnListVMFactory(
+                            viewModel.generalQuestions,
+                            "All questions"
+                        ))) {
+                            Text("All questions (\(viewModel.generalQuestions.count))")
+                                .lineLimit(0)
+                            .minimumScaleFactor(0.8)
+                        }
+                    }
+                    
+                    if !viewModel.favorites.isEmpty {
+                        NavigationLink(destination: QuestionListView(viewModel: qnListVMFactory(
+                            viewModel.favorites,
+                            "Favorites"
+                        ))) {
+                            HStack {
+                                Text("Favorites (\(viewModel.favorites.count))")
+                                    .lineLimit(0)
+                                .minimumScaleFactor(0.8)
+                                Spacer()
+                                Image(systemName: C.favoritesIconName)
+                            }
+                        }
+                    }
                 }
                 
                 if !viewModel.categories.isEmpty {
