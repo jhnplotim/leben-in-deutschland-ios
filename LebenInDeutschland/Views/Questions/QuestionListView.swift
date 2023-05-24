@@ -21,7 +21,7 @@ struct QuestionListView: View {
         NavigationView {
             List {
                 if !viewModel.questions.isEmpty {
-                    AssessmentRow(title: "Practice") {
+                    AssessmentRow(title: "Practice all") {
                         viewModel.showPractice("Practice")
                     }
                 }
