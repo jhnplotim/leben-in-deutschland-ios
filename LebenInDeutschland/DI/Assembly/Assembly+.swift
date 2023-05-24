@@ -60,14 +60,6 @@ class UtilityAssembly: Assembly {
 class ViewModelAssembly: Assembly {
     func assemble(container: Swinject.Container) {
         
-        container.register(CategoryListViewModel.self) { r in
-            return CategoryListViewModel(r.resolve(CategoryService.self)!)
-        }
-        
-        container.register(CategoryDetailViewModel.self) { r, c in
-            return CategoryDetailViewModel(category: c, r.resolve(QuestionService.self)!)
-        }
-        
         container.register(SummaryViewModel.self) { r in
             return SummaryViewModel(attemptMgr: r.resolve(AttemptManager.self)!, questionService: r.resolve(QuestionService.self)!)
         }

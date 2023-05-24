@@ -56,10 +56,6 @@
 		7E7B86352A1BC00300B7A053 /* QuestionListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E7B86342A1BC00300B7A053 /* QuestionListViewModel.swift */; };
 		7E7B86372A1BC0D300B7A053 /* QuestionRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E7B86362A1BC0D300B7A053 /* QuestionRow.swift */; };
 		7E7B86392A1BC93500B7A053 /* QuestionRowModel+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E7B86382A1BC93500B7A053 /* QuestionRowModel+.swift */; };
-		7E8B8EF82A14CD3300EC350A /* CategoryDetailViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E8B8EF32A14CD3300EC350A /* CategoryDetailViewModel.swift */; };
-		7E8B8EF92A14CD3300EC350A /* CategoryDetail.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E8B8EF42A14CD3300EC350A /* CategoryDetail.swift */; };
-		7E8B8EFA2A14CD3300EC350A /* CategoryListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E8B8EF62A14CD3300EC350A /* CategoryListViewModel.swift */; };
-		7E8B8EFB2A14CD3300EC350A /* CategoryList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E8B8EF72A14CD3300EC350A /* CategoryList.swift */; };
 		7E8B8EFC2A14CF7000EC350A /* QuestionService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E19A02D2A127B9900D46BB1 /* QuestionService.swift */; };
 		7E92E6FE2A15EF6300221B21 /* Swinject in Frameworks */ = {isa = PBXBuildFile; productRef = 7E92E6FD2A15EF6300221B21 /* Swinject */; };
 		7E92E7012A15EFA800221B21 /* Assembly+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E92E7002A15EFA800221B21 /* Assembly+.swift */; };
@@ -147,10 +143,6 @@
 		7E7B86362A1BC0D300B7A053 /* QuestionRow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuestionRow.swift; sourceTree = "<group>"; };
 		7E7B86382A1BC93500B7A053 /* QuestionRowModel+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "QuestionRowModel+.swift"; sourceTree = "<group>"; };
 		7E8746182A14D32E00B61D16 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		7E8B8EF32A14CD3300EC350A /* CategoryDetailViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CategoryDetailViewModel.swift; sourceTree = "<group>"; };
-		7E8B8EF42A14CD3300EC350A /* CategoryDetail.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CategoryDetail.swift; sourceTree = "<group>"; };
-		7E8B8EF62A14CD3300EC350A /* CategoryListViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CategoryListViewModel.swift; sourceTree = "<group>"; };
-		7E8B8EF72A14CD3300EC350A /* CategoryList.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CategoryList.swift; sourceTree = "<group>"; };
 		7E92E7002A15EFA800221B21 /* Assembly+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Assembly+.swift"; sourceTree = "<group>"; };
 		7E92E7022A15F1E800221B21 /* Assembler+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Assembler+.swift"; sourceTree = "<group>"; };
 		7E92E7042A15F24300221B21 /* DIResolver.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DIResolver.swift; sourceTree = "<group>"; };
@@ -228,7 +220,6 @@
 				7E39F65C2A1CD55A004144CB /* Home */,
 				7E7B86312A1BBE7000B7A053 /* Questions */,
 				7EC27EB62A17D11C0012B641 /* Favorites */,
-				7E8B8EF12A14CD3300EC350A /* Categories */,
 				7E38B4B429B79F690059B9F2 /* Statistics */,
 				7E38B4A729B483CF0059B9F2 /* Errors */,
 				7E38B4A229B4624F0059B9F2 /* LaunchScreen */,
@@ -495,33 +486,6 @@
 			path = Questions;
 			sourceTree = "<group>";
 		};
-		7E8B8EF12A14CD3300EC350A /* Categories */ = {
-			isa = PBXGroup;
-			children = (
-				7E8B8EF22A14CD3300EC350A /* Detail */,
-				7E8B8EF52A14CD3300EC350A /* List */,
-			);
-			path = Categories;
-			sourceTree = "<group>";
-		};
-		7E8B8EF22A14CD3300EC350A /* Detail */ = {
-			isa = PBXGroup;
-			children = (
-				7E8B8EF32A14CD3300EC350A /* CategoryDetailViewModel.swift */,
-				7E8B8EF42A14CD3300EC350A /* CategoryDetail.swift */,
-			);
-			path = Detail;
-			sourceTree = "<group>";
-		};
-		7E8B8EF52A14CD3300EC350A /* List */ = {
-			isa = PBXGroup;
-			children = (
-				7E8B8EF62A14CD3300EC350A /* CategoryListViewModel.swift */,
-				7E8B8EF72A14CD3300EC350A /* CategoryList.swift */,
-			);
-			path = List;
-			sourceTree = "<group>";
-		};
 		7E92E6FB2A15EE2C00221B21 /* DI */ = {
 			isa = PBXGroup;
 			children = (
@@ -740,7 +704,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				7E8B8EF92A14CD3300EC350A /* CategoryDetail.swift in Sources */,
 				7E92E71A2A17AF3900221B21 /* StateListServiceImpl.swift in Sources */,
 				7E38B4A629B483840059B9F2 /* ErrorWrapper.swift in Sources */,
 				7E19A0232A1276B700D46BB1 /* CategoryService.swift in Sources */,
@@ -777,9 +740,7 @@
 				7E39F6602A1CD57D004144CB /* HomePageViewModel.swift in Sources */,
 				7E7B86392A1BC93500B7A053 /* QuestionRowModel+.swift in Sources */,
 				7E19A0252A1276FB00D46BB1 /* CategoryServiceImpl.swift in Sources */,
-				7E8B8EFA2A14CD3300EC350A /* CategoryListViewModel.swift in Sources */,
 				7EDB84DB29AB9CD20043A793 /* AnswerModel.swift in Sources */,
-				7E8B8EFB2A14CD3300EC350A /* CategoryList.swift in Sources */,
 				DA66E60729AE6A7200B2B6B0 /* RadioButton.swift in Sources */,
 				7E38B49629B349610059B9F2 /* AssessmentQuestion+.swift in Sources */,
 				7E92E7012A15EFA800221B21 /* Assembly+.swift in Sources */,
@@ -809,7 +770,6 @@
 				7E472B1029D36D2E007F5D70 /* GaugeType.swift in Sources */,
 				7EC27EBA2A17D4880012B641 /* FavoritesView.swift in Sources */,
 				7E56D93E29C258E000AFB6B0 /* Constants.swift in Sources */,
-				7E8B8EF82A14CD3300EC350A /* CategoryDetailViewModel.swift in Sources */,
 				7E38B4B629B79F970059B9F2 /* SummaryView.swift in Sources */,
 				7E7B86352A1BC00300B7A053 /* QuestionListViewModel.swift in Sources */,
 			);

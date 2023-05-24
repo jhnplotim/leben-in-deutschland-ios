@@ -11,11 +11,6 @@ struct LandingPage: View {
 
     @State private var selection: Tab = .home
     
-    var categoryListVMFactory: () -> CategoryListViewModel = {
-        // swiftlint:disable force_unwrapping
-        DIResolver.shared.resolve(CategoryListViewModel.self)!
-    }
-    
     var summaryVMFactory: () -> SummaryViewModel = {
         // swiftlint:disable force_unwrapping
         DIResolver.shared.resolve(SummaryViewModel.self)!
@@ -39,7 +34,6 @@ struct LandingPage: View {
         case home
         case states
         case summary
-        case categories
         case settings
         case favorites
     }
@@ -73,12 +67,6 @@ struct LandingPage: View {
                 }
                 .tag(Tab.summary)
 
-            CategoryList(viewModel: categoryListVMFactory())
-                .tabItem {
-                    Label("Categories", systemImage: C.categoryIconName)
-                }
-                .tag(Tab.categories)
-
             Text("Settings")
                 .tabItem {
                     Label("Settings", systemImage: C.settingsIconName)
@@ -94,16 +82,20 @@ struct LandingPage: View {
 }
 
 struct LandingPage_Previews: PreviewProvider {
+    static var questionService = QuestionServiceImpl() // Singleton
+    
+    static var attemptMgr = TestAttemptManagerImpl() // Singleton
+    
     static var previews: some View {
         LandingPage() {
             // Pass in test implementation of ViewModel if needed
-            CategoryListViewModel(CategoryServiceImpl())
-        } summaryVMFactory: {
-            SummaryViewModel(attemptMgr: TestAttemptManagerImpl(), questionService: QuestionServiceImpl())
+            SummaryViewModel(attemptMgr: attemptMgr, questionService: questionService)
         } stateListVMFactory: {
             StateListViewModel(StateListServiceImpl())
         } favoritesVMFactory: {
-            FavoritesViewModel(questionService: QuestionServiceImpl())
+            FavoritesViewModel(questionService: questionService)
+        } homePageVMFactory: {
+            HomePageViewModel(CategoryServiceImpl(), questionService)
         }
     }
 }
