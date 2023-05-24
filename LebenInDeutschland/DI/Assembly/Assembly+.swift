@@ -76,10 +76,6 @@ class ViewModelAssembly: Assembly {
             StateDetailViewModel(stateToView: state)
         }
         
-        container.register(FavoritesViewModel.self) { r in
-                FavoritesViewModel(questionService: r.resolve(QuestionService.self)!)
-        }
-        
         container.register(QuestionListViewModel.self) { r, qnIds, displayTitle in
             QuestionListViewModel(questionService: r.resolve(QuestionService.self)!,
                                   attemptManager: r.resolve(AttemptManager.self)!,
