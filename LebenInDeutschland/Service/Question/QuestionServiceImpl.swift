@@ -70,16 +70,10 @@ final class QuestionServiceImpl: QuestionService {
 
         case .general(count: let count):
             return generalQuestions.count > count ? generalQuestions[0..<count].map { $0.assessmentQuestionUnanswered } : generalQuestions.map { $0.assessmentQuestionUnanswered }
-
-        case .category(let id):
-            return shuffledQuestions.filter { $0.categoryId == id }.map { $0.assessmentQuestionUnanswered }
-
+    
         case .bookMark:
             // TODO: Add support for bookmarks, favorites, read later lists
             return generalQuestions.map { $0.assessmentQuestionUnanswered }
-
-        case .favorite:
-            return shuffledQuestions.filter { $0.isFavorite ?? false }.map { $0.assessmentQuestionUnanswered }
             
         case .questions(qnIds: let ids, _):
             return allQuestions.filter { ids.contains($0.id) }.map { $0.assessmentQuestionUnanswered }
