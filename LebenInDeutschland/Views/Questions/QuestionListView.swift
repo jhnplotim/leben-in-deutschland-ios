@@ -47,10 +47,16 @@ struct QuestionListView: View {
 struct QuestionListView_Previews: PreviewProvider {
     static var attemptMgr = AttemptManagerImpl()
     static var questionSrvc = QuestionServiceImpl()
+    static var settingsStore = SettingsStoreImpl()
     
     static var previews: some View {
-        QuestionListView(viewModel: .init(questionService: questionSrvc, attemptManager: attemptMgr, [1, 2])) { assType in
-            AssessmentViewModel(attemptManager: attemptMgr, assessmentType: assType, questionService: questionSrvc)
+        QuestionListView(
+            viewModel: .init(questionService: questionSrvc, attemptManager: attemptMgr, [1, 2])) { assType in
+            AssessmentViewModel(
+                attemptManager: attemptMgr,
+                assessmentType: assType,
+                questionService: questionSrvc,
+                settingsStore: settingsStore)
             
         }
     }

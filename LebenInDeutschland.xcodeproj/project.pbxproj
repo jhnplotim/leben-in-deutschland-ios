@@ -74,6 +74,9 @@
 		7E92E71E2A17B28A00221B21 /* StateDetailViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E92E71D2A17B28A00221B21 /* StateDetailViewModel.swift */; };
 		7E9558A52A1F74AD00977FC6 /* SettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E9558A42A1F74AD00977FC6 /* SettingsView.swift */; };
 		7E9558A72A1F77E700977FC6 /* SettingsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E9558A62A1F77E700977FC6 /* SettingsViewModel.swift */; };
+		7E9558AA2A1FBE9A00977FC6 /* SettingsStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E9558A92A1FBE9A00977FC6 /* SettingsStore.swift */; };
+		7E9558AC2A1FBF9B00977FC6 /* SettingsStoreImpl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E9558AB2A1FBF9B00977FC6 /* SettingsStoreImpl.swift */; };
+		7E9558AF2A1FC64600977FC6 /* HapticsHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E9558AE2A1FC64600977FC6 /* HapticsHelper.swift */; };
 		7EC27EC52A1A132E0012B641 /* AppStorage+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7EC27EC42A1A132E0012B641 /* AppStorage+.swift */; };
 		7EDB84D929AB9C350043A793 /* QuestionModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7EDB84D829AB9C350043A793 /* QuestionModel.swift */; };
 		7EDB84DB29AB9CD20043A793 /* AnswerModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7EDB84DA29AB9CD20043A793 /* AnswerModel.swift */; };
@@ -159,6 +162,9 @@
 		7E92E71D2A17B28A00221B21 /* StateDetailViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StateDetailViewModel.swift; sourceTree = "<group>"; };
 		7E9558A42A1F74AD00977FC6 /* SettingsView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingsView.swift; sourceTree = "<group>"; };
 		7E9558A62A1F77E700977FC6 /* SettingsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsViewModel.swift; sourceTree = "<group>"; };
+		7E9558A92A1FBE9A00977FC6 /* SettingsStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsStore.swift; sourceTree = "<group>"; };
+		7E9558AB2A1FBF9B00977FC6 /* SettingsStoreImpl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsStoreImpl.swift; sourceTree = "<group>"; };
+		7E9558AE2A1FC64600977FC6 /* HapticsHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HapticsHelper.swift; sourceTree = "<group>"; };
 		7EC27EC42A1A132E0012B641 /* AppStorage+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "AppStorage+.swift"; sourceTree = "<group>"; };
 		7EDB84D829AB9C350043A793 /* QuestionModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuestionModel.swift; sourceTree = "<group>"; };
 		7EDB84DA29AB9CD20043A793 /* AnswerModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnswerModel.swift; sourceTree = "<group>"; };
@@ -189,6 +195,7 @@
 		7E19A0202A12768D00D46BB1 /* Service */ = {
 			isa = PBXGroup;
 			children = (
+				7E9558AD2A1FC63700977FC6 /* Haptics */,
 				7E92E7162A17AEAB00221B21 /* State */,
 				7E19A02C2A127B8C00D46BB1 /* Question */,
 				7E19A0212A12769700D46BB1 /* Category */,
@@ -355,6 +362,7 @@
 		7E38B49F29B45FE20059B9F2 /* Manager */ = {
 			isa = PBXGroup;
 			children = (
+				7E9558A82A1FBE8100977FC6 /* Settings */,
 				7E92E70B2A160C4D00221B21 /* Attempt */,
 				7E38B4A029B460030059B9F2 /* LaunchScreenStateManager.swift */,
 				7E38B4AC29B600730059B9F2 /* StatisticsManager.swift */,
@@ -565,6 +573,23 @@
 			path = Settings;
 			sourceTree = "<group>";
 		};
+		7E9558A82A1FBE8100977FC6 /* Settings */ = {
+			isa = PBXGroup;
+			children = (
+				7E9558A92A1FBE9A00977FC6 /* SettingsStore.swift */,
+				7E9558AB2A1FBF9B00977FC6 /* SettingsStoreImpl.swift */,
+			);
+			path = Settings;
+			sourceTree = "<group>";
+		};
+		7E9558AD2A1FC63700977FC6 /* Haptics */ = {
+			isa = PBXGroup;
+			children = (
+				7E9558AE2A1FC64600977FC6 /* HapticsHelper.swift */,
+			);
+			path = Haptics;
+			sourceTree = "<group>";
+		};
 		7EC27EC32A1A13160012B641 /* Extensions */ = {
 			isa = PBXGroup;
 			children = (
@@ -748,6 +773,7 @@
 				7E19A01F2A12752A00D46BB1 /* CategoryModel.swift in Sources */,
 				7E38B49429B349390059B9F2 /* QuestionModel+.swift in Sources */,
 				7E38B4AD29B600730059B9F2 /* StatisticsManager.swift in Sources */,
+				7E9558AC2A1FBF9B00977FC6 /* SettingsStoreImpl.swift in Sources */,
 				7E39F6622A1CF7B2004144CB /* AssessmentRow.swift in Sources */,
 				7E38B4A129B460030059B9F2 /* LaunchScreenStateManager.swift in Sources */,
 				7E92E70F2A160CF600221B21 /* AttemptManagerImpl.swift in Sources */,
@@ -763,11 +789,13 @@
 				7E92E7012A15EFA800221B21 /* Assembly+.swift in Sources */,
 				7E92E7052A15F24300221B21 /* DIResolver.swift in Sources */,
 				7E19A0302A127C4300D46BB1 /* QuestionServiceImpl.swift in Sources */,
+				7E9558AA2A1FBE9A00977FC6 /* SettingsStore.swift in Sources */,
 				7E92E7032A15F1E800221B21 /* Assembler+.swift in Sources */,
 				7E38B49E29B45F960059B9F2 /* LaunchScreenStep.swift in Sources */,
 				7E38B4AF29B601300059B9F2 /* ChosenAnswer.swift in Sources */,
 				7E1F382429AB833200F60435 /* StateModel.swift in Sources */,
 				7E92E7182A17AEFB00221B21 /* StateListService.swift in Sources */,
+				7E9558AF2A1FC64600977FC6 /* HapticsHelper.swift in Sources */,
 				7E38B4B929BC5CDD0059B9F2 /* CircularProgressView.swift in Sources */,
 				7E38B49929B379090059B9F2 /* LandingPage.swift in Sources */,
 				7E38B4B329B76AFB0059B9F2 /* HistoryDotView.swift in Sources */,

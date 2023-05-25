@@ -16,6 +16,10 @@ struct QuestionDetail: View {
     
     var animationSize: CGFloat = 250
     
+    @Binding var assessmentComplete: Bool
+    
+    @Binding var vibrateOnWrongAnser: Bool
+    
     var onAnswer: (AssessmentQuestion) -> Void
 
     enum C {
@@ -61,8 +65,16 @@ struct QuestionDetail: View {
                             } else {
                                 print("Wrong answer selected")
                                 assessmentQuestionNew.selectedAnswer = model.assessmentQuestion.question.answers.first(where: { $0.text == selected}) ?? .none
+                                if !model.assessmentQuestion.isAnswered && !assessmentComplete && vibrateOnWrongAnser {
+                                    // vibrate on wrong answer
+                                    vibrate()
+                                }
                             }
-                            onAnswer(assessmentQuestionNew)
+                            if !assessmentComplete {
+                                onAnswer(assessmentQuestionNew)
+                            } else {
+                                print("Assessment was already completed")
+                            }
                         }
 
                     if model.assessmentQuestion.isAnswered {
@@ -106,26 +118,49 @@ struct QuestionView_Previews: PreviewProvider {
 
     static var previews: some View {
         Group {
-            QuestionDetail(model: .init(curPos: index20 + 1, qn: qnsAnsweredWrongly[index20], attMgrFactory: TestAttemptManagerImpl())) { _ in
-                
-            }
-            QuestionDetail(model: .init(curPos: index20 + 1, qn: qnsAnsweredCorrectly[index20], attMgrFactory: TestAttemptManagerImpl())) { _ in
+            QuestionDetail(
+                model: .init(curPos: index20 + 1,
+                qn: qnsAnsweredWrongly[index20],
+                attMgrFactory: TestAttemptManagerImpl()),
+                assessmentComplete: .constant(false),
+                vibrateOnWrongAnser: .constant(true)) { _ in
+                    
+                }
+            QuestionDetail(
+                model: .init(curPos: index20 + 1, qn: qnsAnsweredCorrectly[index20], attMgrFactory: TestAttemptManagerImpl()),
+                assessmentComplete: .constant(false),
+                vibrateOnWrongAnser: .constant(true)) { _ in
                 
             }
             // TODO: Fix preview with radio button
-            QuestionDetail(model: .init(curPos: index20 + 1, qn: qnsUnanswered[index20], attMgrFactory: TestAttemptManagerImpl())) { _ in
+            QuestionDetail(
+                model: .init(curPos: index20 + 1, qn: qnsUnanswered[index20], attMgrFactory: TestAttemptManagerImpl()),
+                assessmentComplete: .constant(false),
+                vibrateOnWrongAnser: .constant(true)) { _ in
                 
             }
-            QuestionDetail(model: .init(curPos: index0 + 1, qn: qnsAnsweredWrongly[index0], attMgrFactory: TestAttemptManagerImpl())) { _ in
+            QuestionDetail(
+                model: .init(curPos: index0 + 1, qn: qnsAnsweredWrongly[index0], attMgrFactory: TestAttemptManagerImpl()),
+                assessmentComplete: .constant(false),
+                vibrateOnWrongAnser: .constant(true)) { _ in
                 
             }
-            QuestionDetail(model: .init(curPos: index3 + 1, qn: qnsAnsweredCorrectly[index3], attMgrFactory: TestAttemptManagerImpl())) { _ in
+            QuestionDetail(
+                model: .init(curPos: index3 + 1, qn: qnsAnsweredCorrectly[index3], attMgrFactory: TestAttemptManagerImpl()),
+                assessmentComplete: .constant(false),
+                vibrateOnWrongAnser: .constant(true)) { _ in
                 
             }
-            QuestionDetail(model: .init(curPos: index6 + 1, qn: qnsUnanswered[index6], attMgrFactory: TestAttemptManagerImpl())) { _ in
+            QuestionDetail(
+                model: .init(curPos: index6 + 1, qn: qnsUnanswered[index6], attMgrFactory: TestAttemptManagerImpl()),
+                assessmentComplete: .constant(false),
+                vibrateOnWrongAnser: .constant(true)) { _ in
                 
             }
-            QuestionDetail(model: .init(curPos: index7 + 1, qn: qnsUnanswered[index7], attMgrFactory: TestAttemptManagerImpl())) { _ in
+            QuestionDetail(
+                model: .init(curPos: index7 + 1, qn: qnsUnanswered[index7], attMgrFactory: TestAttemptManagerImpl()),
+                assessmentComplete: .constant(false),
+                vibrateOnWrongAnser: .constant(true)) { _ in
                 
             }
         }

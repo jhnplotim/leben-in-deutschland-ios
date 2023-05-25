@@ -25,6 +25,10 @@ struct LandingPage: View {
         DIResolver.shared.resolve(HomePageViewModel.self)!
     }
 
+    var settingsVMFactory: () -> SettingsViewModel = {
+        DIResolver.shared.resolve(SettingsViewModel.self)!
+    }
+    
     enum Tab {
         case home
         case states
@@ -59,7 +63,7 @@ struct LandingPage: View {
                 }
                 .tag(Tab.summary)
 
-            SettingsView()
+            SettingsView(viewModel: settingsVMFactory())
                 .tabItem {
                     Label("Settings", systemImage: C.settingsIconName)
                 }
@@ -74,6 +78,8 @@ struct LandingPage_Previews: PreviewProvider {
     
     static var attemptMgr = TestAttemptManagerImpl() // Singleton
     
+    static var settingsStore = SettingsStoreImpl() // Singleton
+    
     static var previews: some View {
         LandingPage() {
             // Pass in test implementation of ViewModel if needed
@@ -82,6 +88,8 @@ struct LandingPage_Previews: PreviewProvider {
             StateListViewModel(StateListServiceImpl())
         } homePageVMFactory: {
             HomePageViewModel(CategoryServiceImpl(), questionService)
+        } settingsVMFactory: {
+            SettingsViewModel(settingsStore)
         }
     }
 }

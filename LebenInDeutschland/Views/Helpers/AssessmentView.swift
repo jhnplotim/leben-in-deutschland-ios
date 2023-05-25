@@ -72,7 +72,8 @@ struct AssessmentView: View {
                     }
                 }
 
-                getQuestionView(position: viewModel.currentQuestionPosition, question: viewModel.currentAssessmentQuestion)
+                getQuestionView(position: viewModel.currentQuestionPosition, question: viewModel.currentAssessmentQuestion, assessmentComplete: $viewModel.assessmentCompleted,
+                    vibrateOnWrongAnswer: $viewModel.vibrateOnWrongAnser)
 
                 HStack {
                     Button {
@@ -124,10 +125,12 @@ struct AssessmentView: View {
     }
 
     @ViewBuilder
-    private func getQuestionView(position: Int, question: AssessmentQuestion) -> some View {
+    private func getQuestionView(position: Int, question: AssessmentQuestion, assessmentComplete: Binding<Bool>, vibrateOnWrongAnswer: Binding<Bool>) -> some View {
         QuestionDetail(
             model: .init(curPos: position, qn: question),
-            animationSize: 200
+            animationSize: 200,
+            assessmentComplete: assessmentComplete,
+            vibrateOnWrongAnser: vibrateOnWrongAnswer
         ) { answered in
             viewModel.updateCurrentQuestion(assessmentQuestion: answered)
         }
@@ -135,18 +138,67 @@ struct AssessmentView: View {
 }
 
 struct AssessmentView_Previews: PreviewProvider {
+    static var attemptMgr = AttemptManagerImpl()
+    
+    static var questionService = QuestionServiceImpl()
+    
+    static var settingsStore = SettingsStoreImpl()
+    
     static var previews: some View {
         Group {
-            AssessmentView(viewModel: .init(attemptManager: TestAttemptManagerImpl(), assessmentType: .state(stateId: "by"), questionService: QuestionServiceImpl()))
+            AssessmentView(
+                viewModel: .init(attemptManager: attemptMgr,
+                assessmentType: .state(stateId: "by"),
+                questionService: questionService,
+                settingsStore: settingsStore))
             
-            AssessmentView(viewModel: .init(attemptManager: TestAttemptManagerImpl(), assessmentType: .state(stateId: "by", count: 4), questionService: QuestionServiceImpl()))
-            AssessmentView(viewModel: .init(attemptManager: TestAttemptManagerImpl(), assessmentType: .state(stateId: "be"), questionService: QuestionServiceImpl()))
-            AssessmentView(viewModel: .init(attemptManager: TestAttemptManagerImpl(), assessmentType: .state(stateId: "be", count: 4), questionService: QuestionServiceImpl()))
-            AssessmentView(viewModel: .init(attemptManager: TestAttemptManagerImpl(), assessmentType: .general(count: 3), questionService: QuestionServiceImpl()))
-            AssessmentView(viewModel: .init(attemptManager: TestAttemptManagerImpl(), assessmentType: .general(count: 6), questionService: QuestionServiceImpl()))
-            AssessmentView(viewModel: .init(attemptManager: TestAttemptManagerImpl(), assessmentType: .general(), questionService: QuestionServiceImpl()))
-            AssessmentView(viewModel: .init(attemptManager: TestAttemptManagerImpl(), assessmentType: .exam(stateId: "be", generalCount: 4, stateCount: 2), questionService: QuestionServiceImpl()))
-            AssessmentView(viewModel: .init(attemptManager: TestAttemptManagerImpl(), assessmentType: .exam(stateId: "by", generalCount: 4, stateCount: 2), questionService: QuestionServiceImpl()))
+            AssessmentView(
+                viewModel: .init(attemptManager: attemptMgr,
+                assessmentType: .state(stateId: "by", count: 4),
+                questionService: questionService,
+                settingsStore: settingsStore))
+            
+            AssessmentView(
+                viewModel: .init(attemptManager: attemptMgr,
+                assessmentType: .state(stateId: "be"),
+                questionService: questionService,
+                settingsStore: settingsStore))
+            
+            AssessmentView(
+                viewModel: .init(attemptManager: attemptMgr,
+                assessmentType: .state(stateId: "be", count: 4),
+                questionService: questionService,
+                settingsStore: settingsStore))
+            
+            AssessmentView(
+                viewModel: .init(attemptManager: attemptMgr,
+                assessmentType: .general(count: 3),
+                questionService: questionService,
+                settingsStore: settingsStore))
+            
+            AssessmentView(
+                viewModel: .init(attemptManager: attemptMgr,
+                assessmentType: .general(count: 6),
+                questionService: questionService,
+                settingsStore: settingsStore))
+            
+            AssessmentView(
+                viewModel: .init(attemptManager: attemptMgr,
+                assessmentType: .general(),
+                questionService: questionService,
+                settingsStore: settingsStore))
+            
+            AssessmentView(
+                viewModel: .init(attemptManager: attemptMgr,
+                assessmentType: .exam(stateId: "be", generalCount: 4, stateCount: 2),
+                questionService: questionService,
+                settingsStore: settingsStore))
+            
+            AssessmentView(
+                viewModel: .init(attemptManager: attemptMgr,
+                assessmentType: .exam(stateId: "by", generalCount: 4, stateCount: 2),
+                questionService: questionService,
+                settingsStore: settingsStore))
         }
     }
 }

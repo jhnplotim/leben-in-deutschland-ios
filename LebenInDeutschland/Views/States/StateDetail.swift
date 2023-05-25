@@ -45,9 +45,17 @@ struct StateDetail: View {
 }
 
 struct StateDetail_Previews: PreviewProvider {
+    static var attemptMgr = TestAttemptManagerImpl()
+    static var qnService = QuestionServiceImpl()
+    static var settingsStore = SettingsStoreImpl()
+    
     static var previews: some View {
         StateDetail(viewModel: .init(stateToView: .init(id: "be", name: "Berlin", info: "Hauptstadt"))) { assType in
-            AssessmentViewModel(attemptManager: TestAttemptManagerImpl(), assessmentType: assType, questionService: QuestionServiceImpl())
+            AssessmentViewModel(
+                attemptManager: attemptMgr,
+                assessmentType: assType,
+                questionService: qnService,
+                settingsStore: settingsStore)
         }
     }
 }

@@ -9,14 +9,13 @@ import SwiftUI
 
 struct SettingsView: View {
     
-    @AppStorage("LebenInDeutschland.vibrateOnFalseAnswer")
-    private var vibrateOnFalseAnswer = false
+    @StateObject var viewModel: SettingsViewModel
     
     var body: some View {
         NavigationView {
             List {
                 Section("Section 1") {
-                    Toggle("Vibrate for false answers", isOn: $vibrateOnFalseAnswer)
+                    Toggle("Vibrate for false answers", isOn: $viewModel.vibrateOnWrongAnswer)
                     ForEach(0...1, id: \.self) {
                         Text("Item \($0 + 1)")
                     }
@@ -43,7 +42,9 @@ struct SettingsView: View {
 }
 
 struct SettingsView_Previews: PreviewProvider {
+    static var settingsStore = SettingsStoreImpl()
+    
     static var previews: some View {
-        SettingsView()
+        SettingsView(viewModel: .init(settingsStore))
     }
 }
