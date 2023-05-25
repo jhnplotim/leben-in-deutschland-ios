@@ -36,7 +36,6 @@ struct LandingPage: View {
         static let homeIconName = "house"
         static let statesIconName = "list.bullet"
         static let summaryIconName = "note"
-        static let categoryIconName = "square.stack"
         static let settingsIconName = "gear"
     }
 
@@ -60,7 +59,7 @@ struct LandingPage: View {
                 }
                 .tag(Tab.summary)
 
-            Text("Settings")
+            SettingsView()
                 .tabItem {
                     Label("Settings", systemImage: C.settingsIconName)
                 }
