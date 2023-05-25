@@ -9,8 +9,6 @@ import SwiftUI
 
 struct SettingsView: View {
     
-    // TODO: Create SettingsViewModel / Manager and have all settings in one place
-    
     @AppStorage("LebenInDeutschland.vibrateOnFalseAnswer")
     private var vibrateOnFalseAnswer = false
     
@@ -19,31 +17,25 @@ struct SettingsView: View {
             List {
                 Section("Section 1") {
                     Toggle("Vibrate for false answers", isOn: $vibrateOnFalseAnswer)
-                    ForEach(0...3, id: \.self) {
+                    ForEach(0...1, id: \.self) {
                         Text("Item \($0 + 1)")
                     }
+                    Text("State Picker")
                 }
-                Section("Section 2") {
-                    ForEach(0...3, id: \.self) {
+                Section("About") {
+                    ForEach(0...1, id: \.self) {
                         Text("Item \($0 + 1)")
                     }
-                }
-                Section("Section 3") {
-                    ForEach(0...3, id: \.self) {
-                        Text("Item \($0 + 1)")
-                    }
-                }
-                Section("Section 4") {
-                    ForEach(0...3, id: \.self) {
-                        Text("Item \($0 + 1)")
-                    }
+                    Text("Open Source Licenses")
+                    Text("Leben in Deutschland v 1.0.0")
                 }
                 
-                Section("Section 5") {
-                    ForEach(0...3, id: \.self) {
-                        Text("Item \($0 + 1)")
-                    }
+                Section("About Developer") {
+                    Text("Website: TO BE ADDED")
+                    Text("JCode Studioz - Germany: CONTACT HERE")
+                    
                 }
+                
             }
             .navigationTitle("Settings")
         }
