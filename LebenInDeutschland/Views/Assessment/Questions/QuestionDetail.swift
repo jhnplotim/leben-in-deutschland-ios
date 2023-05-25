@@ -1,5 +1,5 @@
 //
-//  QuestionView.swift
+//  QuestionDetail.swift
 //  LebenInDeutschland
 //
 //  Created by John Paul Otim on 26.02.23.
@@ -7,12 +7,12 @@
 
 import SwiftUI
 
-struct QuestionView: View {
+struct QuestionDetail: View {
     
     @Namespace var imageID
     
     // ViewModel
-    var viewModel: QuestionViewModel
+    var model: QuestionDetailModel
     
     var animationSize: CGFloat = 250
     
@@ -27,11 +27,16 @@ struct QuestionView: View {
         ScrollViewReader { proxy in
             ScrollView {
                 VStack(alignment: .leading, spacing: 30) {
-                    HistoryDotView(items: viewModel.getChosenAnswers())
-                    Text("\(viewModel.position). \(viewModel.assessmentQuestion.question.title)")
+                    HStack {
+                        Spacer()
+                        HistoryDotView(items: model.getChosenAnswers())
+                        Spacer()
+                    }
+                    
+                    Text("\(model.position). \(model.assessmentQuestion.question.title)")
                         .font(.headline)
 
-                    if let imageLink = viewModel.assessmentQuestion.question.imageLink {
+                    if let imageLink = model.assessmentQuestion.question.imageLink {
                         AsyncImage(url: imageLink) { image in
                             image
                                 .resizable()
@@ -44,26 +49,26 @@ struct QuestionView: View {
 
                     // TODO: Use ID instead of text value to compare
                     RadioButtonGroup(
-                        items: viewModel.assessmentQuestion.question.answers.map({$0.text}),
-                        selectedId: viewModel.assessmentQuestion.selectedAnswer.text) { selected in
+                        items: model.assessmentQuestion.question.answers.map({$0.text}),
+                        selectedId: model.assessmentQuestion.selectedAnswer.text) { selected in
                             // TODO: Move this logic out of view and move it into ViewModel in charge of parent view
                             print("Selected is: \(selected)")
-                            var assessmentQuestionNew = viewModel.assessmentQuestion
+                            var assessmentQuestionNew = model.assessmentQuestion
 
-                            if let correctAns = viewModel.assessmentQuestion.question.correctAnswer, correctAns.text == selected {
+                            if let correctAns = model.assessmentQuestion.question.correctAnswer, correctAns.text == selected {
                                 print("Correct answer selected")
                                 assessmentQuestionNew.selectedAnswer = correctAns
                             } else {
                                 print("Wrong answer selected")
-                                assessmentQuestionNew.selectedAnswer = viewModel.assessmentQuestion.question.answers.first(where: { $0.text == selected}) ?? .none
+                                assessmentQuestionNew.selectedAnswer = model.assessmentQuestion.question.answers.first(where: { $0.text == selected}) ?? .none
                             }
                             onAnswer(assessmentQuestionNew)
                         }
 
-                    if viewModel.assessmentQuestion.isAnswered {
+                    if model.assessmentQuestion.isAnswered {
                         HStack {
                             Spacer()
-                            if viewModel.assessmentQuestion.isCorrectlyAnswered {
+                            if model.assessmentQuestion.isCorrectlyAnswered {
                                 LottieView(name: C.CORRECT_ANIMATION, loopMode: .playOnce)
                                     .frame(width: animationSize, height: animationSize)
                             } else {
@@ -101,26 +106,26 @@ struct QuestionView_Previews: PreviewProvider {
 
     static var previews: some View {
         Group {
-            QuestionView(viewModel: .init(curPos: index20 + 1, qn: qnsAnsweredWrongly[index20], attMgrFactory: TestAttemptManagerImpl())) { _ in
+            QuestionDetail(model: .init(curPos: index20 + 1, qn: qnsAnsweredWrongly[index20], attMgrFactory: TestAttemptManagerImpl())) { _ in
                 
             }
-            QuestionView(viewModel: .init(curPos: index20 + 1, qn: qnsAnsweredCorrectly[index20], attMgrFactory: TestAttemptManagerImpl())) { _ in
+            QuestionDetail(model: .init(curPos: index20 + 1, qn: qnsAnsweredCorrectly[index20], attMgrFactory: TestAttemptManagerImpl())) { _ in
                 
             }
             // TODO: Fix preview with radio button
-            QuestionView(viewModel: .init(curPos: index20 + 1, qn: qnsUnanswered[index20], attMgrFactory: TestAttemptManagerImpl())) { _ in
+            QuestionDetail(model: .init(curPos: index20 + 1, qn: qnsUnanswered[index20], attMgrFactory: TestAttemptManagerImpl())) { _ in
                 
             }
-            QuestionView(viewModel: .init(curPos: index0 + 1, qn: qnsAnsweredWrongly[index0], attMgrFactory: TestAttemptManagerImpl())) { _ in
+            QuestionDetail(model: .init(curPos: index0 + 1, qn: qnsAnsweredWrongly[index0], attMgrFactory: TestAttemptManagerImpl())) { _ in
                 
             }
-            QuestionView(viewModel: .init(curPos: index3 + 1, qn: qnsAnsweredCorrectly[index3], attMgrFactory: TestAttemptManagerImpl())) { _ in
+            QuestionDetail(model: .init(curPos: index3 + 1, qn: qnsAnsweredCorrectly[index3], attMgrFactory: TestAttemptManagerImpl())) { _ in
                 
             }
-            QuestionView(viewModel: .init(curPos: index6 + 1, qn: qnsUnanswered[index6], attMgrFactory: TestAttemptManagerImpl())) { _ in
+            QuestionDetail(model: .init(curPos: index6 + 1, qn: qnsUnanswered[index6], attMgrFactory: TestAttemptManagerImpl())) { _ in
                 
             }
-            QuestionView(viewModel: .init(curPos: index7 + 1, qn: qnsUnanswered[index7], attMgrFactory: TestAttemptManagerImpl())) { _ in
+            QuestionDetail(model: .init(curPos: index7 + 1, qn: qnsUnanswered[index7], attMgrFactory: TestAttemptManagerImpl())) { _ in
                 
             }
         }

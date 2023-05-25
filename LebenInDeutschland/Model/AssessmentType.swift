@@ -9,12 +9,12 @@ import Foundation
 
 enum AssessmentType: Equatable, Hashable, Identifiable {
 
+    // TODO: Remove any un-necessary types after the un-needed view have been removed e.g. state & bookmark
     case exam(stateId: String, generalCount: Int = 30, stateCount: Int = 3)
     case state(stateId: String, count: Int = 10)
     case general(count: Int = 100)
-    case category(categoryId: Int)
     case bookMark(bookMarkId: String)
-    case favorite
+    case questions(qnIds: [Int], title: String)
 
     var id: Self {
         self
@@ -33,14 +33,12 @@ extension AssessmentType {
         case .general(_):
             return "General Assessment"
             
-        case .category(_):
-            return "Category Assessment"
-            
         case .bookMark(_):
             return "Bookmark Assessment"
             
-        case .favorite:
-            return "Favorites Assessment"
+        case .questions(_, title: let title):
+            return title + " Assessment"
+            
         }
     }
     

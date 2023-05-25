@@ -60,14 +60,6 @@ class UtilityAssembly: Assembly {
 class ViewModelAssembly: Assembly {
     func assemble(container: Swinject.Container) {
         
-        container.register(CategoryListViewModel.self) { r in
-            return CategoryListViewModel(r.resolve(CategoryService.self)!)
-        }
-        
-        container.register(CategoryDetailViewModel.self) { r, c in
-            return CategoryDetailViewModel(category: c, r.resolve(QuestionService.self)!)
-        }
-        
         container.register(SummaryViewModel.self) { r in
             return SummaryViewModel(attemptMgr: r.resolve(AttemptManager.self)!, questionService: r.resolve(QuestionService.self)!)
         }
@@ -84,8 +76,16 @@ class ViewModelAssembly: Assembly {
             StateDetailViewModel(stateToView: state)
         }
         
-        container.register(FavoritesViewModel.self) { r in
-                FavoritesViewModel(questionService: r.resolve(QuestionService.self)!)
+        container.register(QuestionListViewModel.self) { r, qnIds, displayTitle in
+            QuestionListViewModel(questionService: r.resolve(QuestionService.self)!,
+                                  attemptManager: r.resolve(AttemptManager.self)!,
+                                  qnIds,
+                                  displayTitle: displayTitle)
+        }
+        
+        container.register(HomePageViewModel.self) { r in
+            HomePageViewModel(r.resolve(CategoryService.self)!, r.resolve(QuestionService.self)!)
+            
         }
     }
 }

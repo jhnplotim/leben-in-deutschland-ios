@@ -5,7 +5,7 @@
 //  Created by John Paul Otim on 15.05.23.
 //
 
-import Foundation
+import SwiftUI
 import Combine
 
 final class QuestionServiceImpl: QuestionService {
@@ -13,14 +13,14 @@ final class QuestionServiceImpl: QuestionService {
         static let jsonFile = "questions.json"
     }
     
-    private var allQuestions: [QuestionModel]
+    @AppStorage("LebenInDeutschland.allQuestions")
+    private var allQuestions: [QuestionModel] = load(C.jsonFile)
     
-    private var favoritesPassthroughSubject = PassthroughSubject<[QuestionModel], Never>()
+    private var favoritesPassthroughSubject = CurrentValueSubject<[QuestionModel], Never>([])
     
     lazy var favoritesPublisher: AnyPublisher<[QuestionModel], Never> = favoritesPassthroughSubject.share().eraseToAnyPublisher()
     
     init() {
-        allQuestions = load(C.jsonFile)
         updateFavorites()
     }
     
@@ -28,7 +28,7 @@ final class QuestionServiceImpl: QuestionService {
         allQuestions
     }
     
-    func getQuestions(for category: Int) -> [QuestionModel] {
+    func getCategoryQuestions(for category: Int) -> [QuestionModel] {
         allQuestions.filter { qn in qn.categoryId == category}
     }
     
@@ -37,7 +37,9 @@ final class QuestionServiceImpl: QuestionService {
             // Could not find question with that ID
             return nil
         }
-        allQuestions[curIndex] = allQuestions[curIndex].makeCopyToggledFavorite()
+        var temp = allQuestions
+        temp[curIndex] = temp[curIndex].makeCopyToggledFavorite()
+        allQuestions = temp // save new list of questions
         updateFavorites()
         return allQuestions[curIndex]
         
@@ -68,17 +70,26 @@ final class QuestionServiceImpl: QuestionService {
 
         case .general(count: let count):
             return generalQuestions.count > count ? generalQuestions[0..<count].map { $0.assessmentQuestionUnanswered } : generalQuestions.map { $0.assessmentQuestionUnanswered }
-
-        case .category(let id):
-            return shuffledQuestions.filter { $0.categoryId == id }.map { $0.assessmentQuestionUnanswered }
-
+    
         case .bookMark:
             // TODO: Add support for bookmarks, favorites, read later lists
             return generalQuestions.map { $0.assessmentQuestionUnanswered }
-
-        case .favorite:
-            return shuffledQuestions.filter { $0.isFavorite ?? false }.map { $0.assessmentQuestionUnanswered }
+            
+        case .questions(qnIds: let ids, _):
+            return allQuestions.filter { ids.contains($0.id) }.map { $0.assessmentQuestionUnanswered }
         }
+    }
+    
+    func getQuestions(by ids: [Int]) -> [QuestionModel] {
+        allQuestions.filter { qn in ids.contains(qn.id)}
+    }
+    
+    func getAllGeneralQuestions() -> [QuestionModel] {
+        getAllQuestions().filter { $0.stateId == nil }
+    }
+    
+    func getStateQuestions(for stateId: String) -> [QuestionModel] {
+        getAllQuestions().filter { $0.stateId == stateId }
     }
 }
 

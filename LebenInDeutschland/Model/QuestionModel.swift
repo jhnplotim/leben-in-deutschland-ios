@@ -16,6 +16,7 @@ struct QuestionModel: Hashable, Codable, Identifiable, Equatable {
     var stateId: String?
     var categoryId: Int?
     var isFavorite: Bool? = false // TODO: Make it Not nilable later
+    // TODO: Consider saving list of favorites separately from the questions & have a favorites service responsible for managing them e.g. add, update, read, delete
 
     var correctAnswer: AnswerModel? {
         answers.first(where: { $0.isCorrect })

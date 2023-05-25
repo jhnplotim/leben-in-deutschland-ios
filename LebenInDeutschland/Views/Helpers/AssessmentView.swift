@@ -11,6 +11,7 @@ struct AssessmentView: View {
 
     @StateObject var viewModel: AssessmentViewModel
     @Environment(\.dismiss) var dismiss
+    var onClose: (() -> Void)?
 
     enum C {
         static let navigationTitle = "Exam / Assessment"
@@ -118,13 +119,14 @@ struct AssessmentView: View {
         }
         .onDisappear {
             viewModel.deInitialise()
+            onClose?()
         }
     }
 
     @ViewBuilder
     private func getQuestionView(position: Int, question: AssessmentQuestion) -> some View {
-        QuestionView(
-            viewModel: .init(curPos: position, qn: question),
+        QuestionDetail(
+            model: .init(curPos: position, qn: question),
             animationSize: 200
         ) { answered in
             viewModel.updateCurrentQuestion(assessmentQuestion: answered)

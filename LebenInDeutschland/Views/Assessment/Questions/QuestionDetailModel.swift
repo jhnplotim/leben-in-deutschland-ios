@@ -1,5 +1,5 @@
 //
-//  QuestionViewModel.swift
+//  QuestionDetailModel.swift
 //  LebenInDeutschland
 //
 //  Created by John Paul Otim on 18.05.23.
@@ -7,7 +7,7 @@
 
 import SwiftUI
 
-final class QuestionViewModel {
+final class QuestionDetailModel {
     
     var position: Int
     
@@ -32,6 +32,6 @@ final class QuestionViewModel {
     #endif
     
     func getChosenAnswers() -> [Bool] {
-        attemptMgrFactory().getChosenAnswers(for: assessmentQuestion.question.id).sorted().map { $0.wasCorrect ?? false }
+        attemptMgrFactory().getChosenAnswers(for: assessmentQuestion.question.id).map { $0.wasCorrect ?? false }
     }
 }
