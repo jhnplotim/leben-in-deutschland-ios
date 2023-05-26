@@ -9,6 +9,7 @@ import Foundation
 
 /// List federal states in Germany
 enum FederalState: String, Identifiable, CaseIterable, Codable {
+    case noneSelected = "noneSelected"
     case bayern = "by"
     case badenWürttemberg = "bw"
     case berlin = "be"
@@ -29,11 +30,18 @@ enum FederalState: String, Identifiable, CaseIterable, Codable {
     var id: String {
         self.rawValue
     }
+    
+    static var allValidCases: [FederalState] {
+        allCases.filter { $0 != .noneSelected }
+    }
 }
 
 extension FederalState {
     var dataModel: StateModel {
         switch self {
+            
+        case .noneSelected:
+            return .init(id: self.id, name: "None Selected", info: "No Residence State selected")
             
         case .bayern:
             return .init(id: self.id, name: "Bayern", info: "Der Freistaat ist mit 70.550 km² das größte Bundesland")
@@ -84,5 +92,11 @@ extension FederalState {
             return .init(id: self.id, name: "Thüringen", info: "Freistaat Thüringen")
             
         }
+    }
+}
+
+extension StateModel {
+    var federalState: FederalState {
+        return FederalState(rawValue: self.id) ?? .noneSelected
     }
 }

@@ -75,11 +75,7 @@ class ViewModelAssembly: Assembly {
         }
         
         container.register(StateListViewModel.self) { r in
-            StateListViewModel(r.resolve(StateListService.self)!)
-        }
-        
-        container.register(StateDetailViewModel.self) { _, state in
-            StateDetailViewModel(stateToView: state)
+            StateListViewModel(r.resolve(StateListService.self)!, r.resolve(SettingsStore.self)!)
         }
         
         container.register(QuestionListViewModel.self) { r, qnIds, displayTitle in
@@ -96,6 +92,10 @@ class ViewModelAssembly: Assembly {
         
         container.register(SettingsViewModel.self) { r in
             SettingsViewModel(r.resolve(SettingsStore.self)!)
+        }
+        
+        container.register(ContentViewModel.self) { r in
+            ContentViewModel(r.resolve(SettingsStore.self)!)
         }
     }
 }

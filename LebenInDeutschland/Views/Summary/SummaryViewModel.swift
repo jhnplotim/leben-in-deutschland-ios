@@ -26,7 +26,7 @@ final class SummaryViewModel: ObservableObject {
     
     @Published var examsToShow = 10
     
-    @Published var currentState: FederalState = .bayern
+    @Published var currentState: FederalState = .noneSelected
     
     private var questionService: QuestionService
     private var attemptMgr: AttemptManager
@@ -45,15 +45,15 @@ final class SummaryViewModel: ObservableObject {
         self.attemptMgr = attemptMgr
         self.settingsStore = settingsStore
         
-        Publishers.CombineLatest3(self.settingsStore.selectedStatePublisher, self.attemptMgr.examState, self.attemptMgr.questionAttemptState)
-            .sink(receiveValue: { [weak self] curState, examState, qAttemptState in
+        Publishers.CombineLatest3(self.settingsStore.selectedResidenceStatePublisher, self.attemptMgr.examState, self.attemptMgr.questionAttemptState)
+            .sink(receiveValue: { [weak self] residenceState, examState, qAttemptState in
                 guard let self else {
                     return
                 }
-                self.currentState = curState
-                self.examState = examState.version(for: curState)
-                let qnIdsForState = self.questionService.getAllQuestions(for: curState.id).map { $0.id }
-                self.questionAttemptState = qAttemptState.version(for: curState, stateQnList: qnIdsForState)
+                self.currentState = residenceState
+                self.examState = examState.version(for: residenceState)
+                let qnIdsForState = self.questionService.getAllQuestions(for: residenceState.id).map { $0.id }
+                self.questionAttemptState = qAttemptState.version(for: residenceState, stateQnList: qnIdsForState)
                 self.seenQuestionsPercentage = self.questionAttemptState.getPercentage(totalQuestionCount: Double(qnIdsForState.count))
                 let seen = self.seenQuestionsPercentage
                 self.items = []

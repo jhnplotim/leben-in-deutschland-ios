@@ -16,11 +16,6 @@ struct LandingPage: View {
         DIResolver.shared.resolve(SummaryViewModel.self)!
     }
     
-    var stateListVMFactory: () -> StateListViewModel = {
-        // swiftlint:disable force_unwrapping
-        DIResolver.shared.resolve(StateListViewModel.self)!
-    }
-    
     var homePageVMFactory: () -> HomePageViewModel = {
         DIResolver.shared.resolve(HomePageViewModel.self)!
     }
@@ -31,14 +26,11 @@ struct LandingPage: View {
     
     enum Tab {
         case home
-        case states
         case summary
         case settings
     }
     enum C {
-        // TODO: Replace icons with more representative ones
         static let homeIconName = "house"
-        static let statesIconName = "list.bullet"
         static let summaryIconName = "note"
         static let settingsIconName = "gear"
     }
@@ -50,12 +42,6 @@ struct LandingPage: View {
                     Label("Home", systemImage: C.homeIconName)
                 }
                 .tag(Tab.home)
-            
-            StateList(viewModel: stateListVMFactory())
-                .tabItem {
-                    Label("States", systemImage: C.statesIconName)
-                }
-                .tag(Tab.states)
 
             SummaryView(viewModel: summaryVMFactory())
                 .tabItem {
@@ -84,8 +70,6 @@ struct LandingPage_Previews: PreviewProvider {
         LandingPage() {
             // Pass in test implementation of ViewModel if needed
             SummaryViewModel(attemptMgr: attemptMgr, questionService: questionService, settingsStore: settingsStore)
-        } stateListVMFactory: {
-            StateListViewModel(StateListServiceImpl())
         } homePageVMFactory: {
             HomePageViewModel(CategoryServiceImpl(), questionService, settingsStore)
         } settingsVMFactory: {

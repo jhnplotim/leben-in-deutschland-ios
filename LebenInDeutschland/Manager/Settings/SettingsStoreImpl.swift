@@ -14,9 +14,9 @@ final class SettingsStoreImpl: SettingsStore {
     var vibrateOnFalseAnswer = false
     
     // TODO: Make default value, none
-    @PublishableAppStorage("LebenInDeutschland.selectedState", defaultValue: FederalState.bayern)
-    var selectedState: FederalState
+    @PublishableAppStorage("LebenInDeutschland.residenceState", defaultValue: FederalState.noneSelected)
+    var stateOfResidence: FederalState
     
     // MARK: - Publishers
-    lazy var selectedStatePublisher: AnyPublisher<FederalState, Never> = self._selectedState.publisher.eraseToAnyPublisher()
+    lazy var selectedResidenceStatePublisher: AnyPublisher<FederalState, Never> = self._stateOfResidence.publisher.eraseToAnyPublisher()
 }

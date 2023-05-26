@@ -16,8 +16,8 @@ struct SettingsView: View {
             List {
                 Section("Options") {
                     Toggle("Vibrate for false answers", isOn: $viewModel.vibrateOnWrongAnswer)
-                    Picker("Federal State", selection: $viewModel.selectedState) {
-                        ForEach(FederalState.allCases) { federalState in
+                    Picker("Residence", selection: $viewModel.selectedState) {
+                        ForEach(FederalState.allValidCases) { federalState in
                             StateRow(state: federalState.dataModel).tag(federalState)
                         }
                     }

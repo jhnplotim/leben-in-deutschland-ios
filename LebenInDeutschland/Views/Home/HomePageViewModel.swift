@@ -34,11 +34,11 @@ final class HomePageViewModel: ObservableObject {
         self.questionService = questionService
         self.settingsStore = settingsStore
         
-        Publishers.CombineLatest(self.questionService.favoritesPublisher, self.settingsStore.selectedStatePublisher).sink(receiveValue: { [weak self] favs, curState in
+        Publishers.CombineLatest(self.questionService.favoritesPublisher, self.settingsStore.selectedResidenceStatePublisher).sink(receiveValue: { [weak self] favs, residenceState in
             
-            self?.favorites = favs.filter { $0.stateId == nil || $0.stateId == curState.id }.map { $0.id }
-            self?.currentState = curState.dataModel
-            self?.stateQuestions = self?.questionService.getStateQuestions(for: curState.id).map { $0.id } ?? []
+            self?.favorites = favs.filter { $0.stateId == nil || $0.stateId == residenceState.id }.map { $0.id }
+            self?.currentState = residenceState.dataModel
+            self?.stateQuestions = self?.questionService.getStateQuestions(for: residenceState.id).map { $0.id } ?? []
             
         }).store(in: &cancellables)
         

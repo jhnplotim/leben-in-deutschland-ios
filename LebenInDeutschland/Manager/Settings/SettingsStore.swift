@@ -12,7 +12,7 @@ protocol SettingsStore {
     
     var vibrateOnFalseAnswer: Bool { get set }
     
-    var selectedState: FederalState { get set }
+    var stateOfResidence: FederalState { get set }
     
-    var selectedStatePublisher: AnyPublisher<FederalState, Never> { get }
+    var selectedResidenceStatePublisher: AnyPublisher<FederalState, Never> { get }
 }

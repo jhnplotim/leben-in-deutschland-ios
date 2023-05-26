@@ -21,7 +21,7 @@ final class SettingsViewModel: ObservableObject {
     public init(_ settingsStore: SettingsStore) {
         self._settingsStore = settingsStore
         self.vibrateOnWrongAnswer = self._settingsStore.vibrateOnFalseAnswer
-        self.selectedState = self._settingsStore.selectedState
+        self.selectedState = self._settingsStore.stateOfResidence
         
         $vibrateOnWrongAnswer.sink(receiveValue: { newValue in
             if self._settingsStore.vibrateOnFalseAnswer != newValue {
@@ -30,8 +30,8 @@ final class SettingsViewModel: ObservableObject {
         }).store(in: &cancellables)
         
         $selectedState.sink(receiveValue: { newValue in
-                if self._settingsStore.selectedState != newValue {
-                    self._settingsStore.selectedState = newValue
+                if self._settingsStore.stateOfResidence != newValue {
+                    self._settingsStore.stateOfResidence = newValue
                 }
         }).store(in: &cancellables)
     }

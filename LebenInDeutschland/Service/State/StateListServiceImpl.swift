@@ -11,7 +11,7 @@ final class StateListServiceImpl: StateListService {
     private var allStates: [StateModel]
     
     init() {
-        allStates = FederalState.allCases.map { $0.dataModel }
+        allStates = FederalState.allValidCases.map { $0.dataModel }
     }
     
     func getAll() -> [StateModel] {
