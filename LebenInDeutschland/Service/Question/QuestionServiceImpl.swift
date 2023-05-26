@@ -91,6 +91,10 @@ final class QuestionServiceImpl: QuestionService {
     func getStateQuestions(for stateId: String) -> [QuestionModel] {
         getAllQuestions().filter { $0.stateId == stateId }
     }
+    
+    func getAllQuestions(for stateId: String) -> [QuestionModel] {
+        allQuestions.filter { $0.stateId == nil || $0.stateId == stateId }
+    }
 }
 
 // MARK: - Private functions

@@ -18,4 +18,5 @@ protocol QuestionService {
     func toggleQuestionAsFavorite(_ questionId: Int) -> QuestionModel?
     func getAllGeneralQuestions() -> [QuestionModel]
     func getStateQuestions(for stateId: String) -> [QuestionModel]
+    func getAllQuestions(for stateId: String) -> [QuestionModel]
 }

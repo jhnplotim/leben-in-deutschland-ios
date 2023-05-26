@@ -83,7 +83,7 @@ struct LandingPage_Previews: PreviewProvider {
     static var previews: some View {
         LandingPage() {
             // Pass in test implementation of ViewModel if needed
-            SummaryViewModel(attemptMgr: attemptMgr, questionService: questionService)
+            SummaryViewModel(attemptMgr: attemptMgr, questionService: questionService, settingsStore: settingsStore)
         } stateListVMFactory: {
             StateListViewModel(StateListServiceImpl())
         } homePageVMFactory: {

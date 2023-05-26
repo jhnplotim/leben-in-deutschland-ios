@@ -67,7 +67,7 @@ class ViewModelAssembly: Assembly {
     func assemble(container: Swinject.Container) {
         
         container.register(SummaryViewModel.self) { r in
-            return SummaryViewModel(attemptMgr: r.resolve(AttemptManager.self)!, questionService: r.resolve(QuestionService.self)!)
+            return SummaryViewModel(attemptMgr: r.resolve(AttemptManager.self)!, questionService: r.resolve(QuestionService.self)!, settingsStore: r.resolve(SettingsStore.self)!)
         }
         
         container.register(AssessmentViewModel.self) { r, assType in

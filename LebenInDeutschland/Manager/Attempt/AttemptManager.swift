@@ -31,6 +31,15 @@ enum ExamAttemptState {
         let temp = exams.sorted()
         return temp.map { $0.passed }
     }
+    
+    func version(for state: FederalState) -> ExamAttemptState {
+        if case .attempted(let exams) = self {
+            let examsForState = exams.filter { $0.stateId == state.id }
+            return examsForState.isEmpty ? .noneAttempted : .attempted(exams: examsForState)
+        } else {
+            return self
+        }
+    }
 }
 
 enum QuestionAttemptState {
@@ -48,6 +57,15 @@ enum QuestionAttemptState {
 
         default:
             return []
+        }
+    }
+    
+    func version(for state: FederalState, stateQnList: [Int]) -> QuestionAttemptState {
+        if case .attempted(let answers) = self {
+            let answersForState = answers.filter { stateQnList.contains($0.questionId) }
+            return answersForState.isEmpty ? .noneAttempted : .attempted(answers: answersForState)
+        } else {
+            return self
         }
     }
     

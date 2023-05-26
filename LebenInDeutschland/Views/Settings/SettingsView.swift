@@ -14,7 +14,7 @@ struct SettingsView: View {
     var body: some View {
         NavigationView {
             List {
-                Section("Section 1") {
+                Section("Options") {
                     Toggle("Vibrate for false answers", isOn: $viewModel.vibrateOnWrongAnswer)
                     Picker("Federal State", selection: $viewModel.selectedState) {
                         ForEach(FederalState.allCases) { federalState in

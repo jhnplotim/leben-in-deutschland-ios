@@ -26,9 +26,11 @@ final class SummaryViewModel: ObservableObject {
     
     @Published var examsToShow = 10
     
-    private var questionService: QuestionService
+    @Published var currentState: FederalState = .bayern
     
+    private var questionService: QuestionService
     private var attemptMgr: AttemptManager
+    private var settingsStore: SettingsStore
     
     private var cancellables = Set<AnyCancellable>()
     
@@ -38,25 +40,29 @@ final class SummaryViewModel: ObservableObject {
         seenQuestionsPercentage.questionsRecentlyFailedThrice.count > 0
     }
     
-    init(attemptMgr: AttemptManager, questionService: QuestionService) {
+    init(attemptMgr: some AttemptManager, questionService: some QuestionService, settingsStore: some SettingsStore) {
         self.questionService = questionService
         self.attemptMgr = attemptMgr
-        self.attemptMgr.examState.sink(receiveValue: { [weak self] state in
-            self?.examState = state
-        }).store(in: &cancellables)
+        self.settingsStore = settingsStore
         
-        self.attemptMgr.questionAttemptState.sink(receiveValue: { [weak self] state in
-            self?.questionAttemptState = state
-            self?.seenQuestionsPercentage = state.getPercentage(totalQuestionCount: Double(questionService.getAllQuestions().count))  // TODO: Use total of only questions for the selected state + general questions
-        }).store(in: &cancellables)
-        
-        self.$seenQuestionsPercentage.sink(receiveValue: { [weak self] seen in
-            self?.items = []
-            self?.items = [ .practicedAtleastOnce(progress: seen.seenOnce),
-                .practicedAtleastTwice(progress: seen.seenTwice),
-                      .practicedAtleastThrice(progress: seen.seenThrice)
-            ]
-        }).store(in: &cancellables)
+        Publishers.CombineLatest3(self.settingsStore.selectedStatePublisher, self.attemptMgr.examState, self.attemptMgr.questionAttemptState)
+            .sink(receiveValue: { [weak self] curState, examState, qAttemptState in
+                guard let self else {
+                    return
+                }
+                self.currentState = curState
+                self.examState = examState.version(for: curState)
+                let qnIdsForState = self.questionService.getAllQuestions(for: curState.id).map { $0.id }
+                self.questionAttemptState = qAttemptState.version(for: curState, stateQnList: qnIdsForState)
+                self.seenQuestionsPercentage = self.questionAttemptState.getPercentage(totalQuestionCount: Double(qnIdsForState.count))
+                let seen = self.seenQuestionsPercentage
+                self.items = []
+                self.items = [ .practicedAtleastOnce(progress: seen.seenOnce),
+                    .practicedAtleastTwice(progress: seen.seenTwice),
+                          .practicedAtleastThrice(progress: seen.seenThrice)
+                ]
+                
+            }).store(in: &cancellables)
     }
 }
 

@@ -28,8 +28,10 @@ struct SummaryView: View {
             List {
                 Section(C.sectionExamAttempts) {
                     if viewModel.examState.orderedPassOrFails.isEmpty {
-                        Text("No exam done so far")
+                        Text("No exam done so far for \(viewModel.currentState.dataModel.name)")
                             .font(.caption)
+                            .lineLimit(0)
+                            .minimumScaleFactor(0.5)
                     } else {
                         HStack {
                             Spacer()
@@ -118,9 +120,10 @@ struct SummaryView: View {
 struct SummaryView_Previews: PreviewProvider {
     static var attemptMgr = TestAttemptManagerImpl()
     static var qnService = QuestionServiceImpl()
+    static var settingsStore = SettingsStoreImpl()
     
     static var previews: some View {
-        SummaryView(viewModel: .init(attemptMgr: attemptMgr, questionService: qnService)) { qnIds, title in
+        SummaryView(viewModel: .init(attemptMgr: attemptMgr, questionService: qnService, settingsStore: settingsStore)) { qnIds, title in
             QuestionListViewModel(questionService: qnService, attemptManager: attemptMgr, qnIds, displayTitle: title)
         }
     }
