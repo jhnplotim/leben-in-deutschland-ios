@@ -16,10 +16,11 @@ struct SettingsView: View {
             List {
                 Section("Section 1") {
                     Toggle("Vibrate for false answers", isOn: $viewModel.vibrateOnWrongAnswer)
-                    ForEach(0...1, id: \.self) {
-                        Text("Item \($0 + 1)")
+                    Picker("Federal State", selection: $viewModel.selectedState) {
+                        ForEach(FederalState.allCases) { federalState in
+                            StateRow(state: federalState.dataModel).tag(federalState)
+                        }
                     }
-                    Text("State Picker")
                 }
                 Section("About") {
                     ForEach(0...1, id: \.self) {

@@ -77,6 +77,9 @@
 		7E9558AA2A1FBE9A00977FC6 /* SettingsStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E9558A92A1FBE9A00977FC6 /* SettingsStore.swift */; };
 		7E9558AC2A1FBF9B00977FC6 /* SettingsStoreImpl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E9558AB2A1FBF9B00977FC6 /* SettingsStoreImpl.swift */; };
 		7E9558AF2A1FC64600977FC6 /* HapticsHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E9558AE2A1FC64600977FC6 /* HapticsHelper.swift */; };
+		7E9558B22A20CCB000977FC6 /* FederalState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E9558B12A20CCB000977FC6 /* FederalState.swift */; };
+		7E9558B42A20D4A700977FC6 /* PublishableAppStorage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E9558B32A20D4A700977FC6 /* PublishableAppStorage.swift */; };
+		7E9558B72A20D6C400977FC6 /* CombineExt in Frameworks */ = {isa = PBXBuildFile; productRef = 7E9558B62A20D6C400977FC6 /* CombineExt */; };
 		7EC27EC52A1A132E0012B641 /* AppStorage+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7EC27EC42A1A132E0012B641 /* AppStorage+.swift */; };
 		7EDB84D929AB9C350043A793 /* QuestionModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7EDB84D829AB9C350043A793 /* QuestionModel.swift */; };
 		7EDB84DB29AB9CD20043A793 /* AnswerModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7EDB84DA29AB9CD20043A793 /* AnswerModel.swift */; };
@@ -165,6 +168,8 @@
 		7E9558A92A1FBE9A00977FC6 /* SettingsStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsStore.swift; sourceTree = "<group>"; };
 		7E9558AB2A1FBF9B00977FC6 /* SettingsStoreImpl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsStoreImpl.swift; sourceTree = "<group>"; };
 		7E9558AE2A1FC64600977FC6 /* HapticsHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HapticsHelper.swift; sourceTree = "<group>"; };
+		7E9558B12A20CCB000977FC6 /* FederalState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FederalState.swift; sourceTree = "<group>"; };
+		7E9558B32A20D4A700977FC6 /* PublishableAppStorage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PublishableAppStorage.swift; sourceTree = "<group>"; };
 		7EC27EC42A1A132E0012B641 /* AppStorage+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "AppStorage+.swift"; sourceTree = "<group>"; };
 		7EDB84D829AB9C350043A793 /* QuestionModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuestionModel.swift; sourceTree = "<group>"; };
 		7EDB84DA29AB9CD20043A793 /* AnswerModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnswerModel.swift; sourceTree = "<group>"; };
@@ -185,6 +190,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				DA1426F829B2346100846A29 /* Lottie in Frameworks */,
+				7E9558B72A20D6C400977FC6 /* CombineExt in Frameworks */,
 				7E92E6FE2A15EF6300221B21 /* Swinject in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -244,6 +250,7 @@
 		7E1F381629AB733C00F60435 /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				7E9558B02A20CC9E00977FC6 /* Enum */,
 				7E472B0E29D36CEA007F5D70 /* Statistics */,
 				7E38B49A29B3BE0A0059B9F2 /* AssessmentType.swift */,
 				7E38B49C29B45F590059B9F2 /* LaunchScreen */,
@@ -257,6 +264,7 @@
 				7E38B4B029B601E60059B9F2 /* CompletedExam.swift */,
 				7E19A01E2A12752A00D46BB1 /* CategoryModel.swift */,
 				7E92E7142A179F9600221B21 /* AssessmentSummary.swift */,
+				7E9558B32A20D4A700977FC6 /* PublishableAppStorage.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -590,6 +598,14 @@
 			path = Haptics;
 			sourceTree = "<group>";
 		};
+		7E9558B02A20CC9E00977FC6 /* Enum */ = {
+			isa = PBXGroup;
+			children = (
+				7E9558B12A20CCB000977FC6 /* FederalState.swift */,
+			);
+			path = Enum;
+			sourceTree = "<group>";
+		};
 		7EC27EC32A1A13160012B641 /* Extensions */ = {
 			isa = PBXGroup;
 			children = (
@@ -638,6 +654,7 @@
 			packageProductDependencies = (
 				DA1426F729B2346100846A29 /* Lottie */,
 				7E92E6FD2A15EF6300221B21 /* Swinject */,
+				7E9558B62A20D6C400977FC6 /* CombineExt */,
 			);
 			productName = LebenInDeutschland;
 			productReference = 7E3B0EFB29AB70F8004219B7 /* LebenInDeutschland.app */;
@@ -671,6 +688,7 @@
 			packageReferences = (
 				DA1426F629B2346100846A29 /* XCRemoteSwiftPackageReference "lottie-ios" */,
 				7E92E6FC2A15EF6300221B21 /* XCRemoteSwiftPackageReference "Swinject" */,
+				7E9558B52A20D6C400977FC6 /* XCRemoteSwiftPackageReference "CombineExt" */,
 			);
 			productRefGroup = 7E3B0EFC29AB70F8004219B7 /* Products */;
 			projectDirPath = "";
@@ -799,6 +817,7 @@
 				7E38B4B929BC5CDD0059B9F2 /* CircularProgressView.swift in Sources */,
 				7E38B49929B379090059B9F2 /* LandingPage.swift in Sources */,
 				7E38B4B329B76AFB0059B9F2 /* HistoryDotView.swift in Sources */,
+				7E9558B42A20D4A700977FC6 /* PublishableAppStorage.swift in Sources */,
 				7EDB84DF29ABD10D0043A793 /* QuestionDetail.swift in Sources */,
 				7EDB84D929AB9C350043A793 /* QuestionModel.swift in Sources */,
 				7E39F65E2A1CD56F004144CB /* HomePageView.swift in Sources */,
@@ -812,6 +831,7 @@
 				7E8B8EFC2A14CF7000EC350A /* QuestionService.swift in Sources */,
 				7E56D93B29C2549600AFB6B0 /* Localizable.swift in Sources */,
 				7E92E71E2A17B28A00221B21 /* StateDetailViewModel.swift in Sources */,
+				7E9558B22A20CCB000977FC6 /* FederalState.swift in Sources */,
 				7E39F66A2A1F5D7F004144CB /* TestAttemptManagerImpl.swift in Sources */,
 				7E472B1029D36D2E007F5D70 /* GaugeType.swift in Sources */,
 				7E56D93E29C258E000AFB6B0 /* Constants.swift in Sources */,
@@ -1046,6 +1066,14 @@
 				minimumVersion = 2.0.0;
 			};
 		};
+		7E9558B52A20D6C400977FC6 /* XCRemoteSwiftPackageReference "CombineExt" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/CombineCommunity/CombineExt.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 1.0.0;
+			};
+		};
 		DA1426F629B2346100846A29 /* XCRemoteSwiftPackageReference "lottie-ios" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/airbnb/lottie-ios";
@@ -1061,6 +1089,11 @@
 			isa = XCSwiftPackageProductDependency;
 			package = 7E92E6FC2A15EF6300221B21 /* XCRemoteSwiftPackageReference "Swinject" */;
 			productName = Swinject;
+		};
+		7E9558B62A20D6C400977FC6 /* CombineExt */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 7E9558B52A20D6C400977FC6 /* XCRemoteSwiftPackageReference "CombineExt" */;
+			productName = CombineExt;
 		};
 		DA1426F729B2346100846A29 /* Lottie */ = {
 			isa = XCSwiftPackageProductDependency;
