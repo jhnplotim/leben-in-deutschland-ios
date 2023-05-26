@@ -87,7 +87,7 @@ struct LandingPage_Previews: PreviewProvider {
         } stateListVMFactory: {
             StateListViewModel(StateListServiceImpl())
         } homePageVMFactory: {
-            HomePageViewModel(CategoryServiceImpl(), questionService)
+            HomePageViewModel(CategoryServiceImpl(), questionService, settingsStore)
         } settingsVMFactory: {
             SettingsViewModel(settingsStore)
         }

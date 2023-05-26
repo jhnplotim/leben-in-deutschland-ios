@@ -104,7 +104,10 @@ struct HomePageView: View {
 }
 
 struct HomePageView_Previews: PreviewProvider {
+    static var qnService = QuestionServiceImpl()
+    static var settingsStore = SettingsStoreImpl()
+    
     static var previews: some View {
-        HomePageView(viewModel: .init(CategoryServiceImpl(), QuestionServiceImpl()))
+        HomePageView(viewModel: .init(CategoryServiceImpl(), qnService, settingsStore))
     }
 }
