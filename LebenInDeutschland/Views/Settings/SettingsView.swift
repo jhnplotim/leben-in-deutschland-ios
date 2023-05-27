@@ -23,14 +23,14 @@ struct SettingsView: View {
                     }
                 }
                 Section("About") {
-                    ForEach(0...1, id: \.self) {
-                        Text("Item \($0 + 1)")
-                    }
+                    // TODO: Implement open source licenses
                     Text("Open Source Licenses")
+                    // TODO: Add versioning here
                     Text("Leben in Deutschland v 1.0.0")
                 }
                 
                 Section("About Developer") {
+                    // TODO: Add these
                     Text("Website: TO BE ADDED")
                     Text("JCode Studioz - Germany: CONTACT HERE")
                     
