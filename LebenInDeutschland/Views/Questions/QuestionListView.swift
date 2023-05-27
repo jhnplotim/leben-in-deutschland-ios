@@ -20,13 +20,13 @@ struct QuestionListView: View {
         
         NavigationView {
             List {
-                if !viewModel.questions.isEmpty {
+                if !viewModel.filteredResults.isEmpty {
                     AssessmentRow(title: "Practice all") {
                         viewModel.showPractice("Practice")
                     }
                 }
                 
-                ForEach(viewModel.questions) { qnRowModel in
+                ForEach(viewModel.filteredResults) { qnRowModel in
                     QuestionRow(model: qnRowModel).onTapGesture {
                         viewModel.showPractice("Self", qnId: qnRowModel.id)
                     }
@@ -40,7 +40,7 @@ struct QuestionListView: View {
                     viewModel.fetchQuestions()
                 }
             }
-        }
+        }.searchable(text: $viewModel.searchText)
     }
 }
 
