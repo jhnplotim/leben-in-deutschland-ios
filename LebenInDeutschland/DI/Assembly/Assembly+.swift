@@ -44,6 +44,10 @@ class ServiceAssembly: Assembly {
         container.register(StateListService.self) { _ in
             return StateListServiceImpl()
         }
+        
+        container.register(ReviewService.self) { _ in
+            return ReviewServiceImpl.init()
+        }.inObjectScope(.container)
     }
 }
 
@@ -91,7 +95,7 @@ class ViewModelAssembly: Assembly {
         }
         
         container.register(SettingsViewModel.self) { r in
-            SettingsViewModel(r.resolve(SettingsStore.self)!)
+            SettingsViewModel(r.resolve(SettingsStore.self)!, r.resolve(ReviewService.self)!)
         }
         
         container.register(ContentViewModel.self) { r in
