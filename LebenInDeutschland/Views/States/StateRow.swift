@@ -15,8 +15,10 @@ struct StateRow: View {
         HStack {
             state.image
                 .resizable()
-                .frame(width: 50, height: 50)
+                .aspectRatio(contentMode: .fit)
+                .frame(width: 30, height: 50)
                 .cornerRadius(5)
+                .clipped()
 
             VStack(alignment: .leading) {
                 Text(state.name)

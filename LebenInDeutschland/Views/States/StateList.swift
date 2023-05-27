@@ -9,32 +9,27 @@ import SwiftUI
 
 struct StateList: View {
     @StateObject var viewModel: StateListViewModel
-    
-    // For easier testing of SwiftUI view in preview
-    var stateDetailVMFactory: (StateModel) -> StateDetailViewModel = { state in
-        DIResolver.shared.resolve(StateDetailViewModel.self, argument: state)!
-    }
 
     var body: some View {
         NavigationView {
             List {
                 ForEach(viewModel.states) { state in
-                    NavigationLink {
-                        StateDetail(viewModel: stateDetailVMFactory(state))
+                    Button {
+                        viewModel.stateClicked(state: state.federalState)
                     } label: {
                         StateRow(state: state)
                     }
                 }
             }
-            .navigationTitle("States")
+            .navigationTitle("Where do you live?")
         }
     }
 }
 
 struct StateList_Previews: PreviewProvider {
+    static var settingsStore = SettingsStoreImpl()
+    
     static var previews: some View {
-        StateList(viewModel: .init(StateListServiceImpl())) { state in
-            StateDetailViewModel(stateToView: state)
-        }
+        StateList(viewModel: .init(StateListServiceImpl(), settingsStore))
     }
 }

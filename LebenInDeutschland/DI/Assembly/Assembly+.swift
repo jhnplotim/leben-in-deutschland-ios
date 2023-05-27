@@ -19,7 +19,13 @@ class ManagerAssembly: Assembly {
         container.register(AttemptManager.self) { _ in
             return AttemptManagerImpl()
         }
-        .inObjectScope(.container) // Singleton TODO: remove the singleton once we figure out how to listen to changes in AppStorage / Use a different alternative e.g. UserDefaults backed by publishers
+        .inObjectScope(.container)
+        
+        container.register(SettingsStore.self) { _ in
+                SettingsStoreImpl()
+        }
+        .inObjectScope(.container)
+        
     }
 }
 
@@ -61,19 +67,15 @@ class ViewModelAssembly: Assembly {
     func assemble(container: Swinject.Container) {
         
         container.register(SummaryViewModel.self) { r in
-            return SummaryViewModel(attemptMgr: r.resolve(AttemptManager.self)!, questionService: r.resolve(QuestionService.self)!)
+            return SummaryViewModel(attemptMgr: r.resolve(AttemptManager.self)!, questionService: r.resolve(QuestionService.self)!, settingsStore: r.resolve(SettingsStore.self)!)
         }
         
         container.register(AssessmentViewModel.self) { r, assType in
-            return AssessmentViewModel(attemptManager: r.resolve(AttemptManager.self)!, assessmentType: assType, questionService: r.resolve(QuestionService.self)!)
+            return AssessmentViewModel(attemptManager: r.resolve(AttemptManager.self)!, assessmentType: assType, questionService: r.resolve(QuestionService.self)!, settingsStore: r.resolve(SettingsStore.self)!)
         }
         
         container.register(StateListViewModel.self) { r in
-            StateListViewModel(r.resolve(StateListService.self)!)
-        }
-        
-        container.register(StateDetailViewModel.self) { _, state in
-            StateDetailViewModel(stateToView: state)
+            StateListViewModel(r.resolve(StateListService.self)!, r.resolve(SettingsStore.self)!)
         }
         
         container.register(QuestionListViewModel.self) { r, qnIds, displayTitle in
@@ -84,8 +86,16 @@ class ViewModelAssembly: Assembly {
         }
         
         container.register(HomePageViewModel.self) { r in
-            HomePageViewModel(r.resolve(CategoryService.self)!, r.resolve(QuestionService.self)!)
+            HomePageViewModel(r.resolve(CategoryService.self)!, r.resolve(QuestionService.self)!, r.resolve(SettingsStore.self)!)
             
+        }
+        
+        container.register(SettingsViewModel.self) { r in
+            SettingsViewModel(r.resolve(SettingsStore.self)!)
+        }
+        
+        container.register(ContentViewModel.self) { r in
+            ContentViewModel(r.resolve(SettingsStore.self)!)
         }
     }
 }

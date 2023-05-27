@@ -13,6 +13,11 @@ struct LebenInDeutschlandApp: App {
 
     @StateObject private var launchScreenStateMgr = LaunchScreenStateManager()
     
+    var contentVMFactory: () -> ContentViewModel = {
+        // swiftlint:disable force_unwrapping
+        DIResolver.shared.resolve(ContentViewModel.self)!
+    }
+    
     init() {
         // Initialise DI framework i.e. load all dependencies into assembler
         _ = Assembler.sharedAssembler
@@ -21,7 +26,7 @@ struct LebenInDeutschlandApp: App {
     var body: some Scene {
         WindowGroup {
             ZStack {
-                ContentView()
+                ContentView(viewModel: contentVMFactory())
 
                 if launchScreenStateMgr.state != .finished {
                     LaunchScreenView()

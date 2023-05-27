@@ -21,6 +21,9 @@ final class AssessmentViewModel: ObservableObject {
     @Published var assessmentTitle: String = ""
     
     @Published var timeRemaining: String = ""
+    
+    @Published var vibrateOnWrongAnser = false
+    
     private var timeLeftInSeconds: TimeInterval
     var timer: Publishers.Autoconnect<Timer.TimerPublisher> = Timer.publish(every: 1, on: .main, in: .common).autoconnect()
     @Published var assessmentCompleted = false
@@ -30,14 +33,17 @@ final class AssessmentViewModel: ObservableObject {
     private var currentAssessmentType: AssessmentType
     
     private var _questionService: QuestionService
+    
+    private var _settingsStore: SettingsStore
 
-    init(attemptManager: AttemptManager, assessmentType: AssessmentType, questionService: some QuestionService) {
+    init(attemptManager: AttemptManager, assessmentType: AssessmentType, questionService: some QuestionService, settingsStore: some SettingsStore) {
         currentQuestionIndex = 0
         attemptMgr = attemptManager
         currentAssessmentType = assessmentType
         _questionService = questionService
         assessmentTitle = currentAssessmentType.title
         timeLeftInSeconds = currentAssessmentType.duration ?? -1
+        _settingsStore = settingsStore
     }
 
     var assessmentLoaded: Bool {
@@ -57,6 +63,7 @@ final class AssessmentViewModel: ObservableObject {
     }
 
     func initialise() {
+        vibrateOnWrongAnser = _settingsStore.vibrateOnFalseAnswer
         currentQuestionIndex = 0
         loadQuestions()
         loadCurrentQuestion()

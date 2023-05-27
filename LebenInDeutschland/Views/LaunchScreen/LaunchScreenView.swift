@@ -28,11 +28,12 @@ struct LaunchScreenView: View {
             .rotationEffect(firstAnimation ? Angle(degrees: 900) : Angle(degrees: 1800))
             .scaleEffect(secondAnimation ? 0 : 1)
             .offset(y: secondAnimation ? 400 : 0)
+            .foregroundColor(.primary)
     }
 
     @ViewBuilder
     private var backgroundColor: some View {
-        Color.blue.ignoresSafeArea()
+        Color.accentColor.ignoresSafeArea()
     }
 
     private let animationTimer = Timer

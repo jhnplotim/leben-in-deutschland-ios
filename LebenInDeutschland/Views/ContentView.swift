@@ -9,10 +9,25 @@ import SwiftUI
 
 struct ContentView: View {
     @EnvironmentObject private var launchScreenStateMgr: LaunchScreenStateManager
+    
+    @StateObject
+    var viewModel: ContentViewModel
+    
+    var stateListVMFactory: () -> StateListViewModel = {
+        // swiftlint:disable force_unwrapping
+        DIResolver.shared.resolve(StateListViewModel.self)!
+    }
 
     var body: some View {
-        LandingPage()
-            .task {
+        VStack {
+            if viewModel.isFirstRun {
+                StateList(viewModel: stateListVMFactory())
+            } else {
+                withAnimation {
+                    LandingPage()
+                }
+            }
+        }.task {
                 try? await getDataFromApi() // TODO: Replace with proper network access + db access
                 try? await Task.sleep(for: Duration.seconds(1)) // TODO: Replace with proper network access + db acces
                 self.launchScreenStateMgr.dismiss()
@@ -29,8 +44,13 @@ struct ContentView: View {
 }
 
 struct ContentView_Previews: PreviewProvider {
+    static var settingsStore = SettingsStoreImpl()
+    
+    static var stateListService = StateListServiceImpl()
+    
     static var previews: some View {
-        ContentView()
-            .environmentObject(LaunchScreenStateManager())
+        ContentView(viewModel: .init(settingsStore)) {
+            StateListViewModel(stateListService, settingsStore)
+        }.environmentObject(LaunchScreenStateManager())
     }
 }

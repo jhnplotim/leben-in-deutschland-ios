@@ -16,6 +16,8 @@ final class QuestionListViewModel: ObservableObject {
     private var _attemptManager: AttemptManager
     private var _questionService: QuestionService
     
+    @Published var searchText: String = ""
+    
     @Published var questions: [QuestionRow.Model] = []
     
     @Published var pageTitle: String
@@ -37,7 +39,15 @@ final class QuestionListViewModel: ObservableObject {
         if let qnId {
             assessmentToShow = .questions(qnIds: [qnId], title: displayTitle)
         } else {
-            assessmentToShow = .questions(qnIds: questionIds, title: displayTitle)
+            assessmentToShow = .questions(qnIds: filteredResults.map { $0.id }, title: displayTitle)
+        }
+    }
+    
+    var filteredResults: [QuestionRow.Model] {
+        if searchText.isEmpty {
+            return questions
+        } else {
+            return questions.filter { $0.title.lowercased().contains(searchText.lowercased()) }
         }
     }
     

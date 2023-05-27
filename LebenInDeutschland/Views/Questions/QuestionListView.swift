@@ -20,13 +20,13 @@ struct QuestionListView: View {
         
         NavigationView {
             List {
-                if !viewModel.questions.isEmpty {
+                if !viewModel.filteredResults.isEmpty {
                     AssessmentRow(title: "Practice all") {
                         viewModel.showPractice("Practice")
                     }
                 }
                 
-                ForEach(viewModel.questions) { qnRowModel in
+                ForEach(viewModel.filteredResults) { qnRowModel in
                     QuestionRow(model: qnRowModel).onTapGesture {
                         viewModel.showPractice("Self", qnId: qnRowModel.id)
                     }
@@ -40,17 +40,23 @@ struct QuestionListView: View {
                     viewModel.fetchQuestions()
                 }
             }
-        }
+        }.searchable(text: $viewModel.searchText)
     }
 }
 
 struct QuestionListView_Previews: PreviewProvider {
     static var attemptMgr = AttemptManagerImpl()
     static var questionSrvc = QuestionServiceImpl()
+    static var settingsStore = SettingsStoreImpl()
     
     static var previews: some View {
-        QuestionListView(viewModel: .init(questionService: questionSrvc, attemptManager: attemptMgr, [1, 2])) { assType in
-            AssessmentViewModel(attemptManager: attemptMgr, assessmentType: assType, questionService: questionSrvc)
+        QuestionListView(
+            viewModel: .init(questionService: questionSrvc, attemptManager: attemptMgr, [1, 2])) { assType in
+            AssessmentViewModel(
+                attemptManager: attemptMgr,
+                assessmentType: assType,
+                questionService: questionSrvc,
+                settingsStore: settingsStore)
             
         }
     }

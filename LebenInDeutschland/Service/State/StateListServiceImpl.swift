@@ -8,14 +8,10 @@
 import Foundation
 
 final class StateListServiceImpl: StateListService {
-    enum C {
-        static let jsonFile = "states.json"
-    }
-    
     private var allStates: [StateModel]
     
     init() {
-        allStates = load(C.jsonFile)
+        allStates = FederalState.allValidCases.map { $0.dataModel }
     }
     
     func getAll() -> [StateModel] {

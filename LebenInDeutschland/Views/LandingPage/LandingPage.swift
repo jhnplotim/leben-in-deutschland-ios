@@ -16,28 +16,23 @@ struct LandingPage: View {
         DIResolver.shared.resolve(SummaryViewModel.self)!
     }
     
-    var stateListVMFactory: () -> StateListViewModel = {
-        // swiftlint:disable force_unwrapping
-        DIResolver.shared.resolve(StateListViewModel.self)!
-    }
-    
     var homePageVMFactory: () -> HomePageViewModel = {
         DIResolver.shared.resolve(HomePageViewModel.self)!
     }
 
+    var settingsVMFactory: () -> SettingsViewModel = {
+        DIResolver.shared.resolve(SettingsViewModel.self)!
+    }
+    
     enum Tab {
         case home
-        case states
         case summary
         case settings
     }
     enum C {
-        // TODO: Replace icons with more representative ones
         static let homeIconName = "house"
-        static let statesIconName = "list.bullet"
         static let summaryIconName = "note"
-        static let categoryIconName = "square.stack"
-        static let settingsIconName = "seal"
+        static let settingsIconName = "gear"
     }
 
     var body: some View {
@@ -47,12 +42,6 @@ struct LandingPage: View {
                     Label("Home", systemImage: C.homeIconName)
                 }
                 .tag(Tab.home)
-            
-            StateList(viewModel: stateListVMFactory())
-                .tabItem {
-                    Label("States", systemImage: C.statesIconName)
-                }
-                .tag(Tab.states)
 
             SummaryView(viewModel: summaryVMFactory())
                 .tabItem {
@@ -60,7 +49,7 @@ struct LandingPage: View {
                 }
                 .tag(Tab.summary)
 
-            Text("Settings")
+            SettingsView(viewModel: settingsVMFactory())
                 .tabItem {
                     Label("Settings", systemImage: C.settingsIconName)
                 }
@@ -75,14 +64,16 @@ struct LandingPage_Previews: PreviewProvider {
     
     static var attemptMgr = TestAttemptManagerImpl() // Singleton
     
+    static var settingsStore = SettingsStoreImpl() // Singleton
+    
     static var previews: some View {
         LandingPage() {
             // Pass in test implementation of ViewModel if needed
-            SummaryViewModel(attemptMgr: attemptMgr, questionService: questionService)
-        } stateListVMFactory: {
-            StateListViewModel(StateListServiceImpl())
+            SummaryViewModel(attemptMgr: attemptMgr, questionService: questionService, settingsStore: settingsStore)
         } homePageVMFactory: {
-            HomePageViewModel(CategoryServiceImpl(), questionService)
+            HomePageViewModel(CategoryServiceImpl(), questionService, settingsStore)
+        } settingsVMFactory: {
+            SettingsViewModel(settingsStore)
         }
     }
 }

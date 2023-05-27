@@ -9,7 +9,7 @@ import Foundation
 import Combine
 
 final class HomePageViewModel: ObservableObject {
-    // TODO: Have option to choose state / also maintain an enum
+    // TODO: Change to FederalState enum
     @Published var currentState: StateModel = .init(id: "be", name: "Berlin", info: "Hauptstadt")
     
     @Published var assessmentToShow: AssessmentType?
@@ -25,19 +25,22 @@ final class HomePageViewModel: ObservableObject {
     
     private var categoryService: CategoryService
     private var questionService: QuestionService
+    private var settingsStore: SettingsStore
     
     private var cancellables = Set<AnyCancellable>()
     
-    init(_ categoryService: CategoryService, _ questionService: QuestionService) {
+    init(_ categoryService: some CategoryService, _ questionService: some QuestionService, _ settingsStore: some SettingsStore) {
         self.categoryService = categoryService
         self.questionService = questionService
+        self.settingsStore = settingsStore
         
-        // Listen for changes in favorites
-        self.questionService.favoritesPublisher.sink(receiveValue: { [weak self] _favorites in
-            self?.favorites = _favorites.map { $0.id }
+        Publishers.CombineLatest(self.questionService.favoritesPublisher, self.settingsStore.selectedResidenceStatePublisher).sink(receiveValue: { [weak self] favs, residenceState in
+            
+            self?.favorites = favs.filter { $0.stateId == nil || $0.stateId == residenceState.id }.map { $0.id }
+            self?.currentState = residenceState.dataModel
+            self?.stateQuestions = self?.questionService.getStateQuestions(for: residenceState.id).map { $0.id } ?? []
+            
         }).store(in: &cancellables)
-        
-        // TODO: Listen for any state changes & update questions too.
         
     }
     
@@ -49,9 +52,6 @@ final class HomePageViewModel: ObservableObject {
         
         // all general questions
         generalQuestions = questionService.getAllGeneralQuestions().map { $0.id }
-        
-        // TODO: Use a publisher since the current state can be changed by the user in settings
-        stateQuestions = questionService.getStateQuestions(for: currentState.id).map { $0.id }
         
     }
     
