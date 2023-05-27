@@ -86,8 +86,9 @@ enum QuestionAttemptState {
         let attemptedAtleastTwice = attemptedAtleastOnce.filter { $0.value.count >= 2 }
         let attemptedAtleastThrice = attemptedAtleastTwice.filter { $0.value.count >= 3}
         
-        // TODO: Retrieve questionIds failed, once, twice and thrice
-        // TODO: Consider only questions for the selected state
+        // Retrieve questionIds failed, once, twice, thrice, four times and five time
+        // TODO: Change approach i.e. base on count of failures of 5 most recent attempts and not consecutive failures (seems to make more sense)
+        // TODO: Then group by count and extract failed 1,2...5 (Last one, 5 is the only consecutive)
         let recentlyFailedAtleastOnce = attemptedAtleastOnce.filter { !($0.value.sorted()[0].wasCorrect ?? false) }
         let recentlyFailedAtleastTwice = recentlyFailedAtleastOnce.filter { $0.value.count >= 2 && !($0.value.sorted()[1].wasCorrect ?? false) }
         let recentlyFailedAtleastThrice = recentlyFailedAtleastTwice.filter { $0.value.count >= 3 && !($0.value.sorted()[2].wasCorrect ?? false) }
