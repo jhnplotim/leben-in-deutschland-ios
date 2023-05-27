@@ -22,18 +22,30 @@ struct SettingsView: View {
                         }
                     }
                 }
-                Section("About") {
-                    // TODO: Implement open source licenses
-                    Text("Open Source Licenses")
-                    // TODO: Add versioning here
-                    Text("Leben in Deutschland v 1.0.0")
-                }
-                
-                Section("About Developer") {
-                    // TODO: Add these
-                    Text("Website: TO BE ADDED")
-                    Text("JCode Studioz - Germany: CONTACT HERE")
+                Section {
+                    Button {
+                        viewModel.rateApp()
+                    } label: {
+                        Label("Rate", systemImage: "star")
+                    }
                     
+                    ShareLink(viewModel.shareObject.0, item: viewModel.shareObject.2, message: Text(viewModel.shareObject.1))
+                    
+                    Button {
+                        // TODO: Implement open source licenses
+                    } label: {
+                        Label("Open Source Licenses", systemImage: "scroll")
+                    }
+                    
+                    Button {
+                        // TODO: Implement sending email
+                    } label: {
+                        Label("Contact", systemImage: "envelope")
+                    }
+                } header: {
+                    Text("About")
+                } footer: {
+                    Text("version: \(AppVersionProvider.currentAppVersion)")
                 }
                 
             }
@@ -45,7 +57,9 @@ struct SettingsView: View {
 struct SettingsView_Previews: PreviewProvider {
     static var settingsStore = SettingsStoreImpl()
     
+    static var reviewService = ReviewServiceImpl()
+    
     static var previews: some View {
-        SettingsView(viewModel: .init(settingsStore))
+        SettingsView(viewModel: .init(settingsStore, reviewService))
     }
 }

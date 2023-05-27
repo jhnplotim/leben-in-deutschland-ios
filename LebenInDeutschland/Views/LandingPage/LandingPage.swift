@@ -66,6 +66,8 @@ struct LandingPage_Previews: PreviewProvider {
     
     static var settingsStore = SettingsStoreImpl() // Singleton
     
+    static var reviewService = ReviewServiceImpl() // Singleton
+    
     static var previews: some View {
         LandingPage() {
             // Pass in test implementation of ViewModel if needed
@@ -73,7 +75,7 @@ struct LandingPage_Previews: PreviewProvider {
         } homePageVMFactory: {
             HomePageViewModel(CategoryServiceImpl(), questionService, settingsStore)
         } settingsVMFactory: {
-            SettingsViewModel(settingsStore)
+            SettingsViewModel(settingsStore, reviewService)
         }
     }
 }

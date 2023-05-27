@@ -11,6 +11,7 @@ import SwiftUI
 
 final class AttemptManagerImpl: AttemptManager {
     
+    // TODO: Move these to SettingsStore instead of keeping them here and then add the settings store as a depedency here
     @AppStorage("LebenInDeutschland.chosenAnswers")
     private var chosenAnswers: [ChosenAnswer] = []
     
@@ -44,6 +45,12 @@ final class AttemptManagerImpl: AttemptManager {
     func saveAttempt(questions: [AssessmentQuestion], for assessment: AssessmentType) -> Bool {
         saveQuestionAttempts(questions: questions)
         saveExamAttempt(questions: questions, assessmentType: assessment)
+        // ask for review
+        let reviewService = DIResolver.shared.resolve(ReviewService.self)!// TODO: Consider injecting it as dependency of this class
+        if completedExamsSubject.value.count >= 2 { // TODO: Increase number later & also consider adding completion percentage to this & previously reviewed app version
+            reviewService.requestReviewAutomatically()
+        }
+        
         return true
     }
     

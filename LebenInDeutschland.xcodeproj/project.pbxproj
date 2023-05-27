@@ -45,6 +45,9 @@
 		7E3B0F0129AB70F8004219B7 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E3B0F0029AB70F8004219B7 /* ContentView.swift */; };
 		7E3B0F0329AB70F9004219B7 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 7E3B0F0229AB70F9004219B7 /* Assets.xcassets */; };
 		7E3B0F0629AB70F9004219B7 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 7E3B0F0529AB70F9004219B7 /* Preview Assets.xcassets */; };
+		7E3CCFC02A2237B300A671A8 /* ReviewService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E3CCFBF2A2237B300A671A8 /* ReviewService.swift */; };
+		7E3CCFC22A22380900A671A8 /* ReviewServiceImpl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E3CCFC12A22380900A671A8 /* ReviewServiceImpl.swift */; };
+		7E3CCFC42A223E0500A671A8 /* AppVersionProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E3CCFC32A223E0500A671A8 /* AppVersionProvider.swift */; };
 		7E472B1029D36D2E007F5D70 /* GaugeType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E472B0F29D36D2E007F5D70 /* GaugeType.swift */; };
 		7E56D93629C2532900AFB6B0 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 7E56D93429C2532900AFB6B0 /* Localizable.strings */; };
 		7E56D93A29C2549600AFB6B0 /* Assets.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E56D93829C2549600AFB6B0 /* Assets.swift */; };
@@ -134,6 +137,9 @@
 		7E3B0F0029AB70F8004219B7 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		7E3B0F0229AB70F9004219B7 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		7E3B0F0529AB70F9004219B7 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
+		7E3CCFBF2A2237B300A671A8 /* ReviewService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReviewService.swift; sourceTree = "<group>"; };
+		7E3CCFC12A22380900A671A8 /* ReviewServiceImpl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReviewServiceImpl.swift; sourceTree = "<group>"; };
+		7E3CCFC32A223E0500A671A8 /* AppVersionProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppVersionProvider.swift; sourceTree = "<group>"; };
 		7E472B0F29D36D2E007F5D70 /* GaugeType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GaugeType.swift; sourceTree = "<group>"; };
 		7E56D93529C2532900AFB6B0 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
 		7E56D93729C2533600AFB6B0 /* de */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = de; path = de.lproj/Localizable.strings; sourceTree = "<group>"; };
@@ -197,6 +203,7 @@
 		7E19A0202A12768D00D46BB1 /* Service */ = {
 			isa = PBXGroup;
 			children = (
+				7E3CCFBE2A22377900A671A8 /* Review */,
 				7E9558AD2A1FC63700977FC6 /* Haptics */,
 				7E92E7162A17AEAB00221B21 /* State */,
 				7E19A02C2A127B8C00D46BB1 /* Question */,
@@ -474,6 +481,15 @@
 			path = "Preview Content";
 			sourceTree = "<group>";
 		};
+		7E3CCFBE2A22377900A671A8 /* Review */ = {
+			isa = PBXGroup;
+			children = (
+				7E3CCFBF2A2237B300A671A8 /* ReviewService.swift */,
+				7E3CCFC12A22380900A671A8 /* ReviewServiceImpl.swift */,
+			);
+			path = Review;
+			sourceTree = "<group>";
+		};
 		7E472B0E29D36CEA007F5D70 /* Statistics */ = {
 			isa = PBXGroup;
 			children = (
@@ -554,6 +570,7 @@
 			isa = PBXGroup;
 			children = (
 				7E1F382529AB84DD00F60435 /* JsonDataLoader.swift */,
+				7E3CCFC32A223E0500A671A8 /* AppVersionProvider.swift */,
 			);
 			path = Helpers;
 			sourceTree = "<group>";
@@ -791,6 +808,7 @@
 				7E38B49629B349610059B9F2 /* AssessmentQuestion+.swift in Sources */,
 				7E92E7012A15EFA800221B21 /* Assembly+.swift in Sources */,
 				7E92E7052A15F24300221B21 /* DIResolver.swift in Sources */,
+				7E3CCFC42A223E0500A671A8 /* AppVersionProvider.swift in Sources */,
 				7E19A0302A127C4300D46BB1 /* QuestionServiceImpl.swift in Sources */,
 				7E9558AA2A1FBE9A00977FC6 /* SettingsStore.swift in Sources */,
 				7E92E7032A15F1E800221B21 /* Assembler+.swift in Sources */,
@@ -799,6 +817,7 @@
 				7E1F382429AB833200F60435 /* StateModel.swift in Sources */,
 				7E92E7182A17AEFB00221B21 /* StateListService.swift in Sources */,
 				7E9558AF2A1FC64600977FC6 /* HapticsHelper.swift in Sources */,
+				7E3CCFC02A2237B300A671A8 /* ReviewService.swift in Sources */,
 				7E38B4B929BC5CDD0059B9F2 /* CircularProgressView.swift in Sources */,
 				7E38B49929B379090059B9F2 /* LandingPage.swift in Sources */,
 				7E38B4B329B76AFB0059B9F2 /* HistoryDotView.swift in Sources */,
@@ -812,6 +831,7 @@
 				7E1F382629AB84DD00F60435 /* JsonDataLoader.swift in Sources */,
 				DA14270129B2404C00846A29 /* AssessmentView.swift in Sources */,
 				7E9558A72A1F77E700977FC6 /* SettingsViewModel.swift in Sources */,
+				7E3CCFC22A22380900A671A8 /* ReviewServiceImpl.swift in Sources */,
 				7E39F6652A1F5C99004144CB /* SummaryView.swift in Sources */,
 				7E8B8EFC2A14CF7000EC350A /* QuestionService.swift in Sources */,
 				7E56D93B29C2549600AFB6B0 /* Localizable.swift in Sources */,

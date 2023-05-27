@@ -40,7 +40,7 @@ struct QuestionListView: View {
                     viewModel.fetchQuestions()
                 }
             }
-        }.searchable(text: $viewModel.searchText)
+        }.searchable(text: $viewModel.searchText, prompt: Text("Search"))
     }
 }
 
