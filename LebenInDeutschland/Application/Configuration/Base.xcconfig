@@ -1,0 +1,15 @@
+//
+//  Base.xcconfig
+//  LebenInDeutschland
+//
+//  Created by John Paul Otim on 28.05.23.
+//
+
+// Configuration settings file format documentation can be found at:
+// https://help.apple.com/xcode/#/dev745c5c974
+
+#include "Base.private.xcconfig"
+
+APP_NAME = Leben in DE
+BASE_BUNDLE_IDENTIFIER = io.github.jhnplotim.LebenInDeutschland
+
