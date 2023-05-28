@@ -15,7 +15,7 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "7E3B0EFA29AB70F8004219B7"
-               BuildableName = "LebenInDeutschland.app"
+               BuildableName = "Leben in DE dev.app"
                BlueprintName = "LebenInDeutschland"
                ReferencedContainer = "container:LebenInDeutschland.xcodeproj">
             </BuildableReference>
@@ -68,7 +68,7 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "7E3B0EFA29AB70F8004219B7"
-            BuildableName = "LebenInDeutschland.app"
+            BuildableName = "Leben in DE dev.app"
             BlueprintName = "LebenInDeutschland"
             ReferencedContainer = "container:LebenInDeutschland.xcodeproj">
          </BuildableReference>
@@ -85,7 +85,7 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "7E3B0EFA29AB70F8004219B7"
-            BuildableName = "LebenInDeutschland.app"
+            BuildableName = "Leben in DE dev.app"
             BlueprintName = "LebenInDeutschland"
             ReferencedContainer = "container:LebenInDeutschland.xcodeproj">
          </BuildableReference>

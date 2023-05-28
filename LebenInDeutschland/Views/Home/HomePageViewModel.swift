@@ -55,11 +55,12 @@ final class HomePageViewModel: ObservableObject {
         
     }
     
+    // TODO: Consider making this an extension of the BuildEnvironment enum & using it here
     func showExamAssessment() {
         #if DEBUG
         assessmentToShow = .exam(stateId: currentState.id, generalCount: 10, stateCount: 2)
         #else
-        assessmentToShow = .exam(stateId: state.id)
+        assessmentToShow = .exam(stateId: currentState.id)
         #endif
     }
     

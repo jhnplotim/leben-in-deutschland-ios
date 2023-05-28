@@ -52,6 +52,7 @@ extension AssessmentType {
         }
     }
     
+    // TODO: Consider making the duration an extension of the BuildEnvironment enum & using it here
     var duration: TimeInterval? {
         switch self {
         case .exam:
