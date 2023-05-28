@@ -1,0 +1,29 @@
+//
+//  Staging.xcconfig
+//  LebenInDeutschland
+//
+//  Created by John Paul Otim on 28.05.23.
+//
+
+// Configuration settings file format documentation can be found at:
+// https://help.apple.com/xcode/#/dev745c5c974
+
+#include "Base.xcconfig"
+
+// API URL
+API_BASE_URL = http:/$()/my-less-cool-staging-url.com // TODO: Change this
+
+// API Key
+API_KEY = my_super_secret_staging_api_key // TODO: Change this
+
+ENV_NAME = staging
+
+// Overriding (do NOT change key name)
+// app name
+PRODUCT_NAME = $(APP_NAME) $(ENV_NAME)
+// bundle id
+PRODUCT_BUNDLE_IDENTIFIER = $(BASE_BUNDLE_IDENTIFIER).$(ENV_NAME)
+// app version
+MARKETING_VERSION = 1.0.0
+// build number
+CURRENT_PROJECT_VERSION = 1

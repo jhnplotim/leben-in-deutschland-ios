@@ -11,12 +11,11 @@ import StoreKit
 // See https://ix76y.medium.com/asking-user-to-review-app-in-swiftui-533bd4e503d0
 final class ReviewServiceImpl: ReviewService {
     
-    func requestReviewManually() {
+    func requestReviewManually(appStoreId: String) {
         // TODO: replace xxxxxxxxxx in the following URL with your Apps Apple ID
         // TODO: Think of how to properly store and inject the Apple ID
-         let url = "https://apps.apple.com/app/idxxxxxxxxxx?action=write-review"
-         guard let writeReviewURL = URL(string: url)
-             else { fatalError("Expected a valid URL") }
+         let url = "https://apps.apple.com/app/id\(appStoreId)?action=write-review"
+         guard let writeReviewURL = URL(string: url) else { fatalError("Expected a valid URL") }
          UIApplication.shared.open(writeReviewURL, options: [:], completionHandler: nil)
     }
     
