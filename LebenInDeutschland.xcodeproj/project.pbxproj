@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		7E12F5CD2A23F7B9007D641C /* BuildEnvironment.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E12F5CC2A23F7B9007D641C /* BuildEnvironment.swift */; };
+		7E12F5CF2A24085D007D641C /* BuildConfigTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E12F5CE2A24085D007D641C /* BuildConfigTests.swift */; };
 		7E19A01B2A1272EE00D46BB1 /* categories.json in Resources */ = {isa = PBXBuildFile; fileRef = 7E19A01A2A1272EE00D46BB1 /* categories.json */; };
 		7E19A01F2A12752A00D46BB1 /* CategoryModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E19A01E2A12752A00D46BB1 /* CategoryModel.swift */; };
 		7E19A0232A1276B700D46BB1 /* CategoryService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E19A0222A1276B700D46BB1 /* CategoryService.swift */; };
@@ -117,6 +119,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		7E12F5CC2A23F7B9007D641C /* BuildEnvironment.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BuildEnvironment.swift; sourceTree = "<group>"; };
+		7E12F5CE2A24085D007D641C /* BuildConfigTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BuildConfigTests.swift; sourceTree = "<group>"; };
 		7E19A01A2A1272EE00D46BB1 /* categories.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = categories.json; sourceTree = "<group>"; };
 		7E19A01E2A12752A00D46BB1 /* CategoryModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryModel.swift; sourceTree = "<group>"; };
 		7E19A0222A1276B700D46BB1 /* CategoryService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryService.swift; sourceTree = "<group>"; };
@@ -152,7 +156,7 @@
 		7E39F6612A1CF7B2004144CB /* AssessmentRow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AssessmentRow.swift; sourceTree = "<group>"; };
 		7E39F6642A1F5C99004144CB /* SummaryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SummaryView.swift; sourceTree = "<group>"; };
 		7E39F6692A1F5D7F004144CB /* TestAttemptManagerImpl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestAttemptManagerImpl.swift; sourceTree = "<group>"; };
-		7E3B0EFB29AB70F8004219B7 /* LebenInDeutschland.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = LebenInDeutschland.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		7E3B0EFB29AB70F8004219B7 /* Leben in DE dev.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Leben in DE dev.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		7E3B0EFE29AB70F8004219B7 /* LebenInDeutschlandApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LebenInDeutschlandApp.swift; sourceTree = "<group>"; };
 		7E3B0F0029AB70F8004219B7 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		7E3B0F0229AB70F9004219B7 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -497,7 +501,7 @@
 		7E3B0EFC29AB70F8004219B7 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				7E3B0EFB29AB70F8004219B7 /* LebenInDeutschland.app */,
+				7E3B0EFB29AB70F8004219B7 /* Leben in DE dev.app */,
 				7E56AB4B2A22AD5800B4F884 /* LebenInDeutschlandUITests.xctest */,
 				7E56AB5A2A22AD7B00B4F884 /* LebenInDeutschlandTests.xctest */,
 			);
@@ -507,6 +511,7 @@
 		7E3B0EFD29AB70F8004219B7 /* LebenInDeutschland */ = {
 			isa = PBXGroup;
 			children = (
+				7E56ABB62A23EF6A00B4F884 /* Configs */,
 				7E56D93C29C258C500AFB6B0 /* Application */,
 				7E39F6672A1F5D34004144CB /* TestUtils */,
 				7E92E6FB2A15EE2C00221B21 /* DI */,
@@ -559,11 +564,12 @@
 			isa = PBXGroup;
 			children = (
 				7E56AB5C2A22AD7B00B4F884 /* LebenInDeutschlandTests.swift */,
+				7E12F5CE2A24085D007D641C /* BuildConfigTests.swift */,
 			);
 			path = LebenInDeutschlandTests;
 			sourceTree = "<group>";
 		};
-		7E56AB992A23DB5800B4F884 /* Configuration */ = {
+		7E56ABB62A23EF6A00B4F884 /* Configs */ = {
 			isa = PBXGroup;
 			children = (
 				7E56ABB52A23E2A400B4F884 /* Base.private.xcconfig */,
@@ -571,15 +577,15 @@
 				7E56ABAA2A23DE5800B4F884 /* Development.xcconfig */,
 				7E56ABAB2A23DE6A00B4F884 /* Staging.xcconfig */,
 				7E56ABAC2A23DE7E00B4F884 /* Production.xcconfig */,
+				7E12F5CC2A23F7B9007D641C /* BuildEnvironment.swift */,
 			);
-			path = Configuration;
+			name = Configs;
 			sourceTree = "<group>";
 		};
 		7E56D93C29C258C500AFB6B0 /* Application */ = {
 			isa = PBXGroup;
 			children = (
 				7E8746182A14D32E00B61D16 /* Info.plist */,
-				7E56AB992A23DB5800B4F884 /* Configuration */,
 				7EC27EC32A1A13160012B641 /* Extensions */,
 				7E92E71F2A17C39800221B21 /* Helpers */,
 				7E56D93D29C258E000AFB6B0 /* Constants.swift */,
@@ -738,7 +744,7 @@
 				7E9558B62A20D6C400977FC6 /* CombineExt */,
 			);
 			productName = LebenInDeutschland;
-			productReference = 7E3B0EFB29AB70F8004219B7 /* LebenInDeutschland.app */;
+			productReference = 7E3B0EFB29AB70F8004219B7 /* Leben in DE dev.app */;
 			productType = "com.apple.product-type.application";
 		};
 		7E56AB4A2A22AD5800B4F884 /* LebenInDeutschlandUITests */ = {
@@ -956,6 +962,7 @@
 				7E92E7182A17AEFB00221B21 /* StateListService.swift in Sources */,
 				7E9558AF2A1FC64600977FC6 /* HapticsHelper.swift in Sources */,
 				7E3CCFC02A2237B300A671A8 /* ReviewService.swift in Sources */,
+				7E12F5CD2A23F7B9007D641C /* BuildEnvironment.swift in Sources */,
 				7E38B4B929BC5CDD0059B9F2 /* CircularProgressView.swift in Sources */,
 				7E38B49929B379090059B9F2 /* LandingPage.swift in Sources */,
 				7E38B4B329B76AFB0059B9F2 /* HistoryDotView.swift in Sources */,
@@ -994,6 +1001,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				7E12F5CF2A24085D007D641C /* BuildConfigTests.swift in Sources */,
 				7E56AB5D2A22AD7B00B4F884 /* LebenInDeutschlandTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -1149,7 +1157,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 1;
+				CURRENT_PROJECT_VERSION = "$(inherited)";
 				DEVELOPMENT_ASSET_PATHS = "\"LebenInDeutschland/Preview Content\"";
 				DEVELOPMENT_TEAM = SCDM9CKQMB;
 				ENABLE_PREVIEWS = YES;
@@ -1164,9 +1172,10 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = io.github.jhnplotim.LebenInDeutschland;
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				MARKETING_VERSION = "$(inherited)";
+				OTHER_SWIFT_FLAGS = "-D DEVELOPMENT";
+				PRODUCT_BUNDLE_IDENTIFIER = "$(inherited)";
+				PRODUCT_NAME = "$(inherited)";
 				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
 				SUPPORTS_MACCATALYST = NO;
 				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = NO;
@@ -1183,7 +1192,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 1;
+				CURRENT_PROJECT_VERSION = "$(inherited)";
 				DEVELOPMENT_ASSET_PATHS = "\"LebenInDeutschland/Preview Content\"";
 				DEVELOPMENT_TEAM = SCDM9CKQMB;
 				ENABLE_PREVIEWS = YES;
@@ -1198,9 +1207,10 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = io.github.jhnplotim.LebenInDeutschland;
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				MARKETING_VERSION = "$(inherited)";
+				OTHER_SWIFT_FLAGS = "-D DEVELOPMENT";
+				PRODUCT_BUNDLE_IDENTIFIER = "$(inherited)";
+				PRODUCT_NAME = "$(inherited)";
 				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
 				SUPPORTS_MACCATALYST = NO;
 				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = NO;
@@ -1264,7 +1274,7 @@
 				SWIFT_EMIT_LOC_STRINGS = NO;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/LebenInDeutschland.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/LebenInDeutschland";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Leben in DE dev.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/Leben in DE dev";
 			};
 			name = "Debug (development)";
 		};
@@ -1284,7 +1294,7 @@
 				SWIFT_EMIT_LOC_STRINGS = NO;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/LebenInDeutschland.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/LebenInDeutschland";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Leben in DE dev.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/Leben in DE dev";
 			};
 			name = "Release (development)";
 		};
@@ -1356,7 +1366,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 1;
+				CURRENT_PROJECT_VERSION = "$(inherited)";
 				DEVELOPMENT_ASSET_PATHS = "\"LebenInDeutschland/Preview Content\"";
 				DEVELOPMENT_TEAM = SCDM9CKQMB;
 				ENABLE_PREVIEWS = YES;
@@ -1371,9 +1381,10 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = io.github.jhnplotim.LebenInDeutschland;
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				MARKETING_VERSION = "$(inherited)";
+				OTHER_SWIFT_FLAGS = "-D PRODUCTION";
+				PRODUCT_BUNDLE_IDENTIFIER = "$(inherited)";
+				PRODUCT_NAME = "$(inherited)";
 				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
 				SUPPORTS_MACCATALYST = NO;
 				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = NO;
@@ -1399,7 +1410,7 @@
 				SWIFT_EMIT_LOC_STRINGS = NO;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/LebenInDeutschland.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/LebenInDeutschland";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Leben in DE dev.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/Leben in DE dev";
 			};
 			name = "Debug (production)";
 		};
@@ -1484,7 +1495,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 1;
+				CURRENT_PROJECT_VERSION = "$(inherited)";
 				DEVELOPMENT_ASSET_PATHS = "\"LebenInDeutschland/Preview Content\"";
 				DEVELOPMENT_TEAM = SCDM9CKQMB;
 				ENABLE_PREVIEWS = YES;
@@ -1499,9 +1510,10 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = io.github.jhnplotim.LebenInDeutschland;
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				MARKETING_VERSION = "$(inherited)";
+				OTHER_SWIFT_FLAGS = "-D PRODUCTION";
+				PRODUCT_BUNDLE_IDENTIFIER = "$(inherited)";
+				PRODUCT_NAME = "$(inherited)";
 				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
 				SUPPORTS_MACCATALYST = NO;
 				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = NO;
@@ -1527,7 +1539,7 @@
 				SWIFT_EMIT_LOC_STRINGS = NO;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/LebenInDeutschland.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/LebenInDeutschland";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Leben in DE dev.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/Leben in DE dev";
 			};
 			name = "Release (production)";
 		};
@@ -1612,7 +1624,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 1;
+				CURRENT_PROJECT_VERSION = "$(inherited)";
 				DEVELOPMENT_ASSET_PATHS = "\"LebenInDeutschland/Preview Content\"";
 				DEVELOPMENT_TEAM = SCDM9CKQMB;
 				ENABLE_PREVIEWS = YES;
@@ -1627,9 +1639,10 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = io.github.jhnplotim.LebenInDeutschland;
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				MARKETING_VERSION = "$(inherited)";
+				OTHER_SWIFT_FLAGS = "-D STAGING";
+				PRODUCT_BUNDLE_IDENTIFIER = "$(inherited)";
+				PRODUCT_NAME = "$(inherited)";
 				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
 				SUPPORTS_MACCATALYST = NO;
 				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = NO;
@@ -1655,7 +1668,7 @@
 				SWIFT_EMIT_LOC_STRINGS = NO;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/LebenInDeutschland.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/LebenInDeutschland";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Leben in DE dev.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/Leben in DE dev";
 			};
 			name = "Release (staging)";
 		};
@@ -1746,7 +1759,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 1;
+				CURRENT_PROJECT_VERSION = "$(inherited)";
 				DEVELOPMENT_ASSET_PATHS = "\"LebenInDeutschland/Preview Content\"";
 				DEVELOPMENT_TEAM = SCDM9CKQMB;
 				ENABLE_PREVIEWS = YES;
@@ -1761,9 +1774,10 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = io.github.jhnplotim.LebenInDeutschland;
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				MARKETING_VERSION = "$(inherited)";
+				OTHER_SWIFT_FLAGS = "-D STAGING";
+				PRODUCT_BUNDLE_IDENTIFIER = "$(inherited)";
+				PRODUCT_NAME = "$(inherited)";
 				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
 				SUPPORTS_MACCATALYST = NO;
 				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = NO;
@@ -1789,7 +1803,7 @@
 				SWIFT_EMIT_LOC_STRINGS = NO;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/LebenInDeutschland.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/LebenInDeutschland";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Leben in DE dev.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/Leben in DE dev";
 			};
 			name = "Debug (staging)";
 		};

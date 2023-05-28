@@ -44,8 +44,8 @@ final class SettingsViewModel: ObservableObject {
         }).store(in: &cancellables)
     }
     
-    func rateApp() {
-        reviewService.requestReviewManually()
+    func rateApp(_ appStoreId: String = BuildConfig.shared.appStoreId) {
+        reviewService.requestReviewManually(appStoreId: appStoreId)
     }
     
 }

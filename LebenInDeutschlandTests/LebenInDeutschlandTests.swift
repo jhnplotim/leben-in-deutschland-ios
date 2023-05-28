@@ -6,7 +6,7 @@
 //
 
 import XCTest
-@testable import LebenInDeutschland
+@testable import Leben_in_DE_dev
 
 final class LebenInDeutschlandTests: XCTestCase {
 
