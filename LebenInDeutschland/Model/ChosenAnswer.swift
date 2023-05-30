@@ -13,7 +13,7 @@ struct ChosenAnswer: Identifiable, Hashable, Equatable, Codable, Comparable {
     }
     
     let id: Int // TODO: Consider using UUID here
-    let answerId: String?
+    let answerId: Int?
     let wasCorrect: Bool?
     let questionId: Int
     let dateTimeAdded: Date
