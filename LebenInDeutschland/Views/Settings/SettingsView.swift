@@ -21,6 +21,14 @@ struct SettingsView: View {
                             StateRow(state: federalState.dataModel).tag(federalState)
                         }
                     }
+                    HStack {
+                        Spacer()
+                        Button(role: .destructive) {
+                            // TODO: Implement app after showing confirmation dialog first
+                        } label: {
+                            Text("Reset")
+                        }
+                    }
                 }
                 Section {
                     Button {
