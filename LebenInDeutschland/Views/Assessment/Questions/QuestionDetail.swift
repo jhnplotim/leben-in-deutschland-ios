@@ -98,6 +98,14 @@ struct QuestionDetail: View {
                 }
                 .padding()
             }
+        }.toolbar {
+            ToolbarItem(placement: .navigationBarTrailing) {
+                Button {
+                    model.copyToClipBoard()
+                } label: {
+                    Label("Copy", systemImage: "doc.on.doc")
+                }
+            }
         }
     }
 }
