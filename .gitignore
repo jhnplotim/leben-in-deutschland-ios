@@ -90,3 +90,6 @@ fastlane/test_output
 iOSInjectionProject/
 .DS_Store
 *.private.xcconfig
+LebenInDeutschland/GoogleService-Info-staging.plist
+LebenInDeutschland/GoogleService-Info-production.plist
+LebenInDeutschland/GoogleService-Info-development.plist
