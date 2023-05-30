@@ -24,13 +24,11 @@ final class QuestionDetailModel {
     }
     
     // For testing purposes / previews
-    #if DEBUG
     init(curPos: Int, qn: AssessmentQuestion, attMgrFactory: @autoclosure @escaping () -> AttemptManager) {
         position = curPos
         assessmentQuestion = qn
         attemptMgrFactory = attMgrFactory
     }
-    #endif
     
     func getChosenAnswers() -> [Bool] {
         attemptMgrFactory().getChosenAnswers(for: assessmentQuestion.question.id).map { $0.wasCorrect ?? false }

@@ -40,15 +40,11 @@ struct QuestionDetail: View {
                     Text("\(model.position). \(model.assessmentQuestion.question.title)")
                         .font(.headline)
 
-                    if let imageLink = model.assessmentQuestion.question.imageLink {
-                        AsyncImage(url: imageLink) { image in
-                            image
-                                .resizable()
-                                .frame(height: 250)
-                                .aspectRatio(1.75, contentMode: .fit)
-                        } placeholder: {
-                            ProgressView()
-                        }
+                    if let uiImage = model.assessmentQuestion.question.image {
+                        Image(uiImage: uiImage)
+                            .resizable()
+                            .frame(height: 250)
+                            .aspectRatio(1.75, contentMode: .fit)
                     }
 
                     // TODO: Use ID instead of text value to compare
