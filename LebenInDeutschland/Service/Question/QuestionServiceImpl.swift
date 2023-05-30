@@ -88,11 +88,11 @@ final class QuestionServiceImpl: QuestionService {
         getAllQuestions().filter { $0.stateId == nil }
     }
     
-    func getStateQuestions(for stateId: String) -> [QuestionModel] {
+    func getStateQuestions(for stateId: Int) -> [QuestionModel] {
         getAllQuestions().filter { $0.stateId == stateId }
     }
     
-    func getAllQuestions(for stateId: String) -> [QuestionModel] {
+    func getAllQuestions(for stateId: Int) -> [QuestionModel] {
         allQuestions.filter { $0.stateId == nil || $0.stateId == stateId }
     }
 }

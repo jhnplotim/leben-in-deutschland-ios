@@ -13,7 +13,7 @@ struct CompletedExam: Identifiable, Hashable, Equatable, Codable, Comparable {
     }
     
     let id: Int
-    let stateId: String
+    let stateId: Int
     let questionCount: Int
     let questionCountAnsweredCorrectly: Int
     let questionCountAnsweredWrongly: Int

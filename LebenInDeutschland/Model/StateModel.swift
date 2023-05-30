@@ -9,12 +9,13 @@ import Foundation
 import SwiftUI
 
 struct StateModel: Hashable, Codable, Identifiable {
-    var id: String
+    var id: Int
+    var code: String
     var name: String
     var info: String
 
     private var imageName: String {
-        id
+        code
     }
 
     var image: Image {

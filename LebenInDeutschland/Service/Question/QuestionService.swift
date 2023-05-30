@@ -17,6 +17,6 @@ protocol QuestionService {
     func getAssessmentQuestions(for assessmentType: AssessmentType) -> [AssessmentQuestion]
     func toggleQuestionAsFavorite(_ questionId: Int) -> QuestionModel?
     func getAllGeneralQuestions() -> [QuestionModel]
-    func getStateQuestions(for stateId: String) -> [QuestionModel]
-    func getAllQuestions(for stateId: String) -> [QuestionModel]
+    func getStateQuestions(for stateId: Int) -> [QuestionModel]
+    func getAllQuestions(for stateId: Int) -> [QuestionModel]
 }

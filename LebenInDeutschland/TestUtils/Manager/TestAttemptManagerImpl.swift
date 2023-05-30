@@ -13,7 +13,7 @@ final class TestAttemptManagerImpl: AttemptManager {
         []
     }
     
-    var examState: AnyPublisher<ExamAttemptState, Never> = Just(ExamAttemptState.attempted(exams: [CompletedExam(id: 0, stateId: "", questionCount: 1, questionCountAnsweredCorrectly: 1, questionCountAnsweredWrongly: 1, questionCountUnanswered: 2, dateTimeStarted: Date(), dateTimeEnded: Date(), passmarkUsed: GlobalC.PASSMARK)])).eraseToAnyPublisher()
+    var examState: AnyPublisher<ExamAttemptState, Never> = Just(ExamAttemptState.attempted(exams: [CompletedExam(id: 0, stateId: FederalState.berlin.id, questionCount: 1, questionCountAnsweredCorrectly: 1, questionCountAnsweredWrongly: 1, questionCountUnanswered: 2, dateTimeStarted: Date(), dateTimeEnded: Date(), passmarkUsed: GlobalC.PASSMARK)])).eraseToAnyPublisher()
     
     var questionAttemptState: AnyPublisher<QuestionAttemptState, Never> = Just(QuestionAttemptState.attempted(answers: [ChosenAnswer(id: 1, answerId: nil, wasCorrect: nil, questionId: 1, dateTimeAdded: Date(), examId: nil)])).eraseToAnyPublisher()
     
