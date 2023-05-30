@@ -13,7 +13,7 @@ struct QuestionModel: Hashable, Codable, Identifiable, Equatable {
     var title: String
     var imageLink: URL?
     var answers: [AnswerModel]
-    var stateId: String?
+    var stateId: Int?
     var categoryId: Int?
     var isFavorite: Bool? = false // TODO: Make it Not nilable later
     // TODO: Consider saving list of favorites separately from the questions & have a favorites service responsible for managing them e.g. add, update, read, delete

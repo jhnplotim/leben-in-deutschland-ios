@@ -8,26 +8,26 @@
 import Foundation
 
 /// List federal states in Germany
-enum FederalState: String, Identifiable, CaseIterable, Codable {
-    case noneSelected = "noneSelected"
-    case bayern = "by"
-    case badenWürttemberg = "bw"
-    case berlin = "be"
-    case brandenburg = "bb"
-    case bremen = "hb"
-    case hamburg = "hh"
-    case hessen = "he"
-    case mecklenburgVorpommern = "mv"
-    case niedersachsen = "ni"
-    case nordrheinWestfalen = "nw"
-    case rheinlandPfalz = "rp"
-    case saarland = "sl"
-    case sachsen = "sn"
-    case sachsenAnhalt = "st"
-    case schleswigHolstein = "sh"
-    case thüringen = "th"
+enum FederalState: Int, Codable, Identifiable, CaseIterable, Equatable {
+    case noneSelected = -1
+    case badenWürttemberg = 1
+    case bayern = 2
+    case berlin = 3
+    case brandenburg = 4
+    case bremen = 5
+    case hamburg = 6
+    case hessen = 7
+    case mecklenburgVorpommern = 8
+    case niedersachsen = 9
+    case nordrheinWestfalen = 10
+    case rheinlandPfalz = 11
+    case saarland = 12
+    case sachsen = 13
+    case sachsenAnhalt = 14
+    case schleswigHolstein = 15
+    case thüringen = 16
     
-    var id: String {
+    var id: Int {
         self.rawValue
     }
     
@@ -41,55 +41,55 @@ extension FederalState {
         switch self {
             
         case .noneSelected:
-            return .init(id: self.id, name: "None Selected", info: "No Residence State selected")
+            return .init(id: self.id, code: "noneSelected", name: "None Selected", info: "No Residence State selected")
             
         case .bayern:
-            return .init(id: self.id, name: "Bayern", info: "Der Freistaat ist mit 70.550 km² das größte Bundesland")
+            return .init(id: self.id, code: "by", name: "Bayern", info: "Der Freistaat ist mit 70.550 km² das größte Bundesland")
             
         case .badenWürttemberg:
-            return .init(id: self.id, name: "Baden-Württemberg", info: "Das Ländle, 35.751 km² groß")
+            return .init(id: self.id, code: "bw", name: "Baden-Württemberg", info: "Das Ländle, 35.751 km² groß")
             
         case .berlin:
-            return .init(id: self.id, name: "Berlin", info: "Die Hauptstadt der Bundesrepublik Deutschland")
+            return .init(id: self.id, code: "be", name: "Berlin", info: "Die Hauptstadt der Bundesrepublik Deutschland")
             
         case .brandenburg:
-            return .init(id: self.id, name: "Brandenburg", info: "Reich an Naturparks, Wäldern, Seen und Wassergebieten")
+            return .init(id: self.id, code: "bb", name: "Brandenburg", info: "Reich an Naturparks, Wäldern, Seen und Wassergebieten")
             
         case .bremen:
-            return .init(id: self.id, name: "Bremen", info: "Zwei-Städte-Staat an der Weser")
+            return .init(id: self.id, code: "hb", name: "Bremen", info: "Zwei-Städte-Staat an der Weser")
             
         case .hamburg:
-            return .init(id: self.id, name: "Hamburg", info: "Stadtstaat und zweitgrößte Stadt Deutschlands")
+            return .init(id: self.id, code: "hh", name: "Hamburg", info: "Stadtstaat und zweitgrößte Stadt Deutschlands")
             
         case .hessen:
-            return .init(id: self.id, name: "Hessen", info: "Eine der am dichtesten besiedelten Regionen Deutschlands")
+            return .init(id: self.id, code: "he", name: "Hessen", info: "Eine der am dichtesten besiedelten Regionen Deutschlands")
             
         case .mecklenburgVorpommern:
-            return .init(id: self.id, name: "Mecklenburg-Vorpommern", info: "Wasserreiches Land an der Ostsee mit ca. 2000 km Küstenlinie")
+            return .init(id: self.id, code: "mv", name: "Mecklenburg-Vorpommern", info: "Wasserreiches Land an der Ostsee mit ca. 2000 km Küstenlinie")
             
         case .niedersachsen:
-            return .init(id: self.id, name: "Niedersachsen", info: "Das flächenmäßig zweitgrößte Bundesland")
+            return .init(id: self.id, code: "ni", name: "Niedersachsen", info: "Das flächenmäßig zweitgrößte Bundesland")
             
         case .nordrheinWestfalen:
-            return .init(id: self.id, name: "Nordrhein-Westfalen", info: "Mit 17,9 Mio. das bevölkerungsreichste Bundesland")
+            return .init(id: self.id, code: "nw", name: "Nordrhein-Westfalen", info: "Mit 17,9 Mio. das bevölkerungsreichste Bundesland")
             
         case .rheinlandPfalz:
-            return .init(id: self.id, name: "Rheinland-Pfalz", info: "Ein junges Land auf historischem Boden")
+            return .init(id: self.id, code: "rp", name: "Rheinland-Pfalz", info: "Ein junges Land auf historischem Boden")
             
         case .saarland:
-            return .init(id: self.id, name: "Saarland", info: "Das kleinste Flächenland Deutschlands")
+            return .init(id: self.id, code: "sl", name: "Saarland", info: "Das kleinste Flächenland Deutschlands")
             
         case .sachsen:
-            return .init(id: self.id, name: "Sachsen", info: "Freistaat Sachsen")
+            return .init(id: self.id, code: "sn", name: "Sachsen", info: "Freistaat Sachsen")
             
         case .sachsenAnhalt:
-            return .init(id: self.id, name: "Sachsen-Anhalt", info: "Bundesland mit der höchsten Dichte an UNESCO-Weltkulturerben in Deutschland")
+            return .init(id: self.id, code: "st", name: "Sachsen-Anhalt", info: "Bundesland mit der höchsten Dichte an UNESCO-Weltkulturerben in Deutschland")
             
         case .schleswigHolstein:
-            return .init(id: self.id, name: "Schleswig-Holstein", info: "Das Land zwischen der Nord- und Ostsee")
+            return .init(id: self.id, code: "sh", name: "Schleswig-Holstein", info: "Das Land zwischen der Nord- und Ostsee")
             
         case .thüringen:
-            return .init(id: self.id, name: "Thüringen", info: "Freistaat Thüringen")
+            return .init(id: self.id, code: "th", name: "Thüringen", info: "Freistaat Thüringen")
             
         }
     }

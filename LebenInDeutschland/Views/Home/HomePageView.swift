@@ -38,9 +38,9 @@ struct HomePageView: View {
                     if !viewModel.stateQuestions.isEmpty {
                         NavigationLink(destination: QuestionListView(viewModel: qnListVMFactory(
                             viewModel.stateQuestions,
-                            viewModel.currentState.name
+                            viewModel.currentState.dataModel.name
                         ))) {
-                            Text("\(viewModel.currentState.name) (\(viewModel.stateQuestions.count))")
+                            Text("\(viewModel.currentState.dataModel.name) (\(viewModel.stateQuestions.count))")
                                 .lineLimit(0)
                             .minimumScaleFactor(0.8)
                         }
