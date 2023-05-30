@@ -47,7 +47,7 @@ final class HomePageViewModel: ObservableObject {
     func loadData() {
         // Categories
         categories = categoryService.getCategories().map { cat in
-            cat.update(with: questionService.getCategoryQuestions(for: cat.id).map { $0.id })
+            cat.getModel(with: questionService.getCategoryQuestions(for: cat.id).map { $0.id }) 
         }
         
         // all general questions

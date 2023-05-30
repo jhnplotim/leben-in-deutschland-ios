@@ -9,17 +9,13 @@ import Foundation
 
 final class CategoryServiceImpl: CategoryService {
     
-    enum C {
-        static let jsonFile = "categories.json"
-    }
-    
-    private var categories: [CategoryModel]
+    private var categories: [PracticeCategory]
     
     init() {
-        categories = load(C.jsonFile)
+        categories = PracticeCategory.allCases
     }
     
-    func getCategories() -> [CategoryModel] {
+    func getCategories() -> [PracticeCategory] {
         categories
     }
 }
