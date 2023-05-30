@@ -33,4 +33,8 @@ struct QuestionModel: Hashable, Codable, Identifiable, Equatable {
         value.isFavorite = !(value.isFavorite ?? false)
         return value
     }
+    
+    private enum CodingKeys: String, CodingKey {
+        case id, title, imageLink = "imageAsBase64", answers, stateId, categoryId, isFavorite
+    }
 }
