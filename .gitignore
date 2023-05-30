@@ -91,3 +91,6 @@ iOSInjectionProject/
 .DS_Store
 *.private.xcconfig
 LebenInDeutschland/Resources/questions_private.json
+LebenInDeutschland/GoogleService-Info-staging.plist
+LebenInDeutschland/GoogleService-Info-production.plist
+LebenInDeutschland/GoogleService-Info-development.plist
