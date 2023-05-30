@@ -8,5 +8,5 @@
 import Foundation
 
 protocol CategoryService: AnyObject {
-    func getCategories() -> [CategoryModel]
+    func getCategories() -> [PracticeCategory]
 }
