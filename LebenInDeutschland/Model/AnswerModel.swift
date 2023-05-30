@@ -8,11 +8,11 @@
 import Foundation
 
 struct AnswerModel: Hashable, Codable, Identifiable, Equatable {
-    var id: String
+    var id: Int
     var text: String
     var isCorrect: Bool
 
     // TODO: Add Question ID / Reference later when DB is integrated
 
-    static let `none` = AnswerModel(id: "", text: "", isCorrect: false)
+    static let `none` = AnswerModel(id: -1, text: "", isCorrect: false)
 }
