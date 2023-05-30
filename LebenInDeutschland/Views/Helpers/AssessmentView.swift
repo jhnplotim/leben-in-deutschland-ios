@@ -148,25 +148,25 @@ struct AssessmentView_Previews: PreviewProvider {
         Group {
             AssessmentView(
                 viewModel: .init(attemptManager: attemptMgr,
-                assessmentType: .state(stateId: "by"),
+                                 assessmentType: .state(stateId: FederalState.bayern.id),
                 questionService: questionService,
                 settingsStore: settingsStore))
             
             AssessmentView(
                 viewModel: .init(attemptManager: attemptMgr,
-                assessmentType: .state(stateId: "by", count: 4),
+                                 assessmentType: .state(stateId: FederalState.bayern.id, count: 4),
                 questionService: questionService,
                 settingsStore: settingsStore))
             
             AssessmentView(
                 viewModel: .init(attemptManager: attemptMgr,
-                assessmentType: .state(stateId: "be"),
+                                 assessmentType: .state(stateId: FederalState.berlin.id),
                 questionService: questionService,
                 settingsStore: settingsStore))
             
             AssessmentView(
                 viewModel: .init(attemptManager: attemptMgr,
-                assessmentType: .state(stateId: "be", count: 4),
+                                 assessmentType: .state(stateId: FederalState.berlin.id, count: 4),
                 questionService: questionService,
                 settingsStore: settingsStore))
             
@@ -190,13 +190,13 @@ struct AssessmentView_Previews: PreviewProvider {
             
             AssessmentView(
                 viewModel: .init(attemptManager: attemptMgr,
-                assessmentType: .exam(stateId: "be", generalCount: 4, stateCount: 2),
+                                 assessmentType: .exam(stateId: FederalState.berlin.id, generalCount: 4, stateCount: 2),
                 questionService: questionService,
                 settingsStore: settingsStore))
             
             AssessmentView(
                 viewModel: .init(attemptManager: attemptMgr,
-                assessmentType: .exam(stateId: "by", generalCount: 4, stateCount: 2),
+                                 assessmentType: .exam(stateId: FederalState.bayern.id, generalCount: 4, stateCount: 2),
                 questionService: questionService,
                 settingsStore: settingsStore))
         }

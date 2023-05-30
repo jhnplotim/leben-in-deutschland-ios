@@ -10,8 +10,8 @@ import Foundation
 enum AssessmentType: Equatable, Hashable, Identifiable {
 
     // TODO: Remove any un-necessary types after the un-needed view have been removed e.g. state & bookmark
-    case exam(stateId: String, generalCount: Int = 30, stateCount: Int = 3)
-    case state(stateId: String, count: Int = 10)
+    case exam(stateId: Int, generalCount: Int = 30, stateCount: Int = 3)
+    case state(stateId: Int, count: Int = 10)
     case general(count: Int = 100)
     case bookMark(bookMarkId: String)
     case questions(qnIds: [Int], title: String)
