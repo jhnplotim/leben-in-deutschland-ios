@@ -28,3 +28,10 @@ PRODUCT_BUNDLE_IDENTIFIER = $(BASE_BUNDLE_IDENTIFIER).$(ENV_NAME)
 MARKETING_VERSION = 1.0.0
 // build number
 CURRENT_PROJECT_VERSION = 1
+
+#include "../Pods/Target Support Files/Pods-LebenInDeutschland/Pods-LebenInDeutschland.debug (development).xcconfig"
+#include "../Pods/Target Support Files/Pods-LebenInDeutschland/Pods-LebenInDeutschland.release (development).xcconfig"
+#include "../Pods/Target Support Files/Pods-LebenInDeutschland-LebenInDeutschlandUITests/Pods-LebenInDeutschland-LebenInDeutschlandUITests.debug (development).xcconfig"
+#include "../Pods/Target Support Files/Pods-LebenInDeutschland-LebenInDeutschlandUITests/Pods-LebenInDeutschland-LebenInDeutschlandUITests.release (development).xcconfig"
+#include "../Pods/Target Support Files/Pods-LebenInDeutschlandTests/Pods-LebenInDeutschlandTests.debug (development).xcconfig"
+#include "../Pods/Target Support Files/Pods-LebenInDeutschlandTests/Pods-LebenInDeutschlandTests.release (development).xcconfig"
