@@ -115,10 +115,16 @@ struct AssessmentView: View {
                 }
             }
         }
-        .analyticsScreen(name: "AssessmentView", extraParameters: ["type": viewModel.assessmentTitle])
         .onAppear {
             viewModel.initialise()
         }
+        .analyticsScreen(
+            name: "AssessmentView",
+            extraParameters: ["title": viewModel.assessmentTitle,
+                              "isTimed": viewModel.isTimed,
+                              "vibrateOnWrongAnswer": viewModel.vibrateOnWrongAnser,
+                              "count": viewModel.questionCount
+                             ])
         .onDisappear {
             viewModel.deInitialise()
             onClose?()

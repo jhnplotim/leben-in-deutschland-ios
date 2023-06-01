@@ -24,8 +24,12 @@ enum AssessmentType: Equatable, Hashable, Identifiable {
 extension AssessmentType {
     var title: String {
         switch self {
-        case .exam(_, _, _):
-            return "Exam"
+        case .exam( let stateId, _, _):
+            var title = "Exam"
+            guard let state = FederalState(rawValue: stateId) else {
+                return title
+            }
+            return "\(state.dataModel.name) \(title)"
             
         case .state(_, _):
             return "State Assessment"
