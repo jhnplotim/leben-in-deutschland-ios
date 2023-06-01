@@ -11,6 +11,7 @@ struct SettingsView: View {
     
     @StateObject var viewModel: SettingsViewModel
     
+    // TODO: Add FirebaseAnalytics to only important events
     var body: some View {
         NavigationView {
             List {

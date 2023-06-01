@@ -6,6 +6,7 @@
 //
 
 import SwiftUI
+import FirebaseAnalyticsSwift
 
 struct LandingPage: View {
 
@@ -33,27 +34,34 @@ struct LandingPage: View {
         static let homeIconName = "house"
         static let summaryIconName = "note"
         static let settingsIconName = "gear"
+        
+        static let homeTabName = "Home"
+        static let summaryTabName = "Summary"
+        static let settingsTabName = "Settings"
     }
 
     var body: some View {
         TabView(selection: $selection) {
             HomePageView(viewModel: homePageVMFactory())
                 .tabItem {
-                    Label("Home", systemImage: C.homeIconName)
+                    Label(C.homeTabName, systemImage: C.homeIconName)
                 }
                 .tag(Tab.home)
+                .analyticsScreen(name: "\(C.homeTabName) Tab") // TODO: Remove later before going live
 
             SummaryView(viewModel: summaryVMFactory())
                 .tabItem {
-                    Label("Summary", systemImage: C.summaryIconName)
+                    Label(C.summaryTabName, systemImage: C.summaryIconName)
                 }
                 .tag(Tab.summary)
+                .analyticsScreen(name: "\(C.summaryTabName) Tab") // TODO: Remove later before going live
 
             SettingsView(viewModel: settingsVMFactory())
                 .tabItem {
-                    Label("Settings", systemImage: C.settingsIconName)
+                    Label(C.settingsTabName, systemImage: C.settingsIconName)
                 }
                 .tag(Tab.settings)
+                .analyticsScreen(name: "\(C.settingsTabName) Tab") // TODO: Remove later before going live
 
         }
     }
