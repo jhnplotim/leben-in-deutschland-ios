@@ -13,6 +13,7 @@ struct SettingsView: View {
 	
 	@State private var isPresentingConfirmReset = false
     
+    // TODO: Add FirebaseAnalytics to only important events
     var body: some View {
         NavigationView {
             List {

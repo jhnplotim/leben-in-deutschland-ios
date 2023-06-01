@@ -41,7 +41,10 @@ struct QuestionListView: View {
                 }
             }
         }.searchable(text: $viewModel.searchText, prompt: Text("Search"))
+        
+            .analyticsScreen(name: "QuestionListView", extraParameters: ["type": viewModel.$pageTitle])
     }
+        
 }
 
 struct QuestionListView_Previews: PreviewProvider {

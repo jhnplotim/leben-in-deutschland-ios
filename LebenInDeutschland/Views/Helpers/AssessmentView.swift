@@ -115,6 +115,7 @@ struct AssessmentView: View {
                 }
             }
         }
+        .analyticsScreen(name: "AssessmentView", extraParameters: ["type": viewModel.assessmentTitle])
         .onAppear {
             viewModel.initialise()
         }
