@@ -42,7 +42,11 @@ struct QuestionListView: View {
             }
         }.searchable(text: $viewModel.searchText, prompt: Text("Search"))
         
-            .analyticsScreen(name: "QuestionListView", extraParameters: ["type": viewModel.$pageTitle])
+            .analyticsScreen(name: "QuestionListView", extraParameters:
+                                [
+                                    "title": viewModel.$pageTitle,
+                                    "count": viewModel.$questions.count()
+                                ])
     }
         
 }
