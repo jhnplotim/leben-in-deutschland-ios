@@ -18,6 +18,7 @@
 		7E1F382429AB833200F60435 /* StateModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E1F382329AB833200F60435 /* StateModel.swift */; };
 		7E1F382629AB84DD00F60435 /* JsonDataLoader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E1F382529AB84DD00F60435 /* JsonDataLoader.swift */; };
 		7E1F382829AB85BF00F60435 /* StateRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E1F382729AB85BF00F60435 /* StateRow.swift */; };
+		7E262B512A2B644A006B9563 /* AdView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E262B502A2B644A006B9563 /* AdView.swift */; };
 		7E38B48F29B337AC0059B9F2 /* AssessmentViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E38B48E29B337AC0059B9F2 /* AssessmentViewModel.swift */; };
 		7E38B49129B3489D0059B9F2 /* AssessmentQuestion.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E38B49029B3489D0059B9F2 /* AssessmentQuestion.swift */; };
 		7E38B49429B349390059B9F2 /* QuestionModel+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E38B49329B349390059B9F2 /* QuestionModel+.swift */; };
@@ -57,6 +58,7 @@
 		7E56D93A29C2549600AFB6B0 /* Assets.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E56D93829C2549600AFB6B0 /* Assets.swift */; };
 		7E56D93B29C2549600AFB6B0 /* Localizable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E56D93929C2549600AFB6B0 /* Localizable.swift */; };
 		7E56D93E29C258E000AFB6B0 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E56D93D29C258E000AFB6B0 /* Constants.swift */; };
+		7E653FE02A2AF09300803583 /* AppTrackingTransparency.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7E653FDF2A2AF09300803583 /* AppTrackingTransparency.framework */; };
 		7E7B86332A1BBFE900B7A053 /* QuestionListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E7B86322A1BBFE900B7A053 /* QuestionListView.swift */; };
 		7E7B86352A1BC00300B7A053 /* QuestionListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E7B86342A1BC00300B7A053 /* QuestionListViewModel.swift */; };
 		7E7B86372A1BC0D300B7A053 /* QuestionRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E7B86362A1BC0D300B7A053 /* QuestionRow.swift */; };
@@ -155,6 +157,7 @@
 		7E1F382329AB833200F60435 /* StateModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StateModel.swift; sourceTree = "<group>"; };
 		7E1F382529AB84DD00F60435 /* JsonDataLoader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JsonDataLoader.swift; sourceTree = "<group>"; };
 		7E1F382729AB85BF00F60435 /* StateRow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StateRow.swift; sourceTree = "<group>"; };
+		7E262B502A2B644A006B9563 /* AdView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AdView.swift; sourceTree = "<group>"; };
 		7E38B48E29B337AC0059B9F2 /* AssessmentViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AssessmentViewModel.swift; sourceTree = "<group>"; };
 		7E38B49029B3489D0059B9F2 /* AssessmentQuestion.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AssessmentQuestion.swift; sourceTree = "<group>"; };
 		7E38B49329B349390059B9F2 /* QuestionModel+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "QuestionModel+.swift"; sourceTree = "<group>"; };
@@ -203,6 +206,7 @@
 		7E56D93829C2549600AFB6B0 /* Assets.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Assets.swift; sourceTree = "<group>"; };
 		7E56D93929C2549600AFB6B0 /* Localizable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Localizable.swift; sourceTree = "<group>"; };
 		7E56D93D29C258E000AFB6B0 /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
+		7E653FDF2A2AF09300803583 /* AppTrackingTransparency.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AppTrackingTransparency.framework; path = System/Library/Frameworks/AppTrackingTransparency.framework; sourceTree = SDKROOT; };
 		7E7B86322A1BBFE900B7A053 /* QuestionListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuestionListView.swift; sourceTree = "<group>"; };
 		7E7B86342A1BC00300B7A053 /* QuestionListViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuestionListViewModel.swift; sourceTree = "<group>"; };
 		7E7B86362A1BC0D300B7A053 /* QuestionRow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuestionRow.swift; sourceTree = "<group>"; };
@@ -265,6 +269,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				7E653FE02A2AF09300803583 /* AppTrackingTransparency.framework in Frameworks */,
 				7EE94B032A27E82400F266E0 /* GoogleMobileAds.xcframework in Frameworks */,
 				DA1426F829B2346100846A29 /* Lottie in Frameworks */,
 				7E9558B72A20D6C400977FC6 /* CombineExt in Frameworks */,
@@ -352,6 +357,7 @@
 		7E1F381529AB733200F60435 /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				7EA3DC9A2A28E62800F19F5E /* AdViews */,
 				7E9558A32A1F74AD00977FC6 /* Settings */,
 				7E39F65C2A1CD55A004144CB /* Home */,
 				7E7B86312A1BBE7000B7A053 /* Questions */,
@@ -771,6 +777,14 @@
 			path = Enum;
 			sourceTree = "<group>";
 		};
+		7EA3DC9A2A28E62800F19F5E /* AdViews */ = {
+			isa = PBXGroup;
+			children = (
+				7E262B502A2B644A006B9563 /* AdView.swift */,
+			);
+			path = AdViews;
+			sourceTree = "<group>";
+		};
 		7EC27EC32A1A13160012B641 /* Extensions */ = {
 			isa = PBXGroup;
 			children = (
@@ -783,6 +797,7 @@
 		D97A3DEBEDCD9C2E0F66267E /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				7E653FDF2A2AF09300803583 /* AppTrackingTransparency.framework */,
 				7EE94B022A27E82400F266E0 /* GoogleMobileAds.xcframework */,
 				712C070E6CACCBE499C49E17 /* Pods_LebenInDeutschland.framework */,
 				0C74672DADCC2003475DD622 /* Pods_LebenInDeutschland_LebenInDeutschlandUITests.framework */,
@@ -916,8 +931,8 @@
 			mainGroup = 7E3B0EF229AB70F8004219B7;
 			packageReferences = (
 				DA1426F629B2346100846A29 /* XCRemoteSwiftPackageReference "lottie-ios" */,
-				7E92E6FC2A15EF6300221B21 /* XCRemoteSwiftPackageReference "Swinject.git" */,
-				7E9558B52A20D6C400977FC6 /* XCRemoteSwiftPackageReference "CombineExt.git" */,
+				7E92E6FC2A15EF6300221B21 /* XCRemoteSwiftPackageReference "Swinject" */,
+				7E9558B52A20D6C400977FC6 /* XCRemoteSwiftPackageReference "CombineExt" */,
 				7EBDBBA82A262A9600ADD468 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */,
 			);
 			productRefGroup = 7E3B0EFC29AB70F8004219B7 /* Products */;
@@ -1183,6 +1198,7 @@
 				7E1F382429AB833200F60435 /* StateModel.swift in Sources */,
 				7E92E7182A17AEFB00221B21 /* StateListService.swift in Sources */,
 				7E9558AF2A1FC64600977FC6 /* HapticsHelper.swift in Sources */,
+				7E262B512A2B644A006B9563 /* AdView.swift in Sources */,
 				7E3CCFC02A2237B300A671A8 /* ReviewService.swift in Sources */,
 				7E12F5CD2A23F7B9007D641C /* BuildEnvironment.swift in Sources */,
 				7EBDBBA12A2614A200ADD468 /* PracticeCategory.swift in Sources */,
@@ -2107,7 +2123,7 @@
 /* End XCConfigurationList section */
 
 /* Begin XCRemoteSwiftPackageReference section */
-		7E92E6FC2A15EF6300221B21 /* XCRemoteSwiftPackageReference "Swinject.git" */ = {
+		7E92E6FC2A15EF6300221B21 /* XCRemoteSwiftPackageReference "Swinject" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "git@github.com:Swinject/Swinject.git";
 			requirement = {
@@ -2115,7 +2131,7 @@
 				minimumVersion = 2.0.0;
 			};
 		};
-		7E9558B52A20D6C400977FC6 /* XCRemoteSwiftPackageReference "CombineExt.git" */ = {
+		7E9558B52A20D6C400977FC6 /* XCRemoteSwiftPackageReference "CombineExt" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/CombineCommunity/CombineExt.git";
 			requirement = {
@@ -2144,12 +2160,12 @@
 /* Begin XCSwiftPackageProductDependency section */
 		7E92E6FD2A15EF6300221B21 /* Swinject */ = {
 			isa = XCSwiftPackageProductDependency;
-			package = 7E92E6FC2A15EF6300221B21 /* XCRemoteSwiftPackageReference "Swinject.git" */;
+			package = 7E92E6FC2A15EF6300221B21 /* XCRemoteSwiftPackageReference "Swinject" */;
 			productName = Swinject;
 		};
 		7E9558B62A20D6C400977FC6 /* CombineExt */ = {
 			isa = XCSwiftPackageProductDependency;
-			package = 7E9558B52A20D6C400977FC6 /* XCRemoteSwiftPackageReference "CombineExt.git" */;
+			package = 7E9558B52A20D6C400977FC6 /* XCRemoteSwiftPackageReference "CombineExt" */;
 			productName = CombineExt;
 		};
 		7EBDBBA92A262A9600ADD468 /* FirebaseAnalytics */ = {

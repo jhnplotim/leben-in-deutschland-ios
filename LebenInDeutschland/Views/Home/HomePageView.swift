@@ -26,6 +26,8 @@ struct HomePageView: View {
     var body: some View {
         NavigationView {
             List {
+				Adview().frame(height: 100)
+				
                 Section("Assessments") {
                     AssessmentRow(title: "Exam", onClick: viewModel.showExamAssessment)
                     
