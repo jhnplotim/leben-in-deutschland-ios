@@ -74,6 +74,7 @@ private extension BuildConfig {
         case apiBaseUrl = "API_BASE_URL"
         case apiKey = "API_KEY" // TODO: Look into https://nshipster.com/secrets/ for storage of app secrets
         case appStoreId = "APPSTORE_ID"
+        case gadAppId = "GADApplicationIdentifier"
     }
 }
 
@@ -88,5 +89,9 @@ extension BuildConfig {
     
     var appStoreId: String {
         infoDictionary[Keys.appStoreId.rawValue] as! String
+    }
+    
+    var gadAppId: String {
+        infoDictionary[Keys.gadAppId.rawValue] as! String
     }
 }

@@ -9,7 +9,7 @@ import SwiftUI
 import FirebaseAnalyticsSwift
 
 struct LandingPage: View {
-
+    
     @State private var selection: Tab = .home
     
     var summaryVMFactory: () -> SummaryViewModel = {
@@ -20,7 +20,7 @@ struct LandingPage: View {
     var homePageVMFactory: () -> HomePageViewModel = {
         DIResolver.shared.resolve(HomePageViewModel.self)!
     }
-
+    
     var settingsVMFactory: () -> SettingsViewModel = {
         DIResolver.shared.resolve(SettingsViewModel.self)!
     }
@@ -39,7 +39,7 @@ struct LandingPage: View {
         static let summaryTabName = "Summary"
         static let settingsTabName = "Settings"
     }
-
+    
     var body: some View {
         TabView(selection: $selection) {
             HomePageView(viewModel: homePageVMFactory())
@@ -55,7 +55,7 @@ struct LandingPage: View {
                 }
                 .tag(Tab.summary)
                 .analyticsScreen(name: "\(C.summaryTabName) Tab") // TODO: Remove later before going live
-
+            
             SettingsView(viewModel: settingsVMFactory())
                 .tabItem {
                     Label(C.settingsTabName, systemImage: C.settingsIconName)

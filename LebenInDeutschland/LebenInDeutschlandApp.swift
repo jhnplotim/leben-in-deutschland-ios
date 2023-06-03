@@ -13,7 +13,7 @@ struct LebenInDeutschlandApp: App {
     
     // register app delegate for Firebase setup
     @UIApplicationDelegateAdaptor(AppDelegate.self) var delegate
-
+    
     @StateObject private var launchScreenStateMgr = LaunchScreenStateManager()
     
     var contentVMFactory: () -> ContentViewModel = {
@@ -30,18 +30,18 @@ struct LebenInDeutschlandApp: App {
         WindowGroup {
             ZStack {
                 ContentView(viewModel: contentVMFactory())
-
+                
                 if launchScreenStateMgr.state != .finished {
                     LaunchScreenView()
                 }
-
+                
             }
             .environmentObject(launchScreenStateMgr)
             /*.sheet(item: $modelData.errorWrapper, onDismiss: { // TODO: Re-enable later when handling errors
-                // TODO: Do something on dismiss
-            }) { wrapper in
-                ErrorView(errorWrapper: wrapper)
-            }*/
+             // TODO: Do something on dismiss
+             }) { wrapper in
+             ErrorView(errorWrapper: wrapper)
+             }*/
         }
     }
 }
