@@ -102,6 +102,7 @@ struct QuestionDetail: View {
             ToolbarItem(placement: .navigationBarTrailing) {
                 Button {
                     model.copyToClipBoard()
+					vibrate(.success)
                 } label: {
                     Label("Copy", systemImage: "doc.on.doc")
                 }
