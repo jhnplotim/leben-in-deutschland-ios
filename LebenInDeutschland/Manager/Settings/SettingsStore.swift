@@ -15,4 +15,7 @@ protocol SettingsStore {
     var stateOfResidence: FederalState { get set }
     
     var selectedResidenceStatePublisher: AnyPublisher<FederalState, Never> { get }
+	
+	/// Clear contents of the app and navigate to the residence state selection page
+	func resetApp()
 }

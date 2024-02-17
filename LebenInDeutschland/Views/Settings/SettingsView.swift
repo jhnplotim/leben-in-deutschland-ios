@@ -10,6 +10,8 @@ import SwiftUI
 struct SettingsView: View {
     
     @StateObject var viewModel: SettingsViewModel
+	
+	@State private var isPresentingConfirmReset = false
     
     var body: some View {
         NavigationView {
@@ -22,12 +24,18 @@ struct SettingsView: View {
                         }
                     }
                     HStack {
-                        Spacer()
                         Button(role: .destructive) {
-                            // TODO: Implement app after showing confirmation dialog first
+							isPresentingConfirmReset = true
                         } label: {
-                            Text("Reset")
+							Label("Reset app", systemImage: "xmark.bin")
                         }
+						.confirmationDialog("Are you sure?",
+											 isPresented: $isPresentingConfirmReset) {
+			Button("Reset all app activity?", role: .destructive) { 				viewModel.resetApp()
+			}
+		  } message: {
+			Text("You cannot undo this action")
+		  }
                     }
                 }
                 Section {
