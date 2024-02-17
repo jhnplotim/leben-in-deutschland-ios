@@ -6,6 +6,7 @@
 //
 
 import SwiftUI
+import UIKit
 
 final class QuestionDetailModel {
     
@@ -33,5 +34,15 @@ final class QuestionDetailModel {
     
     func getChosenAnswers() -> [Bool] {
         attemptMgrFactory().getChosenAnswers(for: assessmentQuestion.question.id).map { $0.wasCorrect ?? false }
+    }
+    
+    func copyToClipBoard() {
+        let pasteboard = UIPasteboard.general
+        var valueToCopy = "\(assessmentQuestion.question.title) \n"
+        
+        for ansEnum in assessmentQuestion.question.answers.enumerated() {
+            valueToCopy += "\(ansEnum.offset + 1) \(ansEnum.element.text) \n"
+        }
+        pasteboard.string = valueToCopy
     }
 }
