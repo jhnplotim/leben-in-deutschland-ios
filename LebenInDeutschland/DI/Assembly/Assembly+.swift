@@ -19,7 +19,7 @@ class ManagerAssembly: Assembly {
         container.register(AttemptManager.self) { _ in
             return AttemptManagerImpl()
         }
-        .inObjectScope(.container)
+        .inObjectScope(.customSingleton)
         
         container.register(SettingsStore.self) { _ in
                 SettingsStoreImpl()
@@ -35,7 +35,7 @@ class ServiceAssembly: Assembly {
         container.register(QuestionService.self) { _ in
             return QuestionServiceImpl()
         }
-        .inObjectScope(.container) // Make singleton so that they are loaded once. TODO: Later consider doing it differently
+        .inObjectScope(.customSingleton) // Make custom singleton so that they are loaded once. TODO: Later consider doing it differently
         
         container.register(CategoryService.self) { _ in
             return CategoryServiceImpl()
@@ -47,7 +47,7 @@ class ServiceAssembly: Assembly {
         
         container.register(ReviewService.self) { _ in
             return ReviewServiceImpl.init()
-        }.inObjectScope(.container)
+        }.inObjectScope(.customSingleton)
     }
 }
 

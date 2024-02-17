@@ -47,5 +47,9 @@ final class SettingsViewModel: ObservableObject {
     func rateApp(_ appStoreId: String = BuildConfig.shared.appStoreId) {
         reviewService.requestReviewManually(appStoreId: appStoreId)
     }
+	
+	func resetApp() {
+		_settingsStore.resetApp()
+	}
     
 }

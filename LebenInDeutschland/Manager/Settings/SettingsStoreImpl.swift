@@ -7,6 +7,7 @@
 
 import SwiftUI
 import Combine
+import Swinject
 
 final class SettingsStoreImpl: SettingsStore {
     
@@ -19,4 +20,17 @@ final class SettingsStoreImpl: SettingsStore {
     
     // MARK: - Publishers
     lazy var selectedResidenceStatePublisher: AnyPublisher<FederalState, Never> = self._stateOfResidence.publisher.eraseToAnyPublisher()
+	
+	/// Clear contents of the app and navigate to the residence state selection page
+	func resetApp() {
+		// Clear all UserDefaults
+		UserDefaults.standard.clear()
+		
+		// Reset all settings here
+		stateOfResidence = .noneSelected
+		vibrateOnFalseAnswer = false
+		
+		// Clear DI singleton scope
+		Assembler.container.resetObjectScope(.customSingleton)
+	}
 }

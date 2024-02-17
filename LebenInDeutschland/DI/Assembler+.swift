@@ -10,8 +10,11 @@ import Swinject
 
 // See https://github.com/Swinject/Swinject/blob/master/Documentation/Assembler.md
 extension Assembler {
+	static let container: Container = {
+		Container()
+	}()
+	
     static let sharedAssembler: Assembler = {
-        let container = Container()
         let assembler = Assembler([
             ManagerAssembly(),
             UtilityAssembly(),
