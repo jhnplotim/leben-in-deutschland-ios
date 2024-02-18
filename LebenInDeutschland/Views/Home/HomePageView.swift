@@ -74,7 +74,7 @@ struct HomePageView: View {
                 }
                 
                 if !viewModel.categories.isEmpty {
-                    Section("Categories") {
+                    Section("Themes") {
                         ForEach(viewModel.categories) { category in
                             
                             NavigationLink(destination: QuestionListView(viewModel: qnListVMFactory(
