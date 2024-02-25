@@ -7,6 +7,8 @@ target 'LebenInDeutschland' do
 
   # Pods for LebenInDeutschland
   pod 'Google-Mobile-Ads-SDK'
+  pod 'GoogleUserMessagingPlatform'
+	pod 'FirebaseAnalytics'
 
   target 'LebenInDeutschlandTests' do
     inherit! :search_paths
